@@ -4,6 +4,8 @@ project:
 
 website:
   title: "Digital Competence in the Biological Sciences"
+  navbar:
+    logo: assets/images/course-logo.png
   sidebar:
     contents:
       - index.qmd
@@ -21,4 +23,4 @@ format:
     toc: true
     
 execute:
-  freeze: false
+  freeze: auto

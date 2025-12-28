@@ -4,11 +4,13 @@ subtitle: "Digital Competence through Data, Structure, and Reproducible Workflow
 author: "Oskar Hagen"
 ---
 
+::: {.text-center}
+![](assets/images/course-logo.png){width=220px}
+:::
+
 ## Course overview
 
-This course introduces biology students to **digital competence in biological data handling** using Excel and R.
-
-The focus is not on programming for its own sake, but on understanding how biological data are:
+This course introduces biology students to **digital competence in data handling** using Excel and R. Excel and R are used as **complementary tools** but principels are software agnostic within a broader best practices in data lifecycle, from data entry to reproducible analysis. Thus, the focus is not on programming for its own sake, but on understanding how biological data are:
 - recorded,
 - structured,
 - summarized,
@@ -16,11 +18,9 @@ The focus is not on programming for its own sake, but on understanding how biolo
 - interpreted,
 - and communicated.
 
-Excel and R are used as **complementary tools** within a broader data lifecycle, from data entry to reproducible analysis.
-
 The course is hands-on, biology-driven, and designed for students with **no prior programming experience**.
 
-- The lecture introduces concepts (data, algorithms, modelling, statistics).
+- The lecture introduces concepts (data, statistics, algorithms, modelling).
 - This course makes those ideas **tangible through practice**.
 
 Topics such as inferential statistics, formal modelling, and machine learning are **not taught here**, but students are conceptually prepared for them.
@@ -29,19 +29,20 @@ Topics such as inferential statistics, formal modelling, and machine learning ar
 
 ## Teaching philosophy
 
+- Critical thinking and context trumps technical skills
 - Tools serve questions, not the other way around
 - Structure matters more than software
 - Reproducibility is part of scientific responsibility
 - Errors are normal and informative
 - Understanding limits is as important as getting results
 
-Students work **in pairs** throughout the course, enabling peer learning and collaborative problem solving.
+Students work alone and in pairs throughout the course, enabling individual thinking and collaborative learning.
 
 ---
 
 ## Case study
 
-All exercises are based on a **real-world biodiversity monitoring and conservation scenarios** from a national protected area in Belize.
+All exercises are based on a **real-world biodiversity monitoring and conservation scenarios** from a national protected area in Belize. Data are inspired by actual monitoring programs, but simplified for teaching purposes and modified to avoid unnecessary sensitive information sharing.
 
 Using a single evolving case study will allow you to focus on:
 - reasoning instead of context switching,
@@ -52,8 +53,7 @@ Using a single evolving case study will allow you to focus on:
 
 ## Course structure
 
-The course runs for **5 days (3 hours each)**.
-Each day builds on the previous one and introduces one central idea.
+The course runs for **5 days (3 hours each)**. Each day builds on the previous one and is divided into three 45 minutes lectures and exercises with two 15 minute breaks in between and a final 15 minute wrap-up sessions.
 
 ---
 
@@ -138,7 +138,7 @@ By the end of the course, you will be able to:
 
 ## How to use this website
 
-- This website is the **single source** for the course
+- This website is the **main source** for the course
 - All materials, exercises, and datasets are available here
 - Slides are optional; the pages themselves are complete
 - If something is not documented here, it is not required

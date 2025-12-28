@@ -1,7 +1,7 @@
 ---
 title: "Day 1 – What 'good' Data Is"
 execute:
-  freeze: false
+  freeze: auto
 editor: 
   markdown: 
     wrap: 72
@@ -116,9 +116,10 @@ editor:
 
 By the end of this day, you should be able to:
 
--   explain what biological data represents and what it does not
+-   explain what data represents and what it does not
 -   distinguish data lifecycles (stages) e.g. data entry, data storage, data analysis
--   recognize common sources of data inconsistency
+-   recognize common sources of mistakes
+-   learn core principles of data handling and management
 -   use Excel to enter and structure biological data in a controlled way
 -   understand that every dataset is a simplified representation of
     reality
@@ -184,26 +185,40 @@ later.
 
 ## Context: a real-world case study
 
-Throughout this course, we work with a simplified but realistic
-scenario:
+Throughout this course, we work with a simplified but real world scenario:
 
-> You are working with biodiversity monitoring data from a national
-> protected area in Belize.\
-> Data are collected by rangers, NGOs, and external consultants over
-> long periods of time.
-
-Your task is not 'necessarily' to be clever.\
-Your task is to be **reliable**.
+> You are working with biodiversity monitoring, conservation planing and foresty data from a national protected area in Belize.\
+> Data are collected by yourself, rangers, partner NGOs, and external consultants over long periods of time.
 
 ------------------------------------------------------------------------
 
 ## What is data?
 
-**Short version**  
-Data are **recorded observations about the world**.
+Deliberately tool-agnostic and discipline-neutral.
 
-**Longer version**  
-Data are **representations of observations, measurements, or events**, encoded in a form that allows **storage, comparison, and interpretation**.
+::: {.grid}
+::: {.g-col-6}
+::: {.card .border-primary}
+::: {.card-header .bg-primary .text-white}
+Short version
+:::
+::: {.card-body}
+**Data are recorded observations about the world.**
+:::
+:::
+:::
+
+::: {.g-col-6}
+::: {.card .border-primary}
+::: {.card-header .bg-primary .text-white}
+Longer version
+:::
+::: {.card-body}
+**Data are representations of observations, measurements, or events**, encoded in a form that allows **storage, comparison, and interpretation**.
+:::
+:::
+:::
+:::
 
 > Data are **not facts themselves**, they are **encodings of facts**.
 
@@ -211,39 +226,10 @@ This distinction matters: tools only operate on the encoding, never on reality.
 
 ---
 
-## What counts as data in biology?
 
-In biology, data can take many forms:
-
-- **numbers** (e.g. body mass, abundance, concentration)
-- **categories** (e.g. species name, habitat type)
-- **text** (e.g. field notes, descriptions)
-- **images** (e.g. microscopy, camera traps)
-- **sequences** (e.g. DNA, RNA, proteins)
-- **time series** (e.g. temperature, population size)
-- **spatial coordinates** (e.g. GPS locations)
-
-**Key point**  
-Data are always **abstractions of reality**, never reality itself.
-
-This is why interpretation without context is dangerous.
-
----
+## Core comcepts definition
 
 In this course, we use the following working definitions:
-
--   **Observation**: one recorded event or measurement\
-    e.g. one species observation at one location and time
--   **Variable**: a property that can vary between observations\
-    e.g. species name, location, count, date
-
-
-A table is not meaningful by itself.\
-Meaning comes from **structure and context**.
-
-## Data vs observations vs measurements
-
-It helps to separate these concepts:
 
 - **Observation:** something you perceive or record in the world  
   e.g. one species observation at one location and time
@@ -264,6 +250,26 @@ It helps to separate these concepts:
   e.g. units, methods, location, observer, context
 
 Once written down, data are detached from the original context unless you preserve it.
+
+---
+---
+
+## What counts as data in biology?
+
+In biology, data can take many forms:
+
+- **numbers** (e.g. body mass, abundance, concentration)
+- **categories** (e.g. species name, habitat type)
+- **text** (e.g. field notes, descriptions)
+- **images** (e.g. microscopy, camera traps)
+- **sequences** (e.g. DNA, RNA, proteins)
+- **time series** (e.g. temperature, population size)
+- **spatial coordinates** (e.g. GPS locations)
+
+**Key point**  
+Data are always **abstractions of reality**, never reality itself.
+
+This is why interpretation without context is dangerous and wrong.
 
 ---
 
@@ -306,8 +312,11 @@ The FAIR principles describe how scientific data should be handled so that they 
 FAIR does **not** mean “open to everyone” and it does **not** guarantee data quality.  
 FAIR means that data are prepared in a way that allows **others (and your future self)** to find, understand, and reuse them.
 
-FAIR stands for:
+We present FAIR principles expanded from  
+[Wilkinson et al. (2016), *The FAIR Guiding Principles for scientific data management and stewardship*](https://doi.org/10.1038/sdata.2016.18)  
+by the wider research data management community. 
 
+**FAIR** stands for:
 
 ### 🔍 Findable
 
@@ -577,7 +586,7 @@ For now, remember:
 ```
 
 
-Excel is widely used in biology because it is:
+Excel is widely used because it is:
 
 -   easy to access
 -   human-readable
@@ -720,8 +729,7 @@ Large-scale scans of published supplementary Excel files show that
 :::: external-figure
 **Figure 1. Prevalence of Excel-induced gene name errors over time**
 
-![Excel-induced gene name errors over
-time](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1008984.g001&type=large){fig-align="center"}
+![Excel-induced gene name errors over time](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1008984.g001&type=large){fig-align="center"}
 
 ::: figure-source
 Source:
