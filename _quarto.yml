@@ -1,0 +1,24 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Digital Competence in the Biological Sciences"
+  sidebar:
+    contents:
+      - index.qmd
+      - section: "Course Days"
+        contents:
+          - days/day01.qmd
+          - days/day02.qmd
+          - days/day03.qmd
+          - days/day04.qmd
+          - days/day05.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    
+execute:
+  freeze: false

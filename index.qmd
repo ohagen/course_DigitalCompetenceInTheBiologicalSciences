@@ -1,0 +1,158 @@
+---
+title: "Digital Competence in the Biological Sciences"
+subtitle: "Digital Competence through Data, Structure, and Reproducible Workflows"
+author: "Oskar Hagen"
+---
+
+## Course overview
+
+This course introduces biology students to **digital competence in biological data handling** using Excel and R.
+
+The focus is not on programming for its own sake, but on understanding how biological data are:
+- recorded,
+- structured,
+- summarized,
+- transformed,
+- interpreted,
+- and communicated.
+
+Excel and R are used as **complementary tools** within a broader data lifecycle, from data entry to reproducible analysis.
+
+The course is hands-on, biology-driven, and designed for students with **no prior programming experience**.
+
+- The lecture introduces concepts (data, algorithms, modelling, statistics).
+- This course makes those ideas **tangible through practice**.
+
+Topics such as inferential statistics, formal modelling, and machine learning are **not taught here**, but students are conceptually prepared for them.
+
+---
+
+## Teaching philosophy
+
+- Tools serve questions, not the other way around
+- Structure matters more than software
+- Reproducibility is part of scientific responsibility
+- Errors are normal and informative
+- Understanding limits is as important as getting results
+
+Students work **in pairs** throughout the course, enabling peer learning and collaborative problem solving.
+
+---
+
+## Case study
+
+All exercises are based on a **real-world biodiversity monitoring and conservation scenarios** from a national protected area in Belize.
+
+Using a single evolving case study will allow you to focus on:
+- reasoning instead of context switching,
+- continuity across days,
+- real world data problems rather than artificial examples.
+
+---
+
+## Course structure
+
+The course runs for **5 days (3 hours each)**.
+Each day builds on the previous one and introduces one central idea.
+
+---
+
+### **Day 1 – What 'good' Data Is **  
+*Excel as a data entry and structuring tool*
+
+- Observations, variables, metadata
+- Data as a simplified representation of reality
+- Risks of inconsistency and missing context
+- Excel templates for structured data entry
+
+**Key idea**  
+All datasets are already models of reality.
+
+---
+
+### **Day 2 – Describing Data **  
+*Excel for descriptive statistics and visualization*
+
+- Mean, median, variance
+- Distributions and variability
+- Visualizations as summaries, not proofs
+- Honest and misleading plots
+
+**Key idea**  
+Descriptive statistics summarize observations, not explanations.
+
+---
+
+### **Day 3 – From repetition to algorithms**  
+*Why R exists*
+
+- Repeated tasks and scalability
+- Algorithms as explicit procedures
+- Deterministic workflows
+- Transition from Excel to R
+
+**Key idea**  
+Algorithms replace memory and intuition with explicit instructions.
+
+---
+
+### **Day 4 – Cleaning data and making work reproducible**  
+*R as a data workbench*
+
+- Data cleaning as scientific work
+- Data transformation and reshaping
+- Scripts as documentation
+- Reproducible workflows
+
+**Key idea**  
+If you cannot rerun it, you cannot defend it.
+
+---
+
+### **Day 5 – Tools, models, and scientific responsibility**  
+*Synthesis and outlook*
+
+- Models as simplified representations
+- Tool choice as a scientific decision
+- Strengths and limits of Excel and R
+- Course reflection and open discussion
+
+**Key idea**  
+All models are wrong. Some are useful.
+
+---
+
+## What you will be able to do after this course
+
+By the end of the course, you will be able to:
+
+- Gain an overview of what excel and scripting languages can and can not do 
+- Organize biological data in a structured and transparent way
+- Use Excel appropriately for data entry and exploration
+- Use R for basic data cleaning, summaries, and plots
+- Understand what algorithms and models are at a conceptual level
+- Judge which tool is appropriate for a given task
+- Document workflows clearly for reuse and reproducibility
+
+---
+
+## How to use this website
+
+- This website is the **single source** for the course
+- All materials, exercises, and datasets are available here
+- Slides are optional; the pages themselves are complete
+- If something is not documented here, it is not required
+
+---
+
+## Looking ahead
+
+The skills and concepts introduced here form the foundation for:
+- statistical inference,
+- modelling,
+- bioinformatics,
+- data-driven biological research.
+- and real world biological work.
+
+This course is not the end of digital competence training.  
+It is the **starting point**.

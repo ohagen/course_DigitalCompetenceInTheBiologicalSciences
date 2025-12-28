@@ -1,0 +1,191 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Digital Competence in the Biological Sciences",
+    "section": "",
+    "text": "This course introduces biology students to digital competence in biological data handling using Excel and R.\nThe focus is not on programming for its own sake, but on understanding how biological data are: - recorded, - structured, - summarized, - transformed, - interpreted, - and communicated.\nExcel and R are used as complementary tools within a broader data lifecycle, from data entry to reproducible analysis.\nThe course is hands-on, biology-driven, and designed for students with no prior programming experience.",
+    "crumbs": [
+      "Digital Competence in the Biological Sciences"
+    ]
+  },
+  {
+    "objectID": "index.html#course-overview",
+    "href": "index.html#course-overview",
+    "title": "Digital Competence in the Biological Sciences",
+    "section": "",
+    "text": "This course introduces biology students to digital competence in biological data handling using Excel and R.\nThe focus is not on programming for its own sake, but on understanding how biological data are: - recorded, - structured, - summarized, - transformed, - interpreted, - and communicated.\nExcel and R are used as complementary tools within a broader data lifecycle, from data entry to reproducible analysis.\nThe course is hands-on, biology-driven, and designed for students with no prior programming experience.",
+    "crumbs": [
+      "Digital Competence in the Biological Sciences"
+    ]
+  },
+  {
+    "objectID": "index.html#how-this-course-fits-into-digitale-kompetenzen",
+    "href": "index.html#how-this-course-fits-into-digitale-kompetenzen",
+    "title": "Digital Competence in the Biological Sciences",
+    "section": "How this course fits into Digitale Kompetenzen",
+    "text": "How this course fits into Digitale Kompetenzen\nThis block seminar complements the Digitale Kompetenzen für Studierende der Biowissenschaften lecture series.\n\nThe lecture introduces concepts (data, algorithms, modelling, statistics).\nThis course makes those ideas tangible through practice.\n\nTopics such as inferential statistics, formal modelling, and machine learning are not taught here, but students are conceptually prepared for them.",
+    "crumbs": [
+      "Digital Competence in the Biological Sciences"
+    ]
+  },
+  {
+    "objectID": "index.html#teaching-philosophy",
+    "href": "index.html#teaching-philosophy",
+    "title": "Digital Competence in the Biological Sciences",
+    "section": "Teaching philosophy",
+    "text": "Teaching philosophy\n\nTools serve questions, not the other way around\nStructure matters more than software\nReproducibility is part of scientific responsibility\nErrors are normal and informative\nUnderstanding limits is as important as getting results\n\nStudents work in pairs throughout the course, enabling peer learning and collaborative problem solving.",
+    "crumbs": [
+      "Digital Competence in the Biological Sciences"
+    ]
+  },
+  {
+    "objectID": "index.html#case-study",
+    "href": "index.html#case-study",
+    "title": "Digital Competence in the Biological Sciences",
+    "section": "Case study",
+    "text": "Case study\nAll exercises are based on a real-world biodiversity monitoring and conservation scenarios from a national protected area in Belize.\nUsing a single evolving case study allows students to focus on: - reasoning instead of context switching, - continuity across days, - realistic data problems rather than artificial examples.",
+    "crumbs": [
+      "Digital Competence in the Biological Sciences"
+    ]
+  },
+  {
+    "objectID": "index.html#course-structure",
+    "href": "index.html#course-structure",
+    "title": "Digital Competence in the Biological Sciences",
+    "section": "Course structure",
+    "text": "Course structure\nThe course runs for 5 days (3 hours each). Each day builds on the previous one and introduces one central idea.\n\n\nDay 1 – What data is (and what it is not)\nExcel as a data entry and structuring tool\n\nObservations, variables, metadata\nData as a simplified representation of reality\nRisks of inconsistency and missing context\nExcel templates for structured data entry\n\nKey idea\nAll datasets are already models of reality.\n\n\n\nDay 2 – Describing data without overinterpreting it\nExcel for descriptive statistics and visualization\n\nMean, median, variance\nDistributions and variability\nVisualizations as summaries, not proofs\nHonest and misleading plots\n\nKey idea\nDescriptive statistics summarize observations, not explanations.\n\n\n\nDay 3 – From repetition to algorithms\nWhy R exists\n\nRepeated tasks and scalability\nAlgorithms as explicit procedures\nDeterministic workflows\nTransition from Excel to R\n\nKey idea\nAlgorithms replace memory and intuition with explicit instructions.\n\n\n\nDay 4 – Cleaning data and making work reproducible\nR as a data workbench\n\nData cleaning as scientific work\nData transformation and reshaping\nScripts as documentation\nReproducible workflows\n\nKey idea\nIf you cannot rerun it, you cannot defend it.\n\n\n\nDay 5 – Tools, models, and scientific responsibility\nSynthesis and outlook\n\nModels as simplified representations\nTool choice as a scientific decision\nStrengths and limits of Excel and R\nMini-project and reflection\n\nKey idea\nAll models are wrong. Some are useful.",
+    "crumbs": [
+      "Digital Competence in the Biological Sciences"
+    ]
+  },
+  {
+    "objectID": "index.html#what-you-will-be-able-to-do-after-this-course",
+    "href": "index.html#what-you-will-be-able-to-do-after-this-course",
+    "title": "Digital Competence in the Biological Sciences",
+    "section": "What you will be able to do after this course",
+    "text": "What you will be able to do after this course\nBy the end of the course, students will be able to:\n\nGain an overview of what excel and scripting languages can and can not do\nOrganize biological data in a structured and transparent way\nUse Excel appropriately for data entry and exploration\nUse R for basic data cleaning, summaries, and plots\nUnderstand what algorithms and models are at a conceptual level\nJudge which tool is appropriate for a given task\nDocument workflows clearly for reuse and reproducibility",
+    "crumbs": [
+      "Digital Competence in the Biological Sciences"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use-this-website",
+    "href": "index.html#how-to-use-this-website",
+    "title": "Digital Competence in the Biological Sciences",
+    "section": "How to use this website",
+    "text": "How to use this website\n\nThis website is the single source for the course\nAll materials, exercises, and datasets are available here\nSlides are optional; the pages themselves are complete\nIf something is not documented here, it is not required",
+    "crumbs": [
+      "Digital Competence in the Biological Sciences"
+    ]
+  },
+  {
+    "objectID": "index.html#looking-ahead",
+    "href": "index.html#looking-ahead",
+    "title": "Digital Competence in the Biological Sciences",
+    "section": "Looking ahead",
+    "text": "Looking ahead\nThe skills and concepts introduced here form the foundation for: - statistical inference, - modelling, - bioinformatics, - data-driven biological research. - and real world biological work.\nThis course is not the end of digital competence training.\nIt is the starting point.",
+    "crumbs": [
+      "Digital Competence in the Biological Sciences"
+    ]
+  },
+  {
+    "objectID": "days/day01.html",
+    "href": "days/day01.html",
+    "title": "Day 1 – What Data Is (and What It Is Not)",
+    "section": "",
+    "text": "By the end of this day, you should be able to:\n\nexplain what biological data represents and what it does not\ndistinguish data entry, data storage, and data analysis\nrecognize common sources of data inconsistency\nuse Excel to enter and structure biological data in a controlled way\nunderstand that every dataset is a simplified representation of reality\n\nNo prior experience with Excel or programming is required.",
+    "crumbs": [
+      "Course Days",
+      "Day 1 – What Data Is (and What It Is Not)"
+    ]
+  },
+  {
+    "objectID": "days/day01.html#learning-goals",
+    "href": "days/day01.html#learning-goals",
+    "title": "Day 1 – What Data Is (and What It Is Not)",
+    "section": "",
+    "text": "By the end of this day, you should be able to:\n\nexplain what biological data represents and what it does not\ndistinguish data entry, data storage, and data analysis\nrecognize common sources of data inconsistency\nuse Excel to enter and structure biological data in a controlled way\nunderstand that every dataset is a simplified representation of reality\n\nNo prior experience with Excel or programming is required.",
+    "crumbs": [
+      "Course Days",
+      "Day 1 – What Data Is (and What It Is Not)"
+    ]
+  },
+  {
+    "objectID": "days/day01.html#motivation",
+    "href": "days/day01.html#motivation",
+    "title": "Day 1 – What Data Is (and What It Is Not)",
+    "section": "Motivation",
+    "text": "Motivation\nBiology deals with complex, variable systems.\nData are not reality.\nData are a structured representation of selected aspects of reality.\nBefore we analyze anything, we must understand: - what was observed, - how it was recorded, - and what information was lost in the process.\nPoorly structured data cannot be rescued by sophisticated analysis later.",
+    "crumbs": [
+      "Course Days",
+      "Day 1 – What Data Is (and What It Is Not)"
+    ]
+  },
+  {
+    "objectID": "days/day01.html#agenda",
+    "href": "days/day01.html#agenda",
+    "title": "Day 1 – What Data Is (and What It Is Not)",
+    "section": "Agenda",
+    "text": "Agenda",
+    "crumbs": [
+      "Course Days",
+      "Day 1 – What Data Is (and What It Is Not)"
+    ]
+  },
+  {
+    "objectID": "days/day01.html#context-a-real-world-case-study",
+    "href": "days/day01.html#context-a-real-world-case-study",
+    "title": "Day 1 – What Data Is (and What It Is Not)",
+    "section": "Context: a real-world case study",
+    "text": "Context: a real-world case study\nThroughout this course, we work with a simplified but realistic scenario:\n\nYou are working with biodiversity monitoring data from a national protected area in Belize.\nData are collected by rangers, NGOs, and external consultants over long periods of time.\n\nYour task is not to be clever.\nYour task is to be reliable.",
+    "crumbs": [
+      "Course Days",
+      "Day 1 – What Data Is (and What It Is Not)"
+    ]
+  },
+  {
+    "objectID": "days/day01.html#what-is-data",
+    "href": "days/day01.html#what-is-data",
+    "title": "Day 1 – What Data Is (and What It Is Not)",
+    "section": "What is data?",
+    "text": "What is data?\nIn this course, we use the following working definitions:\n\nObservation: one recorded event or measurement\ne.g. one species observation at one location and time\nVariable: a property that can vary between observations\ne.g. species name, location, count, date\nDataset: a collection of observations recorded in a structured form\nMetadata: information about how, when, where, and why data were collected\n\nA table is not meaningful by itself.\nMeaning comes from structure and context.",
+    "crumbs": [
+      "Course Days",
+      "Day 1 – What Data Is (and What It Is Not)"
+    ]
+  },
+  {
+    "objectID": "days/day01.html#data-as-a-model",
+    "href": "days/day01.html#data-as-a-model",
+    "title": "Day 1 – What Data Is (and What It Is Not)",
+    "section": "Data as a model",
+    "text": "Data as a model\nEvery dataset is already a model:\n\nit includes some aspects of reality\nit excludes others\nit simplifies complex systems\n\nThis idea will return later in statistics and modelling courses.\nFor now, remember:\n\nData are never neutral.\nChoices are made at the moment of data collection.",
+    "crumbs": [
+      "Course Days",
+      "Day 1 – What Data Is (and What It Is Not)"
+    ]
+  },
+  {
+    "objectID": "days/day01.html#excel-in-the-data-lifecycle",
+    "href": "days/day01.html#excel-in-the-data-lifecycle",
+    "title": "Day 1 – What Data Is (and What It Is Not)",
+    "section": "Excel in the data lifecycle",
+    "text": "Excel in the data lifecycle\nExcel is widely used in biology because it is:\n\neasy to access\nhuman-readable\nflexible\n\nExcel is well suited for: - data entry - inspection - small-scale summaries\nExcel is not well suited for: - enforcing consistency - documenting decisions - scaling analyses\nUnderstanding these limits is part of digital competence.",
+    "crumbs": [
+      "Course Days",
+      "Day 1 – What Data Is (and What It Is Not)"
+    ]
+  },
+  {
+    "objectID": "days/day01.html#hands-on-session-structured-data-entry",
+    "href": "days/day01.html#hands-on-session-structured-data-entry",
+    "title": "Day 1 – What Data Is (and What It Is Not)",
+    "section": "Hands-on session: structured data entry",
+    "text": "Hands-on session: structured data entry\n\nTask\nOpen the Excel template provided in:",
+    "crumbs": [
+      "Course Days",
+      "Day 1 – What Data Is (and What It Is Not)"
+    ]
+  }
+]

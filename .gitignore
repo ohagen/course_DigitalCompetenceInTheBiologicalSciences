@@ -1,0 +1,48 @@
+# -------------------------
+# R / RStudio
+# -------------------------
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Keep the project file itself
+# *.Rproj  <-- do NOT ignore
+
+# -------------------------
+# Quarto
+# -------------------------
+.quarto/
+
+# Preview / render output
+_site/
+_freeze/
+
+# knitr caches / intermediates
+.knitr_cache/
+*_cache/
+*.utf8.md
+
+# Optional: ignore rendered HTML
+*.html
+
+# -------------------------
+# OS files
+# -------------------------
+.DS_Store
+Thumbs.db
+.directory
+
+# -------------------------
+# Temporary / backup files
+# -------------------------
+*.log
+*.tmp
+*.bak
+
+# -------------------------
+# Python (if used later)
+# -------------------------
+__pycache__/
+*.pyc
+.venv/

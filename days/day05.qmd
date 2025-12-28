@@ -1,0 +1,250 @@
+---
+title: "Day 5 – Tools, models, and scientific responsibility"
+format: html
+---
+
+## Overview of the data lifecycle (and where Excel and R fit)
+
+Think of data not as a file, but as a **process with phases**.
+Most data disasters happen when a tool designed for *one phase* is silently used for *all phases*.
+
+Below, each stage of the data lifecycle is explained once.
+Later, Excel and R are positioned relative to these stages.
+
+---
+
+### <a id="generation"></a>1) Data generation
+
+**What this stage is about**
+
+Data are created in the real world:
+- measurements
+- observations
+- experiments
+- surveys
+- sensors
+- field notes
+
+**Biology examples**
+- species counts
+- trait measurements
+- GPS locations
+- lab assays
+- environmental monitoring
+
+**Good tools**
+- field sheets
+- instruments
+- sensors
+- lab notebooks
+- electronic lab notebooks (ELNs)
+
+**Excel**
+- ❌ Not involved  
+Excel does not generate data. It can only record values after they exist.
+
+**R**
+- ❌ Not involved  
+R does not generate empirical data, except in simulations.
+
+---
+
+### <a id="entry"></a>2) Data entry and initial structuring
+
+**What this stage is about**
+- transcribing observations into digital form
+- defining rows, columns, units, identifiers
+- first human sanity checks
+
+**Good tools**
+- Excel
+- Google Sheets
+- LibreOffice Calc
+- simple data entry forms
+
+**Excel**
+- ✅ **Excellent here (when used carefully)**  
+This is Excel’s natural habitat:
+- fast manual entry
+- immediate visual feedback
+- simple validation rules
+- human-readable tables
+
+**R**
+- ⚠️ Not designed for this  
+R expects data to already exist in files or databases.
+
+**Key rule**
+- one row = one observation  
+- one column = one variable  
+- no analysis logic in raw data
+
+---
+
+### <a id="cleaning"></a>3) Data cleaning and quality control
+
+**What this stage is about**
+- fixing typos
+- harmonizing codes
+- handling missing values
+- checking ranges and consistency
+
+**Good tools**
+- Excel (small datasets, transparent fixes)
+- R
+- Python (pandas)
+
+**Excel**
+- ⚠️ Limited and risky  
+Excel can clean data, but:
+- changes are hard to audit
+- copy-paste errors creep in
+- history is lost
+
+**R**
+- ✅ **Very strong**  
+Cleaning steps are scripted, explicit, and reproducible.
+
+**Key transition point**
+> If you cannot explain exactly what you changed and why, you should move out of Excel.
+
+---
+
+### <a id="storage"></a>4) Data storage and archiving
+
+**What this stage is about**
+- long-term storage
+- sharing with collaborators
+- submission to repositories
+
+**Good tools**
+- CSV / TSV
+- databases
+- repositories (Zenodo, Dryad, institutional servers)
+
+**Excel**
+- ❌ Poor choice  
+Excel files:
+- hide metadata
+- embed formatting and formulas
+- are fragile across versions
+- are not diff-friendly
+
+Excel is not a database.
+
+**R**
+- ⚠️ Indirect  
+R produces clean, portable data files, but is not itself a storage system.
+
+---
+
+### <a id="analysis"></a>5) Data analysis
+
+**What this stage is about**
+- statistical summaries
+- models
+- hypothesis testing
+- simulations
+
+**Good tools**
+- R
+- Python
+- specialized statistical software
+
+**Excel**
+- ❌ Danger zone  
+Excel allows analysis, but:
+- formulas are opaque
+- errors are hard to detect
+- results are not reproducible
+- reviewers cannot re-run your work
+
+This is where many famous failures occurred.
+
+**R**
+- ✅ Core strength  
+Transparent, testable, and reproducible analysis.
+
+---
+
+### <a id="visualization"></a>6) Visualization and communication
+
+**What this stage is about**
+- figures
+- tables
+- reports
+- presentations
+
+**Good tools**
+- R (ggplot2)
+- Python (matplotlib, seaborn)
+- Quarto
+- Illustrator (final polishing)
+
+**Excel**
+- ⚠️ Quick look only  
+Excel is fine for:
+- exploratory plots
+- sanity checks
+
+Not for final, reproducible figures.
+
+**R**
+- ✅ Excellent  
+Publication-quality plots with full control and consistency.
+
+---
+
+### <a id="reproducibility"></a>7) Reproducibility and reuse
+
+**What this stage is about**
+- others reusing your data
+- you revisiting it months later
+- reviewers asking “how did you get this?”
+
+**Good tools**
+- scripts
+- version control (Git)
+- Quarto / notebooks
+
+**Excel**
+- ❌ Actively hostile  
+Excel workflows are:
+- undocumented
+- non-repeatable
+- person-specific
+
+**R**
+- ✅ Designed for this  
+Scripts record every step and can be re-run exactly.
+
+---
+
+## Core message
+
+Excel is a **front-end tool** for humans.  
+R is a **logic engine** for trust.
+
+> Use Excel to *enter and see* data.  
+> Use R to *clean, analyse, and justify* results.
+
+----------------------------------------------------
+
+## Excel vs R across the data lifecycle (detailed comparison)
+
+This table is clickable. If something is unclear, jump back up.
+
+| Data lifecycle stage | Excel: role & limits | R: role & strengths |
+|----------------------|----------------------|---------------------|
+| **[Data generation](#generation)** | ❌ Not involved. Excel does not generate empirical data; it only records values after they exist. | ❌ Not involved for empirical data. R generates data only in simulations or models. |
+| **[Data entry & initial structuring](#entry)** | ✅ **Very strong.** Designed for human input, fast manual entry, immediate visual feedback, simple validation rules, and readable tables. ⚠️ Risk of auto-formatting and silent type conversion. | ⚠️ **Not suitable.** R is not designed for manual data entry by humans and expects data to already exist in files or databases. |
+| **[Sanity checks](#cleaning)** | ✅ **Good.** Sorting, filtering, and visual inspection help detect obvious errors and missing values. ⚠️ Checks are informal and not documented. | ✅ **Very strong.** Programmatic summaries, range checks, and consistency tests that are explicit, repeatable, and auditable. |
+| **[Data cleaning & harmonization](#cleaning)** | ⚠️ **Limited and risky.** Cleaning is manual, undocumented, and prone to copy-paste errors; changes are hard to trace or reproduce. | ✅ **Excellent.** Cleaning steps are scripted, transparent, reproducible, and can be reviewed or rerun exactly. |
+| **[Data storage & archiving](#storage)** | ❌ **Poor choice.** Excel files mix data, formatting, and logic; they hide metadata, are fragile across versions, and are not diff-friendly. Excel is not a database. However, can save (CSV TSV) | ⚠️ **Indirect role.** R does not store data long-term but produces clean, portable outputs (CSV, databases) suitable for archiving and sharing. |
+| **[Data analysis & statistics](#analysis)** | ❌ **Danger zone.** Formulas are opaque, errors are hard to detect, analyses are not reproducible, and reviewers cannot re-run the workflow. | ✅ **Core strength.** Transparent statistical analysis, modelling, simulations, diagnostics, and hypothesis testing with full reproducibility. |
+| **[Visualization & communication](#visualization)** | ⚠️ **Limited.** Useful for quick exploratory plots and sanity checks, but poor for consistent, reproducible, publication-quality figures. | ✅ **Excellent.** Scripted, consistent, and publication-quality visualizations with full control over logic and aesthetics. |
+| **[Reporting & communication](#visualization)** | ⚠️ **Manual and fragile.** Copy-paste workflows lead to version drift and broken links between data, analysis, and results. | ✅ **Excellent (with Quarto).** Code, results, figures, and narrative are generated together in one reproducible document. |
+| **[Reproducibility & reuse](#reproducibility)** | ❌ **Actively hostile.** No clear record of what was changed, when, or why; workflows are person-specific and irreproducible. | ✅ **Designed for this.** Scripts and version control document every step, enabling reuse, verification, and peer review. |
+
+---
+

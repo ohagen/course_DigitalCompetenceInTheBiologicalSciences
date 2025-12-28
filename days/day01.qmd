@@ -1,0 +1,823 @@
+---
+title: "Day 1 – What 'good' Data Is"
+execute:
+  freeze: false
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+```{=html}
+<style>
+.figure-source {
+  font-size: 0.85em;
+  color: #666;
+  text-align: right;
+  margin-top: -1rem;
+}
+.data-flow-shell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-start;
+    border: 1px solid #e7e7e7;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+.data-flow-shell input[type="radio"] {
+    display: none;
+}
+.data-flow-shell .stage-list {
+    flex: 1 1 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.data-flow-shell .stage-list label {
+    display: block;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+    background: #f8f8f8;
+    cursor: pointer;
+    font-weight: 600;
+    transition: border-color 0.2s, background 0.2s;
+}
+.data-flow-shell .stage-list label span {
+    display: block;
+    font-size: 0.85em;
+    color: #666;
+    font-weight: 400;
+}
+.data-flow-shell .stage-list label:hover {
+    border-color: #1f77b4;
+}
+.data-flow-shell .stage-details {
+    flex: 2 1 360px;
+    min-width: 280px;
+    border: 1px solid #dfe3e8;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    background: #fcfcfc;
+}
+.stage-details-panel {
+    display: none;
+    animation: fadeIn 0.2s ease;
+}
+.stage-details-panel h4 {
+    margin-top: 0;
+}
+.stage-details-panel ul {
+    margin-top: 0.25rem;
+    padding-left: 1.1rem;
+}
+.stage-details-panel li {
+    margin-bottom: 0.2rem;
+}
+.data-flow-shell .stage-details .placeholder {
+    color: #777;
+}
+#stage-default:checked ~ .stage-list label[for="stage-default"],
+#stage-a:checked ~ .stage-list label[for="stage-a"],
+#stage-b:checked ~ .stage-list label[for="stage-b"],
+#stage-c:checked ~ .stage-list label[for="stage-c"],
+#stage-d:checked ~ .stage-list label[for="stage-d"],
+#stage-e:checked ~ .stage-list label[for="stage-e"],
+#stage-f:checked ~ .stage-list label[for="stage-f"],
+#stage-g:checked ~ .stage-list label[for="stage-g"] {
+    border-color: #1f77b4;
+    background: #e6f2ff;
+}
+#stage-default:checked ~ .stage-details #detail-default,
+#stage-a:checked ~ .stage-details #detail-a,
+#stage-b:checked ~ .stage-details #detail-b,
+#stage-c:checked ~ .stage-details #detail-c,
+#stage-d:checked ~ .stage-details #detail-d,
+#stage-e:checked ~ .stage-details #detail-e,
+#stage-f:checked ~ .stage-details #detail-f,
+#stage-g:checked ~ .stage-details #detail-g {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 720px) {
+    .data-flow-shell {
+        flex-direction: column;
+    }
+}
+</style>
+```
+
+## Learning goals
+
+By the end of this day, you should be able to:
+
+-   explain what biological data represents and what it does not
+-   distinguish data lifecycles (stages) e.g. data entry, data storage, data analysis
+-   recognize common sources of data inconsistency
+-   use Excel to enter and structure biological data in a controlled way
+-   understand that every dataset is a simplified representation of
+    reality
+
+No prior experience with Excel or programming is required.
+
+------------------------------------------------------------------------
+
+## Motivation
+
+Biology deals with complex, variable systems.
+
+Data are **not reality**.\
+Data are a **structured representation** of selected aspects of reality.
+
+Before we analyze anything, we must understand: - what was observed, -
+how it was recorded, - and what information was lost in the process.
+
+Poorly structured data cannot be rescued by sophisticated analysis
+later.
+
+------------------------------------------------------------------------
+
+## Agenda
+
+**13:30–14:15 \| Block 1 – Introduction and course framing**
+
+-   How this course is structured (5 days, Excel → R)
+-   How we will work: alone and in pairs, hands-on, reflection
+-   Where materials, data, and exercises live (course website / GitHub)
+-   Short introduction: who I am
+-   Belize protected-area case study
+
+
+**14:15–14:30 \| Break** ☕️
+
+**14:30–15:15 \| Block 2 – What data is (and what it is not)**
+
+-   Overview of the data lifecycle and where Excel fits in
+-   Examples of spreadsheet failures
+-   Data vs reality: observations, variables, metadata
+-   Data as a simplified representation of complex systems
+-   Good vs bad tables: diagnosing common problems
+-   Why structure matters more than software
+
+**15:15–15:30 \| Break** ☕️
+
+**15:30–16:15 \| Block 3 – Hands-on: structured data entry in Excel**
+
+-   Rules for analysis-ready tables
+-   Enter biodiversity monitoring data using a provided template
+-   Work in pairs (driver / navigator)
+-   Identify and discuss emerging inconsistencies
+
+**16:15–16:30 \| Reflection, discussion, and outlook** 🧠
+
+-   What was harder than expected?
+-   Which problems cannot be fixed later?
+-   What questions remain open?
+-   Preview of Day 2: summarizing and visualizing data
+
+------------------------------------------------------------------------
+
+## Context: a real-world case study
+
+Throughout this course, we work with a simplified but realistic
+scenario:
+
+> You are working with biodiversity monitoring data from a national
+> protected area in Belize.\
+> Data are collected by rangers, NGOs, and external consultants over
+> long periods of time.
+
+Your task is not 'necessarily' to be clever.\
+Your task is to be **reliable**.
+
+------------------------------------------------------------------------
+
+## What is data?
+
+**Short version**  
+Data are **recorded observations about the world**.
+
+**Longer version**  
+Data are **representations of observations, measurements, or events**, encoded in a form that allows **storage, comparison, and interpretation**.
+
+> Data are **not facts themselves**, they are **encodings of facts**.
+
+This distinction matters: tools only operate on the encoding, never on reality.
+
+---
+
+## What counts as data in biology?
+
+In biology, data can take many forms:
+
+- **numbers** (e.g. body mass, abundance, concentration)
+- **categories** (e.g. species name, habitat type)
+- **text** (e.g. field notes, descriptions)
+- **images** (e.g. microscopy, camera traps)
+- **sequences** (e.g. DNA, RNA, proteins)
+- **time series** (e.g. temperature, population size)
+- **spatial coordinates** (e.g. GPS locations)
+
+**Key point**  
+Data are always **abstractions of reality**, never reality itself.
+
+This is why interpretation without context is dangerous.
+
+---
+
+In this course, we use the following working definitions:
+
+-   **Observation**: one recorded event or measurement\
+    e.g. one species observation at one location and time
+-   **Variable**: a property that can vary between observations\
+    e.g. species name, location, count, date
+
+
+A table is not meaningful by itself.\
+Meaning comes from **structure and context**.
+
+## Data vs observations vs measurements
+
+It helps to separate these concepts:
+
+- **Observation:** something you perceive or record in the world  
+  e.g. one species observation at one location and time
+
+- **Measurement:** an observation made using a rule or instrument  
+  e.g. “Tree height = 12.4 m measured with a clinometer.”
+  
+- **Variable**: a property that can vary between observations\
+  e.g. species name, height, location, date, time, count
+
+- **Data:** the recorded representation of that measurement  
+  e.g. a value in a table: `height = 12.4`
+  
+- **Dataset**: a collection of observations recorded in a structured form
+  e.g. a spreadsheet or CSV file with many rows and columns
+  
+- **Metadata**: information about how, when, where, and why data were collected
+  e.g. units, methods, location, observer, context
+
+Once written down, data are detached from the original context unless you preserve it.
+
+---
+
+## Why context matters: metadata
+
+Data without context are dangerous.
+
+That context is called **metadata**, for example:
+
+- units  
+- methods  
+- time  
+- location  
+- who collected it  
+- how it was collected  
+- what assumptions were made  
+
+### Example: There is data, and there is data
+
+| Recorded value | Meaning |
+|---|---|
+| 12.4 | meaningless |
+| 12.4 m | better |
+| 12.4 m; tree height; clinometer; dry season; treeID766; transect A; observer O. Hagen | usable |
+
+**Rule of thumb:**  
+- **Data + metadata = information**  
+- **Data without metadata = confusion**  
+
+This is *exactly* why FAIR stresses **rich metadata** and standardization: without it, your “data” are not really reusable.
+
+---
+
+----------
+
+## The FAIR principles (what they really mean)
+
+The FAIR principles describe how scientific data should be handled so that they remain **useful beyond the moment they are collected**.
+
+FAIR does **not** mean “open to everyone” and it does **not** guarantee data quality.  
+FAIR means that data are prepared in a way that allows **others (and your future self)** to find, understand, and reuse them.
+
+FAIR stands for:
+
+
+### 🔍 Findable
+
+**What it means**  
+Data can be *discovered* by humans and machines.
+
+**In practice, this requires**
+- a clear name or identifier
+- descriptive metadata
+- a stable location (repository, database, archive)
+
+**Why it matters**
+If data cannot be found, they effectively do not exist for science.
+
+> A file on your laptop called `final_data_v3_REAL.xlsx` is not findable.
+
+---
+
+### 🔓 Accessible
+
+**What it means**  
+Once found, it is clear **how the data can be accessed**, even if access is restricted.
+
+**In practice, this requires**
+- a clear access procedure
+- documented permissions or licenses
+- long-term availability
+
+**Why it matters**
+Accessibility is about *clarity*, not openness.  
+Even restricted data must explain **how access works**.
+
+> “Email the author” is not a sustainable access strategy.
+
+---
+
+### 🔗 Interoperable
+
+**What it means**  
+Data can be combined with other data and used by different tools.
+
+**In practice, this requires**
+- standard formats (e.g. CSV, not proprietary-only files)
+- consistent units
+- controlled vocabularies
+- clear data types
+
+**Why it matters**
+If every dataset uses its own conventions, integration becomes untractable.
+
+> `12`, `12.0`, `12 m`, and `twelve` are not interoperable without context.
+
+---
+
+### ♻️ Reusable
+
+**What it means**  
+Data can be **understood and used correctly** in a new context.
+
+**In practice, this requires**
+- rich metadata
+- documented methods
+- clear assumptions
+- provenance (who did what, when, and how)
+
+**Why it matters**
+Reuse without context leads to misinterpretation and error.
+
+> Data without metadata are numbers without meaning.
+
+-------------------------------------------------------------
+
+## Data are not neutral
+
+This is important and often missed.
+
+Data depend on:
+
+- what you chose to measure  
+- what you ignored  
+- instrument precision  
+- human judgement  
+- classification decisions  
+
+In ecology, for example:
+
+- species presence depends on **detectability**  
+- absence is rarely true absence  
+- counts depend on **effort**  
+
+So data always embed theory, assumptions, and bias.
+
+---
+
+
+## Why this matters for tools like Excel and R
+
+Tools don’t understand meaning. They only manipulate symbols.
+
+- Excel does not know what a species is.  
+- R does not know what a tree is.  
+- Both only see strings, numbers, and dates.
+
+That’s why:
+
+- **Excel can silently change your data** (auto-conversion, formatting surprises)  
+- **R forces you to be explicit** (types, scripts, reproducible steps)
+
+**Bottom line:** the responsibility for meaning stays with the scientist.
+
+---
+
+
+
+
+------------------------------------------------------------------------
+
+## Data as a model
+
+Every dataset is already a **model**:
+
+-   it includes some aspects of reality
+-   it excludes others
+-   it simplifies complex systems
+
+This idea will return later in statistics and modelling courses.
+
+For now, remember:
+
+> Data are never neutral.\
+> Choices are made at the moment of data collection.
+
+------------------------------------------------------------------------
+
+## The Data lifecycle
+
+```{=html}
+<div class="data-flow-shell">
+    <input type="radio" name="stage" id="stage-a">
+    <input type="radio" name="stage" id="stage-b">
+    <input type="radio" name="stage" id="stage-c">
+    <input type="radio" name="stage" id="stage-d">
+    <input type="radio" name="stage" id="stage-e">
+    <input type="radio" name="stage" id="stage-f">
+    <input type="radio" name="stage" id="stage-g">
+
+    <div class="stage-list">
+        <label for="stage-a">Data generation <span>Real-world measurements and observations</span></label>
+        <label for="stage-b">Data entry & initial structuring <span>Transcribing, defining rows/columns, first checks</span></label>
+        <label for="stage-c">Data cleaning & quality control <span>Fixing typos, harmonising codes, handling missing values</span></label>
+        <label for="stage-d">Data storage & archiving <span>Make data durable, portable, and shareable</span></label>
+        <label for="stage-e">Data analysis <span>Statistics, models, simulations</span></label>
+        <label for="stage-f">Visualization & communication <span>Figures, tables, narratives</span></label>
+        <label for="stage-g">Reproducibility & reuse <span>Scripts, version control, sharing</span></label>
+    </div>
+
+    <div class="stage-details">
+        <div class="stage-details-panel" id="detail-a">
+            <h4>Data generation</h4>
+            <p><strong>What this stage is about</strong></p>
+            <ul>
+                <li>Data originate in the real world: measurements, observations, experiments, surveys, sensors, and field notes.</li>
+            </ul>
+            <p><strong>Biology examples</strong></p>
+            <ul>
+                <li>Species counts, trait measurements, GPS tracks, lab assays, environmental monitoring.</li>
+            </ul>
+            <p><strong>Good tools</strong></p>
+            <ul>
+                <li>Field sheets, instruments, sensors, lab notebooks, electronic lab notebooks (ELNs).</li>
+            </ul>
+            <p><strong>Excel</strong>: ❌ Not involved &mdash; it only records values after they exist.</p>
+            <p><strong>R</strong>: ❌ Not involved unless you simulate data.</p>
+        </div>
+
+        <div class="stage-details-panel" id="detail-b">
+            <h4>Data entry & initial structuring</h4>
+            <p><strong>What this stage is about</strong></p>
+            <ul>
+                <li>Transcribing observations into digital form.</li>
+                <li>Defining rows, columns, identifiers, and units.</li>
+                <li>Performing the very first human sanity checks.</li>
+            </ul>
+            <p><strong>Good tools</strong></p>
+            <ul>
+                <li>Excel, Google Sheets, LibreOffice Calc, simple data entry forms.</li>
+            </ul>
+            <p><strong>Excel</strong>: ✅ Excellent when used carefully (fast manual entry, visual feedback, validation rules).</p>
+            <p><strong>R</strong>: ⚠️ Not designed for manual entry; it expects data files or databases.</p>
+            <p><strong>Key rule</strong>: one row = one observation, one column = one variable, and no analysis logic in the raw file.</p>
+        </div>
+
+        <div class="stage-details-panel" id="detail-c">
+            <h4>Data cleaning & quality control</h4>
+            <p><strong>What this stage is about</strong></p>
+            <ul>
+                <li>Fixing typos, harmonising codes, handling missing values.</li>
+                <li>Checking ranges, units, and consistency.</li>
+            </ul>
+            <p><strong>Good tools</strong></p>
+            <ul>
+                <li>Excel (for transparent, small datasets), R, Python (pandas).</li>
+            </ul>
+            <p><strong>Excel</strong>: ⚠️ Limited and risky because changes are hard to audit and history is lost.</p>
+            <p><strong>R</strong>: ✅ Very strong &mdash; every cleaning step is scripted and reproducible.</p>
+            <p><strong>Key transition</strong>: if you cannot explain exactly what you changed and why, leave Excel.</p>
+        </div>
+
+        <div class="stage-details-panel" id="detail-d">
+            <h4>Data storage & archiving</h4>
+            <p><strong>What this stage is about</strong></p>
+            <ul>
+                <li>Long-term storage, collaboration, and repository submission.</li>
+            </ul>
+            <p><strong>Good tools</strong></p>
+            <ul>
+                <li>Plain-text tables (CSV/TSV), databases, Zenodo, Dryad, institutional servers.</li>
+            </ul>
+            <p><strong>Excel</strong>: ❌ Poor choice &mdash; hides metadata, embeds formulas, fragile across versions, hard to diff.</p>
+            <p><strong>R</strong>: ⚠️ Produces clean portable data files but is not itself the archive.</p>
+        </div>
+
+        <div class="stage-details-panel" id="detail-e">
+            <h4>Data analysis</h4>
+            <p><strong>What this stage is about</strong></p>
+            <ul>
+                <li>Statistical summaries, models, hypothesis testing, simulations.</li>
+            </ul>
+            <p><strong>Good tools</strong></p>
+            <ul>
+                <li>R, Python, specialized statistical software.</li>
+            </ul>
+            <p><strong>Excel</strong>: ❌ Danger zone &mdash; formulas are opaque, errors hard to detect, reproducibility is weak.</p>
+            <p><strong>R</strong>: ✅ Core strength &mdash; transparent, testable, and scriptable analysis.</p>
+        </div>
+
+        <div class="stage-details-panel" id="detail-f">
+            <h4>Visualization & communication</h4>
+            <p><strong>What this stage is about</strong></p>
+            <ul>
+                <li>Figures, tables, reports, presentations.</li>
+            </ul>
+            <p><strong>Good tools</strong></p>
+            <ul>
+                <li>R (ggplot2), Python (matplotlib, seaborn), Quarto, Illustrator for polishing.</li>
+            </ul>
+            <p><strong>Excel</strong>: ⚠️ Fine for quick exploratory plots and sanity checks, but not for final reproducible figures.</p>
+            <p><strong>R</strong>: ✅ Excellent control and consistency.</p>
+        </div>
+
+        <div class="stage-details-panel" id="detail-g">
+            <h4>Reproducibility & reuse</h4>
+            <p><strong>What this stage is about</strong></p>
+            <ul>
+                <li>Others reusing your data, or you revisiting it months later.</li>
+                <li>Reviewers asking “how did you get this result?”</li>
+            </ul>
+            <p><strong>Good tools</strong></p>
+            <ul>
+                <li>Scripts, version control (Git), Quarto/notebooks.</li>
+            </ul>
+            <p><strong>Excel</strong>: ❌ Actively hostile &mdash; undocumented and non-repeatable.</p>
+            <p><strong>R</strong>: ✅ Designed for exact reruns with explicit provenance.</p>
+        </div>
+    </div>
+</div>
+```
+
+
+Excel is widely used in biology because it is:
+
+-   easy to access
+-   human-readable
+-   flexible
+
+Excel is **well suited** for: - data entry - inspection - small-scale
+summaries
+
+Excel is **not well suited** for: - enforcing consistency - documenting
+decisions - scaling analyses
+
+Understanding these limits is part of digital competence.
+
+------------------------------------------------------------------------
+
+## Spreadsheet Failures lead to Financial, Policy, and Health Costs
+
+Before we look at biological and environmental data, it is worth understanding
+*why spreadsheets deserve respect*. The cases below are not about beginners.
+They involve intelligence agencies, governments, banks, and elite academics.
+
+These failures occurred because spreadsheets silently changed data, hid assumptions,
+or scaled beyond what they were designed for.
+
+------------------------------------------------------------------------
+
+### 🕵️📞🎯❌ MI5 wiretapped the wrong people  
+*(UK intelligence error)*
+
+A spreadsheet formatting issue altered the last three digits of phone numbers
+to `000`, leading to **134 incorrect surveillance targets**.
+The error originated from automatic formatting in a spreadsheet.
+
+**Source:** The Guardian  
+https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors
+
+**Lesson**  
+- Automatic data conversion can silently change identifiers.
+
+**Why it matters**  
+- Intelligence and security systems rely on *exact identifiers*.
+- A single formatting error can redirect surveillance to innocent people.
+
+------------------------------------------------------------------------
+
+### 🦠📉🚫📋 Nearly 16,000 COVID-19 cases lost in England   
+*(Public health reporting failure)*
+
+During the COVID-19 pandemic, **15,841 positive cases** were omitted from official
+statistics because a CSV file was opened in Excel and **truncated at the row limit**.
+Contact tracing was delayed and incomplete as a result. Can we even calculate the true impact of these errors?
+
+>In modern Microsoft Excel (including Office 365 / Microsoft 365) the maximum number of rows per worksheet is 1,048,576. You cannot add more rows in a single sheet beyond that limit; if you try to import data that exceeds this, rows beyond the limit may be truncated. The maximum number of columns is 16,384 (column XFD Support Microsoft).
+
+**Source:** The Guardian  
+https://www.theguardian.com/politics/2020/oct/05/how-excel-may-have-caused-loss-of-16000-covid-tests-in-england
+
+**Lesson**  
+- Excel has *hard limits* (row counts) that are invisible until exceeded.
+
+**Why it matters**  
+- Incomplete data leads to flawed epidemiological response.
+- Delayed contact tracing can plausibly translate into **preventable infections and deaths**.
+
+------------------------------------------------------------------------
+
+### 📊➗⚠️🏛️  Reinhart & Rogoff economic growth error 
+*(Influential academic policy failure)*
+
+A highly cited economic study claimed that countries with debt above 90% of GDP
+experienced sharply reduced growth.
+It was later discovered that an **Excel formula excluded large parts of the data**,
+significantly altering the result.
+
+**Source:** The Guardian  
+https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors
+
+**Lesson**  
+- Hidden formula errors can persist even in peer-reviewed research.
+
+**Why it matters**  
+- This work influenced **austerity policies worldwide**.
+- Spreadsheet mistakes can shape economic policy affecting millions.
+
+------------------------------------------------------------------------
+
+### 💰📑❌🏦   Fannie Mae misreported over \$1 billion
+*(Financial reporting failure)*
+
+In 2003, the U.S. mortgage giant reported quarterly results containing
+**over \$1 billion in accounting errors**, traced back to an incorrect Excel formula.
+
+**Source:** The Guardian  
+https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors
+
+**Lesson**  
+- Formula logic in spreadsheets is rarely audited or tested.
+
+**Why it matters**  
+- Financial misreporting undermines investor trust and regulatory oversight.
+- Small spreadsheet mistakes can become *material financial risks*.
+
+------------------------------------------------------------------------
+
+### 🐋📉💣🏦 JPMorgan “London Whale” \$6 billion loss  
+*(Risk modelling failure)*
+
+A trading loss of approximately **\$6 billion** was linked to risk models
+managed through manually edited Excel spreadsheets.
+Cut-and-paste workflows and poor version control amplified risk.
+
+**Source:** The Guardian  
+https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors
+
+**Lesson**  
+- Manual workflows lack audit trails and reproducibility.
+
+**Why it matters**  
+- Risk systems must be automated, tested, and transparent.
+- Spreadsheet-based models do not scale safely.
+
+------------------------------------------------------------------------
+
+## Spreadsheet Failures in Biology and Environmental Sciences
+
+Spreadsheet misuse has caused **systematic scientific errors**, not just technical inconveniences. These are particularly relevant for biologists, where identifiers, codes, and metadata matter. The case study below a more in depth examples in genomics. However, all the issues above are also applicable to many diverse Environmental data.
+
+------------------------------------------------------------------------
+
+### Gene name auto-conversion errors in genomics
+
+Spreadsheet software automatically converts certain character strings
+into dates or numbers. In genomics, this silently corrupts gene names
+such as `SEPT2`, `MARCH1`, or `DEC1`, which are converted into dates
+(e.g. `2-Sep`, `1-Mar`, `1-Dec`) without warning.
+
+Large-scale scans of published supplementary Excel files show that
+**around 30% of papers containing gene lists are affected**.
+
+:::: external-figure
+**Figure 1. Prevalence of Excel-induced gene name errors over time**
+
+![Excel-induced gene name errors over
+time](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1008984.g001&type=large){fig-align="center"}
+
+::: figure-source
+Source:
+<a href="https://doi.org/10.1371/journal.pcbi.1008984" target="_blank" rel="noopener">Abeysooriya
+et al. (2021), PLoS Computational Biology</a>
+:::
+:::
+> "This is due to gene names being converted not just to dates and floating-point numbers, but also to internal date format (five-digit numbers). (Abeysooriya et al. 2021)"
+
+**Concept that would have prevented this** 
+
+- Explicit data typing (text ≠ date ≠ number) 
+- Avoiding spreadsheet auto-formatting for identifier columns 
+- Using plain-text formats (CSV/TSV) with scripted imports
+
+------------------------------------------------------------------------
+
+## What all these failures have in common
+
+Across intelligence, finance, economics, public health, and scientific research the same patterns recur:
+
+- Silent data transformation  
+- Hidden assumptions and formulas  
+- Hard limits that are easy to exceed  
+- No version control or audit trail  
+- Tools used beyond their design scope
+- Organic design / Changing specs
+- Lack of testing
+- Lack of relevant knowledge and skills
+
+**Spreadsheets did exactly what they were told.  
+Humans misunderstood what they were doing.**
+
+This is why learning to use these tools *properly* matters.
+And this is why this course starts with Excel discipline,
+but does not end there.
+
+
+------------------------------------------------------------------------
+
+
+**Concept that would have prevented this** - Separation of raw data and
+derived results - Version control instead of manual file duplication -
+Explicit metadata and data dictionaries
+
+------------------------------------------------------------------------
+
+### Environmental and ecological data: the same failure modes
+
+In environmental monitoring and ecology, spreadsheet problems usually
+appear as: - inconsistent site or species codes - mixed units within a
+single column - missing values encoded inconsistently (`NA`, `-`,
+blank) - formulas copied across misaligned rows
+
+While individual ecological cases are less publicized, the mechanisms
+are identical to those documented in public health, genomics, and
+finance.
+
+::: external-figure
+**Figure 3. Conceptual overview: spreadsheets as hidden state machines**
+
+[External schematic on spreadsheet
+risk](https://arxiv.org/abs/0801.0715)
+
+Source: Panko (2008), *What We Know About Spreadsheet Errors*.\
+https://arxiv.org/abs/0801.0715
+:::
+
+**Concept that would have prevented this** 
+
+- Well designed data entry
+- Skilled and knowledgeable users
+- Treating spreadsheets as *data entry interfaces* and *quick overview tools*, not databases
+- Validation rules and controlled
+vocabularies 
+- Early transition to scripted, reproducible workflows
+
+------------------------------------------------------------------------
+
+## Core data concepts reinforced by these cases
+
+Across all examples, the same principles recur:
+
+-   **Data types must be explicit**
+-   **Identifiers must never be auto-transformed**
+-   **Raw data must be immutable**
+-   **Analysis must be reproducible** (easier in script languages, but more on day 3)
+-   **Metadata is part of the data**
+
+These principles motivate why this course starts with Excel discipline,
+but quickly moves to R and Quarto.
+
+------------------------------------------------------------------------
+
+## Hands-on session: structured data entry
+
+### Task
+
+Open the Excel template provided in:
