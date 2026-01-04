@@ -826,6 +826,10 @@ but quickly moves to R and Quarto.
 
 ## Hands-on session: structured data entry
 
+::: {.text-center}
+![](../assets/images/excelMEME.jpg){width=220px}
+:::
+
 ### Task
 
 Open the Excel template provided in:
