@@ -1,0 +1,410 @@
+---
+title: "Day 4 – Cleaning data and making work reproducible"
+execute:
+  freeze: auto
+editor:
+  markdown:
+    wrap: 72
+---
+
+## Learning goals
+
+By the end of this day, you should be able to:
+
+- appreciate the importance of data cleaning as a scientific task
+- apply the principles of **tidy data** to reorganize datasets for analysis
+- perform basic data transformations in R (filtering, recoding, reshaping, merging datasets)
+- implement data quality control checks using code (e.g. finding outliers, inconsistencies)
+- document your data processing steps (through comments, scripts, and README files)
+- understand how to structure an analysis project (folders, scripts) for reproducibility
+- explain the benefits of version control (Git) and use basic Git commands or workflows to track changes
+- create a simple reproducible report using R and Quarto or R Markdown
+
+-----------------------------------------------------------------------
+
+## Motivation
+
+“**Data cleaning**” might sound mundane, but in practice it’s one of the most critical and time-consuming parts of any analysis – and it’s deeply scientific. Decisions made during cleaning (like how to handle missing values or outliers) can affect results. Thus, cleaning must be done carefully and transparently, so others (and your future self) can understand and trust the final data. Today, we shift our mindset from ad-hoc fixes to systematic, documented transformations. We’ll learn how to make our workflow reproducible – meaning anyone can follow the same steps and get the same results. This involves using scripts, organizing our work, and leveraging tools like **Git** for version control and **Quarto** for integrated reporting.
+
+In short, we want to move from a one-time analysis (that might be messy and irreproducible) to a robust process that can be redone or updated with new data at the click of a button.
+
+-----------------------------------------------------------------------
+
+## Agenda
+
+**13:30–14:15 | Block 1 – Data cleaning as scientific work**  
+- Why cleaning is not “janitorial” – it's part of science (documenting assumptions and decisions)  
+- Common data problems: typos, missing values, out-of-range values, inconsistent coding (e.g. "M" vs "Male")  
+- Introduction to **tidy data** principles (each variable = one column, each observation = one row, etc.)  
+- Reshaping data: wide vs long format (when and how to pivot tables)  
+- Combining data: merging/joining tables from different sources (keys, primary identifiers)  
+- Hands-on examples of tidying a small messy dataset (e.g. splitting one column into two, unpivoting a summary table)
+
+**14:15–14:30 | Break** ☕️
+
+**14:30–15:15 | Block 2 – Quality control and documentation**  
+- Writing R code to find potential errors (e.g., values outside expected range, duplicates where there shouldn’t be, mismatched categories)  
+- Implementing simple tests/assertions in code (for example, verify that sample IDs are unique, or that dates are in chronological order)  
+- Using scripts as a **log of transformations**: every change to data is recorded in code, rather than lost in manual edits  
+- Commenting your code and organizing it into sections (making it readable and explaining the “why” behind changes)  
+- Creating a README file or data dictionary to capture metadata and decisions (what was done, when, by whom, and why)  
+- Collaborative aspect: how clean, documented data and code allow others to build on your work
+
+**15:15–15:30 | Break** ☕️
+
+**15:30–16:15 | Block 3 – Reproducible workflows and tools**  
+- Project structure: setting up an RStudio Project (or dedicated working directory) with subfolders (data/, scripts/, output/)  
+- Using **Git for version control**: basic concepts (repository, commit, push/pull, conflict) and why “save early, save often” with history is beneficial  
+- Demonstration of tracking a script or dataset with Git (seeing changes over time, reverting if needed)  
+- Introduction to **Quarto/R Markdown**: integrating code and narrative to generate reports (HTML, PDF, etc.)  
+- Rendering a reproducible report: one command to import raw data, run all analysis code, and output results (figures, tables) in a formatted report  
+- Showcase: how this course material is itself a reproducible document created with Quarto  
+- Tips for reproducibility: set seeds for randomness, record package versions for computational environments
+
+**16:15–16:30 | Reflection, discussion, and outlook** 🧠  
+- What aspects of cleaning or reproducibility will you apply in your own projects first?  
+- Any remaining pain points in your data workflow that we haven’t addressed?  
+- How do you plan to continue improving your digital/data skills after the course?  
+- Preview of Day 5: wrapping up with models, tool choices, and looking ahead
+
+-----------------------------------------------------------------------
+
+## Cleaning data: from messy to tidy
+
+Real-world data is messy. In the Belize case study, imagine we receive species observation logs from multiple rangers – one uses `"Panthera onca"` for jaguar, another just writes `"Jaguar"`, some cells are left blank, and one file uses `-999` to denote a missing value. If we naively combine these, we’ll have inconsistencies and errors that could lead to incorrect conclusions.
+
+Data cleaning involves:
+- **Detecting errors or inconsistencies** (e.g., impossible values, typos, different units mixed in).
+- **Deciding what to do** with them (correct, exclude, flag as uncertain).
+- **Implementing those corrections systematically**.
+
+It’s not just about making the dataset “pretty” – it’s about ensuring the data accurately reflect reality (as much as possible) and are structured to facilitate analysis.
+
+### Tidy data principles
+
+A cornerstone of modern data handling is the concept of **tidy data** (Wickham 2014). It provides a consistent structure that many analysis tools in R assume:
+1. **Each variable forms a column.**
+2. **Each observation (case) forms a row.**
+3. **Each value is a single cell.**
+
+Both **wide** and **tidy (long)** formats represent the same information in different layouts. **Wide format** data is often human-friendly: each observational unit (e.g. a site or species) appears once as a row, and related variables (such as different time points or categories) are spread across multiple columns. Long-form structure is often preferred for analysis and visualization in tools like R or Python, even if the wide form is convenient for data entry or presentation. Below are two real-world inspired examples (with simplified data) from ecology that illustrate **wide** vs **tidy** data formats following best practices.
+
+#### Example 1: Amphibian Species Counts Over Years
+
+*Scenario:* Researchers monitored the population of different frog species in a wetland from **2018** to **2021**, conducting annual counts of each species.
+
+**Wide Format**
+
+| Species                | 2018 | 2019 | 2020 | 2021 |
+|------------------------|------|------|------|------|
+| American Bullfrog      | 5    | 7    | 6    | 8    |
+| Northern Leopard Frog  | 12   | 15   | 18   | 20   |
+| Gray Treefrog          | 30   | 25   | 28   | 32   |
+
+
+**Tidy Format**
+
+| Species               | Year | Count |
+|-----------------------|------|-------|
+| American Bullfrog     | 2018 | 5     |
+| American Bullfrog     | 2019 | 7     |
+| American Bullfrog     | 2020 | 6     |
+| American Bullfrog     | 2021 | 8     |
+| Northern Leopard Frog | 2018 | 12    |
+| Northern Leopard Frog | 2019 | 15    |
+| Northern Leopard Frog | 2020 | 18    |
+| Northern Leopard Frog | 2021 | 20    |
+| Gray Treefrog         | 2018 | 30    |
+| Gray Treefrog         | 2019 | 25    |
+| Gray Treefrog         | 2020 | 28    |
+| Gray Treefrog         | 2021 | 32    |
+
+#### Example 2: Habitat Cover by Type in Different Zones
+
+*Scenario:* A wildlife reserve is divided into several management zones (North, South, East). Within each zone, land cover was surveyed to measure the area of different habitat types (Forest, Grassland, Wetland).
+
+**Wide Format**
+
+| Zone  | Forest (ha) | Grassland (ha) | Wetland (ha) |
+|-------|------------:|---------------:|-------------:|
+| North | 120         | 50             | 30           |
+| South | 80          | 110            | 20           |
+| East  | 60          | 40             | 90           |
+
+**Tidy Format**
+
+| Zone  | Habitat Type | Area (ha) |
+|-------|--------------|----------:|
+| North | Forest       | 120       |
+| North | Grassland    | 50        |
+| North | Wetland      | 30        |
+| South | Forest       | 80        |
+| South | Grassland    | 110       |
+| South | Wetland      | 20        |
+| East  | Forest       | 60        |
+| East  | Grassland    | 40        |
+| East  | Wetland      | 90        |
+
+---
+
+Both examples illustrate that while wide format is useful for data collection and human readability, tidy format is essential for effective filtering, summarizing, and plotting in analysis workflows.
+
+Tidy data is a prerequisite for most modern data science tools, particularly in R (e.g., with `ggplot2`, `dplyr`, or `tidyr`). If you need a dataset in tidy format you can  **reshape** it using tools (in R, packages like `tidyr` provide functions like `pivot_longer` and `pivot_wider` to convert between long (tidy) and wide forms).
+
+#### Example of reshaping
+
+Suppose you have a spreadsheet where each column is a separate month’s measurements:
+
+| site | Jan_count | Feb_count | Mar_count |
+| ---- | --------- | --------- | -------- | 
+| 1 |  5 |  8 | 6 | 
+| 2 | 3 | 4  | 7 |
+
+This is wide. To tidy it, we’d transform it to:
+
+|   site | month | count|
+| ---- | ----- | ----- |
+|   1 | Jan | 5 | 
+|   1 | Feb | 8 | 
+|   1 | Mar | 6 | 
+|   2 | Jan | 3 | 
+|   2 | Feb | 4 | 
+|   2 | Mar | 7 |
+
+Now “month” is a variable. This format might have more rows, but it’s consistent and easier to feed into R’s plotting or modeling functions (e.g., you can easily plot count vs month, grouped by site).
+
+This is how to do it in R
+
+```{r eval=F}
+# Load packages
+library(tidyr)
+library(dplyr)
+
+# Create the wide data frame
+df_wide <- data.frame(
+  site = c(1, 2),
+  Jan_count = c(5, 3),
+  Feb_count = c(8, 4),
+  Mar_count = c(6, 7)
+)
+
+# Convert to tidy (long) format
+df_tidy <- df_wide %>%             # Start with the wide data frame and pipe it forward
+  pivot_longer(
+    cols = ends_with("_count"),   # Select columns whose names end in "_count" (i.e. Jan_count, Feb_count, etc.)
+    names_to = "month",           # Extract the column names into a new column called "month"
+    values_to = "count",          # Extract the cell values into a new column called "count"
+    names_prefix = "",            # No common prefix to remove (could be used if all columns had e.g. "count_" as prefix)
+    names_transform = list(month = ~ sub("_count", "", .)  # Clean the "month" values by removing "_count" from the original column names
+    )
+  )
+
+# View result
+print(df_tidy)
+
+
+```
+
+
+Conversely, sometimes data is too long and needs to be widened (less common in raw data, more in presenting results).
+
+#### Merging datasets
+
+Often, information is split across multiple tables that need to be joined. For example, you might have:
+- Table A: observations (with columns like `species_code`, `count`, `location`).
+- Table B: species metadata (with columns like `species_code`, `latin_name`, `conservation_status`).
+
+To analyze or report, you may want to merge Table B into Table A so each observation row has the full species name and status. This requires a **key** (here `species_code`) that is present in both tables. When merging (or *joining* as database folks say), it’s important to ensure:
+- The key is consistent (no typos, same case, etc. – cleaning might be needed here).
+- The join type is appropriate (usually an inner join: keep only rows that match in both tables; or a left join: keep all observations and add info from metadata, leaving NA if no match).
+
+In R, base function `merge()` or `dplyr::left_join()`, `dplyr::inner_join()` can do this. Example:
+
+```r
+merged_data <- merge(observations, species_info, by = "species_code")
+```
+
+This adds columns from species_info to observations where species_code matches.
+A common pitfall is when keys don’t match due to inconsistencies. For instance, if species_code in one table has “PantheraOnca” and in the other “panthera_onca” or a blank for unknown species – those won’t merge. Identifying and fixing these is part of cleaning: - Use consistent coding schemes (maybe standardize to all lowercase with underscores). - Fill in missing identifiers if possible, or decide to exclude those records.
+
+::: {.callout-tip icon="🧪"}
+### Group exercise: Spot the mess (10 min)
+Consider the following snippet of a dataset (imagine it’s loaded as a data frame field_data in R):
+plot_id	elevation_m	species_1_count	species_2_count	notes
+A01	120	5	2	one tree measured
+A02	95m	3	NA	
+A03	110	0	1	seedlings included?
+A-04	.	7	3	
+Identify at least 5 issues or inconsistencies in this data snippet that you would need to address during cleaning. (Assume species_1 and species_2 refer to counts of two different species in the plot.)
+<details><summary>Possible issues</summary>
+•	**Inconsistent plot_id format:** "A01", "A02", "A03" vs "A-04" (extra hyphen in A-04).
+•	**Elevation units:** "95m" is labeled with "m" while others are numeric or one has ".".
+•	**Missing value notation:** Elevation for A-04 is ".", which is not standard (should be NA or blank).
+•	**Counts:** NA vs blank vs 0 – second species count for A02 is NA (probably meaning no data), whereas others have numeric including 0 (which might mean truly zero count). We should standardize how absence vs not recorded is represented.
+•	**Notes inconsistency:** A03 note has a question mark "seedlings included?" – unclear data collection issue.
+•	**Data structure:** species counts are in separate columns (species_1_count, species_2_count). If the number of species is large or variable, a tidy format would have a separate table or a “species” column. In this small example it’s okay, but it hints at a possible need to pivot longer if many species.
+•	**Units in data:** "95m" should be numeric 95 with units documented elsewhere (units shouldn’t be mixed into the data cell with the value).
+There may be more issues (like if 120 and 110 are presumably in meters but one included "m", confirm all are meters, etc.). Each would require a cleaning decision. </details> 
+:::
+
+The exercise above highlights why cleaning can be a big job: you have to catch and fix all these things. Using R for this is advantageous – you can write code to, say, remove the "m" and convert columns to numeric, or unify the plot_id format (remove hyphens), and you can run this code again if new data come in with the same issues.
+
+### Implementing cleaning in R
+
+Most data cleaning operations fall into a few categories: - **Filtering rows:** e.g., remove obviously erroneous records (negative counts, etc.) or maybe filter to a date range. - **Recoding values:** e.g., turn "NA" or "." or "-999" into actual NA, unify "M" vs "Male" vs "male" into one category. - **Type conversion:** ensure numbers are numeric, dates are date type, etc. (Excel often messes this up, so double-check after import). - **Creating new columns or dropping columns:** e.g., separate a combined "date_time" into two fields, or drop an unused "notes" column for analysis (but perhaps store it elsewhere). - **Reshaping or merging** as discussed to get data in the right shape.
+We won't cover the entire dplyr or tidyr toolkit here, but as an example:
+library(dplyr)
+field_data_clean <- field_data %>%
+  mutate(elevation_m = as.numeric(gsub("m", "", elevation_m)),   # remove "m" and convert to numeric
+         plot_id = toupper(gsub("-", "", plot_id)),             # remove hyphen, make uppercase
+         species_2_count = ifelse(species_2_count == "", NA, species_2_count)) %>%  # treat blank as NA
+  rename(species_a_count = species_1_count, species_b_count = species_2_count)
+In a few lines, this fixes multiple issues: - Elevation: "95m" becomes 95, and "." would become NA as as.numeric(".") gives NA (with a warning). - Plot IDs: "A-04" becomes "A04". - Blanks in species_2_count become NA. - Renamed columns for clarity.
+This is just illustrative – real cleaning might be more involved – but notice how we can chain multiple transformations. Also, each operation is documented by the code itself. If someone wonders "how did 95m become 95?" – the code shows it.
+Crucially, we would also keep notes in a README or in code comments about assumptions (e.g., "We assume blank species count means not recorded (set to NA)").
+
+--------------------------------------
+
+## Quality control via code
+When cleaning, it's helpful to build in **checks**. For instance, after cleaning, you might assert: - All plot_id follow the pattern "A##" (using a regex, or check length). - Elevation is within a plausible range (e.g., 0 to 150 m for our area). - No duplicates in plot_id if each plot should be unique. - The number of species columns, if pivoted longer, matches a known species list count.
+In R, you might use stopifnot():
+```{r eval=F}
+
+stopifnot(all(field_data_clean$elevation_m >= 0, field_data_clean$elevation_m <= 150))
+```
+
+This will throw an error if any elevation is outside 0-150.
+Or simply use summary() and table() to eyeball distributions after each major step.
+There are also packages like **validate** or **testthat** that can formalize data testing, but simple checks with if or stopifnot statements go a long way.
+Another tool: if you have expected relationships (e.g., a species code must exist in the species metadata table), you can test that no species in observations is missing from the metadata:
+
+```{r eval=F}
+missing_species <- setdiff(unique(observations$species_code), species_info$species_code)
+if(length(missing_species) > 0) {
+  warning("These species codes are in observations but not in metadata: ", paste(missing_species, collapse=", "))
+}
+```
+
+This would alert you to a likely mismatch to address.
+By encoding these checks in your script, every time you run the cleaning script, it will automatically flag issues. This is much better than manually scanning spreadsheets for problems.
+
+### Documentation and project organization
+
+As you clean, **comment your code**. For example:
+
+```{r eval=F}
+# Remove 'm' from elevation and convert to numeric. Note: one entry was '.', which becomes NA.
+field_data$elevation_m <- as.numeric(gsub("m", "", field_data$elevation_m))
+```
+This way, anyone reading the script (including you, two months later) knows why you did something.
+**README files**: A README for your data can detail: - Data source and collection methods. - What cleaning steps were done (in broad strokes). - Definitions of fields, units, codes. - Any known quirks (e.g., "Plot A04 was measured with a different method, values adjusted accordingly").
+By including such documentation with your dataset (as a separate .md or .txt file), you ensure that context isn’t lost. This is akin to metadata you learned about on Day 1.
+**Project structure**: Keeping your work organized helps reproducibility. A common layout:
+
+
+my_project/
+  data/
+    raw/        # original raw data (read-only, do not edit manually)
+    temp/       # intermediate files (if needed)
+    clean/      # cleaned data output
+  scripts/
+    01_cleaning.R
+    02_analysis.R
+  outputs/
+    figures/
+    tables/
+  README.md
+  my_project.Rproj
+  
+  
+The idea is to separate raw data from generated results and code. The raw data is immutable (if an update comes, you add a new file or replace it but never mix with processed data). Scripts are numbered or named by stage (first cleaning, then analysis, etc.). Outputs are where plots or reports go.
+Using an RStudio Project (.Rproj) or otherwise setting your working directory to the project folder ensures that file paths are relative to the project (no more C:\Users\me\Desktop\data\... hard-coded paths, which break on another computer). You might wanna check the package here: `here::here()` to manage paths easily.
+
+In your scripts, you might read data like:
+
+```{r eval=T}
+library(here)
+print(getwd())
+here::i_am("data/raw/csv/Caxiuana_tree_trait_data.csv")
+raw_data <- read.csv(here("data/raw/csv/Caxiuana_tree_trait_data.csv"))
+```
+
+Since the working directory is the project, this path works for anyone who clones the project.
+Speaking of cloning...
+
+### Version control with Git
+
+Git is a tool that tracks changes in files over time, enabling you to recall specific versions later. Think of it as a supercharged undo/redo that works even across sessions and collaborators.
+
+Key concepts: - **Repository (repo):** a folder that is tracked by Git. - **Commit:** a snapshot of the state of files with a message describing the changes. E.g., "Corrected elevation units and standardized plot IDs". - **History:** a sequence of commits; you can navigate through them, see diffs (what changed), who changed what (if collaborating). - **Branch:** a parallel line of development. You can keep an experimental branch separate from main, then merge if it works out. - **Remote (like GitHub/GitLab):** an online copy of the repo for backup or collaboration.
+Why use Git for data science: - It provides **backups** and **change history** for your code (and even data, though large raw data files often better not version due to size). - If you break something in your script, you can compare to yesterday’s version and revert if needed. - It encourages small, documented changes (commits) – which parallels documenting your work scientifically. - Collaboration: multiple people can work on different parts of the project, merge contributions, review changes, etc.
+Even if working solo, using Git + a remote like GitHub means you won’t lose work if your laptop dies, and you can easily share your project (or publish it as supplementary material for a paper).
+For example, this course material is likely maintained in a Git repo. Every edit I (the instructor) make is tracked.
+Basic Git workflow: 1. **Initialize a repo:** git init (or use RStudio’s version control features to create a new project with Git). 2. **Stage and commit files:** git add script1.R; git commit -m "Added cleaning script" 3. **Repeat commits** as you reach logical milestones. 4. **View history:** git log (or GUI in RStudio/GitHub Desktop). 5. **Undo/branch/merge** as needed (more advanced, but incredibly useful as you get comfortable).
+Using Git through RStudio: RStudio has a Git pane where you see changes, diff, commit, push/pull if a remote is set. This can lower the barrier to entry.
+Important: version control is primarily for code and small text data. Large raw datasets are often kept outside Git (you might store them elsewhere and just version a small subset or a pointer). But your cleaning scripts and output summaries (which are text or code) fit well into version control.
+
+### Reproducible reports with Quarto/R Markdown
+
+By now, you have code to clean and analyze data. The final step of any project is often to communicate results (figures, tables, conclusions). Quarto (the tool used to create these course notes) allows us to keep code and narrative in one document. This means: - The figures and stats in your report are generated by the actual code in that report, so they are always up-to-date with the latest data and analysis. - You can output to multiple formats (HTML web page, PDF article, Word doc, slides, etc.) from the same source file. - It encourages writing about what you’re doing as you do it, which is great for reflection and for others reading it.
+A Quarto document (.qmd) or R Markdown (.Rmd) has chunks of code interwoven with Markdown text. For instance:
+We found that the average DBH was `r mean(raw_data$DBH)` meters (n = `r sum(!is.na(raw_data$DBH))` plots).
+
+```{r eval=F}
+hist(trees$height, main="Tree Height Distribution", xlab="Height (m)")
+```
+In the text above, *r expression* inserts the result of an R expression inline (like the mean). The chunk below it runs R code to produce a histogram (with echo: false meaning the code is hidden, only the plot shows). When you render this file (by clicking Render or using *quarto render* command), it will execute the code and insert the results in the final output.
+
+The beauty: if the data updates or you change a parameter, you re-render and all numbers and plots update automatically. No more copy-pasting results from R into Word manually (which is error-prone).
+
+Quarto is a next-gen version of R Markdown with support for multiple languages. We focus on R, but Quarto can also run Python, etc. under the hood.
+
+To tie it together:
+- Use scripts (`.R` files) for extensive data wrangling or exploratory work.
+- When you’re ready to create a report or publication, use a Quarto doc to perform the final analysis and generate output, with prose explaining each result.
+
+This course website is an example: all five days are written in Quarto, combining explanation (what you’re reading) and code (to generate any figures, etc.). It’s fully reproducible – you could run the Quarto files and regenerate the entire site.
+
+::: {.callout-tip}
+**Tip:** Start small with reproducible docs. Maybe begin by using R Markdown for a simple analysis write-up or lab report, to get used to it. Over time, you’ll see the immense benefit of having everything in one place.
+:::
+
+### Automation and beyond
+
+With clean data and scripted analysis, you can automate tasks:
+- Re-run everything with new data by a single command (great for recurring reports).
+- Set up continuous integration (CI) to run your analysis script on a schedule or when changes occur (beyond our scope, but a cool possibility).
+- Share your project (data+code) for others to reproduce or extend – practicing true open science.
+
+We also mention making use of packages for specific cleaning tasks:
+- **janitor** (has functions like `clean_names()` to sanitize column names, `tabyl()` for quick crosstabs for QA).
+- **lubridate** for date handling (to parse and normalize dates).
+- ... etc. There’s a whole universe of tools; knowing they exist is half the battle.
+
+-----------------------------------------------------------------------
+
+## Wrap-up
+
+Today was about instilling rigor and order into the chaotic part of data analysis. We learned that cleaning data is not just pressing a few Excel buttons – it’s a process that benefits from careful thought, and coding it in R makes it reproducible and less error-prone. We saw the tidy data framework as a guide to structuring datasets, and we practiced thinking about common data issues and how to fix them in a systematic way.
+
+We also stepped back to look at the workflow as a whole:
+organizing files, using version control to track our progress, and using tools that knit everything together (like Quarto). These practices might require some setup and learning, but they pay off by making our work more reliable and easier to collaborate on.
+
+In the Belize scenario, this means our biodiversity data, once cleaned and properly documented, can be confidently used to derive insights, knowing that anyone could inspect our process (via scripts and Git history) and repeat the analysis themselves. We are essentially safeguarding the scientific integrity of our results by **being transparent and reproducible**.
+
+Tomorrow, in Day 5, we’ll take a higher-level view to discuss how the tools (Excel, R, etc.) and models we choose influence our science, and reflect on everything we’ve learned. We’ll also address any remaining questions and discuss where to go next in your data journey.
+
+By mastering the workflow up to this point, you’ve significantly upgraded your *digital competence* as a scientist – you can wrangle data, analyze it, and ensure that your work can be trusted and extended by others.
+
+-----------------------------------------------------------------------
+
+::: {.callout-note icon="💬"}
+### Reflection
+
+- Think of a dataset you’ve worked with before: what was one issue that caused a headache, and how might you tackle it now with what you learned (tidy data, scripting, etc.)?
+- Which tool or practice introduced today are you most likely to continue using (e.g., writing a README, using Git for your scripts, Quarto for reports)? Why?
+- Do you foresee any challenges in convincing colleagues to adopt more reproducible workflows? How might you advocate for these practices?
+
+Please share your feedback for today’s session:  
+- [Anonymous feedback](https://docs.google.com/forms/d/e/1FAIpQLSfZZ2nQ9-BsBKnyiCqyk4e85mxnxJVui3wAju8luJnp022Uyg/viewform?usp=publish-editor)
+:::

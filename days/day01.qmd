@@ -135,8 +135,11 @@ Biology deals with complex, variable systems.
 Data are **not reality**.\
 Data are a **structured representation** of selected aspects of reality.
 
-Before we analyze anything, we must understand: - what was observed, -
-how it was recorded, - and what information was lost in the process.
+Before we analyze anything, we must understand: 
+
+- what was observed, 
+- how it was recorded, 
+- and what information was lost in the process.
 
 Poorly structured data cannot be rescued by sophisticated analysis
 later.
@@ -145,9 +148,16 @@ later.
 
 ## Agenda
 
+- Course overview and expectations
+- The data lifecycle (high level)
+- What Excel is good at — and where it fails
+- Real-world examples of silent data corruption
+- Reflection and outlook to Day 2
+
+
 **13:30–14:15 \| Block 1 – Introduction and course framing**
 
--   How this course is structured (5 days, Excel → R)
+-   Course is structured (5 days, Excel → R)
 -   How we will work: alone and in pairs, hands-on, reflection
 -   Where materials, data, and exercises live (course website / GitHub)
 -   Short introduction: who I am
@@ -159,6 +169,7 @@ later.
 **14:30–15:15 \| Block 2 – What data is (and what it is not)**
 
 -   Overview of the data lifecycle and where Excel fits in
+-   FAIR: Findability, Acessibility, Interoperability, and Reusability
 -   Examples of spreadsheet failures
 -   Data vs reality: observations, variables, metadata
 -   Data as a simplified representation of complex systems
@@ -252,7 +263,6 @@ In this course, we use the following working definitions:
 Once written down, data are detached from the original context unless you preserve it.
 
 ---
----
 
 ## What counts as data in biology?
 
@@ -302,6 +312,39 @@ That context is called **metadata**, for example:
 This is *exactly* why FAIR stresses **rich metadata** and standardization: without it, your “data” are not really reusable.
 
 ---
+
+### Where metadata should live (best practice)
+
+Excel sheets are **bad at metadata**. Do not rely on formatting or comments.
+
+Use **three layers** instead:
+
+1. **File name**
+
+Encodes place, year, content, and status.
+
+2. **README file (outside Excel)**  
+`README.md` or `README.txt`
+
+Describe:
+- who collected the data
+- when and where
+- units
+- methods
+- known issues
+
+3. **Dedicated metadata sheet (inside Excel)**  
+- one sheet called `metadata`
+- plain text only
+- no merged cells
+
+::: {.callout-warning}
+**Risk of Excel-only metadata**
+
+- formatting is lost on export  
+- meaning disappears outside Excel  
+:::
+
 
 ----------
 
@@ -611,22 +654,37 @@ They involve intelligence agencies, governments, banks, and elite academics.
 These failures occurred because spreadsheets silently changed data, hid assumptions,
 or scaled beyond what they were designed for.
 
+### Why Excel behaves the way it does
+
+Excel is designed for convenience, not scientific safety.
+
+It assumes:
+- dates are more common than gene names
+- numbers should be auto-formatted
+- users want speed, not explicitness
+
+The following examples are not edge cases.
+They are the logical consequence of these design choices.
+
+
 ------------------------------------------------------------------------
 
 ### 🕵️📞🎯❌ MI5 wiretapped the wrong people  
 *(UK intelligence error)*
+**Source:**
+<a href="https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors" target="_blank" rel="noopener">The Guardian</a>
 
 A spreadsheet formatting issue altered the last three digits of phone numbers
 to `000`, leading to **134 incorrect surveillance targets**.
 The error originated from automatic formatting in a spreadsheet.
 
-**Source:** The Guardian  
-https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors
 
-**Lesson**  
+**Lesson**
+
 - Automatic data conversion can silently change identifiers.
 
 **Why it matters**  
+
 - Intelligence and security systems rely on *exact identifiers*.
 - A single formatting error can redirect surveillance to innocent people.
 
@@ -634,40 +692,43 @@ https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-ree
 
 ### 🦠📉🚫📋 Nearly 16,000 COVID-19 cases lost in England   
 *(Public health reporting failure)*
+**Source:** <a href="https://www.theguardian.com/politics/2020/oct/05/how-excel-may-have-caused-loss-of-16000-covid-tests-in-england" target="_blank" rel="noopener">The Guardian</a>
 
 During the COVID-19 pandemic, **15,841 positive cases** were omitted from official
-statistics because a CSV file was opened in Excel and **truncated at the row limit**.
+statistics because a CSV file was opened in Excel and **truncated at the row limit**. (i.e. 65,536 for the used version).
 Contact tracing was delayed and incomplete as a result. Can we even calculate the true impact of these errors?
 
 >In modern Microsoft Excel (including Office 365 / Microsoft 365) the maximum number of rows per worksheet is 1,048,576. You cannot add more rows in a single sheet beyond that limit; if you try to import data that exceeds this, rows beyond the limit may be truncated. The maximum number of columns is 16,384 (column XFD Support Microsoft).
 
-**Source:** The Guardian  
-https://www.theguardian.com/politics/2020/oct/05/how-excel-may-have-caused-loss-of-16000-covid-tests-in-england
-
 **Lesson**  
+
 - Excel has *hard limits* (row counts) that are invisible until exceeded.
 
 **Why it matters**  
+
 - Incomplete data leads to flawed epidemiological response.
 - Delayed contact tracing can plausibly translate into **preventable infections and deaths**.
 
 ------------------------------------------------------------------------
 
 ### 📊➗⚠️🏛️  Reinhart & Rogoff economic growth error 
-*(Influential academic policy failure)*
+*(Influential academic policy failure)* **Source:**
+<a href="https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors" target="_blank" rel="noopener">The Guardian</a>,
+<a href="https://retractionwatch.com/2013/04/18/influential-reinhart-rogoff-economics-paper-suffers-database-error/">Retraction Watch</a>
+
 
 A highly cited economic study claimed that countries with debt above 90% of GDP
 experienced sharply reduced growth.
 It was later discovered that an **Excel formula excluded large parts of the data**,
 significantly altering the result.
 
-**Source:** The Guardian  
-https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors
 
 **Lesson**  
+
 - Hidden formula errors can persist even in peer-reviewed research.
 
 **Why it matters**  
+
 - This work influenced **austerity policies worldwide**.
 - Spreadsheet mistakes can shape economic policy affecting millions.
 
@@ -675,17 +736,18 @@ https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-ree
 
 ### 💰📑❌🏦   Fannie Mae misreported over \$1 billion
 *(Financial reporting failure)*
+**Source:**
+<a href="https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors" target="_blank" rel="noopener">The Guardian</a>
 
 In 2003, the U.S. mortgage giant reported quarterly results containing
 **over \$1 billion in accounting errors**, traced back to an incorrect Excel formula.
 
-**Source:** The Guardian  
-https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors
+**Lesson**
 
-**Lesson**  
 - Formula logic in spreadsheets is rarely audited or tested.
 
 **Why it matters**  
+
 - Financial misreporting undermines investor trust and regulatory oversight.
 - Small spreadsheet mistakes can become *material financial risks*.
 
@@ -693,13 +755,12 @@ https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-ree
 
 ### 🐋📉💣🏦 JPMorgan “London Whale” \$6 billion loss  
 *(Risk modelling failure)*
+**Source:**
+<a href="https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors" target="_blank" rel="noopener">The Guardian</a>
 
 A trading loss of approximately **\$6 billion** was linked to risk models
 managed through manually edited Excel spreadsheets.
 Cut-and-paste workflows and poor version control amplified risk.
-
-**Source:** The Guardian  
-https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-reel-40-years-of-spreadsheet-errors
 
 **Lesson**  
 - Manual workflows lack audit trails and reproducibility.
@@ -712,11 +773,9 @@ https://www.theguardian.com/technology/2024/oct/28/microsoft-excels-bloopers-ree
 
 ## Spreadsheet Failures in Biology and Environmental Sciences
 
-Spreadsheet misuse has caused **systematic scientific errors**, not just technical inconveniences. These are particularly relevant for biologists, where identifiers, codes, and metadata matter. The case study below a more in depth examples in genomics. However, all the issues above are also applicable to many diverse Environmental data.
+Spreadsheet misuse has caused **systematic scientific errors**, not just technical inconveniences. These are particularly relevant for biologists, where identifiers, codes, and metadata matter. The case study below is a more in depth examples in genomics. However, all the issues above are also applicable to many Environmental and Ecological data.
 
-------------------------------------------------------------------------
-
-### Gene name auto-conversion errors in genomics
+### 🧬📅❌📊 Gene name auto-conversion errors in genomics
 
 Spreadsheet software automatically converts certain character strings
 into dates or numbers. In genomics, this silently corrupts gene names
@@ -727,7 +786,7 @@ Large-scale scans of published supplementary Excel files show that
 **around 30% of papers containing gene lists are affected**.
 
 :::: external-figure
-**Figure 1. Prevalence of Excel-induced gene name errors over time**
+**Prevalence of Excel-induced gene name errors over time**
 
 ![Excel-induced gene name errors over time](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1008984.g001&type=large){fig-align="center"}
 
@@ -736,8 +795,8 @@ Source:
 <a href="https://doi.org/10.1371/journal.pcbi.1008984" target="_blank" rel="noopener">Abeysooriya
 et al. (2021), PLoS Computational Biology</a>
 :::
-:::
-> "This is due to gene names being converted not just to dates and floating-point numbers, but also to internal date format (five-digit numbers). (Abeysooriya et al. 2021)"
+::::
+> "This [the error] is due to gene names being converted not just to dates and floating-point numbers, but also to internal date format (five-digit numbers). (Abeysooriya et al. 2021)"
 
 **Concept that would have prevented this** 
 
@@ -824,12 +883,538 @@ but quickly moves to R and Quarto.
 
 ------------------------------------------------------------------------
 
+## Excel as a data tool
+
+Used correctly, Excel helps you:
+
+- enter data consistently
+- inspect data visually
+- detect obvious errors early
+
+Used incorrectly, Excel:
+
+- silently changes data
+- mixes metadata, logic, and values
+- hides errors in formatting and formulas
+
+The goal is **discipline**, not Excel mastery.
+
+---
+
+## File formats, metadata, and storage
+
+### Common Excel-related file formats
+
+| Format | What it is | When to use | Risks |
+|------|------------|-------------|-------|
+| `.xlsx` | Native Excel workbook | Data entry, inspection | Proprietary, hides metadata |
+| `.xls` | Legacy Excel | Avoid | Obsolete, fragile |
+| `.csv` | Comma-separated values | Exchange, archiving | No metadata, no types, no formatting, no sheets |
+| `.tsv` | Tab-separated values | Exchange, robust to commas | Same limits as CSV |
+| `.txt` | Plain text with delimiter | Maximum compatibility | Needs careful import |
+
+::: {.callout-important}
+**Key rule**
+
+- Work in `.xlsx`
+- Archive and share in `.csv` / `.tsv`
+:::
+
+### Separators (delimiters): commas, tabs, semicolons, and why they matter
+
+Plain-text data files (`.csv`, `.tsv`, `.txt`) store tables using **separators** (also called *delimiters*) to mark where one column ends and the next begins.
+
+Excel does not store separators inside `.xlsx` files, but **relies on them heavily when importing and exporting text data**.
+
+---
+
+### Common separators you will encounter
+
+| Separator | File extension | Typical use | Common problems |
+|---------|----------------|-------------|-----------------|
+| Comma `,` | `.csv` | Default in many countries | Conflicts with decimal commas |
+| Semicolon `;` | `.csv` | Common in Europe | Misread by software expecting commas |
+| Tab `\t` | `.tsv` | Scientific data exchange | Invisible, but robust |
+| Pipe `|` | `.txt` | Rare, custom exports | Requires manual import |
+
+---
+
+### Why separators break things
+
+Separators fail when they **collide with content**.
+
+Examples:
+
+- commas inside text fields (species names, notes)
+- decimal commas vs decimal points
+- inconsistent exports across operating systems
+- Excel guessing the wrong delimiter
+
+::: {.callout-danger}
+A file can be syntactically valid and still be interpreted incorrectly.
+:::
+
+---
+
+### CSV is not a standard (this surprises many people)
+
+Despite its name, **CSV has no single global standard**.
+
+CSV files vary by:
+
+- separator (`,` vs `;`)
+- decimal symbol (`.` vs `,`)
+- text encoding
+- quoting rules
+
+::: {.callout-tip}
+
+## What if the data itself contains a my separator?
+If a value contains a separator, it must be **wrapped in double quotes**
+
+Example:
+plot_id,  species,  notes
+1,  Iguana iguana,  "observed near river, basking on rock"
+:::
+
+
+::: {.callout-tip icon="🧪"}
+### Try out creating a csv and a xlsx with comma and quotes as above (5 min)
+
+From Excel
+1. Create a new sheet with the data above
+2. Save as `.csv` and inspect the file in a text editor
+
+From text editor
+1. Create a new text file with the data above
+2. Save as `.csv` and open in Excel
+3. Afters inspecting, remove the last quote and re-open in Excel. What happens?
+
+:::
+
+
+::: {.callout-tip}
+
+## What if the data contains double quote
+If a value contains a double quote ", you escape it by **doubling it**.
+plot_id,  species,  notes
+1,  Iguana iguana,  "observed ""near"" river, basking on rock"
+:::
+
+
+---
+
+### TSV is often safer than CSV
+
+Tab-separated values (`.tsv`) are preferred in science because:
+
+- tabs rarely appear in text
+- commas inside values do not break columns
+- human-readable and machine-friendly
+
+::: {.callout-important}
+If you can choose: **prefer TSV over CSV**.
+:::
+
+---
+
+### How Excel decides which separator to use
+
+Excel uses:
+- **system locale settings**
+- **regional settings**
+- **guessing**
+
+This means:
+
+- the same file opens differently on different machines 😖
+- the same file opens differently on Windows vs macOS 🤮
+
+---
+
+### Text encodings
+
+Text files do not store letters directly.  
+They store **numbers** that represent characters.  
+A **text encoding** defines how those numbers map to letters, symbols, and accents.
+
+If you feel motivated, check out [this 10min video explaining encoding and related concepts](https://www.youtube.com/watch?v=ut74oHojxqo)
+
+Common encodings you will encounter:
+
+- **UTF-8**: modern standard, cross-platform, supports all languages
+- **Windows-1252 / Latin-1**: older, limited, Windows-specific
+- **MacRoman**: obsolete legacy format
+
+::: {.callout-important}
+**Best practice**
+
+Always use **UTF-8** for data files.
+
+:::
+
+
+
+## Encodings are invisible until they break.
+You only notice encodings when something goes wrong:
+
+ä becomes Ã¤
+
+µ becomes Âµ
+
+symbols turn into �
+
+column names become unreadable
+
+At that point, the problem is already in the data, not just on the screen.
+
+---------------------------------------------------------
+
+
 ## Hands-on session: structured data entry
 
 ::: {.text-center}
 ![](../assets/images/excelMEME.jpg){width=220px}
 :::
 
-### Task
+### Training datasets and templates
 
-Open the Excel template provided in:
+All practice files in `data/raw` and `data/templates` originate from the actual Belize protected-area monitoring programme plus the [Sanchez-Martinez et al. 2025](https://doi.org/10.1038/s41559-025-02702-x) drought-throughfall experiment and other linked datasets that will be downloaded directly. They have been lightly anonymized (IDs scrambled, locations jittered, sensitive observer metadata removed) to satisfy data privacy, permitting, and compliance rules while keeping the true structure we work with in the field. Because this site renders straight from GitHub, the following links open the exact files in the public repository.
+
+#### `data/raw`
+
+- [`csv/Caxiuana_tree_trait_data.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv) – canopy-throughfall trait table exported exactly as received from UKCEH, with only tree IDs hashed for privacy.
+- [`csv/Caxiuana_tree_trait_data_info.rtf`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data_info.rtf) – companion metadata sheet (variables, methods, sensor notes) for the trait table.
+- [`Foresty/GAP_Data_2019`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/tree/main/data/raw/Foresty/GAP_Data_2019) and [`Foresty/GAP_Data_2020`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/tree/main/data/raw/Foresty/GAP_Data_2020) – seasonal canopy-gap (GAP) monitoring exports for four permanent transects (files `GAP_2014.05_*` through `GAP_2018.02_*`) with sensitive stand IDs redacted.
+- [`Foresty/PLOT_Data_2019`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/tree/main/data/raw/Foresty/PLOT_Data_2019) and [`Foresty/PLOT_Data_2020`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/tree/main/data/raw/Foresty/PLOT_Data_2020) – full-plot remeasurement workbooks for the same transects, cleaned only for ranger names and GPS precision.
+- [`PSP/PSP_NPD42_OH.xlsx`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/PSP/PSP_NPD42_OH.xlsx) and [`PSP/PSP_NPD847_OH.xlsx`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/PSP/PSP_NPD847_OH.xlsx) – Permanent Sample Plot (PSP) field exports with trunk/branch measurements, now using pseudonymous plot codes.
+
+#### `data/templates`
+
+- [`PSP/PSP_#####_SFBC.xlsx`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/PSP_#####_SFBC.xlsx) – the clean data-entry template we fill during the field survey; replace `#####` with your plot code.
+- [`PSP/README.docx`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/README.docx) and [`PSP/[YYYYMM]_PSP_report.docx`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/%5BYYYYMM%5D_PSP_report.docx) – documentation that explains how rangers complete the template and assemble the monthly PSP report for supervisors.
+- [`PSP/DW.png`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/DW.png) and [`PSP/DW2.png`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/DW2.png) – quick-reference visuals used in the field to remind teams of the DBH workflow and measurement checks.
+
+
+## Importing CSV, TSV, and delimited text correctly
+
+::: {.callout-danger}
+**Refrain from double-clicking a CSV file.**
+
+That is how Excel destroys data.   
+:::
+
+::: {.callout-tip icon="🧪"}
+### Group exercise: Spot possible problems (10 min)
+
+1. Open the provided spreadsheets:
+
+* Download and check [this supplementary material excel sheet](http://journals.plos.org/plosone/article/asset?unique&id=info:doi/10.1371/journal.pone.0145247.s002)/ hands on example on gene name errors in genomics
+* Open [`csv/Caxiuana_tree_trait_data.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv) by double-clicking it (bad practice, but common) as well as inspecting it in a text editor (e.g. Notepad, VSCode, TextEdit).
+
+Identify **data structure and separators**, **potential data integrity issues** as well as possible **Excel misbehavior**.
+
+- Do not fix anything yet  
+- Just write down what looks suspicious
+
+:::
+
+
+### Correct import workflow (Excel 365)
+
+::: {.callout-tip icon="🧪"}
+### Group exercise: Import CSV safely (10 min)
+
+**Steps**
+
+1. `Data → Get Data → From Text/CSV`
+2. Select the file [`csv/Caxiuana_tree_trait_data.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv)
+3. Inspect:
+   - delimiter (comma, tab, semicolon)
+   - decimal separator
+   - encoding (UTF-8)
+4. **Explicitly set column data types**
+5. Click *Load*
+
+
+Alternatively you can use:
+1. `Data → From Text/CSV`
+:::
+
+This prevents:
+- automatic date conversion
+- loss of leading zeros
+- unwanted scientific notation
+
+
+---
+
+## Common data formats inside Excel (and how to use them)
+
+Excel cells always have **two things**:
+- a value
+- a format
+
+Confusing these causes errors.
+
+| Format | Use for | Common mistake |
+|------|---------|----------------|
+| Text | IDs, codes, species names | Auto-conversion |
+| Number | Counts, measurements | Mixed units |
+| Date | Dates only | IDs converted to dates |
+| Time | Time of day | Mixed with dates |
+| Logical | TRUE / FALSE | Stored as text |
+
+::: {.callout-important}
+**Rule**
+
+Identifiers are **text**, never numbers.
+:::
+
+---
+
+## Defining data formats explicitly (minimum discipline)
+
+::: {.callout-note}
+**Steps**
+
+1. Select the column
+2. Right-click → *Format Cells*
+3. Set:
+   - Text for IDs
+   - Number (fixed decimals) for measurements
+   - Date (explicit format) for dates
+   
+:::
+
+This prevents Excel from “helping”. Try this out in any of the files.
+
+---
+
+## Using formatting to understand data (not decorate it)
+
+Formatting is for **error detection** and **data visualization**, not aesthetics.
+
+### Minimal but effective practices
+
+::: {.callout-note}
+- `View → Freeze Top Row` (column headers)
+- `View → Freeze Panes` (ID columns)
+- Conditional formatting to:
+  - flag missing values
+  - highlight out-of-range values
+  - reveal impossible measurements
+  
+:::
+
+
+Excel becomes a **visual validator**, not a calculator. Using those makes it harder to create and miss errors as well as for interpreting data.
+
+
+::: {.callout-tip icon="🧪"}
+### Alone: Play with PSP and GAP data files (5 min)
+
+1. Open any of the PSP or GAP data files.
+2. Identify at least three columns that need explicit formatting.
+3. Apply the correct format to each column.
+5. Use formatting to check extreme values and missing data.
+
+:::
+
+---
+
+## Limiting data entry (to avoid mistakes)
+
+### Data validation (essential)
+
+::: {.callout-note}
+**Steps**
+
+1. Select target cells or column
+2. `Data → Data Validation`
+3. Choose:
+   - numeric range
+   - whole numbers only
+   - allowed values
+   - no blanks
+4. Add an input message if useful
+:::
+
+This stops bad data **before it enters the table**.
+
+---
+
+### Creating drop-down lists (controlled vocabularies)
+
+Use drop-downs for:
+- habitat types
+- sex
+- life stage
+- presence / absence
+- categories
+
+::: {.callout-note}
+**Steps to create a drop-down list**
+
+1. Create a list of allowed values (preferably on a separate sheet)
+2. Select the target cells
+3. `Data → Data Validation`
+4. Under *Allow*, choose **List**
+5. Set the source range (or type values manually)
+6. Confirm
+:::
+
+This enforces consistency and avoids spelling variants.
+
+---
+
+## Avoiding copy-paste disasters
+
+Copy-paste is one of the biggest sources of silent errors.
+
+::: {.callout-warning}
+**Defensive rules**
+
+- Never insert rows inside data blocks
+- Never mix formulas and raw data
+- Keep raw data **formula-free**
+- Use *Paste Special → Values*
+:::
+
+::: {.callout-important}
+**Structural rule**
+
+One sheet = one table  
+No blank rows  
+No blank columns  
+:::
+
+---
+
+## Sorting and ranking data safely
+
+::: {.callout-danger}
+Sorting a single column **corrupts the dataset**.
+Excel will not warn you.
+:::
+
+::: {.callout-note}
+**Safe sorting workflow**
+
+1. Select the **entire table**
+2. `Data → Sort`
+3. Confirm *Expand selection*
+:::
+
+---
+
+## Freezing structure to avoid accidental edits and improve overview
+
+::: {.callout-note}
+- Protect sheets after data entry
+- Lock identifier columns
+- Allow edits only where needed
+:::
+
+This is basic but powerful.
+
+::: {.callout-note}
+**Locking structure (actual protection)**
+
+Excel locks cells in two steps.
+
+**Step 1: Unlock cells that may be edited**
+1. Select the cells that users are allowed to edit
+2. Right-click → *Format Cells*
+3. Go to the *Protection* tab
+4. Uncheck **Locked**
+5. Click *OK*
+
+**Step 2: Protect the sheet**
+1. Go to `Review → Protect Sheet`
+2. (Optional) Set a password
+3. Choose allowed actions (e.g. select unlocked cells only)
+4. Confirm
+:::
+
+::: {.callout-important}
+All cells are locked by default,  
+but locking only takes effect after **Protect Sheet** is enabled.
+:::
+
+---
+
+
+::: {.callout-tip icon="🧪"}
+### Group exercise: Design a safe field data entry sheet (15min)
+
+Work in pairs.
+
+You are designing a spreadsheet for **PSP tree inventory data** collected in the field.
+
+Your table must include at least the following variables:
+
+- **PSP_id** (unique identifier, e.g. metal tree tag)
+- **survey_date** (date of measurement)
+- **species** (scientific name)
+- **dbh_cm** (diameter at breast height, in cm)
+- **height_m** (tree height, in meters)
+- **quality_class** (e.g. good / damaged / dead)
+
+#### Requirements
+
+Design the spreadsheet so that it is **hard to enter bad data**:
+
+- freeze the header row and identifier column
+- explicitly set data types for each column
+- use data validation:
+  - numeric ranges for dbh and height
+  - drop-down lists for quality_class and species names (you can just enter ABC...)
+- prevent accidental re-sorting or overwriting
+
+#### Metadata
+
+Decide:
+- what metadata belong in a **separate sheet**
+- what metadata must exist **outside Excel** (e.g. README)
+
+💬 **Be ready to explain**
+- why each column has its format
+- what mistakes your design prevents
+- where Excel stops being sufficient
+:::
+
+
+## Additional Excel knowledge relevant to common failures
+
+::: {.callout-warning}
+Excel gives **no warning** when approaching limits in CSV workflows.
+
+Excel has no audit trail
+
+- changes cannot be reconstructed
+- undo history is temporary
+- collaborators overwrite silently
+
+
+| Limit | Value |
+|------|------|
+| Rows | 1,048,576 |
+| Columns | 16,384 |
+:::
+
+
+---
+
+::: {.callout-note icon="💬"}
+### Reflection
+
+- What surprised you today?
+- What would you no longer trust Excel with?
+- What surprised you about how errors occur?
+- What would you like to know more about?
+
+If you can, please take some time and give feedback on today's session:
+- [Anonymous feedback](https://docs.google.com/forms/d/e/1FAIpQLSeq-vXKigXOsmG4pytDaUjhykRoCPBbS-Ofy3marNTginVVTg/viewform?usp=dialog)
+:::
+

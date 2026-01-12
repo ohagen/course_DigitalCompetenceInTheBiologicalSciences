@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: _site
+  render:
+  - "*.qmd"
+  - "!scripts/Analysis/Analysis_Oskar.Rmd"
 
 website:
   title: "Digital Competence in the Biological Sciences"

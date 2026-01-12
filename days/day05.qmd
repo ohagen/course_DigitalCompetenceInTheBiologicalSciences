@@ -1,7 +1,183 @@
 ---
 title: "Day 5 – Tools, models, and scientific responsibility"
-format: html
+execute:
+  freeze: auto
+editor:
+  markdown:
+    wrap: 72
 ---
+
+## Learning goals
+
+By the end of this final day, you should be able to:
+
+- explain the role of models in science as simplified representations of reality, and identify examples of models in biology
+- recognize the strengths and limitations of different tools (Excel, R, others) for various stages of the data lifecycle
+- critically assess how tool choice can influence scientific results (e.g., potential biases or errors introduced by tools)
+- articulate the principles of responsible data analysis (ethical use of data, transparency, acknowledging uncertainty)
+- reflect on your personal learning over the course and identify next steps to continue improving your data skills
+- participate in an informed discussion about digital tools and methods in science, providing constructive feedback and insight
+
+-----------------------------------------------------------------------
+
+## Agenda
+
+**13:30–14:15 | Block 1 – Models: simplified representations of reality**  
+- What is a model? (conceptual, mathematical, statistical models)  
+- Examples of models in biology (population growth equations, climate models, statistical models like linear regression)  
+- "All models are wrong, but some are useful" (George Box) – understanding the quote in context[2]  
+- The balance between simplicity and complexity: why we model and how to judge a model’s usefulness  
+- Limitations of models: what they leave out, assumptions made (connecting back to Day 1 where data itself is a simplified model of reality)  
+- How computational tools (Excel, R) implement models (e.g., Excel formulas vs R functions vs specialized software)
+
+**14:15–14:30 | Break** ☕️
+
+**14:30–15:15 | Block 2 – Tool choice as a scientific decision**  
+- Recap of the data lifecycle and where different tools shine or falter (Excel in early stages vs R in analysis, etc.)  
+- Strengths & weaknesses of Excel: intuitive, great for entry and simple calculations, but prone to human error, not scalable, not reproducible  
+- Strengths & weaknesses of R: powerful, reproducible, handles large data, steep learning curve, requires coding  
+- Other tools in the ecosystem: databases (SQL) for storage, Python or others for specific tasks, domain-specific software (GIS for spatial data, etc.)  
+- Deciding factors: data size, complexity of analysis, need for collaboration, future reuse – how these influence tool selection  
+- Avoiding tool fanaticism: the goal is correct and credible science, not proving one tool is superior – often a combination is best (e.g., use Excel for field data entry templates, R for analysis)  
+- Real-world scenario discussion: Given a project (e.g., biodiversity survey with multiple collaborators), what tools/workflow would you choose and why?
+
+**15:15–15:30 | Break** ☕️
+
+**15:30–16:15 | Block 3 – Scientific responsibility and course wrap-up**  
+- Data ethics and responsibility: handling data honestly (no cherry-picking or p-hacking), respecting privacy when applicable, and giving proper attribution  
+- The importance of transparency: sharing data and code (when possible) for reproducibility – how this builds trust in your findings  
+- Reproducibility vs. replication: our responsibility to make analyses reproducible, and the role of the broader scientific community in verifying results  
+- Personal responsibility: knowing your tools’ limits (e.g., Excel’s floating point errors, R’s package reliability), and validating results (cross-checking critical calculations by hand or with alternative methods)  
+- Course reflection: what have we learned across the 5 days? Open discussion of key takeaways, surprises, and remaining questions  
+- Feedback session (official course evaluation)  
+- Resources for continued learning: pointing to tutorials, communities (like RStudio Community, Stack Overflow, etc.), and recommending practice through real projects  
+- Closing remarks and discussion: building a culture of data competence and confidence in your labs/teams
+
+-----------------------------------------------------------------------
+
+## Models: capturing the essence of reality
+
+In Day 1 we said that data are a simplified representation of reality. Models take this a step further: they are deliberate constructions (often mathematical or computational) that approximate a real-world process. A model could be:
+- **Conceptual:** e.g., the food chain model in an ecosystem (who eats whom), or a flowchart of a biological pathway.
+- **Physical:** e.g., a scale model of an ecosystem in a terrarium.
+- **Mathematical/Statistical:** e.g., a formula or algorithm. The logistic growth equation for population size is a model of how populations grow with a carrying capacity. A linear regression is a model relating a response to predictor(s).
+
+Why use models? Because reality is complex. Models let us focus on key features and make predictions or gain insight. For example, to forecast fish population in Belize rivers, we might use a model incorporating birth/death rates and environmental factors. The model won’t capture every nuance (poaching, disease outbreaks, etc., might not be in the model), but it gives a rough expectation.
+
+George Box famously said, *“Essentially, all models are wrong, but some are useful.”* This reminds us that:
+- No model is a perfect mirror of reality (if it were, it would *be* reality, which is impossible).
+- A model’s value is judged by its usefulness for a purpose. Does it predict accurately within tolerable error? Does it help us understand the dominating factors?
+
+### Examples of models in biology
+
+- **Population dynamics:** models like exponential or logistic growth, Lotka-Volterra predator-prey equations.
+- **Climate models:** highly complex models that simulate climate systems to predict changes – clearly approximate, yet vital for scenario planning.
+- **Statistical models:** a linear model relating, say, tree growth to rainfall and soil type. It’s “wrong” in the sense it’s a simplification (maybe many other factors at play), but it can be useful to quantify relationships and make predictions.
+- **Machine learning models:** these can be seen as black-box models predicting outcomes (like species identification from photos). They are powerful but require careful validation to ensure they generalize.
+
+### Using tools to implement models
+
+Tools like Excel and R allow us to build and apply models:
+- In Excel, you might construct a model with formulas across cells (like a simulation model iterating in rows), or use the Solver add-in for optimization models. Excel is transparent for simple models but becomes cumbersome for complex ones.
+- In R, you can write programs to simulate models (loops, differential equation solvers) or fit statistical models with built-in functions (`lm()` for linear models, etc.). R excels at this because of packages: want to model population genetics? There’s likely a package for that. Want to do a regression? One command and you get coefficients and diagnostics.
+- Other specialized tools: Python (with libraries), MATLAB for certain simulations, or software like Stella for system dynamics – the choice depends on the field and complexity.
+
+The key is to remember the **assumptions** behind any model you use. For example, a linear regression assumes a linear relationship and certain error distribution. If those don’t hold, the model may give misleading results.
+
+As scientists, we must:
+1. Choose appropriate models for our questions.
+2. Validate models with data (e.g., compare model predictions to held-out observations).
+3. Communicate uncertainty – confidence intervals, error bars, scenario ranges.
+
+Using models responsibly ties into the next topics: choosing appropriate tools and being transparent.
+
+-----------------------------------------------------------------------
+
+## Choosing the right tool for the job
+
+Throughout this course, we juxtaposed Excel and R as tools. Let’s summarize their roles across the data lifecycle (planning, collection, cleaning, analysis, visualization, sharing):
+
+- **Excel (or spreadsheets)**:  
+  - *Strengths:* Excellent for data entry (familiar interface for humans), quick one-off calculations, exploratory pivoting of small datasets, making simple charts for immediate visualization. It’s ubiquitous – collaborators likely have it – and it requires minimal training for basics.
+  - *Weaknesses:* Doesn’t scale well to large data (millions of rows), prone to human errors (accidental sorting, overwriting formulas, etc.), lacks reproducibility (hard to track exact steps taken), and has limited statistical modeling capabilities. Also, as we saw, it might auto-misformat data (e.g., gene names to dates).
+  - *Best use:* Early data recording, lightweight analysis, data inspection, or as a reporting tool *after* analysis (some people use Excel to present results or allow others to interact with summary tables).
+
+- **R (and programming in general)**:  
+  - *Strengths:* Handles large and complex data, offers advanced analysis and modeling libraries, ensures reproducibility through scripts, and integrates into automated pipelines. Great for statistics, simulations, and creating publication-quality graphics (especially with packages like ggplot2).
+  - *Weaknesses:* Steeper learning curve – requires knowledge of code and the quirks of R. Not ideal for raw data entry (you wouldn’t have a field technician type into an R console!). Sometimes setting up the environment (installing packages, dealing with version differences) can be a hassle. For someone doing a very simple task infrequently, writing code might overhead compared to a quick Excel edit (but that flips if the task repeats or needs rigor).
+  - *Best use:* Data cleaning, merging, complex transformations, statistical analysis, producing reproducible reports, handling iterative or repeatable analyses, and basically anything beyond trivial data tasks.
+
+- **SQL databases** (not covered in depth here):  
+  - Great for storing and querying very large datasets that exceed what Excel or even R in memory can handle. For instance, a nation-wide biodiversity database might live in PostgreSQL or similar, and you use SQL queries (potentially from R) to pull subsets for analysis.
+  - If your project grows, learning basic SQL could be a next step to manage data.
+
+- **Python**:  
+  - Often mentioned alongside R. Python, with libraries like pandas, is also a powerful data tool, more general-purpose than R (used in web dev, etc., so it's multi-domain). For data tasks, Python vs R often comes down to preference and specific libraries available. R is traditionally stronger in statistics and reporting, Python in machine learning and integration with other software. Knowing one makes learning the other easier if needed.
+
+- **Specialized tools**:  
+  - *GIS software (ArcGIS/QGIS)* for spatial data – e.g., mapping habitats in Belize, doing spatial analysis (R can do a lot of GIS too with sf and raster packages, but dedicated GIS software offers interactive mapping).
+  - *Image analysis software* (ImageJ, etc.) for biological imaging.
+  - *MATLAB/Octave* often used in bioengineering or for certain simulations.
+  - *Cloud platforms* for big data or collaboration (Google Sheets for simple collaborative data entry, cloud computing for heavy analysis).
+
+The overarching point: **tool choice is part of experimental design**. Just as you choose an appropriate instrument to measure a phenomenon, you choose appropriate software tools to handle data. A poor tool choice can introduce errors or inefficiencies:
+- Example: Using Excel to manually curate data coming from an automated sensor every day could lead to copy-paste mistakes and burnout – better to set up a script.
+- Conversely, insisting on using R for a small dataset that one colleague only has in Excel could create an unnecessary barrier – maybe the compromise is you do the heavy analysis in R but export a user-friendly Excel summary for colleagues.
+
+There’s also the dimension of **community and support**: if everyone in your lab uses R, it’s beneficial to join that for shared knowledge. If everyone uses something else, maybe you become the catalyst introducing R – but expect a transition period.
+
+::: {.callout-note}
+**Discussion:** We’ll discuss specific scenarios (e.g., a conservation NGO needs to analyze quarterly field reports) and debate which toolset fits best. Often, a hybrid approach wins: e.g., use Excel templates for data collection, R scripts for analysis, and perhaps an Excel or web dashboard for presenting results to stakeholders.
+:::
+
+To emphasize, our goal is not to declare “R good, Excel bad” – both have a place. It’s about **using each for what it’s good for, and being aware of limitations**. Through this course, you’ve seen where errors can creep in (Excel autofill issues, etc.) and how code can mitigate some (but code has its own pitfalls like bugs, which version control and testing help catch).
+
+Finally, keep in mind the cost/benefit: investing time to learn a more advanced tool like R has upfront cost but long-term benefit if your work continuously involves data. For a one-time small analysis, maybe a quick spreadsheet is fine. For a research career with lots of data, learning R (and/or Python, SQL, etc.) is immensely beneficial – it’s an investment in efficiency and capability.
+
+-----------------------------------------------------------------------
+
+## With great power comes great responsibility
+
+Using powerful tools (and models) in science gives us great capability – but also the responsibility to use them correctly and ethically.
+
+### Ethical data practice
+
+- **Honesty and transparency:** Never manipulate data or tweak a model just to get a desired outcome. It sounds obvious, but subtle temptations exist – like excluding “outliers” that inconveniently disprove your hypothesis without a valid reason. Always document why you exclude or alter data points. Tools like R make it easier to show exactly what was done.
+- **Avoiding p-hacking:** If you try 100 different analyses and only report the one that gave a significant result, that’s not good science. Be upfront about how you chose your analysis approach. Pre-registering studies or at least stating “this analysis is exploratory” vs “confirmatory” is good practice.
+- **Data privacy:** If you work with sensitive data (e.g., human subjects, or locations of endangered species that poachers could misuse), be responsible in how you store and share data. This might mean anonymizing data or aggregating to protect identities/locations.
+- **Reproducibility:** Aim to make your analysis such that others can reproduce it. This has been a theme all week. It’s part of being responsible – it allows science to be self-correcting. If an error is found, it can be traced and fixed; if results are solid, they’ll be confirmed.
+- **Credit and attribution:** Use tools and data with proper citation. If you use an R package, cite it in publications. If a colleague gave you an Excel sheet of data, acknowledge them. Science is a community effort.
+
+### Knowing the limits
+
+Remember the limitations of both your data and your tools:
+- If your model makes a lot of assumptions (like a normal distribution, or no collinearity in regression predictors), check those assumptions. Using R, you can inspect diagnostic plots or perform tests. Using Excel, you might not even be aware of assumptions if you just click a trendline – so tools like R can force you to think more deeply.
+- If you push Excel beyond its reliable limits (like very large datasets), know that you might get sluggish performance or crashes – or silent truncation of data (Excel has row limits). Responsible practice is to choose a more suitable tool or break data into pieces.
+- R can handle big data, but memory is finite – and writing extremely inefficient code can stall things. A responsible analyst monitors their workflow (maybe using sample data first, or adding checkpoints) to not get stuck.
+
+### Reflection on the course journey
+
+On Day 1, we confronted the idea that data and tools can fail us if used naively (remember the corrupted gene names example, or poorly structured spreadsheets). Across Day 2–4, we built up a toolkit and mindset:
+- *Day 2:* Summarizing and visualizing data – learning to extract meaning and be wary of misleading visuals or stats without context.
+- *Day 3:* Programming and algorithms – realizing that explicitly telling the computer what to do (and how) opens up possibilities to automate and scale analyses.
+- *Day 4:* Cleaning and reproducibility – appreciating that a lot of work happens before the “analysis” proper, and that documenting and structuring this work is part of being a scientist in the digital age.
+- *Day 5 (today):* Stepping back to see the big picture of how we wield these tools and techniques responsibly to do good science.
+
+Consider how your perspective has changed. Maybe Excel’s convenience is now balanced in your mind with caution about its pitfalls. Maybe R went from something intimidating to something you’ve actually written code in. Perhaps the importance of documenting steps (in code or writing) is more clear now.
+
+### Continuing the journey
+
+This course is a beginning, not an end. Data competence is like a muscle – you have to exercise it:
+- Continue using what you learned: even if small, try writing an R script for a task, or using Quarto for a report. Don’t worry if you need to look up things – that’s normal (we all Google function syntax or error messages).
+- Engage with the community: there are forums (Stack Overflow’s R section, RStudio Community, local R user groups) where you can ask questions and see how others solve problems. Often, someone has faced the same challenge.
+- Learn incrementally: you might dive deeper into a specific area next – e.g., if you deal with spatial data, learn the sf package; if stats, maybe a course or book on applied statistics with R; if data visualization, explore advanced ggplot2 or interactive viz with Shiny.
+- Encourage a culture of data responsibility: If you work in a team, share tips or set up small workflows inspired by this course (for example, decide that all data will have a README and version control, or start peer-reviewing each other’s analysis scripts). It might be novel in some settings, but it often only takes one person to spark a positive change.
+
+Finally, maintain a critical eye and curiosity. Tools will evolve (maybe in 10 years we’ll use something beyond R or Excel). But the core principles – clear thinking about data, honesty, and reproducibility – are enduring.
+
+-----------------------------------------------------------------------
+
+
 
 ## Overview of the data lifecycle (and where Excel and R fit)
 
@@ -247,4 +423,31 @@ This table is clickable. If something is unclear, jump back up.
 | **[Reproducibility & reuse](#reproducibility)** | ❌ **Actively hostile.** No clear record of what was changed, when, or why; workflows are person-specific and irreproducible. | ✅ **Designed for this.** Scripts and version control document every step, enabling reuse, verification, and peer review. |
 
 ---
+## Course wrap-up discussion
+
+We’ll now have an open discussion:
+- What were your biggest “aha” moments or takeaways from this week?
+- Is there something you wish we had covered more? (We can at least point you to resources for those topics.)
+- How do you plan to apply these skills in your work or research?
+- Any remaining questions or scenarios you want to brainstorm about?
+
+*(The instructor will facilitate a discussion here, ensuring everyone has a chance to voice their thoughts.)*
+
+We also have the official course evaluation to complete – your feedback helps improve this course for the future.
+
+**Thank you** for engaging wholeheartedly in these five days. You’ve not only learned specific skills (Excel tricks, R coding, etc.) but also a philosophy of data competence that will serve you across projects. Keep that inquisitive and meticulous spirit alive as you go forth – whether you’re managing a conservation program’s data or delving into research, your digital toolset and mindset will be crucial tools in your toolkit.
+
+Good luck, and stay in touch with the community of practice – we’re all continuously learning in this rapidly evolving field.
+
+-----------------------------------------------------------------------
+
+::: {.callout-note icon="💬"}
+### Reflection
+
+- What is one concrete step you will take in the next month to further improve your data skills (e.g., complete an online R tutorial, restructure an existing dataset, start using Git for a project)?
+- In what ways has your view of data or data analysis changed over the duration of this course?
+
+Finally, please fill out the course feedback form (your responses are anonymous and greatly appreciated):  
+- [Anonymous feedback & course evaluation](https://docs.google.com/forms/d/e/1FAIpQLSfWQyT0GAcrj2Li78qlJMpx1SGke-bZTNl1GE0lJHVnv_o6pg/viewform?usp=publish-editor)
+:::
 

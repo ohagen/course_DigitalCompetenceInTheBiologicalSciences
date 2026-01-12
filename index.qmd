@@ -27,16 +27,32 @@ Topics such as inferential statistics, formal modelling, and machine learning ar
 
 ---
 
-## Teaching philosophy
+## Teaching Philosophy
 
-- Critical thinking and context trumps technical skills
-- Tools serve questions, not the other way around
-- Structure matters more than software
-- Reproducibility is part of scientific responsibility
-- Errors are normal and informative
-- Understanding limits is as important as getting results
+::: {.callout-note}
+**This is not a YouTube tutorial.**
+Interrupt me. Ask questions. Tell me when something doesn’t make sense. Dialogue makes this course better for everyone.
+:::
 
-Students work alone and in pairs throughout the course, enabling individual thinking and collaborative learning.
+* 🧠 **Critical thinking and context trump technical skills**
+  We’re not here to memorize functions or paths in Excel. We’re here to think carefully about what data mean, how they’re collected, and why they matter.
+
+* 🎯 **Tools serve questions, not the other way around**
+  R and Excel are just tools. You should always know what you’re trying to ask or answer first.
+
+* 🧩 **Structure matters more than software**
+  Whether it’s a notebook or a database, how your data are organized determines what’s possible downstream.
+
+* 🔁 **Reproducibility is part of scientific responsibility**
+  Your future self (and your collaborators) need to understand what you did and why. Think of code and data as shared lab notes.
+
+* 🐛 **Errors are normal and informative**
+  They’re not signs of failure—they’re clues. Every bug is a question you’ve been invited to ask.
+
+* ⚖️ **Understanding limits is as important as getting results**
+  No tool or model gives truth. Knowing when something breaks matters more than making it work.
+
+
 
 ---
 
@@ -53,56 +69,77 @@ Using a single evolving case study will allow you to focus on:
 
 ## Course structure
 
-The course runs for **5 days (3 hours each)**. Each day builds on the previous one and is divided into three 45 minutes lectures and exercises with two 15 minute breaks in between and a final 15 minute wrap-up sessions.
+The course runs for **5 days (3 hours each)**. Each day builds on the previous one and is divided into three 45 minutes lectures and/or exercises with two 15 minute breaks in between and a final 15 minute wrap-up sessions.
 
 ---
 
 ### **Day 1 – What 'good' Data Is **  
-*Excel as a data entry and structuring tool*
+*From observations to structured tables (Excel in context)*
 
 - Observations, variables, metadata
 - Data as a simplified representation of reality
 - Risks of inconsistency and missing context
-- Excel templates for structured data entry
+- The Good, the Bad and the Ugly in Excel
+- Data life cycle and FAIR principles overview
+- Designing analysis-ready tables and entry templates
 
 **Key idea**  
-All datasets are already models of reality.
+All datasets are already models of reality. Basic organization of data. Basic data quality issues.
 
 ---
 
 ### **Day 2 – Describing Data **  
-*Excel for descriptive statistics and visualization*
+*Descriptive statistics and visualization (Excel to R)*
 
+- Summary statistics: centre, spread, outliers
 - Mean, median, variance
 - Distributions and variability
 - Visualizations as summaries, not proofs
 - Honest and misleading plots
+- Repeated tasks and scalability
+- Transition from Excel to R
+- First R contact: import data, compute summaries, make a plot
+- Reading and writing: CSV/TSV safely, encoding basics
 
 **Key idea**  
-Descriptive statistics summarize observations, not explanations.
+Descriptive statistics summarize observations, not explanations. Summary statistics and visualizations are tools to understand data. Further doing data visualization.
+Testing assumptions and groups differences from data on Dayu one
 
 ---
 
 ### **Day 3 – From repetition to algorithms**  
 *Why R exists*
 
-- Repeated tasks and scalability
 - Algorithms as explicit procedures
-- Deterministic workflows
-- Transition from Excel to R
+- Programming logic 101 and pseudocode
+- Core Atomic Data Types in R including missing values (e.g. NA, NaN, Inf, -Inf, NULL, etc.)
+- Common Data Structures (vectors, lists, data frames, matrices, arrays)
+- Vectorized thinking Loops and conditionals
+- Functions and arguments
+- Functions: using them, then writing tiny ones
+- Packages and R philosophy
+
+
 
 **Key idea**  
-Algorithms replace memory and intuition with explicit instructions.
+A small toolbox script: import, check, summarise, plot. Algorithms replace memory and intuition with explicit instructions.
 
 ---
 
 ### **Day 4 – Cleaning data and making work reproducible**  
 *R as a data workbench*
 
+- Cleaning as scientific work: decisions, assumptions, traceability
+- Tidy data: reshaping and joining tables
+- Quality control checks as code, CI, and tests
+- Documentation: comments, READMEs, and metadata
+- Reproducibility: scripts, projects, folder structure
 - Data cleaning as scientific work
 - Data transformation and reshaping
 - Scripts as documentation
 - Reproducible workflows
+- Version control basics (Git)
+- Creating automated reports with R (Quarto: one-button from raw data to figures pdfs, docs and websites)
 
 **Key idea**  
 If you cannot rerun it, you cannot defend it.
@@ -113,8 +150,10 @@ If you cannot rerun it, you cannot defend it.
 *Synthesis and outlook*
 
 - Models as simplified representations
+- Official course evaluation (admin part)
 - Tool choice as a scientific decision
-- Strengths and limits of Excel and R
+- What you wanted (from previous daily feed backs or unfinished business)
+- Remembering strengths and limits of Excel and R in the Data Lifecycle
 - Course reflection and open discussion
 
 **Key idea**  
