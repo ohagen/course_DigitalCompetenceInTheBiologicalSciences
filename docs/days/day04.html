@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Day 4 – Cleaning data and making work reproducible – Digital Competence in the Biological Sciences</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/images/course-logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Digital Competence in the Biological Sciences</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../days/day01.html">Course Days</a></li><li class="breadcrumb-item"><a href="../days/day04.html">Day 4 – Cleaning data and making work reproducible</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Digital Competence in the Biological Sciences</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Course Days</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../days/day01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 1 – What ‘good’ Data Is</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../days/day02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 2 – Describing Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../days/day03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 3 – From repetition to algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../days/day04.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Day 4 – Cleaning data and making work reproducible</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../days/day05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 5 – Tools, models, and scientific responsibility</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#cleaning-data-from-messy-to-tidy" id="toc-cleaning-data-from-messy-to-tidy" class="nav-link" data-scroll-target="#cleaning-data-from-messy-to-tidy">Cleaning data: from messy to tidy</a>
+  <ul class="collapse">
+  <li><a href="#tidy-data-principles" id="toc-tidy-data-principles" class="nav-link" data-scroll-target="#tidy-data-principles">Tidy data principles</a></li>
+  <li><a href="#implementing-cleaning-in-r" id="toc-implementing-cleaning-in-r" class="nav-link" data-scroll-target="#implementing-cleaning-in-r">Implementing cleaning in R</a></li>
+  </ul></li>
+  <li><a href="#quality-control-via-code" id="toc-quality-control-via-code" class="nav-link" data-scroll-target="#quality-control-via-code">Quality control via code</a>
+  <ul class="collapse">
+  <li><a href="#documentation-and-project-organization" id="toc-documentation-and-project-organization" class="nav-link" data-scroll-target="#documentation-and-project-organization">Documentation and project organization</a></li>
+  <li><a href="#version-control-with-git" id="toc-version-control-with-git" class="nav-link" data-scroll-target="#version-control-with-git">Version control with Git</a></li>
+  <li><a href="#reproducible-reports-with-quartor-markdown" id="toc-reproducible-reports-with-quartor-markdown" class="nav-link" data-scroll-target="#reproducible-reports-with-quartor-markdown">Reproducible reports with Quarto/R Markdown</a></li>
+  <li><a href="#automation-and-beyond" id="toc-automation-and-beyond" class="nav-link" data-scroll-target="#automation-and-beyond">Automation and beyond</a></li>
+  </ul></li>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap-up</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../days/day01.html">Course Days</a></li><li class="breadcrumb-item"><a href="../days/day04.html">Day 4 – Cleaning data and making work reproducible</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Day 4 – Cleaning data and making work reproducible</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-goals" class="level2">
+<h2 class="anchored" data-anchor-id="learning-goals">Learning goals</h2>
+<p>By the end of this day, you should be able to:</p>
+<ul>
+<li>appreciate the importance of data cleaning as a scientific task</li>
+<li>apply the principles of <strong>tidy data</strong> to reorganize datasets for analysis</li>
+<li>perform basic data transformations in R (filtering, recoding, reshaping, merging datasets)</li>
+<li>implement data quality control checks using code (e.g.&nbsp;finding outliers, inconsistencies)</li>
+<li>document your data processing steps (through comments, scripts, and README files)</li>
+<li>understand how to structure an analysis project (folders, scripts) for reproducibility</li>
+<li>explain the benefits of version control (Git) and use basic Git commands or workflows to track changes</li>
+<li>create a simple reproducible report using R and Quarto or R Markdown</li>
+</ul>
+<hr>
+</section>
+<section id="motivation" class="level2">
+<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<p>“<strong>Data cleaning</strong>” might sound mundane, but in practice it’s one of the most critical and time-consuming parts of any analysis – and it’s deeply scientific. Decisions made during cleaning (like how to handle missing values or outliers) can affect results. Thus, cleaning must be done carefully and transparently, so others (and your future self) can understand and trust the final data. Today, we shift our mindset from ad-hoc fixes to systematic, documented transformations. We’ll learn how to make our workflow reproducible – meaning anyone can follow the same steps and get the same results. This involves using scripts, organizing our work, and leveraging tools like <strong>Git</strong> for version control and <strong>Quarto</strong> for integrated reporting.</p>
+<p>In short, we want to move from a one-time analysis (that might be messy and irreproducible) to a robust process that can be redone or updated with new data at the click of a button.</p>
+<hr>
+</section>
+<section id="agenda" class="level2">
+<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+<p><strong>13:30–14:15 | Block 1 – Data cleaning as scientific work</strong><br>
+- Why cleaning is not “janitorial” – it’s part of science (documenting assumptions and decisions)<br>
+- Common data problems: typos, missing values, out-of-range values, inconsistent coding (e.g.&nbsp;“M” vs “Male”)<br>
+- Introduction to <strong>tidy data</strong> principles (each variable = one column, each observation = one row, etc.)<br>
+- Reshaping data: wide vs long format (when and how to pivot tables)<br>
+- Combining data: merging/joining tables from different sources (keys, primary identifiers)<br>
+- Hands-on examples of tidying a small messy dataset (e.g.&nbsp;splitting one column into two, unpivoting a summary table)</p>
+<p><strong>14:15–14:30 | Break</strong> ☕️</p>
+<p><strong>14:30–15:15 | Block 2 – Quality control and documentation</strong><br>
+- Writing R code to find potential errors (e.g., values outside expected range, duplicates where there shouldn’t be, mismatched categories)<br>
+- Implementing simple tests/assertions in code (for example, verify that sample IDs are unique, or that dates are in chronological order)<br>
+- Using scripts as a <strong>log of transformations</strong>: every change to data is recorded in code, rather than lost in manual edits<br>
+- Commenting your code and organizing it into sections (making it readable and explaining the “why” behind changes)<br>
+- Creating a README file or data dictionary to capture metadata and decisions (what was done, when, by whom, and why)<br>
+- Collaborative aspect: how clean, documented data and code allow others to build on your work</p>
+<p><strong>15:15–15:30 | Break</strong> ☕️</p>
+<p><strong>15:30–16:15 | Block 3 – Reproducible workflows and tools</strong><br>
+- Project structure: setting up an RStudio Project (or dedicated working directory) with subfolders (data/, scripts/, output/)<br>
+- Using <strong>Git for version control</strong>: basic concepts (repository, commit, push/pull, conflict) and why “save early, save often” with history is beneficial<br>
+- Demonstration of tracking a script or dataset with Git (seeing changes over time, reverting if needed)<br>
+- Introduction to <strong>Quarto/R Markdown</strong>: integrating code and narrative to generate reports (HTML, PDF, etc.)<br>
+- Rendering a reproducible report: one command to import raw data, run all analysis code, and output results (figures, tables) in a formatted report<br>
+- Showcase: how this course material is itself a reproducible document created with Quarto<br>
+- Tips for reproducibility: set seeds for randomness, record package versions for computational environments</p>
+<p><strong>16:15–16:30 | Reflection, discussion, and outlook</strong> 🧠<br>
+- What aspects of cleaning or reproducibility will you apply in your own projects first?<br>
+- Any remaining pain points in your data workflow that we haven’t addressed?<br>
+- How do you plan to continue improving your digital/data skills after the course?<br>
+- Preview of Day 5: wrapping up with models, tool choices, and looking ahead</p>
+<hr>
+</section>
+<section id="cleaning-data-from-messy-to-tidy" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-data-from-messy-to-tidy">Cleaning data: from messy to tidy</h2>
+<p>Real-world data is messy. In the Belize case study, imagine we receive species observation logs from multiple rangers – one uses <code>"Panthera onca"</code> for jaguar, another just writes <code>"Jaguar"</code>, some cells are left blank, and one file uses <code>-999</code> to denote a missing value. If we naively combine these, we’ll have inconsistencies and errors that could lead to incorrect conclusions.</p>
+<p>Data cleaning involves: - <strong>Detecting errors or inconsistencies</strong> (e.g., impossible values, typos, different units mixed in). - <strong>Deciding what to do</strong> with them (correct, exclude, flag as uncertain). - <strong>Implementing those corrections systematically</strong>.</p>
+<p>It’s not just about making the dataset “pretty” – it’s about ensuring the data accurately reflect reality (as much as possible) and are structured to facilitate analysis.</p>
+<section id="tidy-data-principles" class="level3">
+<h3 class="anchored" data-anchor-id="tidy-data-principles">Tidy data principles</h3>
+<p>A cornerstone of modern data handling is the concept of <strong>tidy data</strong> (Wickham 2014). It provides a consistent structure that many analysis tools in R assume: 1. <strong>Each variable forms a column.</strong> 2. <strong>Each observation (case) forms a row.</strong> 3. <strong>Each value is a single cell.</strong></p>
+<p>Both <strong>wide</strong> and <strong>tidy (long)</strong> formats represent the same information in different layouts. <strong>Wide format</strong> data is often human-friendly: each observational unit (e.g.&nbsp;a site or species) appears once as a row, and related variables (such as different time points or categories) are spread across multiple columns. Long-form structure is often preferred for analysis and visualization in tools like R or Python, even if the wide form is convenient for data entry or presentation. Below are two real-world inspired examples (with simplified data) from ecology that illustrate <strong>wide</strong> vs <strong>tidy</strong> data formats following best practices.</p>
+<section id="example-1-amphibian-species-counts-over-years" class="level4">
+<h4 class="anchored" data-anchor-id="example-1-amphibian-species-counts-over-years">Example 1: Amphibian Species Counts Over Years</h4>
+<p><em>Scenario:</em> Researchers monitored the population of different frog species in a wetland from <strong>2018</strong> to <strong>2021</strong>, conducting annual counts of each species.</p>
+<p><strong>Wide Format</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Species</th>
+<th>2018</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>American Bullfrog</td>
+<td>5</td>
+<td>7</td>
+<td>6</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>Northern Leopard Frog</td>
+<td>12</td>
+<td>15</td>
+<td>18</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>Gray Treefrog</td>
+<td>30</td>
+<td>25</td>
+<td>28</td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tidy Format</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Species</th>
+<th>Year</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>American Bullfrog</td>
+<td>2018</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>American Bullfrog</td>
+<td>2019</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>American Bullfrog</td>
+<td>2020</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>American Bullfrog</td>
+<td>2021</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>Northern Leopard Frog</td>
+<td>2018</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td>Northern Leopard Frog</td>
+<td>2019</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td>Northern Leopard Frog</td>
+<td>2020</td>
+<td>18</td>
+</tr>
+<tr class="even">
+<td>Northern Leopard Frog</td>
+<td>2021</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>Gray Treefrog</td>
+<td>2018</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td>Gray Treefrog</td>
+<td>2019</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td>Gray Treefrog</td>
+<td>2020</td>
+<td>28</td>
+</tr>
+<tr class="even">
+<td>Gray Treefrog</td>
+<td>2021</td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-2-habitat-cover-by-type-in-different-zones" class="level4">
+<h4 class="anchored" data-anchor-id="example-2-habitat-cover-by-type-in-different-zones">Example 2: Habitat Cover by Type in Different Zones</h4>
+<p><em>Scenario:</em> A wildlife reserve is divided into several management zones (North, South, East). Within each zone, land cover was surveyed to measure the area of different habitat types (Forest, Grassland, Wetland).</p>
+<p><strong>Wide Format</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Zone</th>
+<th style="text-align: right;">Forest (ha)</th>
+<th style="text-align: right;">Grassland (ha)</th>
+<th style="text-align: right;">Wetland (ha)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>North</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="even">
+<td>South</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td>East</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">90</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tidy Format</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Zone</th>
+<th>Habitat Type</th>
+<th style="text-align: right;">Area (ha)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>North</td>
+<td>Forest</td>
+<td style="text-align: right;">120</td>
+</tr>
+<tr class="even">
+<td>North</td>
+<td>Grassland</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td>North</td>
+<td>Wetland</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="even">
+<td>South</td>
+<td>Forest</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="odd">
+<td>South</td>
+<td>Grassland</td>
+<td style="text-align: right;">110</td>
+</tr>
+<tr class="even">
+<td>South</td>
+<td>Wetland</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td>East</td>
+<td>Forest</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="even">
+<td>East</td>
+<td>Grassland</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="odd">
+<td>East</td>
+<td>Wetland</td>
+<td style="text-align: right;">90</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>Both examples illustrate that while wide format is useful for data collection and human readability, tidy format is essential for effective filtering, summarizing, and plotting in analysis workflows.</p>
+<p>Tidy data is a prerequisite for most modern data science tools, particularly in R (e.g., with <code>ggplot2</code>, <code>dplyr</code>, or <code>tidyr</code>). If you need a dataset in tidy format you can <strong>reshape</strong> it using tools (in R, packages like <code>tidyr</code> provide functions like <code>pivot_longer</code> and <code>pivot_wider</code> to convert between long (tidy) and wide forms).</p>
+</section>
+<section id="example-of-reshaping" class="level4">
+<h4 class="anchored" data-anchor-id="example-of-reshaping">Example of reshaping</h4>
+<p>Suppose you have a spreadsheet where each column is a separate month’s measurements:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>site</th>
+<th>Jan_count</th>
+<th>Feb_count</th>
+<th>Mar_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>5</td>
+<td>8</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>This is wide. To tidy it, we’d transform it to:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>site</th>
+<th>month</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Jan</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Feb</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>Mar</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Jan</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>Feb</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Mar</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>Now “month” is a variable. This format might have more rows, but it’s consistent and easier to feed into R’s plotting or modeling functions (e.g., you can easily plot count vs month, grouped by site).</p>
+<p>This is how to do it in R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the wide data frame</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df_wide <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">site =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Jan_count =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Feb_count =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">4</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Mar_count =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to tidy (long) format</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>df_tidy <span class="ot">&lt;-</span> df_wide <span class="sc">%&gt;%</span>             <span class="co"># Start with the wide data frame and pipe it forward</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">ends_with</span>(<span class="st">"_count"</span>),   <span class="co"># Select columns whose names end in "_count" (i.e. Jan_count, Feb_count, etc.)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"month"</span>,           <span class="co"># Extract the column names into a new column called "month"</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"count"</span>,          <span class="co"># Extract the cell values into a new column called "count"</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">""</span>,            <span class="co"># No common prefix to remove (could be used if all columns had e.g. "count_" as prefix)</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">month =</span> <span class="sc">~</span> <span class="fu">sub</span>(<span class="st">"_count"</span>, <span class="st">""</span>, .)  <span class="co"># Clean the "month" values by removing "_count" from the original column names</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># View result</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df_tidy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Conversely, sometimes data is too long and needs to be widened (less common in raw data, more in presenting results).</p>
+</section>
+<section id="merging-datasets" class="level4">
+<h4 class="anchored" data-anchor-id="merging-datasets">Merging datasets</h4>
+<p>Often, information is split across multiple tables that need to be joined. For example, you might have: - Table A: observations (with columns like <code>species_code</code>, <code>count</code>, <code>location</code>). - Table B: species metadata (with columns like <code>species_code</code>, <code>latin_name</code>, <code>conservation_status</code>).</p>
+<p>To analyze or report, you may want to merge Table B into Table A so each observation row has the full species name and status. This requires a <strong>key</strong> (here <code>species_code</code>) that is present in both tables. When merging (or <em>joining</em> as database folks say), it’s important to ensure: - The key is consistent (no typos, same case, etc. – cleaning might be needed here). - The join type is appropriate (usually an inner join: keep only rows that match in both tables; or a left join: keep all observations and add info from metadata, leaving NA if no match).</p>
+<p>In R, base function <code>merge()</code> or <code>dplyr::left_join()</code>, <code>dplyr::inner_join()</code> can do this. Example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> <span class="fu">merge</span>(observations, species_info, <span class="at">by =</span> <span class="st">"species_code"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This adds columns from species_info to observations where species_code matches. A common pitfall is when keys don’t match due to inconsistencies. For instance, if species_code in one table has “PantheraOnca” and in the other “panthera_onca” or a blank for unknown species – those won’t merge. Identifying and fixing these is part of cleaning: - Use consistent coding schemes (maybe standardize to all lowercase with underscores). - Fill in missing identifiers if possible, or decide to exclude those records.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Group exercise: Spot the mess (10 min)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+Consider the following snippet of a dataset (imagine it’s loaded as a data frame field_data in R): plot_id elevation_m species_1_count species_2_count notes A01 120 5 2 one tree measured A02 95m 3 NA<br>
+A03 110 0 1 seedlings included? A-04 . 7 3<br>
+Identify at least 5 issues or inconsistencies in this data snippet that you would need to address during cleaning. (Assume species_1 and species_2 refer to counts of two different species in the plot.)
+<details>
+<summary>
+Possible issues
+</summary>
+• <strong>Inconsistent plot_id format:</strong> “A01”, “A02”, “A03” vs “A-04” (extra hyphen in A-04). • <strong>Elevation units:</strong> “95m” is labeled with “m” while others are numeric or one has “.”. • <strong>Missing value notation:</strong> Elevation for A-04 is “.”, which is not standard (should be NA or blank). • <strong>Counts:</strong> NA vs blank vs 0 – second species count for A02 is NA (probably meaning no data), whereas others have numeric including 0 (which might mean truly zero count). We should standardize how absence vs not recorded is represented. • <strong>Notes inconsistency:</strong> A03 note has a question mark “seedlings included?” – unclear data collection issue. • <strong>Data structure:</strong> species counts are in separate columns (species_1_count, species_2_count). If the number of species is large or variable, a tidy format would have a separate table or a “species” column. In this small example it’s okay, but it hints at a possible need to pivot longer if many species. • <strong>Units in data:</strong> “95m” should be numeric 95 with units documented elsewhere (units shouldn’t be mixed into the data cell with the value). There may be more issues (like if 120 and 110 are presumably in meters but one included “m”, confirm all are meters, etc.). Each would require a cleaning decision.
+</details>
+</div>
+</div>
+<p>The exercise above highlights why cleaning can be a big job: you have to catch and fix all these things. Using R for this is advantageous – you can write code to, say, remove the “m” and convert columns to numeric, or unify the plot_id format (remove hyphens), and you can run this code again if new data come in with the same issues.</p>
+</section>
+</section>
+<section id="implementing-cleaning-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="implementing-cleaning-in-r">Implementing cleaning in R</h3>
+<p>Most data cleaning operations fall into a few categories: - <strong>Filtering rows:</strong> e.g., remove obviously erroneous records (negative counts, etc.) or maybe filter to a date range. - <strong>Recoding values:</strong> e.g., turn “NA” or “.” or “-999” into actual NA, unify “M” vs “Male” vs “male” into one category. - <strong>Type conversion:</strong> ensure numbers are numeric, dates are date type, etc. (Excel often messes this up, so double-check after import). - <strong>Creating new columns or dropping columns:</strong> e.g., separate a combined “date_time” into two fields, or drop an unused “notes” column for analysis (but perhaps store it elsewhere). - <strong>Reshaping or merging</strong> as discussed to get data in the right shape. We won’t cover the entire dplyr or tidyr toolkit here, but as an example: library(dplyr) field_data_clean &lt;- field_data %&gt;% mutate(elevation_m = as.numeric(gsub(“m”, ““, elevation_m)), # remove”m” and convert to numeric plot_id = toupper(gsub(“-”, ““, plot_id)), # remove hyphen, make uppercase species_2_count = ifelse(species_2_count ==”“, NA, species_2_count)) %&gt;% # treat blank as NA rename(species_a_count = species_1_count, species_b_count = species_2_count) In a few lines, this fixes multiple issues: - Elevation:”95m” becomes 95, and “.” would become NA as as.numeric(“.”) gives NA (with a warning). - Plot IDs: “A-04” becomes “A04”. - Blanks in species_2_count become NA. - Renamed columns for clarity. This is just illustrative – real cleaning might be more involved – but notice how we can chain multiple transformations. Also, each operation is documented by the code itself. If someone wonders “how did 95m become 95?” – the code shows it. Crucially, we would also keep notes in a README or in code comments about assumptions (e.g., “We assume blank species count means not recorded (set to NA)”).</p>
+<hr>
+</section>
+</section>
+<section id="quality-control-via-code" class="level2">
+<h2 class="anchored" data-anchor-id="quality-control-via-code">Quality control via code</h2>
+<p>When cleaning, it’s helpful to build in <strong>checks</strong>. For instance, after cleaning, you might assert: - All plot_id follow the pattern “A##” (using a regex, or check length). - Elevation is within a plausible range (e.g., 0 to 150 m for our area). - No duplicates in plot_id if each plot should be unique. - The number of species columns, if pivoted longer, matches a known species list count. In R, you might use stopifnot():</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">all</span>(field_data_clean<span class="sc">$</span>elevation_m <span class="sc">&gt;=</span> <span class="dv">0</span>, field_data_clean<span class="sc">$</span>elevation_m <span class="sc">&lt;=</span> <span class="dv">150</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will throw an error if any elevation is outside 0-150. Or simply use summary() and table() to eyeball distributions after each major step. There are also packages like <strong>validate</strong> or <strong>testthat</strong> that can formalize data testing, but simple checks with if or stopifnot statements go a long way. Another tool: if you have expected relationships (e.g., a species code must exist in the species metadata table), you can test that no species in observations is missing from the metadata:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>missing_species <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">unique</span>(observations<span class="sc">$</span>species_code), species_info<span class="sc">$</span>species_code)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">length</span>(missing_species) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">warning</span>(<span class="st">"These species codes are in observations but not in metadata: "</span>, <span class="fu">paste</span>(missing_species, <span class="at">collapse=</span><span class="st">", "</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This would alert you to a likely mismatch to address. By encoding these checks in your script, every time you run the cleaning script, it will automatically flag issues. This is much better than manually scanning spreadsheets for problems.</p>
+<section id="documentation-and-project-organization" class="level3">
+<h3 class="anchored" data-anchor-id="documentation-and-project-organization">Documentation and project organization</h3>
+<p>As you clean, <strong>comment your code</strong>. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove 'm' from elevation and convert to numeric. Note: one entry was '.', which becomes NA.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>field_data<span class="sc">$</span>elevation_m <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"m"</span>, <span class="st">""</span>, field_data<span class="sc">$</span>elevation_m))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This way, anyone reading the script (including you, two months later) knows why you did something. <strong>README files</strong>: A README for your data can detail: - Data source and collection methods. - What cleaning steps were done (in broad strokes). - Definitions of fields, units, codes. - Any known quirks (e.g., “Plot A04 was measured with a different method, values adjusted accordingly”). By including such documentation with your dataset (as a separate .md or .txt file), you ensure that context isn’t lost. This is akin to metadata you learned about on Day 1. <strong>Project structure</strong>: Keeping your work organized helps reproducibility. A common layout:</p>
+<p>my_project/ data/ raw/ # original raw data (read-only, do not edit manually) temp/ # intermediate files (if needed) clean/ # cleaned data output scripts/ 01_cleaning.R 02_analysis.R outputs/ figures/ tables/ README.md my_project.Rproj</p>
+<p>The idea is to separate raw data from generated results and code. The raw data is immutable (if an update comes, you add a new file or replace it but never mix with processed data). Scripts are numbered or named by stage (first cleaning, then analysis, etc.). Outputs are where plots or reports go. Using an RStudio Project (.Rproj) or otherwise setting your working directory to the project folder ensures that file paths are relative to the project (no more C:... hard-coded paths, which break on another computer). You might wanna check the package here: <code>here::here()</code> to manage paths easily.</p>
+<p>In your scripts, you might read data like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at C:/Users/ohagen/Documents/GitHub/course_DigitalCompetenceInTheBiologicalSciences</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">getwd</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/ohagen/Documents/GitHub/course_DigitalCompetenceInTheBiologicalSciences/days"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">i_am</span>(<span class="st">"data/raw/csv/Caxiuana_tree_trait_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at C:/Users/ohagen/Documents/GitHub/course_DigitalCompetenceInTheBiologicalSciences</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"data/raw/csv/Caxiuana_tree_trait_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since the working directory is the project, this path works for anyone who clones the project. Speaking of cloning…</p>
+</section>
+<section id="version-control-with-git" class="level3">
+<h3 class="anchored" data-anchor-id="version-control-with-git">Version control with Git</h3>
+<p>Git is a tool that tracks changes in files over time, enabling you to recall specific versions later. Think of it as a supercharged undo/redo that works even across sessions and collaborators.</p>
+<p>Key concepts: - <strong>Repository (repo):</strong> a folder that is tracked by Git. - <strong>Commit:</strong> a snapshot of the state of files with a message describing the changes. E.g., “Corrected elevation units and standardized plot IDs”. - <strong>History:</strong> a sequence of commits; you can navigate through them, see diffs (what changed), who changed what (if collaborating). - <strong>Branch:</strong> a parallel line of development. You can keep an experimental branch separate from main, then merge if it works out. - <strong>Remote (like GitHub/GitLab):</strong> an online copy of the repo for backup or collaboration. Why use Git for data science: - It provides <strong>backups</strong> and <strong>change history</strong> for your code (and even data, though large raw data files often better not version due to size). - If you break something in your script, you can compare to yesterday’s version and revert if needed. - It encourages small, documented changes (commits) – which parallels documenting your work scientifically. - Collaboration: multiple people can work on different parts of the project, merge contributions, review changes, etc. Even if working solo, using Git + a remote like GitHub means you won’t lose work if your laptop dies, and you can easily share your project (or publish it as supplementary material for a paper). For example, this course material is likely maintained in a Git repo. Every edit I (the instructor) make is tracked. Basic Git workflow: 1. <strong>Initialize a repo:</strong> git init (or use RStudio’s version control features to create a new project with Git). 2. <strong>Stage and commit files:</strong> git add script1.R; git commit -m “Added cleaning script” 3. <strong>Repeat commits</strong> as you reach logical milestones. 4. <strong>View history:</strong> git log (or GUI in RStudio/GitHub Desktop). 5. <strong>Undo/branch/merge</strong> as needed (more advanced, but incredibly useful as you get comfortable). Using Git through RStudio: RStudio has a Git pane where you see changes, diff, commit, push/pull if a remote is set. This can lower the barrier to entry. Important: version control is primarily for code and small text data. Large raw datasets are often kept outside Git (you might store them elsewhere and just version a small subset or a pointer). But your cleaning scripts and output summaries (which are text or code) fit well into version control.</p>
+</section>
+<section id="reproducible-reports-with-quartor-markdown" class="level3">
+<h3 class="anchored" data-anchor-id="reproducible-reports-with-quartor-markdown">Reproducible reports with Quarto/R Markdown</h3>
+<p>By now, you have code to clean and analyze data. The final step of any project is often to communicate results (figures, tables, conclusions). Quarto (the tool used to create these course notes) allows us to keep code and narrative in one document. This means: - The figures and stats in your report are generated by the actual code in that report, so they are always up-to-date with the latest data and analysis. - You can output to multiple formats (HTML web page, PDF article, Word doc, slides, etc.) from the same source file. - It encourages writing about what you’re doing as you do it, which is great for reflection and for others reading it. A Quarto document (.qmd) or R Markdown (.Rmd) has chunks of code interwoven with Markdown text. For instance: We found that the average DBH was 26.1289773 meters (n = 176 plots).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(trees<span class="sc">$</span>height, <span class="at">main=</span><span class="st">"Tree Height Distribution"</span>, <span class="at">xlab=</span><span class="st">"Height (m)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In the text above, <em>r expression</em> inserts the result of an R expression inline (like the mean). The chunk below it runs R code to produce a histogram (with echo: false meaning the code is hidden, only the plot shows). When you render this file (by clicking Render or using <em>quarto render</em> command), it will execute the code and insert the results in the final output.</p>
+<p>The beauty: if the data updates or you change a parameter, you re-render and all numbers and plots update automatically. No more copy-pasting results from R into Word manually (which is error-prone).</p>
+<p>Quarto is a next-gen version of R Markdown with support for multiple languages. We focus on R, but Quarto can also run Python, etc. under the hood.</p>
+<p>To tie it together: - Use scripts (<code>.R</code> files) for extensive data wrangling or exploratory work. - When you’re ready to create a report or publication, use a Quarto doc to perform the final analysis and generate output, with prose explaining each result.</p>
+<p>This course website is an example: all five days are written in Quarto, combining explanation (what you’re reading) and code (to generate any figures, etc.). It’s fully reproducible – you could run the Quarto files and regenerate the entire site.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Tip:</strong> Start small with reproducible docs. Maybe begin by using R Markdown for a simple analysis write-up or lab report, to get used to it. Over time, you’ll see the immense benefit of having everything in one place.</p>
+</div>
+</div>
+</section>
+<section id="automation-and-beyond" class="level3">
+<h3 class="anchored" data-anchor-id="automation-and-beyond">Automation and beyond</h3>
+<p>With clean data and scripted analysis, you can automate tasks: - Re-run everything with new data by a single command (great for recurring reports). - Set up continuous integration (CI) to run your analysis script on a schedule or when changes occur (beyond our scope, but a cool possibility). - Share your project (data+code) for others to reproduce or extend – practicing true open science.</p>
+<p>We also mention making use of packages for specific cleaning tasks: - <strong>janitor</strong> (has functions like <code>clean_names()</code> to sanitize column names, <code>tabyl()</code> for quick crosstabs for QA). - <strong>lubridate</strong> for date handling (to parse and normalize dates). - … etc. There’s a whole universe of tools; knowing they exist is half the battle.</p>
+<hr>
+</section>
+</section>
+<section id="wrap-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrap-up">Wrap-up</h2>
+<p>Today was about instilling rigor and order into the chaotic part of data analysis. We learned that cleaning data is not just pressing a few Excel buttons – it’s a process that benefits from careful thought, and coding it in R makes it reproducible and less error-prone. We saw the tidy data framework as a guide to structuring datasets, and we practiced thinking about common data issues and how to fix them in a systematic way.</p>
+<p>We also stepped back to look at the workflow as a whole: organizing files, using version control to track our progress, and using tools that knit everything together (like Quarto). These practices might require some setup and learning, but they pay off by making our work more reliable and easier to collaborate on.</p>
+<p>In the Belize scenario, this means our biodiversity data, once cleaned and properly documented, can be confidently used to derive insights, knowing that anyone could inspect our process (via scripts and Git history) and repeat the analysis themselves. We are essentially safeguarding the scientific integrity of our results by <strong>being transparent and reproducible</strong>.</p>
+<p>Tomorrow, in Day 5, we’ll take a higher-level view to discuss how the tools (Excel, R, etc.) and models we choose influence our science, and reflect on everything we’ve learned. We’ll also address any remaining questions and discuss where to go next in your data journey.</p>
+<p>By mastering the workflow up to this point, you’ve significantly upgraded your <em>digital competence</em> as a scientist – you can wrangle data, analyze it, and ensure that your work can be trusted and extended by others.</p>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reflection
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Think of a dataset you’ve worked with before: what was one issue that caused a headache, and how might you tackle it now with what you learned (tidy data, scripting, etc.)?</li>
+<li>Which tool or practice introduced today are you most likely to continue using (e.g., writing a README, using Git for your scripts, Quarto for reports)? Why?</li>
+<li>Do you foresee any challenges in convincing colleagues to adopt more reproducible workflows? How might you advocate for these practices?</li>
+</ul>
+<p>Please share your feedback for today’s session:<br>
+- <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZZ2nQ9-BsBKnyiCqyk4e85mxnxJVui3wAju8luJnp022Uyg/viewform?usp=publish-editor">Anonymous feedback</a></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

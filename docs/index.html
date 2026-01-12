@@ -42,11 +42,11 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -72,10 +72,25 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./assets/images/course-logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Digital Competence in the Biological Sciences</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -84,26 +99,13 @@ ul.task-list li input[type="checkbox"] {
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Digital Competence in the Biological Sciences</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Digital Competence in the Biological Sciences</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -124,21 +126,33 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./days/day01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 1 – What Data Is (and What It Is Not)</span></a>
+ <span class="menu-text">Day 1 – What ‘good’ Data Is</span></a>
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">days/day02.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./days/day02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 2 – Describing Data</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">days/day03.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./days/day03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 3 – From repetition to algorithms</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">days/day04.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./days/day04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 4 – Cleaning data and making work reproducible</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">days/day05.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./days/day05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 5 – Tools, models, and scientific responsibility</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -152,13 +166,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#course-overview" id="toc-course-overview" class="nav-link active" data-scroll-target="#course-overview">Course overview</a></li>
-  <li><a href="#how-this-course-fits-into-digitale-kompetenzen" id="toc-how-this-course-fits-into-digitale-kompetenzen" class="nav-link" data-scroll-target="#how-this-course-fits-into-digitale-kompetenzen">How this course fits into <em>Digitale Kompetenzen</em></a></li>
-  <li><a href="#teaching-philosophy" id="toc-teaching-philosophy" class="nav-link" data-scroll-target="#teaching-philosophy">Teaching philosophy</a></li>
+  <li><a href="#teaching-philosophy" id="toc-teaching-philosophy" class="nav-link" data-scroll-target="#teaching-philosophy">Teaching Philosophy</a></li>
   <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case study</a></li>
   <li><a href="#course-structure" id="toc-course-structure" class="nav-link" data-scroll-target="#course-structure">Course structure</a>
   <ul class="collapse">
-  <li><a href="#day-1-what-data-is-and-what-it-is-not" id="toc-day-1-what-data-is-and-what-it-is-not" class="nav-link" data-scroll-target="#day-1-what-data-is-and-what-it-is-not"><strong>Day 1 – What data is (and what it is not)</strong></a></li>
-  <li><a href="#day-2-describing-data-without-overinterpreting-it" id="toc-day-2-describing-data-without-overinterpreting-it" class="nav-link" data-scroll-target="#day-2-describing-data-without-overinterpreting-it"><strong>Day 2 – Describing data without overinterpreting it</strong></a></li>
+  <li><a href="#day-1-what-good-data-is" id="toc-day-1-what-good-data-is" class="nav-link" data-scroll-target="#day-1-what-good-data-is"><strong>Day 1 – What ‘good’ Data Is </strong></a></li>
+  <li><a href="#day-2-describing-data" id="toc-day-2-describing-data" class="nav-link" data-scroll-target="#day-2-describing-data"><strong>Day 2 – Describing Data </strong></a></li>
   <li><a href="#day-3-from-repetition-to-algorithms" id="toc-day-3-from-repetition-to-algorithms" class="nav-link" data-scroll-target="#day-3-from-repetition-to-algorithms"><strong>Day 3 – From repetition to algorithms</strong></a></li>
   <li><a href="#day-4-cleaning-data-and-making-work-reproducible" id="toc-day-4-cleaning-data-and-making-work-reproducible" class="nav-link" data-scroll-target="#day-4-cleaning-data-and-making-work-reproducible"><strong>Day 4 – Cleaning data and making work reproducible</strong></a></li>
   <li><a href="#day-5-tools-models-and-scientific-responsibility" id="toc-day-5-tools-models-and-scientific-responsibility" class="nav-link" data-scroll-target="#day-5-tools-models-and-scientific-responsibility"><strong>Day 5 – Tools, models, and scientific responsibility</strong></a></li>
@@ -198,93 +211,120 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="text-center">
+<p><img src="assets/images/course-logo.png" class="img-fluid" width="220"></p>
+</div>
 <section id="course-overview" class="level2">
 <h2 class="anchored" data-anchor-id="course-overview">Course overview</h2>
-<p>This course introduces biology students to <strong>digital competence in biological data handling</strong> using Excel and R.</p>
-<p>The focus is not on programming for its own sake, but on understanding how biological data are: - recorded, - structured, - summarized, - transformed, - interpreted, - and communicated.</p>
-<p>Excel and R are used as <strong>complementary tools</strong> within a broader data lifecycle, from data entry to reproducible analysis.</p>
+<p>This course introduces biology students to <strong>digital competence in data handling</strong> using Excel and R. Excel and R are used as <strong>complementary tools</strong> but principels are software agnostic within a broader best practices in data lifecycle, from data entry to reproducible analysis. Thus, the focus is not on programming for its own sake, but on understanding how biological data are: - recorded, - structured, - summarized, - transformed, - interpreted, - and communicated.</p>
 <p>The course is hands-on, biology-driven, and designed for students with <strong>no prior programming experience</strong>.</p>
-<hr>
-</section>
-<section id="how-this-course-fits-into-digitale-kompetenzen" class="level2">
-<h2 class="anchored" data-anchor-id="how-this-course-fits-into-digitale-kompetenzen">How this course fits into <em>Digitale Kompetenzen</em></h2>
-<p>This block seminar complements the <em>Digitale Kompetenzen für Studierende der Biowissenschaften</em> lecture series.</p>
 <ul>
-<li>The lecture introduces concepts (data, algorithms, modelling, statistics).</li>
+<li>The lecture introduces concepts (data, statistics, algorithms, modelling).</li>
 <li>This course makes those ideas <strong>tangible through practice</strong>.</li>
 </ul>
 <p>Topics such as inferential statistics, formal modelling, and machine learning are <strong>not taught here</strong>, but students are conceptually prepared for them.</p>
 <hr>
 </section>
 <section id="teaching-philosophy" class="level2">
-<h2 class="anchored" data-anchor-id="teaching-philosophy">Teaching philosophy</h2>
+<h2 class="anchored" data-anchor-id="teaching-philosophy">Teaching Philosophy</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>This is not a YouTube tutorial.</strong> Interrupt me. Ask questions. Tell me when something doesn’t make sense. Dialogue makes this course better for everyone.</p>
+</div>
+</div>
 <ul>
-<li>Tools serve questions, not the other way around</li>
-<li>Structure matters more than software</li>
-<li>Reproducibility is part of scientific responsibility</li>
-<li>Errors are normal and informative</li>
-<li>Understanding limits is as important as getting results</li>
+<li><p>🧠 <strong>Critical thinking and context trump technical skills</strong> We’re not here to memorize functions or paths in Excel. We’re here to think carefully about what data mean, how they’re collected, and why they matter.</p></li>
+<li><p>🎯 <strong>Tools serve questions, not the other way around</strong> R and Excel are just tools. You should always know what you’re trying to ask or answer first.</p></li>
+<li><p>🧩 <strong>Structure matters more than software</strong> Whether it’s a notebook or a database, how your data are organized determines what’s possible downstream.</p></li>
+<li><p>🔁 <strong>Reproducibility is part of scientific responsibility</strong> Your future self (and your collaborators) need to understand what you did and why. Think of code and data as shared lab notes.</p></li>
+<li><p>🐛 <strong>Errors are normal and informative</strong> They’re not signs of failure—they’re clues. Every bug is a question you’ve been invited to ask.</p></li>
+<li><p>⚖️ <strong>Understanding limits is as important as getting results</strong> No tool or model gives truth. Knowing when something breaks matters more than making it work.</p></li>
 </ul>
-<p>Students work <strong>alone</strong> or <strong>in pairs</strong> throughout the course, enabling peer learning and collaborative problem solving.</p>
 <hr>
 </section>
 <section id="case-study" class="level2">
 <h2 class="anchored" data-anchor-id="case-study">Case study</h2>
-<p>All exercises are based on a <strong>real-world biodiversity monitoring and conservation scenarios</strong> from a national protected area in Belize.</p>
-<p>Using a single evolving case study allows students to focus on: - reasoning instead of context switching, - continuity across days, - realistic data problems rather than artificial examples.</p>
+<p>All exercises are based on a <strong>real-world biodiversity monitoring and conservation scenarios</strong> from a national protected area in Belize. Data are inspired by actual monitoring programs, but simplified for teaching purposes and modified to avoid unnecessary sensitive information sharing.</p>
+<p>Using a single evolving case study will allow you to focus on: - reasoning instead of context switching, - continuity across days, - real world data problems rather than artificial examples.</p>
 <hr>
 </section>
 <section id="course-structure" class="level2">
 <h2 class="anchored" data-anchor-id="course-structure">Course structure</h2>
-<p>The course runs for <strong>5 days (3 hours each)</strong>. Each day builds on the previous one and introduces one central idea.</p>
+<p>The course runs for <strong>5 days (3 hours each)</strong>. Each day builds on the previous one and is divided into three 45 minutes lectures and/or exercises with two 15 minute breaks in between and a final 15 minute wrap-up sessions.</p>
 <hr>
-<section id="day-1-what-data-is-and-what-it-is-not" class="level3">
-<h3 class="anchored" data-anchor-id="day-1-what-data-is-and-what-it-is-not"><strong>Day 1 – What data is (and what it is not)</strong></h3>
-<p><em>Excel as a data entry and structuring tool</em></p>
+<section id="day-1-what-good-data-is" class="level3">
+<h3 class="anchored" data-anchor-id="day-1-what-good-data-is"><strong>Day 1 – What ‘good’ Data Is </strong></h3>
+<p><em>From observations to structured tables (Excel in context)</em></p>
 <ul>
 <li>Observations, variables, metadata</li>
 <li>Data as a simplified representation of reality</li>
 <li>Risks of inconsistency and missing context</li>
-<li>Excel templates for structured data entry</li>
+<li>The Good, the Bad and the Ugly in Excel</li>
+<li>Data life cycle and FAIR principles overview</li>
+<li>Designing analysis-ready tables and entry templates</li>
 </ul>
 <p><strong>Key idea</strong><br>
-All datasets are already models of reality.</p>
+All datasets are already models of reality. Basic organization of data. Basic data quality issues.</p>
 <hr>
 </section>
-<section id="day-2-describing-data-without-overinterpreting-it" class="level3">
-<h3 class="anchored" data-anchor-id="day-2-describing-data-without-overinterpreting-it"><strong>Day 2 – Describing data without overinterpreting it</strong></h3>
-<p><em>Excel for descriptive statistics and visualization</em></p>
+<section id="day-2-describing-data" class="level3">
+<h3 class="anchored" data-anchor-id="day-2-describing-data"><strong>Day 2 – Describing Data </strong></h3>
+<p><em>Descriptive statistics and visualization (Excel to R)</em></p>
 <ul>
+<li>Summary statistics: centre, spread, outliers</li>
 <li>Mean, median, variance</li>
 <li>Distributions and variability</li>
 <li>Visualizations as summaries, not proofs</li>
 <li>Honest and misleading plots</li>
+<li>Repeated tasks and scalability</li>
+<li>Transition from Excel to R</li>
+<li>First R contact: import data, compute summaries, make a plot</li>
+<li>Reading and writing: CSV/TSV safely, encoding basics</li>
 </ul>
 <p><strong>Key idea</strong><br>
-Descriptive statistics summarize observations, not explanations.</p>
+Descriptive statistics summarize observations, not explanations. Summary statistics and visualizations are tools to understand data. Further doing data visualization. Testing assumptions and groups differences from data on Dayu one</p>
 <hr>
 </section>
 <section id="day-3-from-repetition-to-algorithms" class="level3">
 <h3 class="anchored" data-anchor-id="day-3-from-repetition-to-algorithms"><strong>Day 3 – From repetition to algorithms</strong></h3>
 <p><em>Why R exists</em></p>
 <ul>
-<li>Repeated tasks and scalability</li>
 <li>Algorithms as explicit procedures</li>
-<li>Deterministic workflows</li>
-<li>Transition from Excel to R</li>
+<li>Programming logic 101 and pseudocode</li>
+<li>Core Atomic Data Types in R including missing values (e.g.&nbsp;NA, NaN, Inf, -Inf, NULL, etc.)</li>
+<li>Common Data Structures (vectors, lists, data frames, matrices, arrays)</li>
+<li>Vectorized thinking Loops and conditionals</li>
+<li>Functions and arguments</li>
+<li>Functions: using them, then writing tiny ones</li>
+<li>Packages and R philosophy</li>
 </ul>
 <p><strong>Key idea</strong><br>
-Algorithms replace memory and intuition with explicit instructions.</p>
+A small toolbox script: import, check, summarise, plot. Algorithms replace memory and intuition with explicit instructions.</p>
 <hr>
 </section>
 <section id="day-4-cleaning-data-and-making-work-reproducible" class="level3">
 <h3 class="anchored" data-anchor-id="day-4-cleaning-data-and-making-work-reproducible"><strong>Day 4 – Cleaning data and making work reproducible</strong></h3>
 <p><em>R as a data workbench</em></p>
 <ul>
+<li>Cleaning as scientific work: decisions, assumptions, traceability</li>
+<li>Tidy data: reshaping and joining tables</li>
+<li>Quality control checks as code, CI, and tests</li>
+<li>Documentation: comments, READMEs, and metadata</li>
+<li>Reproducibility: scripts, projects, folder structure</li>
 <li>Data cleaning as scientific work</li>
 <li>Data transformation and reshaping</li>
 <li>Scripts as documentation</li>
 <li>Reproducible workflows</li>
+<li>Version control basics (Git)</li>
+<li>Creating automated reports with R (Quarto: one-button from raw data to figures pdfs, docs and websites)</li>
 </ul>
 <p><strong>Key idea</strong><br>
 If you cannot rerun it, you cannot defend it.</p>
@@ -295,9 +335,11 @@ If you cannot rerun it, you cannot defend it.</p>
 <p><em>Synthesis and outlook</em></p>
 <ul>
 <li>Models as simplified representations</li>
+<li>Official course evaluation (admin part)</li>
 <li>Tool choice as a scientific decision</li>
-<li>Strengths and limits of Excel and R</li>
-<li>Mini-project and reflection</li>
+<li>What you wanted (from previous daily feed backs or unfinished business)</li>
+<li>Remembering strengths and limits of Excel and R in the Data Lifecycle</li>
+<li>Course reflection and open discussion</li>
 </ul>
 <p><strong>Key idea</strong><br>
 All models are wrong. Some are useful.</p>
@@ -306,7 +348,7 @@ All models are wrong. Some are useful.</p>
 </section>
 <section id="what-you-will-be-able-to-do-after-this-course" class="level2">
 <h2 class="anchored" data-anchor-id="what-you-will-be-able-to-do-after-this-course">What you will be able to do after this course</h2>
-<p>By the end of the course, students will be able to:</p>
+<p>By the end of the course, you will be able to:</p>
 <ul>
 <li>Gain an overview of what excel and scripting languages can and can not do</li>
 <li>Organize biological data in a structured and transparent way</li>
@@ -321,7 +363,7 @@ All models are wrong. Some are useful.</p>
 <section id="how-to-use-this-website" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-this-website">How to use this website</h2>
 <ul>
-<li>This website is the <strong>single source</strong> for the course</li>
+<li>This website is the <strong>main source</strong> for the course</li>
 <li>All materials, exercises, and datasets are available here</li>
 <li>Slides are optional; the pages themselves are complete</li>
 <li>If something is not documented here, it is not required</li>
