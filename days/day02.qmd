@@ -317,7 +317,9 @@ R is a programming language and environment specifically designed for data analy
 
 
 To follow along:
+
 1. **Open RStudio.** You’ll see the Console in one pane and possibly an empty script editor in another. You can type R commands directly into the Console, or write a script in the editor pane and run it.
+
 2. **Create a new R script:** Go to *File → New File → R Script*. This allows you to save a record of your commands (which is great for reproducibility).
 
 ### Importing a dataset into R
@@ -394,6 +396,7 @@ This single line replaces what might be a complex PivotTable in Excel, giving us
 ::: {.callout-tip icon="🧪"}
 ### Group exercise: Summarize and plot in R (15 min)
 Work in pairs (one “driver” at the keyboard, one “navigator” guiding):
+
 1.	Load the dataset [`csv/Caxiuana_tree_trait_data.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv) into R.
 
 Alternatively, load the Excel file [Foresty/PLOT_Data_2020/PLOT_2016.10_2020.xlsx](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/Foresty/PLOT_Data_2020/PLOT_2016.10_2020.xlsx) into R. For this, you will need a package, i.e. *openxls* to  load a .xlsx file, specifically the read.xlsx() function.
@@ -402,17 +405,27 @@ install.packages("openxlsx")  # run this line once to install openxlsx
 library(openxlsx)
 fplot <- read.xlsx("./data/raw/Foresty/PLOT_Data_2020/PLOT_2016.10_2020.xlsx",sheet=1, startRow=9)[-1,]
 ```
+
 Try to figure out what this is doing!
+
 2.	Using R, calculate the mean and median of a key variable across all observations.
+
 3.	Now calculate the same statistics **Plot** if using the .csv or by dbh sizes (ie. below 2 or equal and bigger than 2) if using .xlsx (hint: use aggregate() or explore the tapply() function).
+
 4.	Create a histogram of the variable and a boxplot comparing the distributions between the categories.
+
 5.	Discuss with your partner: Do the mean and median differ notably? What does that tell you about the distribution (skewness or outliers)? Did you intuition matched what you saw on the histogram?
+
 *Switch roles (driver/navigator) halfway through if time.* This exercise gives you first-hand experience with R's commands. Don’t worry if you get stuck – use ?functionName (e.g. ?mean) to access R’s help, or ask an instructor for a hint. Soon we will dive deeper
 :::
 
 ### Exporting data and results
 Just as important as reading data into R is writing it out. If you cleaned or summarized data in R, you might want to save it as a CSV to share or to use in a report:
+
+```{r eval=F}
 write.csv(trees, "data/clean/trees_clean.csv", row.names = FALSE)
+```
+
 This would save our trees data frame to a new CSV file (without including row numbers as an extra column). By default, write.csv writes in UTF-8 encoding on most systems, which will preserve special characters.
 R can also save plots to files (PNG, PDF, etc.). Another powerful approach is to use R Markdown or Quarto (as we are doing for these course materials) to integrate text, code, and plots in one reproducible document. We will delve into that on Day 4.
 For now, the key point is: with a few lines of code, we imported data, computed summaries, made plots, and saved outputs. Once written, we can reuse this code anytime with new data, ensuring consistent analysis. This is a taste of what’s possible as we move further into R.

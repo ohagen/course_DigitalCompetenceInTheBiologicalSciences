@@ -562,7 +562,11 @@ Tip
 <section id="first-steps-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="first-steps-in-r">First steps in R</h2>
 <p>R is a programming language and environment specifically designed for data analysis and statistics. We will use R through <strong>RStudio</strong>, a user-friendly interface.</p>
-<p>To follow along: 1. <strong>Open RStudio.</strong> You’ll see the Console in one pane and possibly an empty script editor in another. You can type R commands directly into the Console, or write a script in the editor pane and run it. 2. <strong>Create a new R script:</strong> Go to <em>File → New File → R Script</em>. This allows you to save a record of your commands (which is great for reproducibility).</p>
+<p>To follow along:</p>
+<ol type="1">
+<li><p><strong>Open RStudio.</strong> You’ll see the Console in one pane and possibly an empty script editor in another. You can type R commands directly into the Console, or write a script in the editor pane and run it.</p></li>
+<li><p><strong>Create a new R script:</strong> Go to <em>File → New File → R Script</em>. This allows you to save a record of your commands (which is great for reproducibility).</p></li>
+</ol>
 <section id="importing-a-dataset-into-r" class="level3">
 <h3 class="anchored" data-anchor-id="importing-a-dataset-into-r">Importing a dataset into R</h3>
 <p>We will start by importing a CSV file of data (for example, the tree measurement dataset we structured on Day 1). In Excel, we opened this file by double-clicking or via <em>Data → Import</em>. In R, we use a function call.</p>
@@ -639,20 +643,34 @@ Group exercise: Summarize and plot in R (15 min)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Work in pairs (one “driver” at the keyboard, one “navigator” guiding): 1. Load the dataset <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv"><code>csv/Caxiuana_tree_trait_data.csv</code></a> into R.</p>
+<p>Work in pairs (one “driver” at the keyboard, one “navigator” guiding):</p>
+<ol type="1">
+<li>Load the dataset <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv"><code>csv/Caxiuana_tree_trait_data.csv</code></a> into R.</li>
+</ol>
 <p>Alternatively, load the Excel file <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/Foresty/PLOT_Data_2020/PLOT_2016.10_2020.xlsx">Foresty/PLOT_Data_2020/PLOT_2016.10_2020.xlsx</a> into R. For this, you will need a package, i.e.&nbsp;<em>openxls</em> to load a .xlsx file, specifically the read.xlsx() function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"openxlsx"</span>)  <span class="co"># run this line once to install openxlsx</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fplot <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">"./data/raw/Foresty/PLOT_Data_2020/PLOT_2016.10_2020.xlsx"</span>,<span class="at">sheet=</span><span class="dv">1</span>, <span class="at">startRow=</span><span class="dv">9</span>)[<span class="sc">-</span><span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Try to figure out what this is doing! 2. Using R, calculate the mean and median of a key variable across all observations. 3. Now calculate the same statistics <strong>Plot</strong> if using the .csv or by dbh sizes (ie. below 2 or equal and bigger than 2) if using .xlsx (hint: use aggregate() or explore the tapply() function). 4. Create a histogram of the variable and a boxplot comparing the distributions between the categories. 5. Discuss with your partner: Do the mean and median differ notably? What does that tell you about the distribution (skewness or outliers)? Did you intuition matched what you saw on the histogram? <em>Switch roles (driver/navigator) halfway through if time.</em> This exercise gives you first-hand experience with R’s commands. Don’t worry if you get stuck – use ?functionName (e.g.&nbsp;?mean) to access R’s help, or ask an instructor for a hint. Soon we will dive deeper</p>
+<p>Try to figure out what this is doing!</p>
+<ol start="2" type="1">
+<li><p>Using R, calculate the mean and median of a key variable across all observations.</p></li>
+<li><p>Now calculate the same statistics <strong>Plot</strong> if using the .csv or by dbh sizes (ie. below 2 or equal and bigger than 2) if using .xlsx (hint: use aggregate() or explore the tapply() function).</p></li>
+<li><p>Create a histogram of the variable and a boxplot comparing the distributions between the categories.</p></li>
+<li><p>Discuss with your partner: Do the mean and median differ notably? What does that tell you about the distribution (skewness or outliers)? Did you intuition matched what you saw on the histogram?</p></li>
+</ol>
+<p><em>Switch roles (driver/navigator) halfway through if time.</em> This exercise gives you first-hand experience with R’s commands. Don’t worry if you get stuck – use ?functionName (e.g.&nbsp;?mean) to access R’s help, or ask an instructor for a hint. Soon we will dive deeper</p>
 </div>
 </div>
 </section>
 <section id="exporting-data-and-results" class="level3">
 <h3 class="anchored" data-anchor-id="exporting-data-and-results">Exporting data and results</h3>
-<p>Just as important as reading data into R is writing it out. If you cleaned or summarized data in R, you might want to save it as a CSV to share or to use in a report: write.csv(trees, “data/clean/trees_clean.csv”, row.names = FALSE) This would save our trees data frame to a new CSV file (without including row numbers as an extra column). By default, write.csv writes in UTF-8 encoding on most systems, which will preserve special characters. R can also save plots to files (PNG, PDF, etc.). Another powerful approach is to use R Markdown or Quarto (as we are doing for these course materials) to integrate text, code, and plots in one reproducible document. We will delve into that on Day 4. For now, the key point is: with a few lines of code, we imported data, computed summaries, made plots, and saved outputs. Once written, we can reuse this code anytime with new data, ensuring consistent analysis. This is a taste of what’s possible as we move further into R.</p>
+<p>Just as important as reading data into R is writing it out. If you cleaned or summarized data in R, you might want to save it as a CSV to share or to use in a report:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(trees, <span class="st">"data/clean/trees_clean.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This would save our trees data frame to a new CSV file (without including row numbers as an extra column). By default, write.csv writes in UTF-8 encoding on most systems, which will preserve special characters. R can also save plots to files (PNG, PDF, etc.). Another powerful approach is to use R Markdown or Quarto (as we are doing for these course materials) to integrate text, code, and plots in one reproducible document. We will delve into that on Day 4. For now, the key point is: with a few lines of code, we imported data, computed summaries, made plots, and saved outputs. Once written, we can reuse this code anytime with new data, ensuring consistent analysis. This is a taste of what’s possible as we move further into R.</p>
 <hr>
 </section>
 </section>
