@@ -24,7 +24,7 @@ _freeze/
 *.utf8.md
 
 # Optional: ignore rendered HTML
-*.html
+# *.html
 
 # -------------------------
 # OS files

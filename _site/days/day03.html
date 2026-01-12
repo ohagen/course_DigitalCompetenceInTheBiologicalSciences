@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Day 3 – From repetition to algorithms – Digital Competence in the Biological Sciences</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/images/course-logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Digital Competence in the Biological Sciences</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../days/day01.html">Course Days</a></li><li class="breadcrumb-item"><a href="../days/day03.html">Day 3 – From repetition to algorithms</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Digital Competence in the Biological Sciences</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Course Days</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../days/day01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 1 – What ‘good’ Data Is</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../days/day02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 2 – Describing Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../days/day03.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Day 3 – From repetition to algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../days/day04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 4 – Cleaning data and making work reproducible</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../days/day05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 5 – Tools, models, and scientific responsibility</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#from-manual-steps-to-algorithms" id="toc-from-manual-steps-to-algorithms" class="nav-link" data-scroll-target="#from-manual-steps-to-algorithms">From manual steps to algorithms</a>
+  <ul class="collapse">
+  <li><a href="#thinking-in-algorithms-a-simple-example" id="toc-thinking-in-algorithms-a-simple-example" class="nav-link" data-scroll-target="#thinking-in-algorithms-a-simple-example">Thinking in algorithms: a simple example</a></li>
+  <li><a href="#control-flow-sequence-selection-repetition" id="toc-control-flow-sequence-selection-repetition" class="nav-link" data-scroll-target="#control-flow-sequence-selection-repetition">Control flow: sequence, selection, repetition</a></li>
+  </ul></li>
+  <li><a href="#data-types-and-structures-in-r" id="toc-data-types-and-structures-in-r" class="nav-link" data-scroll-target="#data-types-and-structures-in-r">Data types and structures in R</a>
+  <ul class="collapse">
+  <li><a href="#atomic-data-types-in-r" id="toc-atomic-data-types-in-r" class="nav-link" data-scroll-target="#atomic-data-types-in-r">Atomic data types in R</a></li>
+  <li><a href="#european-space-agencys-ariane-5-rocket-failure" id="toc-european-space-agencys-ariane-5-rocket-failure" class="nav-link" data-scroll-target="#european-space-agencys-ariane-5-rocket-failure">🚀💥💶💩 European Space Agency’s Ariane 5 rocket failure</a></li>
+  <li><a href="#the-blunt-distinction-with-ranges" id="toc-the-blunt-distinction-with-ranges" class="nav-link" data-scroll-target="#the-blunt-distinction-with-ranges">The blunt distinction (with ranges)</a></li>
+  <li><a href="#two-clarifications-worth-remembering" id="toc-two-clarifications-worth-remembering" class="nav-link" data-scroll-target="#two-clarifications-worth-remembering">Two clarifications worth remembering</a></li>
+  <li><a href="#data-structures-in-r" id="toc-data-structures-in-r" class="nav-link" data-scroll-target="#data-structures-in-r">Data structures in R</a></li>
+  <li><a href="#example-dealing-with-missing-values" id="toc-example-dealing-with-missing-values" class="nav-link" data-scroll-target="#example-dealing-with-missing-values">Example: dealing with missing values</a></li>
+  <li><a href="#vectorized-thinking-versus-loops" id="toc-vectorized-thinking-versus-loops" class="nav-link" data-scroll-target="#vectorized-thinking-versus-loops">Vectorized thinking versus loops</a></li>
+  <li><a href="#understanding-functions-in-r" id="toc-understanding-functions-in-r" class="nav-link" data-scroll-target="#understanding-functions-in-r">Understanding functions in R</a></li>
+  <li><a href="#a-brief-note-on-packages" id="toc-a-brief-note-on-packages" class="nav-link" data-scroll-target="#a-brief-note-on-packages">A brief note on packages</a></li>
+  </ul></li>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap-up</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../days/day01.html">Course Days</a></li><li class="breadcrumb-item"><a href="../days/day03.html">Day 3 – From repetition to algorithms</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Day 3 – From repetition to algorithms</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-goals" class="level2">
+<h2 class="anchored" data-anchor-id="learning-goals">Learning goals</h2>
+<p>By the end of this day, you should be able to:</p>
+<ul>
+<li>explain what an algorithm is and why formalizing steps is important</li>
+<li>read and write simple pseudocode to plan a solution</li>
+<li>understand core data types in R (numeric, character, logical, etc.) including how R handles missing values</li>
+<li>use common data structures in R (vectors, matrices, data frames, lists) and understand their differences</li>
+<li>write basic R code with loops (<code>for</code>, <code>while</code>) and conditional statements (<code>if</code>)</li>
+<li>create and use your own functions in R to automate tasks</li>
+<li>import and use packages in R, understanding the role of the R ecosystem</li>
+</ul>
+<p>No prior programming experience is assumed, though familiarity with R basics from Day 2 will help.</p>
+<hr>
+</section>
+<section id="motivation" class="level2">
+<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
+<p>Yesterday we saw that doing repetitive analysis manually is laborious. <strong>Programming</strong> allows us to express repetitive or complex tasks as a clear set of instructions – an algorithm – so the computer can execute them quickly and consistently. Just as a recipe guides a cook through steps to bake a cake, an algorithm guides the computer through steps to solve a problem. Today, we’ll demystify programming by starting with simple logic and gradually building up to writing our own small functions in R. The goal isn’t to turn you into software engineers overnight, but to show how a little coding can save a lot of time and prevent errors.</p>
+<hr>
+</section>
+<section id="agenda" class="level2">
+<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+<p><strong>13:30–14:15 | Block 1 – Algorithms and pseudocode</strong><br>
+- Why we need algorithms: replacing repetitive manual work with clear instructions<br>
+- Algorithms in everyday life (recipes, protocols)<br>
+- Writing pseudocode: planning a solution in plain language<br>
+- Flow of logic: sequence, decisions (if/else), repetition (loops)<br>
+- Example: pseudocode for a simple data cleaning task</p>
+<p><strong>14:15–14:30 | Break</strong> ☕️</p>
+<p><strong>14:30–15:15 | Block 2 – Programming basics in R</strong><br>
+- Core data types in R: numeric, integer, character, logical; special values (<code>NA</code>, <code>NaN</code>, <code>Inf</code>, <code>NULL</code>)<br>
+- Data structures: vectors (atomic vectors), matrices/arrays, lists, data frames (tibbles)<br>
+- Indexing and subsetting data (extracting elements by position or name)<br>
+- Vectorized operations in R (working with whole sets of values at once)<br>
+- Loops (<code>for</code> loops to iterate; <code>if</code> statements for branching)<br>
+- Comparing vectorization vs looping in R with examples</p>
+<p><strong>15:15–15:30 | Break</strong> ☕️</p>
+<p><strong>15:30–16:15 | Block 3 – Functions and tooling in R</strong><br>
+- Using built-in functions and understanding function arguments<br>
+- Writing your own functions (syntax: <code>function(name) { body }</code>)<br>
+- Function examples: a simple conversion or calculation<br>
+- Debugging basics: reading error messages, using <code>print()</code> for insight<br>
+- The R ecosystem: packages and libraries (using <code>install.packages</code> and <code>library</code> to extend R’s capabilities)<br>
+- Example: using a package (e.g., <code>ggplot2</code> or <code>readr</code>) to illustrate how community-contributed tools enhance productivity<br>
+- (Optional) Brief mention of RStudio features for coding (autocomplete, help pane)</p>
+<p><strong>16:15–16:30 | Reflection, discussion, and outlook</strong> 🧠<br>
+- What concept was most challenging, and how might you get more practice?<br>
+- Can you identify a repetitive task in your work that could be turned into an algorithm?<br>
+- What would you like to automate or improve with programming going forward?<br>
+- Preview of Day 4: cleaning data and ensuring reproducibility with code</p>
+<hr>
+</section>
+<section id="from-manual-steps-to-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="from-manual-steps-to-algorithms">From manual steps to algorithms</h2>
+<p>Using R effectively means learning to <strong>think like a programmer</strong>, which starts with understanding algorithms and logic.</p>
+<p><strong>Algorithm</strong> is a step-by-step procedure to accomplish a task. It’s like a cooking recipe: a clear sequence of instructions that leads to a desired outcome. In data analysis, an algorithm could be something like: <em>“For each observation, if the value is negative, mark it as an outlier; otherwise include it in the summary.”</em></p>
+<p>Writing out an algorithm forces you to be precise about what needs to be done – and in what order. Even sorting a list of numbers or calculating a summary statistic involves an algorithm (either one you write, or one built into a software tool).</p>
+<section id="thinking-in-algorithms-a-simple-example" class="level3">
+<h3 class="anchored" data-anchor-id="thinking-in-algorithms-a-simple-example">Thinking in algorithms: a simple example</h3>
+<p>Let’s say we want to compute the <strong>average (mean)</strong> of a list of numbers without using a built-in formula: 1. Take a list of numbers (our input). 2. Set a counter <code>count</code> to 0 and a <code>sum</code> to 0. 3. For each number in the list: add it to <code>sum</code> and add 1 to <code>count</code>. 4. After the loop, compute <code>average = sum / count</code>. 5. Output the <code>average</code>.</p>
+<p>This is an algorithm for the mean. It’s conceptually what the formula does, but written as explicit steps. We could write it in plain English, as above, or in a structured</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pseudocode<span class="sc">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Pseudocode<span class="sc">:</span> Calculate Mean</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>initialize sum <span class="ot">=</span> <span class="dv">0</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>initialize count <span class="ot">=</span> <span class="dv">0</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> each value <span class="cf">in</span> the list<span class="sc">:</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  sum <span class="ot">=</span> sum <span class="sc">+</span> value count <span class="ot">=</span> count <span class="sc">+</span> <span class="dv">1</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> count is <span class="dv">0</span><span class="sc">:</span> return <span class="st">"No data"</span> <span class="sc">/</span><span class="er">/</span> avoid division by zero </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span><span class="sc">:</span> mean <span class="ot">=</span> sum <span class="sc">/</span> count return mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Even if you never coded before, this pseudocode is understandable. It’s essentially how you would explain the process to someone else. The computer, however, needs it in a more formal language (like R). But writing pseudocode first helps clarify your logic before worrying about R syntax.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Tip:</strong> When tackling a programming task, it often helps to write out the steps in pseudocode or plain language first. This separates the problem-solving from the syntax. Once the steps make sense, you can translate them into code.</p>
+</div>
+</div>
+</section>
+<section id="control-flow-sequence-selection-repetition" class="level3">
+<h3 class="anchored" data-anchor-id="control-flow-sequence-selection-repetition">Control flow: sequence, selection, repetition</h3>
+<p>Algorithms often involve: - <strong>Sequence:</strong> executing instructions in order. - <strong>Selection (branching):</strong> making decisions (if X is true, do this, otherwise do that). - <strong>Repetition:</strong> doing something multiple times (looping).</p>
+<p>In our mean calculation example: - Sequence: we had steps to follow one after another. - Selection: we used an <code>if</code> to check if <code>count</code> is 0 at the end. - Repetition: the “for each value” part is a loop.</p>
+<p>Another everyday example – a protocol for labeling samples: For each collected sample: if sample has a barcode: scan the barcode else: assign a temporary ID and record it</p>
+<p>This algorithm loops over each sample (repetition) and does one of two things depending on a condition (selection). Thinking algorithmically is largely about breaking problems into these logical components.</p>
+<hr>
+</section>
+</section>
+<section id="data-types-and-structures-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="data-types-and-structures-in-r">Data types and structures in R</h2>
+<p>Now let’s bring these ideas into R. Programming in R (or any language) requires understanding how the language represents data and what operations it provides.</p>
+<section id="atomic-data-types-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="atomic-data-types-in-r">Atomic data types in R</h3>
+<p>R has a few <strong>atomic data types</strong> (the simplest building blocks), this :</p>
+<ul>
+<li><strong>Numeric:</strong> for numbers (real numbers). <em>Example:</em> <code>42</code>, <code>3.14</code>. (R by default treats numbers as double-precision floats.)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fl">10.1</span>) <span class="co">#asks: How should R treat this conceptually?</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#response: "numeric"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fl">10.1</span>) <span class="co">#asks: How is this stored in memory?</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#response: "double"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><strong>Integer:</strong> for integer numbers. <em>Example:</em> <code>42L</code> (the <code>L</code> suffix denotes an integer in R, though usually R will convert to numeric if not specified).</li>
+<li><strong>Character:</strong> for text strings. <em>Example:</em> <code>"Hello world"</code>, <code>"Panthera onca"</code> (species name).</li>
+<li><strong>Logical (Boolean):</strong> for TRUE/FALSE values. <em>Example:</em> <code>TRUE</code>, <code>FALSE</code>. (Often the result of comparisons like <code>5 &gt; 3</code> yields <code>TRUE</code>.)</li>
+<li><strong>Factor:</strong> a special type for categorical data (underlyingly stored as integers with labels).</li>
+<li><strong>Complex</strong> (for complex numbers) and <strong>Raw</strong> (for raw bytes) exist, but are rarely used in typical data analysis.</li>
+</ul>
+</section>
+<section id="european-space-agencys-ariane-5-rocket-failure" class="level3">
+<h3 class="anchored" data-anchor-id="european-space-agencys-ariane-5-rocket-failure">🚀💥💶💩 European Space Agency’s Ariane 5 rocket failure</h3>
+<p>why it matters to learn about data types</p>
+<div class="external-figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2002/02/ariane_5_v119/9172155-5-eng-GB/Ariane_5_V119_pillars.jpg" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Ariane 5</figcaption>
+</figure>
+</div>
+<div class="figure-source">
+<p>Source: <a href="https://www.esa.int/Space_in_Member_States/Germany/Die_Ariane_5_Der_neue_Standardtraeger" target="_blank" rel="noopener">ESA The European Space Agency</a></p>
+</div>
+</div>
+<ul>
+<li>Launch date: <strong>4 June 1996</strong></li>
+<li>Failure time: <strong>37 seconds after liftoff</strong></li>
+<li>Cost: <strong>≈ €370 million</strong></li>
+<li>Cause: <strong>numeric overflow</strong></li>
+<li>Trigger: conversion of a <strong>64-bit floating-point value</strong> to a <strong>16-bit signed integer</strong></li>
+<li>Why it happened: code reused from Ariane 4, where this value could <em>never</em> exceed the integer range</li>
+<li>Result: inertial reference system shut down, guidance lost, automatic self-destruction</li>
+</ul>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>What “double” actually means</strong></p>
+<p>A double-precision number is stored as:</p>
+<ul>
+<li>1 bit: sign (positive or negative)</li>
+<li>11 bits: exponent (how big or small the number is)</li>
+<li>52 bits: mantissa (the significant digits)</li>
+</ul>
+<p>So internally, a number looks like:</p>
+<p>± (significant digits) × 2^(exponent)</p>
+<p><em>Base 2, not base 10. That detail matters more than people expect.</em> Because numbers are stored in binary, many decimal values cannot be represented exactly.</p>
+<p>Example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.1</span> <span class="sc">+</span> <span class="fl">0.2</span> <span class="sc">==</span> <span class="fl">0.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>returns FALSE in R.</p>
+<p>This is not a bug, it’s binary arithmetic. What the computer actually stores is closer to:</p>
+<p>0.30000000000000004</p>
+<p>Usually harmless. Occasionally disastrous. Always worth remembering.</p>
+<p>Real world: climate and biodiversity models accumulating rounding error over thousands of iterations.</p>
+</div>
+</div>
+</section>
+<section id="the-blunt-distinction-with-ranges" class="level3">
+<h3 class="anchored" data-anchor-id="the-blunt-distinction-with-ranges">The blunt distinction (with ranges)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>numeric</th>
+<th>integer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Storage</td>
+<td>double precision float</td>
+<td>32-bit integer</td>
+</tr>
+<tr class="even">
+<td>Range</td>
+<td>approx ±1.8 × 10³⁰⁸</td>
+<td>−2,147,483,648 to 2,147,483,647</td>
+</tr>
+<tr class="odd">
+<td>Decimal points</td>
+<td>allowed</td>
+<td>not allowed</td>
+</tr>
+<tr class="even">
+<td>Exact representation</td>
+<td>often approximate</td>
+<td>exact (within range)</td>
+</tr>
+<tr class="odd">
+<td>Default type</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr class="even">
+<td>Memory</td>
+<td>8 bytes</td>
+<td>4 bytes</td>
+</tr>
+<tr class="odd">
+<td>Class</td>
+<td><code>"numeric"</code></td>
+<td><code>"integer"</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="two-clarifications-worth-remembering" class="level3">
+<h3 class="anchored" data-anchor-id="two-clarifications-worth-remembering">Two clarifications worth remembering</h3>
+<p><strong>Range ≠ precision</strong><br>
+Numerics can be astronomically large or tiny, but only about <strong>15–16 decimal digits</strong> are reliable.<br>
+Integers are exact, but brutally finite.</p>
+<p><strong>Integers fail loudly, numerics fail quietly</strong><br>
+Exceed the integer range and you get <code>NA</code> with a warning.<br>
+Push doubles too far and you get rounding, overflow to <code>Inf</code>, or underflow to zero. No warning.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#One-line R demo (integer overflow)**  </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>.Machine<span class="sc">$</span>integer.max<span class="sc">+</span><span class="dv">0</span>L</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#precision double</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fl">1.00000000001</span><span class="dv">-1</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fl">1.00000000000001</span><span class="dv">-1</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fl">1.000000000000001</span><span class="dv">-1</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fl">1.0000000000000001</span><span class="dv">-1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>R also has some special values:</p>
+<ul>
+<li><strong>NA:</strong> “Not Available,” a missing value placeholder. There are <code>NA</code> versions for each type (numeric NA, character NA, etc., but usually just <code>NA</code> works and propagates appropriately).</li>
+<li><strong>NaN:</strong> “Not a Number,” a result of undefined mathematical operations (like 0/0). It’s a type of numeric NA.</li>
+<li><strong>Inf</strong> and <strong>-Inf:</strong> positive or negative infinity (like the result of 1/0 or -1/0).</li>
+<li><strong>NULL:</strong> represents the absence of any value or object (different from NA which is an element in a vector; NULL is often used to indicate “nothing” as an object or list element).</li>
+</ul>
+<p>Understanding types matters because operations behave differently depending on type. For instance, adding two numbers is fine, but adding a number to a string results in an error. R will also sometimes coerce types in a vector (e.g., mixing numbers and text in the same vector will turn all into text).</p>
+</section>
+<section id="data-structures-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="data-structures-in-r">Data structures in R</h3>
+<p>Beyond single values, we have data structures to hold collections of values:</p>
+<ul>
+<li><strong>Vector:</strong> the most basic container, holding a sequence of values <em>of the same type</em>. A vector can be numeric, character, logical, etc. You can create one with <code>c()</code>, e.g.&nbsp;<code>weights &lt;- c(2.4, 5.1, 3.3)</code> which is a numeric vector of length 3.</li>
+<li><strong>Matrix:</strong> a 2D arrangement of values (like a table of one type, essentially a vector with dimensions). All entries in a matrix must also be of the same type. You can make a matrix with <code>matrix()</code> or by dimming a vector.</li>
+<li><strong>Array:</strong> similar to a matrix but can have more than 2 dimensions (e.g., a 3D array).</li>
+<li><strong>Data frame:</strong> a table where each column can be a different type. This is like a spreadsheet or CSV file read into R – the most common structure for datasets. Columns are vectors of equal length. For example, a data frame <code>df</code> might have one numeric column <code>height</code>, one character column <code>species</code>, etc. Each row represents an observation.</li>
+<li><strong>List:</strong> a flexible container that can hold a collection of items of possibly different types and sizes. Lists are extremely useful in R because many complex objects (models, results) are stored as lists. You can think of a list as a general toolbox – each element can be anything (a vector, a data frame, another list, …). Create with <code>list()</code> function, e.g., <code>my_list &lt;- list(name="Alice", scores=c(90,95,88), info=data.frame(age=30, dept="Biology"))</code>. Lists don’t require all elements to be same length or type.</li>
+</ul>
+<p>For the Belize data, we’ve mainly used data frames (for tables of observations). Under the hood, a data frame is actually a list of equal-length vectors (each column is a vector).</p>
+<p>Being comfortable with vectors and data frames is key: - To access elements of a vector, use square brackets. <code>weights[2]</code> gives the second element of <code>weights</code>. - Data frames can be accessed with either <code>df$column_name</code> (to get a column as a vector) or <code>df[row, column]</code> indexing. For instance, <code>df[5, "species"]</code> would give the species of the 5th observation.</p>
+</section>
+<section id="example-dealing-with-missing-values" class="level3">
+<h3 class="anchored" data-anchor-id="example-dealing-with-missing-values">Example: dealing with missing values</h3>
+<p>Suppose we have a numeric vector of tree diameters and some are missing:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>diameters <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.4</span>, <span class="fl">8.1</span>, <span class="cn">NA</span>, <span class="fl">9.5</span>, <span class="fl">6.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The length(diameters) is 5, but one is NA. If we do mean(diameters), as noted, we get NA because by default R can’t compute the mean if any value is missing. We must do mean(diameters, na.rm = TRUE) to remove NAs in the calculation. We could also find which entries are missing by is.na(diameters) which returns a logical vector: FALSE FALSE TRUE FALSE FALSE in this case. We can use that to our advantage to filter or replace missing values. For instance, to filter out missing: clean_diameters &lt;- diameters[ ! is.na(diameters) ] Here ! is “not”, so !is.na(diameters) is TRUE for entries that are not NA, and we index the vector with that logical vector to keep only the non-missing values. This combination of vector operations and logical conditions is very powerful for data cleaning – you can pick out elements meeting certain criteria without writing an explicit loop.</p>
+</section>
+<section id="vectorized-thinking-versus-loops" class="level3">
+<h3 class="anchored" data-anchor-id="vectorized-thinking-versus-loops">Vectorized thinking versus loops</h3>
+<p>R is optimized to work with vectors. Many operations you might think of doing with a loop can be done in one go. For example, if we have two numeric vectors x and y of the same length, doing x + y will automatically add element by element (no loop needed in R code – it loops internally in C, which is faster). This is <strong>vectorization</strong>. Similarly, if we have a vector of temperatures in Celsius and want to convert to Fahrenheit, we can simply do:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>temps_c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">25</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>temps_f <span class="ot">&lt;-</span> temps_c <span class="sc">*</span> <span class="dv">9</span><span class="sc">/</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This computes on each element of the vector automatically. We did not have to write</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(temps_c)) { </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  temps_f[i] <span class="ot">=</span> temps_c[i]<span class="sc">*</span><span class="dv">9</span><span class="sc">/</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">32</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>…. though we <em>could</em> do that and get the same result, it would be more verbose and usually slower.</p>
+<p>However, understanding loops is still important. Some tasks can’t be easily vectorized or it’s more intuitive to write as a loop first. <em>Writing loops in R </em>A for loop in R looks like: for (i in 1:5) { # code to run each time, using i } This would run the loop 5 times, with i taking values 1, 2, 3, 4, 5 in succession. We can loop over elements of a vector too: values &lt;- c(3, 7, 9) for (v in values) { print(v * 2) } This would print 6, 14, 18. (Here v takes each value from values). We also have while loops which continue until a condition is false: count &lt;- 1 while (count &lt;= 5) { print(count) count &lt;- count + 1 } This will print 1 through 5. You have to be careful with while loops to ensure the condition eventually becomes false, otherwise you get an infinite loop.</p>
+<p><em>Conditional execution </em>The if statement in R: if (condition) { # do something if condition is TRUE } else { # do something if condition is FALSE }</p>
+<p>You can also chain multiple conditions with else if: if (score &gt;= 90) { grade &lt;- “A” } else if (score &gt;= 80) { grade &lt;- “B” } else { grade &lt;- “C” }</p>
+<p>R uses == for equality check (e.g., if (x == 0) {…}) and != for not equal. Also remember = is for assignment (though &lt;- is the preferred assignment operator in R), so use == for comparison. ! is used to negate a logical condition (e.g., if (!is.na(x)) {…}), meaning “if x is not NA”. Before runing the bellow, try to think what will happen</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Group exercise: Pseudocode to R code (10 min)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+Consider this task: You have a numeric vector scores of test scores. You want to count how many scores are above 80. 1. Write pseudocode for this task (just in plain steps or comments). 2. Translate your pseudocode into an R loop that accomplishes it. Try it on a sample vector scores &lt;- c(72, 88, 95, 60, 81).
+<details>
+<summary>
+Solution
+</summary>
+<p><strong>Pseudocode (one possible approach):</strong></p>
+<p>set counter = 0</p>
+<p>for each score in scores: if score &gt; 80: counter = counter + 1 return counter</p>
+<p><strong>R code:</strong></p>
+<p>scores &lt;- c(72, 88, 95, 60, 81)</p>
+<p>counter &lt;- 0</p>
+<p>for (s in scores) { if (s &gt; 80) { counter &lt;- counter + 1 } }</p>
+<p>counter</p>
+<p><em>counter should be 3 for the example vector (since 88, 95, 81 are &gt; 80)</em></p>
+<p>Alternatively, a vectorized solution without an explicit loop would be:</p>
+<p>sum(scores &gt; 80)</p>
+<p>since scores &gt; 80 produces a logical vector and sum() of TRUE/FALSE treats TRUE as 1 and FALSE as 0.</p>
+</details>
+</div>
+</div>
+</div>
+<p>In the solution above, we also showed a more idiomatic R way: using sum(scores &gt; 80) to count, or even table(scores&gt;80). This highlights how R’s vector operations can simplify tasks. But it’s still important to learn loops and if logic, because not everything can be neatly vectorized, and clarity sometimes trumps cleverness.</p>
+</section>
+<section id="understanding-functions-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-functions-in-r">Understanding functions in R</h3>
+<p>In Day 2, we freely used functions like mean() or read.csv(). Functions are like mini-programs: they take inputs (arguments) and return an output. In R, you can write your own functions to avoid repeating yourself.</p>
+<p>For example, suppose throughout our analysis we need to convert lengths from centimeters to inches (maybe some collaborator uses inches). Instead of repeatedly writing value/2.54 (since 1 inch = 2.54 cm), we can write a function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cm_to_in <span class="ot">&lt;-</span> <span class="cf">function</span>(cm) {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  inches <span class="ot">&lt;-</span> cm <span class="sc">/</span> <span class="fl">2.54</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(inches)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we have defined cm_to_in() that we can call anywhere: cm_to_in(10) # returns 3.937008 inches</p>
+<p>If we pass a vector, it will return a vector (because the division operation is vectorized).</p>
+<p>Functions can have multiple arguments, default values, etc. The general form is: my_function &lt;- function(arg1, arg2 = default_value, …) { # code that uses arg1, arg2, … # optionally a return() call (if omitted, the last expression’s value is returned) }</p>
+<p>Why write functions? - <strong>Avoid repetition:</strong> If you find yourself copying and pasting a block of code with minor changes, that’s a candidate for a function. Write it once, parametrize the parts that change (as arguments), then call it whenever needed. - <strong>Clarity:</strong> Good function names make code easier to read (“calculate_index(df)” is more descriptive than a dozen lines of code doing it in place). - <strong>Fix it once:</strong> If you need to change the logic, you only update the function, not every occurrence in your code. - <strong>Testing:</strong> You can test a function on known inputs (unit testing) to be confident it works, then use it throughout your analysis.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Group exercise: Write a simple function (5 min)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+Write an R function fahrenheit_to_celsius(temp_f) that converts a temperature from Fahrenheit to Celsius. The formula is <span class="math inline">\(C = (F - 32) \times 5/9\)</span>. Test your function on the values 32°F (should get 0°C) and 98.6°F (should get ~37°C).
+<details>
+<summary>
+Solution
+</summary>
+Function definition: fahrenheit_to_celsius &lt;- function(temp_f) { temp_c &lt;- (temp_f - 32) * 5/9 return(temp_c) } Testing it: fahrenheit_to_celsius(32) # returns 0 fahrenheit_to_celsius(98.6) # returns 37 (actually 37 exactly in this case) Notice that if you pass a vector, e.g.&nbsp;fahrenheit_to_celsius(c(32, 212)), it will return 0 100 (since 212°F is 100°C). The function operates on each element, leveraging R’s vectorized arithmetic.
+</details>
+</div>
+</div>
+</section>
+<section id="a-brief-note-on-packages" class="level3">
+<h3 class="anchored" data-anchor-id="a-brief-note-on-packages">A brief note on packages</h3>
+<p>R’s power comes not only from the base language, but from its vast ecosystem of <strong>packages</strong>. A package is a collection of functions, data, and documentation that extends R’s capabilities. For example: - <strong>dplyr:</strong> for data manipulation (we’ll use it later for cleaning). - <strong>ggplot2:</strong> for advanced plotting. - <strong>readr:</strong> faster CSV reading functions. - <strong>sf:</strong> for spatial data operations. - … and thousands more for every niche (genomics, image analysis, etc.). To use a package, you first install it (one-time) with install.packages(“packageName”), then load it in each session with library(packageName). Once loaded, you can use the functions it provides. For instance: install.packages(“ggplot2”) # run once library(ggplot2) # load the package ggplot(data = trees, aes(x = species, y = dbh_cm)) + geom_boxplot() This would create a nicer boxplot of dbh_cm by species using the ggplot2 grammar of graphics. We won’t dive deep into packages today, but it’s good to know they exist. In fact, R itself is a collection of packages (base R plus recommended). When you load RStudio, some packages like stats and utils load by default. <strong>R philosophy:</strong> There’s a saying, <em>“There’s probably a package for that.”</em> If you find yourself needing functionality beyond basic R, chances are someone in the community has created a package. Reusing these is often better than reinventing the wheel. It’s a key skill to learn how to find and use packages (CRAN, Bioconductor, GitHub are common sources) as you progress.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Classic values in programming (and why they exist)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>🔢 <strong>Correctness over cleverness</strong><br>
+Code must first be right. Elegant nonsense is still nonsense.<br>
+Most catastrophic bugs are not complex, they are <em>wrong</em>.</p></li>
+<li><p>🧮 <strong>Explicit types matter</strong><br>
+Knowing whether something is an integer or a floating-point number is not pedantry.<br>
+It is the difference between counting trees or measuring height.</p></li>
+<li><p>⚠️ <strong>Limits are real</strong><br>
+Every data type has bounds. Ignore them and reality will remind you. Loudly.<br>
+Famous example: a rocket self-destructed because a 64-bit float was forced into a 16-bit integer. Overflow. Boom.</p></li>
+<li><p>🧠 <strong>Clarity beats brevity</strong><br>
+Code is read more often than it is written.<br>
+Your future self is a hostile reviewer with no patience.</p></li>
+<li><p>🔁 <strong>Reproducibility is a feature, not a luxury</strong><br>
+If you cannot rerun it, you did not really do it.<br>
+Science and software share this moral spine.</p></li>
+<li><p>🧪 <strong>Fail fast, fail loud</strong><br>
+Silent errors are the most dangerous kind.<br>
+Warnings and crashes are annoying. Wrong results are lethal.</p></li>
+<li><p>📏 <strong>Precision is not accuracy</strong><br>
+More digits do not mean more truth.<br>
+Double precision gives you range and speed, not philosophical certainty.</p></li>
+<li><p>🚀 <strong>Never assume “this will never happen”</strong><br>
+It already has.<br>
+Usually at scale.<br>
+Usually in production.<br>
+Sometimes at launch.</p></li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="wrap-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrap-up">Wrap-up</h2>
+<p>Today we bridged the gap between knowing <em>what</em> we want to do and telling the computer <em>how</em> to do it. We discussed algorithms as the logical recipes behind every analysis task, and we practiced writing these instructions in R. We covered a lot of ground: R data types and structures, how to control the flow of a program with loops and conditions, and even how to write your own functions to extend R. You might be thinking, “That’s a lot to remember!” And indeed, becoming comfortable with programming takes practice. The key takeaway is that programming is about breaking problems into clear steps and knowing the tools R provides to implement those steps. With these fundamentals, you can start to tackle tasks that were tedious or impossible to do in Excel, like looping through hundreds of files or applying complex logic consistently. Our Belize case study might involve, for example, writing a loop to go through many survey files and extract a summary from each – something that would be extremely painful to do by hand. With your new skills, such tasks are within reach. In the next session (Day 4), we will apply programming to <strong>clean and transform data</strong>, pushing further into making our workflow reproducible. We’ll see how writing scripts and using version control can make our scientific work more reliable and shareable. Don’t worry if not everything clicked immediately. You now have a mental model of what’s possible, and each time you practice, these concepts will become more natural. Use the exercises and examples as references. And remember: even experienced programmers frequently look up documentation and examples – that’s part of the process!</p>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reflection
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Which part of programming today was most challenging to you (e.g., understanding a loop vs.&nbsp;vectorized approach, or remembering the syntax)?</li>
+<li>Think of a repetitive task in your own work or research. How could you break it into algorithmic steps, and what benefit would automating it bring?</li>
+<li>Are there any operations or analyses you wish you could do faster or more reliably? Keep those in mind as motivation to practice and learn more coding. Please provide your feedback on today’s session: <a href="https://docs.google.com/forms/d/e/1FAIpQLScEgnmEEeYGN7Bn839tHEqWLHO2CE9VVMiUv0QC7ZWQma0Umw/viewform?usp=publish-editor">Anonymous feedback</a></li>
+</ul>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
