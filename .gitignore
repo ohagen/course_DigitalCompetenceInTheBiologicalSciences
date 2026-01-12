@@ -15,7 +15,7 @@
 .quarto/
 
 # Preview / render output
-_site/
+# _site/
 _freeze/
 
 # knitr caches / intermediates
