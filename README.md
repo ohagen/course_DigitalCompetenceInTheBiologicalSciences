@@ -15,3 +15,8 @@ This repository uses **dual licensing**:
 - **Code examples and scripts** are licensed under the **MIT License**, unless stated otherwise.
 
 See the license files in the repository root for full details.
+
+## About
+
+This course was created and is maintained by Prof. Oskar Hagen (Goethe University Frankfurt) using visual studio and Rstudio. OpenAI 5.1 plugin and direct interface were used to assist in code generation, debugging and grammar checking.
+For questions or suggestions, please open an issue in this repository or contact the maintainer directly.

@@ -101,10 +101,6 @@ All datasets are already models of reality. Basic organization of data. Basic da
 - First R contact: import data, compute summaries, make a plot
 - Reading and writing: CSV/TSV safely, encoding basics
 
-**Key idea**  
-Descriptive statistics summarize observations, not explanations. Summary statistics and visualizations are tools to understand data. Further doing data visualization.
-Testing assumptions and groups differences from data on Dayu one
-
 ---
 
 ### **Day 3 – From repetition to algorithms**  
@@ -118,11 +114,6 @@ Testing assumptions and groups differences from data on Dayu one
 - Functions and arguments
 - Functions: using them, then writing tiny ones
 - Packages and R philosophy
-
-
-
-**Key idea**  
-A small toolbox script: import, check, summarise, plot. Algorithms replace memory and intuition with explicit instructions.
 
 ---
 
@@ -141,9 +132,6 @@ A small toolbox script: import, check, summarise, plot. Algorithms replace memor
 - Version control basics (Git)
 - Creating automated reports with R (Quarto: one-button from raw data to figures pdfs, docs and websites)
 
-**Key idea**  
-If you cannot rerun it, you cannot defend it.
-
 ---
 
 ### **Day 5 – Tools, models, and scientific responsibility**  
@@ -155,9 +143,6 @@ If you cannot rerun it, you cannot defend it.
 - What you wanted (from previous daily feed backs or unfinished business)
 - Remembering strengths and limits of Excel and R in the Data Lifecycle
 - Course reflection and open discussion
-
-**Key idea**  
-All models are wrong. Some are useful.
 
 ---
 
@@ -178,20 +163,23 @@ By the end of the course, you will be able to:
 ## How to use this website
 
 - This website is the **main source** for the course
-- All materials, exercises, and datasets are available here
+- All materials, exercises, and datasets are available [here](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences)
 - Slides are optional; the pages themselves are complete
-- If something is not documented here, it is not required
+- If something is not documented here, it is not required or a mistake, please let me know!
 
 ---
 
 ## Looking ahead
 
 The skills and concepts introduced here form the foundation for:
+- general data management,
 - statistical inference,
 - modelling,
 - bioinformatics,
 - data-driven biological research.
 - and real world biological work.
 
+::: {.callout-note}
 This course is not the end of digital competence training.  
 It is the **starting point**.
+:::

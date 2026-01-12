@@ -141,8 +141,7 @@ Before we analyze anything, we must understand:
 - how it was recorded, 
 - and what information was lost in the process.
 
-Poorly structured data cannot be rescued by sophisticated analysis
-later.
+Poorly structured data cannot be rescued by sophisticated analysis later.
 
 ------------------------------------------------------------------------
 
@@ -898,6 +897,10 @@ Used incorrectly, Excel:
 - hides errors in formatting and formulas
 
 The goal is **discipline**, not Excel mastery.
+
+:::{.callout-important}
+There are alternatives to Excel (Google Sheets, LibreOffice Calc), but the principles remain the same.
+:::
 
 ---
 
