@@ -1231,7 +1231,9 @@ What if the data itself contains a my separator?
 </div>
 <div class="callout-body-container callout-body">
 <p>If a value contains a separator, it must be <strong>wrapped in double quotes</strong></p>
-<p>Example: plot_id, species, notes 1, Iguana iguana, “observed near river, basking on rock”</p>
+<p>Example:</p>
+<p>plot_id, species, notes</p>
+<p>1, Iguana iguana, “observed near river, basking on rock”</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1258,7 +1260,9 @@ What if the data contains double quote
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If a value contains a double quote “, you escape it by <strong>doubling it</strong>. plot_id, species, notes 1, Iguana iguana,”observed ““near”” river, basking on rock”</p>
+<p>If a value contains a double quote “, you escape it by <strong>doubling it</strong>.</p>
+<p>plot_id, species, notes</p>
+<p>1, Iguana iguana, “observed”“near”” river, basking on rock”</p>
 </div>
 </div>
 <hr>
@@ -1418,7 +1422,10 @@ Group exercise: Import CSV safely (10 min)
 <li><strong>Explicitly set column data types</strong></li>
 <li>Click <em>Load</em></li>
 </ol>
-<p>Alternatively you can use: 1. <code>Data → From Text/CSV</code></p>
+<p>Alternatively you can use:</p>
+<ol type="1">
+<li><code>Data → From Text/CSV</code></li>
+</ol>
 </div>
 </div>
 <p>This prevents: - automatic date conversion - loss of leading zeros - unwanted scientific notation</p>
@@ -1543,7 +1550,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alone: Play with PSP and GAP data files (5 min)
+Alone: Play with PSP and GAP data files (10 min)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1551,7 +1558,7 @@ Alone: Play with PSP and GAP data files (5 min)
 <li>Open any of the PSP or GAP data files.</li>
 <li>Identify at least three columns that need explicit formatting.</li>
 <li>Apply the correct format to each column.</li>
-<li>Use formatting to check extreme values and missing data.</li>
+<li>Use formatting to check extreme values and missing data. <strong>Bonus</strong>. Check PSP/PSP_NPD42_OH.xlsx and see if you can spot any data issues</li>
 </ol>
 </div>
 </div>
@@ -1715,8 +1722,21 @@ Note
 <div class="callout-body-container callout-body">
 <p><strong>Locking structure (actual protection)</strong></p>
 <p>Excel locks cells in two steps.</p>
-<p><strong>Step 1: Unlock cells that may be edited</strong> 1. Select the cells that users are allowed to edit 2. Right-click → <em>Format Cells</em> 3. Go to the <em>Protection</em> tab 4. Uncheck <strong>Locked</strong> 5. Click <em>OK</em></p>
-<p><strong>Step 2: Protect the sheet</strong> 1. Go to <code>Review → Protect Sheet</code> 2. (Optional) Set a password 3. Choose allowed actions (e.g.&nbsp;select unlocked cells only) 4. Confirm</p>
+<p><strong>Step 1: Unlock cells that may be edited</strong></p>
+<ol type="1">
+<li><p>Select the cells that users are allowed to edit</p></li>
+<li><p>Right-click → <em>Format Cells</em></p></li>
+<li><p>Go to the <em>Protection</em> tab</p></li>
+<li><p>Uncheck <strong>Locked</strong></p></li>
+<li><p>Click <em>OK</em></p></li>
+</ol>
+<p><strong>Step 2: Protect the sheet</strong></p>
+<ol type="1">
+<li><p>Go to <code>Review → Protect Sheet</code></p></li>
+<li><p>(Optional) Set a password</p></li>
+<li><p>Choose allowed actions (e.g.&nbsp;select unlocked cells only)</p></li>
+<li><p>Confirm</p></li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">

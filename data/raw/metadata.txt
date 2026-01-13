@@ -1,0 +1,16 @@
+Data provenance notice
+Author: Oskar Hagen
+e-mail: oskar@hagen.bio
+
+----------------------
+All items in this folder are synthetic placeholders. They mimic the structure and formatting of real datasets used in Belize, but no real or confidential data are present.
+
+Folder descriptions
+- csv/: Downloaded example tables from public internet sources. Each file should retain its own source-provided metadata where available.
+- Foresty/: Working area for forestry trial data. Subfolders such as GAP_Data_2019 and GAP_Data_2020 contain data on the area and PLOT contain synthetic measurements for mahogany gap-planting trials.
+- PSP/: Permanent Sample Plot mock data illustrating long-term plot measurements.
+- templates/: Prototype layouts (e.g., PSP/) showing expected file organization for incoming data. Those facilitate data entry and avoid further later data lifecycle issues.
+
+Usage notes
+- Treat these files as structural and formatting guides only; replace with validated field data as needed.
+- Keep source metadata with any real downloads added later to preserve provenance and context.

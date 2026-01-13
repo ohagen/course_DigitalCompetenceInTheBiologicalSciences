@@ -974,7 +974,9 @@ CSV files vary by:
 If a value contains a separator, it must be **wrapped in double quotes**
 
 Example:
+
 plot_id,  species,  notes
+
 1,  Iguana iguana,  "observed near river, basking on rock"
 :::
 
@@ -998,7 +1000,9 @@ From text editor
 
 ## What if the data contains double quote
 If a value contains a double quote ", you escape it by **doubling it**.
+
 plot_id,  species,  notes
+
 1,  Iguana iguana,  "observed ""near"" river, basking on rock"
 :::
 
@@ -1139,6 +1143,7 @@ Identify **data structure and separators**, **potential data integrity issues** 
 
 
 Alternatively you can use:
+
 1. `Data → From Text/CSV`
 :::
 
@@ -1213,13 +1218,13 @@ Excel becomes a **visual validator**, not a calculator. Using those makes it har
 
 
 ::: {.callout-tip icon="🧪"}
-### Alone: Play with PSP and GAP data files (5 min)
+### Alone: Play with PSP and GAP data files (10 min)
 
 1. Open any of the PSP or GAP data files.
 2. Identify at least three columns that need explicit formatting.
 3. Apply the correct format to each column.
 5. Use formatting to check extreme values and missing data.
-
+**Bonus**. Check PSP/PSP_NPD42_OH.xlsx and see if you can spot any data issues
 :::
 
 ---
@@ -1325,17 +1330,28 @@ This is basic but powerful.
 Excel locks cells in two steps.
 
 **Step 1: Unlock cells that may be edited**
+
 1. Select the cells that users are allowed to edit
+
 2. Right-click → *Format Cells*
+
 3. Go to the *Protection* tab
+
 4. Uncheck **Locked**
+
 5. Click *OK*
 
+
 **Step 2: Protect the sheet**
+
 1. Go to `Review → Protect Sheet`
+
 2. (Optional) Set a password
+
 3. Choose allowed actions (e.g. select unlocked cells only)
+
 4. Confirm
+
 :::
 
 ::: {.callout-important}
