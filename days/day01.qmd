@@ -824,48 +824,19 @@ And this is why this course starts with Excel discipline,
 but does not end there.
 
 
-------------------------------------------------------------------------
+### Concept that would have prevented this
 
-
-**Concept that would have prevented this** - Separation of raw data and
-derived results - Version control instead of manual file duplication -
-Explicit metadata and data dictionaries
-
-------------------------------------------------------------------------
-
-### Environmental and ecological data: the same failure modes
-
-In environmental monitoring and ecology, spreadsheet problems usually
-appear as: - inconsistent site or species codes - mixed units within a
-single column - missing values encoded inconsistently (`NA`, `-`,
-blank) - formulas copied across misaligned rows
-
-While individual ecological cases are less publicized, the mechanisms
-are identical to those documented in public health, genomics, and
-finance.
-
-::: external-figure
-**Figure 3. Conceptual overview: spreadsheets as hidden state machines**
-
-[External schematic on spreadsheet
-risk](https://arxiv.org/abs/0801.0715)
-
-Source: Panko (2008), *What We Know About Spreadsheet Errors*.\
-https://arxiv.org/abs/0801.0715
-:::
-
-**Concept that would have prevented this** 
-
+- Separation of raw data and derived results 
+- Version control instead of manual file duplication 
+- Explicit metadata and data dictionaries
 - Well designed data entry
 - Skilled and knowledgeable users
 - Treating spreadsheets as *data entry interfaces* and *quick overview tools*, not databases
-- Validation rules and controlled
-vocabularies 
+- Validation rules and controlled vocabularies 
 - Early transition to scripted, reproducible workflows
 
-------------------------------------------------------------------------
 
-## Core data concepts reinforced by these cases
+### Core data concepts reinforced by these cases
 
 Across all examples, the same principles recur:
 
@@ -985,10 +956,12 @@ plot_id,  species,  notes
 ### Try out creating a csv and a xlsx with comma and quotes as above (5 min)
 
 From Excel
+
 1. Create a new sheet with the data above
 2. Save as `.csv` and inspect the file in a text editor
 
 From text editor
+
 1. Create a new text file with the data above
 2. Save as `.csv` and open in Excel
 3. Afters inspecting, remove the last quote and re-open in Excel. What happens?

@@ -202,9 +202,9 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#what-all-these-failures-have-in-common" id="toc-what-all-these-failures-have-in-common" class="nav-link" data-scroll-target="#what-all-these-failures-have-in-common">What all these failures have in common</a>
   <ul class="collapse">
-  <li><a href="#environmental-and-ecological-data-the-same-failure-modes" id="toc-environmental-and-ecological-data-the-same-failure-modes" class="nav-link" data-scroll-target="#environmental-and-ecological-data-the-same-failure-modes">Environmental and ecological data: the same failure modes</a></li>
-  </ul></li>
+  <li><a href="#concept-that-would-have-prevented-this" id="toc-concept-that-would-have-prevented-this" class="nav-link" data-scroll-target="#concept-that-would-have-prevented-this">Concept that would have prevented this</a></li>
   <li><a href="#core-data-concepts-reinforced-by-these-cases" id="toc-core-data-concepts-reinforced-by-these-cases" class="nav-link" data-scroll-target="#core-data-concepts-reinforced-by-these-cases">Core data concepts reinforced by these cases</a></li>
+  </ul></li>
   <li><a href="#excel-as-a-data-tool" id="toc-excel-as-a-data-tool" class="nav-link" data-scroll-target="#excel-as-a-data-tool">Excel as a data tool</a></li>
   <li><a href="#file-formats-metadata-and-storage" id="toc-file-formats-metadata-and-storage" class="nav-link" data-scroll-target="#file-formats-metadata-and-storage">File formats, metadata, and storage</a>
   <ul class="collapse">
@@ -1006,32 +1006,21 @@ Choices are made at the moment of data collection.</p>
 <p><strong>Spreadsheets did exactly what they were told.<br>
 Humans misunderstood what they were doing.</strong></p>
 <p>This is why learning to use these tools <em>properly</em> matters. And this is why this course starts with Excel discipline, but does not end there.</p>
-<hr>
-<p><strong>Concept that would have prevented this</strong> - Separation of raw data and derived results - Version control instead of manual file duplication - Explicit metadata and data dictionaries</p>
-<hr>
-<section id="environmental-and-ecological-data-the-same-failure-modes" class="level3">
-<h3 class="anchored" data-anchor-id="environmental-and-ecological-data-the-same-failure-modes">Environmental and ecological data: the same failure modes</h3>
-<p>In environmental monitoring and ecology, spreadsheet problems usually appear as: - inconsistent site or species codes - mixed units within a single column - missing values encoded inconsistently (<code>NA</code>, <code>-</code>, blank) - formulas copied across misaligned rows</p>
-<p>While individual ecological cases are less publicized, the mechanisms are identical to those documented in public health, genomics, and finance.</p>
-<div class="external-figure">
-<p><strong>Figure 3. Conceptual overview: spreadsheets as hidden state machines</strong></p>
-<p><a href="https://arxiv.org/abs/0801.0715">External schematic on spreadsheet risk</a></p>
-<p>Source: Panko (2008), <em>What We Know About Spreadsheet Errors</em>.<br>
-https://arxiv.org/abs/0801.0715</p>
-</div>
-<p><strong>Concept that would have prevented this</strong></p>
+<section id="concept-that-would-have-prevented-this" class="level3">
+<h3 class="anchored" data-anchor-id="concept-that-would-have-prevented-this">Concept that would have prevented this</h3>
 <ul>
+<li>Separation of raw data and derived results</li>
+<li>Version control instead of manual file duplication</li>
+<li>Explicit metadata and data dictionaries</li>
 <li>Well designed data entry</li>
 <li>Skilled and knowledgeable users</li>
 <li>Treating spreadsheets as <em>data entry interfaces</em> and <em>quick overview tools</em>, not databases</li>
 <li>Validation rules and controlled vocabularies</li>
 <li>Early transition to scripted, reproducible workflows</li>
 </ul>
-<hr>
 </section>
-</section>
-<section id="core-data-concepts-reinforced-by-these-cases" class="level2">
-<h2 class="anchored" data-anchor-id="core-data-concepts-reinforced-by-these-cases">Core data concepts reinforced by these cases</h2>
+<section id="core-data-concepts-reinforced-by-these-cases" class="level3">
+<h3 class="anchored" data-anchor-id="core-data-concepts-reinforced-by-these-cases">Core data concepts reinforced by these cases</h3>
 <p>Across all examples, the same principles recur:</p>
 <ul>
 <li><strong>Data types must be explicit</strong></li>
@@ -1042,6 +1031,7 @@ https://arxiv.org/abs/0801.0715</p>
 </ul>
 <p>These principles motivate why this course starts with Excel discipline, but quickly moves to R and Quarto.</p>
 <hr>
+</section>
 </section>
 <section id="excel-as-a-data-tool" class="level2">
 <h2 class="anchored" data-anchor-id="excel-as-a-data-tool">Excel as a data tool</h2>
@@ -1246,8 +1236,17 @@ Try out creating a csv and a xlsx with comma and quotes as above (5 min)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>From Excel 1. Create a new sheet with the data above 2. Save as <code>.csv</code> and inspect the file in a text editor</p>
-<p>From text editor 1. Create a new text file with the data above 2. Save as <code>.csv</code> and open in Excel 3. Afters inspecting, remove the last quote and re-open in Excel. What happens?</p>
+<p>From Excel</p>
+<ol type="1">
+<li>Create a new sheet with the data above</li>
+<li>Save as <code>.csv</code> and inspect the file in a text editor</li>
+</ol>
+<p>From text editor</p>
+<ol type="1">
+<li>Create a new text file with the data above</li>
+<li>Save as <code>.csv</code> and open in Excel</li>
+<li>Afters inspecting, remove the last quote and re-open in Excel. What happens?</li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
