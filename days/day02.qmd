@@ -17,7 +17,7 @@ By the end of this day, you should be able to:
 - create simple visualizations and recognize misleading plots
 - understand the limitations of manual analysis for repetitive tasks
 - import data into R and compute summaries and plots programmatically
-- safely export data from R (e.g. to CSV) with correct encoding
+- safely import/export data from R (e.g. to CSV) with correct encoding
 
 No prior programming experience is required (we will start using R from scratch).
 
@@ -25,7 +25,7 @@ No prior programming experience is required (we will start using R from scratch)
 
 ## Motivation
 
-After structuring data properly, the next step is to make sense of it. Large tables of numbers are hard to interpret by eye. **Descriptive statistics** and **visualizations** help us summarize key properties of the data. These summaries can reveal patterns (or problems) in our Belize biodiversity dataset, guiding further analysis. Remember that **summaries describe the data; they do not explain underlying causes**. Today we learn how to compute and use these summaries, first with simple tools (like Excel) and then by transitioning to R for more efficient analysis.
+After structuring data properly, the next step is to make sense of it. Large tables of numbers are hard to interpret by eye. **Descriptive statistics** and **visualizations** help us summarize key properties of the data. These summaries can reveal patterns (or problems) in our Belize biodiversity dataset, guiding further analysis. Today we learn how to compute and use these summaries, first with simple tools (like Excel) and then by transitioning to R.
 
 -----------------------------------------------------------------------
 
@@ -66,13 +66,13 @@ After structuring data properly, the next step is to make sense of it. Large tab
 
 ## From raw data to summary statistics
 
-After data collection (Day 1), we often end up with a **raw dataset**—for example, a spreadsheet of tree measurements from our Belize forest plots. The first question is: *what do all these numbers tell us*? We need to condense the data into interpretable quantities without reading every value.
+After data collection we end up with a **raw dataset**. The first question is: *what do all these numbers tell us*? We need to condense the data into interpretable quantities without reading every value. 
 
 **Descriptive statistics** are numbers that summarize certain aspects of the data. They help describe *“typical”* values, *spread* of the data, and *unusual observations*. Crucially, these summaries simplify the data and **hide detail**, so they must be used carefully.
 
 ### Measures of central tendency
 
-The **mean** (average) and **median** are two common measures of the “center” of a numeric dataset:
+The **mean** (aka average) and **median** are two common measures of the “center” of a numeric dataset:
 
 - **Mean ($\bar{x}$):** the sum of all values divided by the number of values. For data points $x_1, x_2, ..., x_n$, the mean is  
   $$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i.$$  
@@ -96,6 +96,24 @@ Source:
 <a href="https://en.wikipedia.org/wiki/File:Visualisation_mode_median_mean.svg" target="_blank" rel="noopener">Wikimedia Commons</a>
 :::
 ::::
+
+
+::: {.callout-tip icon="🧪"}
+### Solo Exercise: Calculate the mean (aka average), median and mode for three distributions (7 min)
+
+1. Open [`data/raw/csv/dist_day02.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/dist_day02.csv) in Excel. This file contains a three columns of numeric values.
+each is one variable (A, B, C) with 100 observations each.
+2. For each variable (A, B, C), calculate the mean, median and mode using Excel functions:
+   - Mean: `=AVERAGE(range)`
+   - Median: `=MEDIAN(range)`
+   - Mode: `=MODE(range)`
+   
+You can do this selecting a cell range with your mouse or typing it in (e.g. `A2:A101` for column A) or using named ranges.
+
+3. Keep it open for later exercises.
+
+:::
+
 
 ### Measures of variability
 
@@ -132,6 +150,21 @@ Standard deviations do **not** add:
 That is why models tend to run on **variance**, not SD.
 :::
 
+
+::: {.callout-tip icon="🧪"}
+### Solo Exercise: Calculate variance and standard deviation for the three distributions (5 min)
+
+1. Using the same file [`data/raw/csv/dist_day02.csv`]
+2. For each variable (A, B, C), calculate the variance and standard deviation using Excel functions:
+   - Variance: `=VAR.S(range)`
+   - Standard Deviation: `=STDEV.S(range)`
+   - Range: `=MAX(range)-MIN(range)`
+3. Keep it open for later exercises.
+
+Whay did this show you more about the data?
+
+:::
+
 ::: {.callout-warning}
 ### Sensitivity to outliers
 
@@ -139,7 +172,6 @@ Both variance and SD use squared deviations, so both are **sensitive to outliers
 
 If robustness matters, prefer:
 - IQR (interquartile range)
-- MAD (median absolute deviation)
 - Quantiles
 
 P.S.: robustness meaning "How strongly a statistic reacts to small violations of its assumptions, especially the presence of outliers, skewness, or heavy tails"
@@ -159,18 +191,12 @@ Variance and standard deviation use squared deviations. Squaring is a megaphone.
 
 For example, if the diameter at breast height (DBH) of trees in Plot A have a mean of 30 cm and a standard deviation of 5 cm, most tree DBHs are around 30 cm ± 5 cm. In Plot B, a mean of 30 cm but standard deviation of 15 cm would imply much greater variability (some saplings and some very large trees).
 
-- **Median Absolute Deviation (MAD):** the median of the absolute deviations from the median. This is another robust measure of spread, less sensitive to outliers than standard deviation.
-\[
-\mathrm{MAD} = \mathrm{median}\big(|x_i - \mathrm{median}(x)|\big)
-\]
-
-
 
 ### The effect of outliers and skewness
 
 Outliers (values that are very high or low relative to the rest) can heavily distort certain statistics. In ecology, suppose most trees in a sample are under 10 m tall, but one giant ceiba tree is 50 m tall. The mean tree height will be pulled upward by this one extreme value, whereas the median will barely change (since the median only cares about the middle-ranked value).
 
-In our Belize forest data, if one plot had an anomalously high animal count due to an observational error, the mean count would give a misleading impression of typical conditions. Always consider whether outliers are errors, natural rare events, or indications of underlying heterogeneity. Depending on context, you might report the median instead of the mean for skewed data, or even remove obvious data errors.
+In our Belize forest data, if one plot had an anomalously high tree height count due to an observational/data entry error, the mean count would give a misleading impression of typical conditions. Always consider whether outliers are errors, natural rare events, or indications of underlying heterogeneity. Depending on context, you might report the median instead of the mean for skewed data, or even remove obvious data errors.
 
 To gauge skewness and outliers, it’s useful to look at the whole **distribution** of the data, not just single summary numbers. This brings us to visualizing data.
 
@@ -214,6 +240,7 @@ Graphs provide a shorthand for understanding data. By plotting our Belize datase
 3. Right-click x-axis → **Format Axis**
    - Set bin width or number of bins
 
+
 ### Box plot  
 *Median, quartiles, and outliers*
 
@@ -224,12 +251,52 @@ Graphs provide a shorthand for understanding data. By plotting our Belize datase
   -- The whiskers extend to the most extreme values within Q1-1.5IQR and Q3+1.5IQR
   -- Outliers are any points beyond the whiskers
 
+
+::: {.callout-tip icon="🧪"}
+### Solo Exercise: Plot a historgram and a boxplot for each if the three distributions (10 min)
+
+1. Using the same file [`data/raw/csv/dist_day02.csv`]
+2. For each variable (A, B, C), create a histogram using Excel:
+   - Select the column
+   - **Insert → Statistic Chart → Histogram**
+   - Adjust bin width if needed (e.g. to 2) via right-click on x-axis → **Format Axis**
+   
+Much easier to see the distribution this way, right?
+
+:::
+
 ### Scatter plot  
 *Relationship between two numeric variables*
 
 1. Select both numeric columns
 2. **Insert → Scatter → Scatter with only markers**
 3. Add axis labels and optional trendline
+
+
+::: {.callout-tip icon="🧪"}
+### Group exercise: Do a scatter plot of DBH and Height (7 min)
+
+1. Open a new Excel instance
+2. Load the Belize dataset [`data/raw/PSP/PSP_NPD847_OH.xlsx`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/PSP/PSP_NPD847_OH.xlsx)
+Before plotting, think, how should a scatter plot of DBH vs Height look like? What relationship do you expect?
+3. Select the columns `DBH` and `Height`
+4. **Insert → Scatter → Scatter with only markers**
+
+*Bonus* 
+1. Make this plot at the Analysis sheet (not raw data)
+2. Add a trendline via right-click on a point → **Add Trendline...** 
+3. Choose Linear and logarithmic options
+4. Add equation and R-squared value to the chart
+>R-squared (R²) is a statistical measure of how well a regression model fits your data. It answers the question:
+>"How much of the variation in the outcome (Y) can be explained by the predictor(s) (X)?"
+> If 0	model explains none of the variation, if 1.0 it explains all the variation (perfect fit)
+>**Note** A high R² does not mean the model is good... in biology, natural variation is high. R² ignores bias and overfitting. Use diagnostics and validation too.
+
+What is the relationship between DBH and Height in this dataset? Does it match your expectation?
+
+:::
+
+
 
 ### Bar chart  
 *Summary of categorical data*
@@ -439,6 +506,15 @@ In the next session, we’ll build on this foundation by asking: *How can we aut
 Feel free to practice more with R on your own: try computing stats or making charts for other variables in the dataset. The more you play with the data, the more familiar you will become with R.
 
 -------------------------------------------------------
+
+
+::: {.callout-tip icon="🧪"}
+
+```{r eval=F}
+tab <- read.csv(here("./data/raw/csv/distributions_day02_100.csv"))
+hist(tab)
+```
+
 
 ::: {.callout-note icon="💬"}
 ### Reflection

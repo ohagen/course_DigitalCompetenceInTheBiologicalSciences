@@ -285,14 +285,14 @@ window.Quarto = {
 <li>create simple visualizations and recognize misleading plots</li>
 <li>understand the limitations of manual analysis for repetitive tasks</li>
 <li>import data into R and compute summaries and plots programmatically</li>
-<li>safely export data from R (e.g.&nbsp;to CSV) with correct encoding</li>
+<li>safely import/export data from R (e.g.&nbsp;to CSV) with correct encoding</li>
 </ul>
 <p>No prior programming experience is required (we will start using R from scratch).</p>
 <hr>
 </section>
 <section id="motivation" class="level2">
 <h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
-<p>After structuring data properly, the next step is to make sense of it. Large tables of numbers are hard to interpret by eye. <strong>Descriptive statistics</strong> and <strong>visualizations</strong> help us summarize key properties of the data. These summaries can reveal patterns (or problems) in our Belize biodiversity dataset, guiding further analysis. Remember that <strong>summaries describe the data; they do not explain underlying causes</strong>. Today we learn how to compute and use these summaries, first with simple tools (like Excel) and then by transitioning to R for more efficient analysis.</p>
+<p>After structuring data properly, the next step is to make sense of it. Large tables of numbers are hard to interpret by eye. <strong>Descriptive statistics</strong> and <strong>visualizations</strong> help us summarize key properties of the data. These summaries can reveal patterns (or problems) in our Belize biodiversity dataset, guiding further analysis. Today we learn how to compute and use these summaries, first with simple tools (like Excel) and then by transitioning to R.</p>
 <hr>
 </section>
 <section id="agenda" class="level2">
@@ -326,11 +326,11 @@ window.Quarto = {
 </section>
 <section id="from-raw-data-to-summary-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="from-raw-data-to-summary-statistics">From raw data to summary statistics</h2>
-<p>After data collection (Day 1), we often end up with a <strong>raw dataset</strong>—for example, a spreadsheet of tree measurements from our Belize forest plots. The first question is: <em>what do all these numbers tell us</em>? We need to condense the data into interpretable quantities without reading every value.</p>
+<p>After data collection we end up with a <strong>raw dataset</strong>. The first question is: <em>what do all these numbers tell us</em>? We need to condense the data into interpretable quantities without reading every value.</p>
 <p><strong>Descriptive statistics</strong> are numbers that summarize certain aspects of the data. They help describe <em>“typical”</em> values, <em>spread</em> of the data, and <em>unusual observations</em>. Crucially, these summaries simplify the data and <strong>hide detail</strong>, so they must be used carefully.</p>
 <section id="measures-of-central-tendency" class="level3">
 <h3 class="anchored" data-anchor-id="measures-of-central-tendency">Measures of central tendency</h3>
-<p>The <strong>mean</strong> (average) and <strong>median</strong> are two common measures of the “center” of a numeric dataset:</p>
+<p>The <strong>mean</strong> (aka average) and <strong>median</strong> are two common measures of the “center” of a numeric dataset:</p>
 <ul>
 <li><p><strong>Mean (<span class="math inline">\(\bar{x}\)</span>):</strong> the sum of all values divided by the number of values. For data points <span class="math inline">\(x_1, x_2, ..., x_n\)</span>, the mean is<br>
 <span class="math display">\[\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i.\]</span><br>
@@ -352,6 +352,31 @@ Example: For the tree heights 6, 7, 8, 9, 10 (sorted order), the median is 8 m (
 </div>
 <div class="figure-source">
 <p>Source: <a href="https://en.wikipedia.org/wiki/File:Visualisation_mode_median_mean.svg" target="_blank" rel="noopener">Wikimedia Commons</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solo Exercise: Calculate the mean (aka average), median and mode for three distributions (7 min)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Open <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/dist_day02.csv"><code>data/raw/csv/dist_day02.csv</code></a> in Excel. This file contains a three columns of numeric values. each is one variable (A, B, C) with 100 observations each.</li>
+<li>For each variable (A, B, C), calculate the mean, median and mode using Excel functions:
+<ul>
+<li>Mean: <code>=AVERAGE(range)</code></li>
+<li>Median: <code>=MEDIAN(range)</code></li>
+<li>Mode: <code>=MODE(range)</code></li>
+</ul></li>
+</ol>
+<p>You can do this selecting a cell range with your mouse or typing it in (e.g.&nbsp;<code>A2:A101</code> for column A) or using named ranges.</p>
+<ol start="3" type="1">
+<li>Keep it open for later exercises.</li>
+</ol>
 </div>
 </div>
 </section>
@@ -388,6 +413,29 @@ Note
 <p>That is why models tend to run on <strong>variance</strong>, not SD.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solo Exercise: Calculate variance and standard deviation for the three distributions (5 min)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Using the same file [<code>data/raw/csv/dist_day02.csv</code>]</li>
+<li>For each variable (A, B, C), calculate the variance and standard deviation using Excel functions:
+<ul>
+<li>Variance: <code>=VAR.S(range)</code></li>
+<li>Standard Deviation: <code>=STDEV.S(range)</code></li>
+<li>Range: <code>=MAX(range)-MIN(range)</code></li>
+</ul></li>
+<li>Keep it open for later exercises.</li>
+</ol>
+<p>Whay did this show you more about the data?</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -399,7 +447,7 @@ Sensitivity to outliers
 </div>
 <div class="callout-body-container callout-body">
 <p>Both variance and SD use squared deviations, so both are <strong>sensitive to outliers</strong>.</p>
-<p>If robustness matters, prefer: - IQR (interquartile range) - MAD (median absolute deviation) - Quantiles</p>
+<p>If robustness matters, prefer: - IQR (interquartile range) - Quantiles</p>
 <p>P.S.: robustness meaning “How strongly a statistic reacts to small violations of its assumptions, especially the presence of outliers, skewness, or heavy tails” Variance and standard deviation use squared deviations. Squaring is a megaphone. One extreme value gets amplified enormously.</p>
 <section id="common-mistakes" class="level2">
 <h2 class="anchored" data-anchor-id="common-mistakes">Common mistakes</h2>
@@ -417,14 +465,11 @@ Sensitivity to outliers
 <li><p><strong>Interquartile Range (IQR):</strong> the difference between the 75th percentile (Q3) and 25th percentile (Q1). This focuses on the spread of the middle 50% of data, giving a robust spread measure less affected by outliers.</p></li>
 </ul>
 <p>For example, if the diameter at breast height (DBH) of trees in Plot A have a mean of 30 cm and a standard deviation of 5 cm, most tree DBHs are around 30 cm ± 5 cm. In Plot B, a mean of 30 cm but standard deviation of 15 cm would imply much greater variability (some saplings and some very large trees).</p>
-<ul>
-<li><strong>Median Absolute Deviation (MAD):</strong> the median of the absolute deviations from the median. This is another robust measure of spread, less sensitive to outliers than standard deviation. [ = (|x_i - (x)|) ]</li>
-</ul>
 </section>
 <section id="the-effect-of-outliers-and-skewness" class="level3">
 <h3 class="anchored" data-anchor-id="the-effect-of-outliers-and-skewness">The effect of outliers and skewness</h3>
 <p>Outliers (values that are very high or low relative to the rest) can heavily distort certain statistics. In ecology, suppose most trees in a sample are under 10 m tall, but one giant ceiba tree is 50 m tall. The mean tree height will be pulled upward by this one extreme value, whereas the median will barely change (since the median only cares about the middle-ranked value).</p>
-<p>In our Belize forest data, if one plot had an anomalously high animal count due to an observational error, the mean count would give a misleading impression of typical conditions. Always consider whether outliers are errors, natural rare events, or indications of underlying heterogeneity. Depending on context, you might report the median instead of the mean for skewed data, or even remove obvious data errors.</p>
+<p>In our Belize forest data, if one plot had an anomalously high tree height count due to an observational/data entry error, the mean count would give a misleading impression of typical conditions. Always consider whether outliers are errors, natural rare events, or indications of underlying heterogeneity. Depending on context, you might report the median instead of the mean for skewed data, or even remove obvious data errors.</p>
 <p>To gauge skewness and outliers, it’s useful to look at the whole <strong>distribution</strong> of the data, not just single summary numbers. This brings us to visualizing data.</p>
 <hr>
 </section>
@@ -479,6 +524,28 @@ Note
 <li><strong>Insert → Statistic Chart → Box &amp; Whisker</strong></li>
 <li>Excel applies Tukey’s rule automatically. Meaning: – The box spans the interquartile range (Q1 to Q3) – The whiskers extend to the most extreme values within Q1-1.5IQR and Q3+1.5IQR – Outliers are any points beyond the whiskers</li>
 </ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solo Exercise: Plot a historgram and a boxplot for each if the three distributions (10 min)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Using the same file [<code>data/raw/csv/dist_day02.csv</code>]</li>
+<li>For each variable (A, B, C), create a histogram using Excel:
+<ul>
+<li>Select the column</li>
+<li><strong>Insert → Statistic Chart → Histogram</strong></li>
+<li>Adjust bin width if needed (e.g.&nbsp;to 2) via right-click on x-axis → <strong>Format Axis</strong></li>
+</ul></li>
+</ol>
+<p>Much easier to see the distribution this way, right?</p>
+</div>
+</div>
 </section>
 <section id="scatter-plot" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plot">Scatter plot</h3>
@@ -488,6 +555,26 @@ Note
 <li><strong>Insert → Scatter → Scatter with only markers</strong></li>
 <li>Add axis labels and optional trendline</li>
 </ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Group exercise: Do a scatter plot of DBH and Height (7 min)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Open a new Excel instance</li>
+<li>Load the Belize dataset <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/PSP/PSP_NPD847_OH.xlsx"><code>data/raw/PSP/PSP_NPD847_OH.xlsx</code></a> Before plotting, think, how should a scatter plot of DBH vs Height look like? What relationship do you expect?</li>
+<li>Select the columns <code>DBH</code> and <code>Height</code></li>
+<li><strong>Insert → Scatter → Scatter with only markers</strong></li>
+</ol>
+<p><em>Bonus</em> 1. Make this plot at the Analysis sheet (not raw data) 2. Add a trendline via right-click on a point → <strong>Add Trendline…</strong> 3. Choose Linear and logarithmic options 4. Add equation and R-squared value to the chart &gt;R-squared (R²) is a statistical measure of how well a regression model fits your data. It answers the question: &gt;“How much of the variation in the outcome (Y) can be explained by the predictor(s) (X)?” &gt; If 0 model explains none of the variation, if 1.0 it explains all the variation (perfect fit) &gt;<strong>Note</strong> A high R² does not mean the model is good… in biology, natural variation is high. R² ignores bias and overfitting. Use diagnostics and validation too.</p>
+<p>What is the relationship between DBH and Height in this dataset? Does it match your expectation?</p>
+</div>
+</div>
 </section>
 <section id="bar-chart" class="level3">
 <h3 class="anchored" data-anchor-id="bar-chart">Bar chart</h3>
@@ -678,6 +765,20 @@ Group exercise: Summarize and plot in R (15 min)
 <h2 class="anchored" data-anchor-id="wrap-up">Wrap-up</h2>
 <p>Today we learned how to describe and visualize data, transitioning from manual Excel steps to automated R scripts. Descriptive statistics like mean, median, and standard deviation condense data into understandable numbers, while visualizations reveal patterns and anomalies that numbers alone might hide. We also saw the first glimpses of R’s capabilities – from reading data to making a plot in seconds. By summarizing the Belize case study data, we gained insight into typical values and variability (e.g., average tree sizes, distribution of observations across sites). We also confronted how misleading it can be if we rely on a single number or a poorly crafted chart. In the next session, we’ll build on this foundation by asking: <em>How can we automate analyses and go beyond what spreadsheets allow?</em> This will lead us deeper into the world of programming (using R) – writing instructions to let the computer handle repetitive tasks and complex logic, which is our focus for Day 3. Feel free to practice more with R on your own: try computing stats or making charts for other variables in the dataset. The more you play with the data, the more familiar you will become with R.</p>
 <hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"./data/raw/csv/distributions_day02_100.csv"</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -698,6 +799,8 @@ Reflection
 </div>
 
 
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

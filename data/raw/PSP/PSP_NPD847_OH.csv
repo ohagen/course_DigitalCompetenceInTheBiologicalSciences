@@ -1,0 +1,81 @@
+﻿Tag Number,Species,DBH,Height,Flower,Seed,Fruit,X coordinate,Y coordinate,POM(cm)
+1,Astoronium graveolens (Jobillo),12.4,1240,y,y,n,,,0.80
+2,Bourreria mollis (Wild craboo),18.7,1780,y,n,n,,,1.40
+3,Attalea cohune (Cohune palm),21.9,2050,y,n,n,,,2.10
+4,Aspidosperma cruentum (My lady),25.3,2280,n,n,y,,,2.70
+5,Astronium graveolens (Jobillo),27.8,2450,y,n,y,,,3.30
+6,Aspidosperma cruentum (My lady),31.6,2720,n,n,y,,,3.90
+7,Bourreria mollis (Wild craboo),34.2,2920,y,n,n,,,4.20
+8,Bauhinia divaricata (cow foot),37.9,3180,n,n,y,,,4.80
+9,Vitex gaumeri (fiddle wood),41.5,3430,n,y,n,,,5.10
+10,Bauhinia divaricata (cow foot),44.8,3620,n,y,n,,,5.60
+11,Uknown (Unknown),48.1,3800,y,n,n,,,6.00
+12,Aspidosperma cruentum (My lady),52.6,4020,y,y,n,,,6.40
+13,Hampea trilobata (Moho),57.4,4230,n,n,y,,,6.90
+14,Coccoloba acapulsensis (no name),61.2,4410,y,y,y,,,7.30
+15,Calyprantes . Cf. chytraculia (Guayabillo),66.9,4650,n,n,n,,,7.80
+16,Calophyllum mexicanum (Wild caimito),72.5,4870,y,n,y,,,8.10
+17,Hirtella americana (Pigeon plum),78.3,5080,y,n,n,,,8.60
+18,pseudolmedia spuria (Wild  cherry),83.7,5250,n,y,y,,,9.00
+19,Bactris major (Pokenoboy),89.1,5400,y,y,n,,,9.50
+20,Drypetes browneii (male bullhoof),94.6,5520,n,n,n,,,9.90
+21,Sabal mauritiformis (Bay leaf),101.8,5680,y,y,n,,,10.40
+22,Zuelania guidonia (Water wood tamai),109.4,5850,n,n,y,,,10.80
+23,Zygia cognata (Turttle bon),116.2,5980,n,y,y,,,11.20
+24,Cojoba graciliflora (John crow bead),123.9,6100,n,y,n,,,11.70
+25,Cordia dodecandra (Ziricote),131.5,6200,y,y,y,,,12.10
+26,Myrcianthes fragrans (Guayabillo),138.7,6280,y,n,n,,,12.60
+27,Aspidosperma cruentum (My lady),146.3,6350,n,y,y,,,13.00
+28,Hampea trilobata (Moho),154.8,6420,y,n,y,,,13.50
+29,Coccoloba acapulsensis (no name),167.2,6500,n,y,y,,,14.10
+30,Calyprantes . Cf. chytraculia (Guayabillo),182.6,6550,y,n,n,,,14.60
+31,Calophyllum mexicanum (Wild caimito),9.8,1080,y,n,y,,,15.00
+32,Hirtella americana (Pigeon plum),14.6,1480,y,n,n,,,15.60
+33,pseudolmedia spuria (Wild  cherry),17.3,1680,n,y,y,,,16.10
+34,Bactris major (Pokenoboy),20.9,1980,y,y,n,,,16.70
+35,Drypetes browneii (male bullhoof),24.1,2180,n,n,n,,,17.30
+36,Sabal mauritiformis (Bay leaf),28.7,2520,y,y,n,,,17.90
+37,Zuelania guidonia (Water wood tamai),32.5,2800,n,n,y,,,18.40
+38,Zygia cognata (Turttle bon),35.8,3020,n,y,y,,,19.00
+39,Cojoba graciliflora (John crow bead),39.6,3260,n,y,n,,,19.60
+40,Attalea cohune (Cohune palm),43.2,3480,y,n,y,,,20.20
+41,Aspidosperma cruentum (My lady),47.9,3750,y,y,n,,,20.80
+42,Astronium graveolens (Jobillo),51.4,3950,n,n,y,,,21.50
+43,Aspidosperma cruentum (My lady),55.6,4150,y,y,y,,,22.10
+44,Bourreria mollis (Wild craboo),60.3,4370,n,n,n,,,22.70
+45,Bauhinia divaricata (cow foot),64.8,4550,y,n,y,,,23.40
+46,Vitex gaumeri (fiddle wood),69.5,4720,y,n,n,,,24.00
+47,Bauhinia divaricata (cow foot),74.1,4880,n,y,y,,,24.70
+48,Uknown (Unknown),79.9,5050,y,y,n,,,25.30
+49,Aspidosperma cruentum (My lady),85.4,5200,n,n,n,,,26.00
+50,Hampea trilobata (Moho),90.7,5330,y,y,n,,,26.60
+51,Bactris major (Pokenoboy),96.3,5450,n,n,y,,,27.30
+52,Drypetes browneii (male bullhoof),103.6,5620,n,n,y,,,28.00
+53,Sabal mauritiformis (Bay leaf),110.2,5750,n,y,n,,,28.60
+54,Zuelania guidonia (Water wood tamai),117.8,5880,y,y,y,,,29.20
+55,Zygia cognata (Turttle bon),125.4,6000,y,y,n,,,29.80
+56,Cojoba graciliflora (John crow bead),133.9,6100,n,y,n,,,30.30
+57,Cordia dodecandra (Ziricote),142.6,6180,y,y,y,,,30.90
+58,Myrcianthes fragrans (Guayabillo),151.2,6250,n,y,n,,,31.40
+59,Aspidosperma cruentum (My lady),165.8,6350,y,n,y,,,32.00
+60,Hampea trilobata (Moho),179.3,6420,y,n,n,,,32.50
+61,Brossimium alicastrum (Ramon),154.8,6420,n,n,y,,,33.39
+62,Brossimium alicastrum (Ramon),167.2,6500,y,y,y,,,34.01
+63,Bucida buceras (Bullet tree),182.6,6550,n,n,n,,,34.63
+64,Gliricidia sepium (Madre cacoa),9.8,1080,y,n,y,,,35.25
+65,Xylopia frutesense (Pole wood),14.6,1480,y,n,n,,,35.88
+66,Simaruba amara (Negrito),17.3,1680,n,y,y,,,36.50
+67,Uknown (Unknown),20.9,1980,y,y,n,,,37.12
+68,Zanthoxylum caribaeum (Zinanche),24.1,2180,n,n,n,,,37.74
+69,Zygia cognata (Turttle bon),39.6,3260,y,y,n,,,38.36
+70,Cojoba graciliflora (John crow bead),43.2,3480,n,n,y,,,38.98
+71,Cordia dodecandra (Ziricote),47.9,3750,n,n,y,,,39.61
+72,Myrcianthes fragrans (Guayabillo),51.4,3950,n,y,n,,,40.23
+73,Aspidosperma cruentum (My lady),55.6,4150,y,y,y,,,40.85
+74,Hampea trilobata (Moho),60.3,4370,y,y,n,,,41.47
+75,Brossimium alicastrum (Ramon),64.8,4550,n,y,n,,,42.09
+76,Brossimium alicastrum (Ramon),69.5,4720,y,y,y,,,42.71
+77,Bucida buceras (Bullet tree),74.1,4880,n,y,n,,,43.33
+78,Gliricidia sepium (Madre cacoa),90.7,5330,y,n,y,,,43.96
+79,Xylopia frutesense (Pole wood),96.3,5450,y,n,n,,,44.58
+80,Simaruba amara (Negrito),103.6,5620,y,n,y,,,45.20

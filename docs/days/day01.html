@@ -222,16 +222,16 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#training-datasets-and-templates" id="toc-training-datasets-and-templates" class="nav-link" data-scroll-target="#training-datasets-and-templates">Training datasets and templates</a></li>
   </ul></li>
-  <li><a href="#importing-csv-tsv-and-delimited-text-correctly" id="toc-importing-csv-tsv-and-delimited-text-correctly" class="nav-link" data-scroll-target="#importing-csv-tsv-and-delimited-text-correctly">Importing CSV, TSV, and delimited text correctly</a>
-  <ul class="collapse">
-  <li><a href="#correct-import-workflow-excel-365" id="toc-correct-import-workflow-excel-365" class="nav-link" data-scroll-target="#correct-import-workflow-excel-365">Correct import workflow (Excel 365)</a></li>
-  </ul></li>
-  <li><a href="#common-data-formats-inside-excel-and-how-to-use-them" id="toc-common-data-formats-inside-excel-and-how-to-use-them" class="nav-link" data-scroll-target="#common-data-formats-inside-excel-and-how-to-use-them">Common data formats inside Excel (and how to use them)</a></li>
-  <li><a href="#defining-data-formats-explicitly-minimum-discipline" id="toc-defining-data-formats-explicitly-minimum-discipline" class="nav-link" data-scroll-target="#defining-data-formats-explicitly-minimum-discipline">Defining data formats explicitly (minimum discipline)</a></li>
   <li><a href="#using-formatting-to-understand-data-not-decorate-it" id="toc-using-formatting-to-understand-data-not-decorate-it" class="nav-link" data-scroll-target="#using-formatting-to-understand-data-not-decorate-it">Using formatting to understand data (not decorate it)</a>
   <ul class="collapse">
   <li><a href="#minimal-but-effective-practices" id="toc-minimal-but-effective-practices" class="nav-link" data-scroll-target="#minimal-but-effective-practices">Minimal but effective practices</a></li>
   </ul></li>
+  <li><a href="#defining-data-formats-explicitly-minimum-discipline" id="toc-defining-data-formats-explicitly-minimum-discipline" class="nav-link" data-scroll-target="#defining-data-formats-explicitly-minimum-discipline">Defining data formats explicitly (minimum discipline)</a></li>
+  <li><a href="#common-data-formats-inside-excel-and-how-to-use-them" id="toc-common-data-formats-inside-excel-and-how-to-use-them" class="nav-link" data-scroll-target="#common-data-formats-inside-excel-and-how-to-use-them">Common data formats inside Excel (and how to use them)</a>
+  <ul class="collapse">
+  <li><a href="#correct-import-workflow-excel-365" id="toc-correct-import-workflow-excel-365" class="nav-link" data-scroll-target="#correct-import-workflow-excel-365">Correct import workflow (Excel 365)</a></li>
+  </ul></li>
+  <li><a href="#importing-csv-tsv-and-delimited-text-correctly" id="toc-importing-csv-tsv-and-delimited-text-correctly" class="nav-link" data-scroll-target="#importing-csv-tsv-and-delimited-text-correctly">Importing CSV, TSV, and delimited text correctly</a></li>
   <li><a href="#limiting-data-entry-to-avoid-mistakes" id="toc-limiting-data-entry-to-avoid-mistakes" class="nav-link" data-scroll-target="#limiting-data-entry-to-avoid-mistakes">Limiting data entry (to avoid mistakes)</a>
   <ul class="collapse">
   <li><a href="#data-validation-essential" id="toc-data-validation-essential" class="nav-link" data-scroll-target="#data-validation-essential">Data validation (essential)</a></li>
@@ -240,7 +240,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#avoiding-copy-paste-disasters" id="toc-avoiding-copy-paste-disasters" class="nav-link" data-scroll-target="#avoiding-copy-paste-disasters">Avoiding copy-paste disasters</a></li>
   <li><a href="#sorting-and-ranking-data-safely" id="toc-sorting-and-ranking-data-safely" class="nav-link" data-scroll-target="#sorting-and-ranking-data-safely">Sorting and ranking data safely</a></li>
   <li><a href="#freezing-structure-to-avoid-accidental-edits-and-improve-overview" id="toc-freezing-structure-to-avoid-accidental-edits-and-improve-overview" class="nav-link" data-scroll-target="#freezing-structure-to-avoid-accidental-edits-and-improve-overview">Freezing structure to avoid accidental edits and improve overview</a></li>
-  <li><a href="#additional-excel-knowledge-relevant-to-common-failures" id="toc-additional-excel-knowledge-relevant-to-common-failures" class="nav-link" data-scroll-target="#additional-excel-knowledge-relevant-to-common-failures">Additional Excel knowledge relevant to common failures</a></li>
   </ul>
 </nav>
     </div>
@@ -1238,15 +1237,22 @@ Try out creating a csv and a xlsx with comma and quotes as above (5 min)
 <div class="callout-body-container callout-body">
 <p>From Excel</p>
 <ol type="1">
-<li>Create a new sheet with the data above</li>
+<li>Create a new sheet with the data as shown bellow</li>
+</ol>
+<p><img src="../assets/images/day01/data_entry_excel.jpg" class="img-fluid"></p>
+<ol start="2" type="1">
 <li>Save as <code>.csv</code> and inspect the file in a text editor</li>
 </ol>
+<p>File &gt; Save As &gt; “Save as type” &gt; CSV UTF-8 (Comma delimited) (*.csv)</p>
 <p>From text editor</p>
 <ol type="1">
-<li>Create a new text file with the data above</li>
-<li>Save as <code>.csv</code> and open in Excel</li>
-<li>Afters inspecting, remove the last quote and re-open in Excel. What happens?</li>
+<li><p>Open a text editor (e.g.&nbsp;Notepad, Notepad++, VSCode, TextEdit) What changed in the data? what is the delimiter?</p></li>
+<li><p>Save as <code>.csv</code> and open in Excel</p></li>
+<li><p>Afters inspecting, remove the last quote and re-open in Excel. What happens?</p></li>
 </ol>
+<p>Now repeat the process and add ; as well as , inside a value. Once you open the file in a text editor, what do you see?</p>
+<p>Now remove the quotes and re-open in Excel. What happens?</p>
+<p><strong>Note</strong> How delimiter and quotes are handled depends on your data by excel.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1345,6 +1351,7 @@ Important
 <section id="training-datasets-and-templates" class="level3">
 <h3 class="anchored" data-anchor-id="training-datasets-and-templates">Training datasets and templates</h3>
 <p>All practice files in <code>data/raw</code> and <code>data/templates</code> originate from the actual Belize protected-area monitoring programme plus the <a href="https://doi.org/10.1038/s41559-025-02702-x">Sanchez-Martinez et al.&nbsp;2025</a> drought-throughfall experiment and other linked datasets that will be downloaded directly. They have been lightly anonymized (IDs scrambled, locations jittered, sensitive observer metadata removed) to satisfy data privacy, permitting, and compliance rules while keeping the true structure we work with in the field. Because this site renders straight from GitHub, the following links open the exact files in the public repository.</p>
+<p>You might want to download the entire repo, and acess the files locally for easier handling. Visit <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences">this</a>, click on the green “&lt; &gt; Code” button, and select “Download ZIP”. After that unzip the file on your computer. <img src="../assets/images/day01/download_repo.jpg" class="img-fluid" width="400"></p>
 <section id="dataraw" class="level4">
 <h4 class="anchored" data-anchor-id="dataraw"><code>data/raw</code></h4>
 <ul>
@@ -1365,12 +1372,64 @@ Important
 </section>
 </section>
 </section>
-<section id="importing-csv-tsv-and-delimited-text-correctly" class="level2">
-<h2 class="anchored" data-anchor-id="importing-csv-tsv-and-delimited-text-correctly">Importing CSV, TSV, and delimited text correctly</h2>
-<div class="callout-danger">
-<p><strong>Refrain from double-clicking a CSV file.</strong></p>
-<p>That is how Excel destroys data.</p>
+<section id="using-formatting-to-understand-data-not-decorate-it" class="level2">
+<h2 class="anchored" data-anchor-id="using-formatting-to-understand-data-not-decorate-it">Using formatting to understand data (not decorate it)</h2>
+<p>Formatting is for <strong>error detection</strong> and <strong>data visualization</strong>, not aesthetics.</p>
+<section id="minimal-but-effective-practices" class="level3">
+<h3 class="anchored" data-anchor-id="minimal-but-effective-practices">Minimal but effective practices</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><code>View → Freeze Top Row</code> (column headers)</li>
+<li><code>View → Freeze Panes</code> (ID columns)</li>
+<li>Conditional formatting (At Home Tab under Styles) to:
+<ul>
+<li>flag missing values</li>
+<li>highlight out-of-range values</li>
+<li>reveal impossible measurements</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="defining-data-formats-explicitly-minimum-discipline" class="level2">
+<h2 class="anchored" data-anchor-id="defining-data-formats-explicitly-minimum-discipline">Defining data formats explicitly (minimum discipline)</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Steps</strong></p>
+<ol type="1">
+<li>Select the column</li>
+<li>Right-click → <em>Format Cells</em></li>
+<li>Set:
+<ul>
+<li>Text for IDs</li>
+<li>Number (fixed decimals) for measurements</li>
+<li>Date (explicit format) for dates</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<p>This prevents Excel from “helping”. Try this out in any of the files.</p>
+<hr>
+<p>Excel becomes a <strong>visual validator</strong>, not a calculator. Using those makes it harder to create and miss errors as well as for interpreting data.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1382,58 +1441,27 @@ Group exercise: Spot possible problems (10 min)
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Open the provided spreadsheets:</li>
+<li><p>Download and check <a href="http://journals.plos.org/plosone/article/asset?unique&amp;id=info:doi/10.1371/journal.pone.0145247.s002">this supplementary material excel sheet</a>/. This is a real scientific excel file used in a scientific study and is a hands on example on gene name errors in genomics.</p></li>
+<li><p>Open the provided spreadsheets. You can double click it.. this data is already “corrupted” by excel.</p></li>
+<li><p>Freeze the top row.. see how it helps you navigate the data.</p></li>
+<li><p>See line 466 and 467, row “geneSymbol”. What looks suspicious? You can select the entire column and use conditional formatting to highlight values that are not text</p></li>
 </ol>
-<ul>
-<li>Download and check <a href="http://journals.plos.org/plosone/article/asset?unique&amp;id=info:doi/10.1371/journal.pone.0145247.s002">this supplementary material excel sheet</a>/ hands on example on gene name errors in genomics</li>
-<li>Open <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv"><code>csv/Caxiuana_tree_trait_data.csv</code></a> by double-clicking it (bad practice, but common) as well as inspecting it in a text editor (e.g.&nbsp;Notepad, VSCode, TextEdit).</li>
-</ul>
-<p>Identify <strong>data structure and separators</strong>, <strong>potential data integrity issues</strong> as well as possible <strong>Excel misbehavior</strong>.</p>
-<ul>
-<li>Do not fix anything yet<br>
-</li>
-<li>Just write down what looks suspicious</li>
-</ul>
-</div>
-</div>
-<section id="correct-import-workflow-excel-365" class="level3">
-<h3 class="anchored" data-anchor-id="correct-import-workflow-excel-365">Correct import workflow (Excel 365)</h3>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Group exercise: Import CSV safely (10 min)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Steps</strong></p>
-<ol type="1">
-<li><code>Data → Get Data → From Text/CSV</code></li>
-<li>Select the file <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv"><code>csv/Caxiuana_tree_trait_data.csv</code></a></li>
-<li>Inspect:
-<ul>
-<li>delimiter (comma, tab, semicolon)</li>
-<li>decimal separator</li>
-<li>encoding (UTF-8)</li>
-</ul></li>
-<li><strong>Explicitly set column data types</strong></li>
-<li>Click <em>Load</em></li>
+<p>Home &gt; Conditional Formatting &gt; Choose any Icon Set or Color Scale (obs. this will ignore text values)</p>
+<ol start="5" type="1">
+<li><p>Right click the top and bottom cells and then Format Cells to see the current cathegory.</p></li>
+<li><p>Select the entire column “geneSymbol” properties and right click → Format Cells → Text. What happens to the values in that column?</p></li>
+<li><p>Now undo these two changes (Ctrl + Z or Cmd + Z).</p></li>
+<li><p>On other cells at the same column, add possible geneSymbols like <em>Sep3</em> and <em>Sept21</em></p></li>
+<li><p>Now replete step 5. and then step 7.</p></li>
 </ol>
-<p>Alternatively you can use:</p>
-<ol type="1">
-<li><code>Data → From Text/CSV</code></li>
-</ol>
+<p><em>Note</em> how did Excel auto-convert your new entries? What does this tell you about data entry in Excel?</p>
 </div>
 </div>
-<p>This prevents: - automatic date conversion - loss of leading zeros - unwanted scientific notation</p>
-<hr>
-</section>
 </section>
 <section id="common-data-formats-inside-excel-and-how-to-use-them" class="level2">
 <h2 class="anchored" data-anchor-id="common-data-formats-inside-excel-and-how-to-use-them">Common data formats inside Excel (and how to use them)</h2>
 <p>Excel cells always have <strong>two things</strong>: - a value - a format</p>
+<p>The Formula Bar (located to the right of the Name Box) is also important; it typically displays the unformatted, underlying value or formula of the active cell, regardless of the format applied to the cell itself.</p>
 <p>Confusing these causes errors.</p>
 <table class="caption-top table">
 <thead>
@@ -1485,84 +1513,62 @@ Important
 <p>Identifiers are <strong>text</strong>, never numbers.</p>
 </div>
 </div>
-<hr>
+<section id="correct-import-workflow-excel-365" class="level3">
+<h3 class="anchored" data-anchor-id="correct-import-workflow-excel-365">Correct import workflow (Excel 365)</h3>
 </section>
-<section id="defining-data-formats-explicitly-minimum-discipline" class="level2">
-<h2 class="anchored" data-anchor-id="defining-data-formats-explicitly-minimum-discipline">Defining data formats explicitly (minimum discipline)</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Steps</strong></p>
-<ol type="1">
-<li>Select the column</li>
-<li>Right-click → <em>Format Cells</em></li>
-<li>Set:
-<ul>
-<li>Text for IDs</li>
-<li>Number (fixed decimals) for measurements</li>
-<li>Date (explicit format) for dates</li>
-</ul></li>
-</ol>
-</div>
-</div>
-<p>This prevents Excel from “helping”. Try this out in any of the files.</p>
-<hr>
 </section>
-<section id="using-formatting-to-understand-data-not-decorate-it" class="level2">
-<h2 class="anchored" data-anchor-id="using-formatting-to-understand-data-not-decorate-it">Using formatting to understand data (not decorate it)</h2>
-<p>Formatting is for <strong>error detection</strong> and <strong>data visualization</strong>, not aesthetics.</p>
-<section id="minimal-but-effective-practices" class="level3">
-<h3 class="anchored" data-anchor-id="minimal-but-effective-practices">Minimal but effective practices</h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="importing-csv-tsv-and-delimited-text-correctly" class="level2">
+<h2 class="anchored" data-anchor-id="importing-csv-tsv-and-delimited-text-correctly">Importing CSV, TSV, and delimited text correctly</h2>
+<div class="callout-danger">
+<p><strong>Refrain from double-clicking a CSV file.</strong> That is how Excel destroys data.</p>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><code>View → Freeze Top Row</code> (column headers)</li>
-<li><code>View → Freeze Panes</code> (ID columns)</li>
-<li>Conditional formatting to:
-<ul>
-<li>flag missing values</li>
-<li>highlight out-of-range values</li>
-<li>reveal impossible measurements</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<p>Excel becomes a <strong>visual validator</strong>, not a calculator. Using those makes it harder to create and miss errors as well as for interpreting data.</p>
+<p>This prevents: - automatic date conversion - loss of leading zeros - unwanted scientific notation</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alone: Play with PSP and GAP data files (10 min)
+Group exercise: Import CSV safely (10 min)
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p><strong>Steps Power Editor</strong></p>
 <ol type="1">
-<li>Open any of the PSP or GAP data files.</li>
-<li>Identify at least three columns that need explicit formatting.</li>
-<li>Apply the correct format to each column.</li>
-<li>Use formatting to check extreme values and missing data. <strong>Bonus</strong>. Check PSP/PSP_NPD42_OH.xlsx and see if you can spot any data issues</li>
+<li><p><code>Data → Get Data → From File → From Text/CSV</code> Alternatively, if avaiable, you can use: <code>Data → From Text/CSV</code></p></li>
+<li><p>Select the file <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv"><code>csv/Caxiuana_tree_trait_data.csv</code></a></p></li>
+<li><p>Inspect:</p>
+<ul>
+<li>delimiter (comma, tab, semicolon)</li>
+<li>decimal separator</li>
+<li>encoding (UTF-8)</li>
+</ul></li>
+<li><p>Click <em>Transform Data</em> to open Power Query Editor for more control. Use <em>Load</em> only if you want to proceed with Excel default data transformation</p></li>
+</ol>
+<p>Note the type of the last variable (column) of line 32 from Texteditor or 33 from Power Query Editor. Note this is a number but in scientific format.</p>
+<ol start="5" type="1">
+<li><strong>Explicitly set column data types</strong>
+<ul>
+<li>Select columns</li>
+<li>Right-click → <em>Change Type</em> → choose correct type (Text, Decimal Number, Date, etc.) Alternatively you can change the type on the formula bar</li>
+</ul></li>
+<li>Click <em>Close &amp; Load</em> to import the data into Excel</li>
+</ol>
+<p>Check the imported data. Did anything change?</p>
+<p><strong>Steps Data Tools → Text to Columns</strong></p>
+<p>Do the same as above, but:</p>
+<ol type="1">
+<li>Opening the .csv file from a text editor (e.g.&nbsp;Notepad, Notepad++, VSCode, TextEdit) and copy-pasting the content into Excel.</li>
+<li>Paste it on the first cell (A1)</li>
+<li>Select the entire first column (A)</li>
+<li>Go to <code>Data → Text to Columns</code></li>
+<li>Choose <em>Delimited</em> → Next</li>
+<li>Select different delimiters and see what happens with the dataset</li>
+<li>Select the correct delimiter (Comma, Tab, Semicolon) as well as types → Next What happens to the data? Check specifically for the last variable (column) of line 32. Right click it → Format Cells and see the Cathegory and compare with the cell above it.</li>
 </ol>
 </div>
 </div>
 <hr>
-</section>
 </section>
 <section id="limiting-data-entry-to-avoid-mistakes" class="level2">
 <h2 class="anchored" data-anchor-id="limiting-data-entry-to-avoid-mistakes">Limiting data entry (to avoid mistakes)</h2>
@@ -1622,6 +1628,27 @@ Note
 </div>
 <p>This enforces consistency and avoids spelling variants.</p>
 <hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Group exercise: Play with PSP data files (7 min)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Open any of the PSP xlsx files.</li>
+<li>Identify at least three columns that need explicit formatting.</li>
+<li>Apply the correct format to each column.</li>
+<li>Use formatting to check extreme values and missing data.</li>
+<li>See data validation rules in action and spot possible improvements.</li>
+</ol>
+<p><strong>Bonus</strong>. Check PSP/PSP_NPD42_OH.xlsx and see if you can spot any data issues</p>
+</div>
+</div>
+<hr>
 </section>
 </section>
 <section id="avoiding-copy-paste-disasters" class="level2">
@@ -1646,29 +1673,11 @@ Warning
 </ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Structural rule</strong></p>
-<p>One sheet = one table<br>
-No blank rows<br>
-No blank columns</p>
-</div>
-</div>
 <hr>
 </section>
 <section id="sorting-and-ranking-data-safely" class="level2">
 <h2 class="anchored" data-anchor-id="sorting-and-ranking-data-safely">Sorting and ranking data safely</h2>
-<div class="callout-danger">
-<p>Sorting a single column <strong>corrupts the dataset</strong>. Excel will not warn you.</p>
-</div>
+<p>Sorting a single column <strong>corrupts the dataset</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1684,6 +1693,28 @@ Note
 <li>Select the <strong>entire table</strong></li>
 <li><code>Data → Sort</code></li>
 <li>Confirm <em>Expand selection</em></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Group exercise: try out bad and best practices with PSP data (7 min)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Open any of the PSP xlsx files.</li>
+<li>Select a single column (e.g.&nbsp;DBH) and sort it ascending. <code>Home &gt; Sort &amp; Filter &gt; Sort A to Z</code> or <code>Right click &gt; Sort &gt; Sort Smallest to Largest</code></li>
+<li>Observe what happens to the rest of the data depending on your choice Continure with the current selectio would be catastrophic for the dataset! Values of variable DBH would be shuffled on the observations and no longer correspond to the rest of the data in the same row.</li>
+<li>Now move to the Analysis sheet and try addin a new row in the middle of a sequence of data</li>
+<li>Observe what happens to formulas in that sheet</li>
+<li>Copy a value and paste is with Ctrl+C and Ctrl+V in an empy cell. What happens?<br>
+</li>
+<li>Now try pasting with <code>Ctrl + Alt + V</code> and select Values or <code>Right click &gt; Paste Special &gt; Values</code>. What happens now?</li>
 </ol>
 </div>
 </div>
@@ -1765,11 +1796,11 @@ Group exercise: Design a safe field data entry sheet (15min)
 <div class="callout-body-container callout-body">
 <p>Work in pairs.</p>
 <p>You are designing a spreadsheet for <strong>PSP tree inventory data</strong> collected in the field.</p>
+<p>For reference, use <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/PSP_#####_SFBC.xlsx"><code>data/templates/PSP/PSP_#####_SFBC.xlsx</code></a></p>
 <p>Your table must include at least the following variables:</p>
 <ul>
-<li><strong>PSP_id</strong> (unique identifier, e.g.&nbsp;metal tree tag)</li>
-<li><strong>survey_date</strong> (date of measurement)</li>
-<li><strong>species</strong> (scientific name)</li>
+<li><strong>tag_id</strong> (unique identifier, e.g.&nbsp;metal tree tag)</li>
+<li><strong>species_name</strong> (scientific name)</li>
 <li><strong>dbh_cm</strong> (diameter at breast height, in cm)</li>
 <li><strong>height_m</strong> (tree height, in meters)</li>
 <li><strong>quality_class</strong> (e.g.&nbsp;good / damaged / dead)</li>
@@ -1785,54 +1816,9 @@ Group exercise: Design a safe field data entry sheet (15min)
 <li>numeric ranges for dbh and height</li>
 <li>drop-down lists for quality_class and species names (you can just enter ABC…)</li>
 </ul></li>
-<li>prevent accidental re-sorting or overwriting</li>
 </ul>
+<p>💬 <strong>Be ready to explain</strong> - why each column has its format - what mistakes your design prevents</p>
 </section>
-<section id="metadata" class="level4">
-<h4 class="anchored" data-anchor-id="metadata">Metadata</h4>
-<p>Decide: - what metadata belong in a <strong>separate sheet</strong> - what metadata must exist <strong>outside Excel</strong> (e.g.&nbsp;README)</p>
-<p>💬 <strong>Be ready to explain</strong> - why each column has its format - what mistakes your design prevents - where Excel stops being sufficient</p>
-</section>
-</div>
-</div>
-</section>
-<section id="additional-excel-knowledge-relevant-to-common-failures" class="level2">
-<h2 class="anchored" data-anchor-id="additional-excel-knowledge-relevant-to-common-failures">Additional Excel knowledge relevant to common failures</h2>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Excel gives <strong>no warning</strong> when approaching limits in CSV workflows.</p>
-<p>Excel has no audit trail</p>
-<ul>
-<li>changes cannot be reconstructed</li>
-<li>undo history is temporary</li>
-<li>collaborators overwrite silently</li>
-</ul>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Rows</td>
-<td>1,048,576</td>
-</tr>
-<tr class="even">
-<td>Columns</td>
-<td>16,384</td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <hr>

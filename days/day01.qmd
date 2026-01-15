@@ -957,14 +957,28 @@ plot_id,  species,  notes
 
 From Excel
 
-1. Create a new sheet with the data above
+1. Create a new sheet with the data as shown bellow
+
+![](../assets/images/day01/data_entry_excel.jpg)
+
 2. Save as `.csv` and inspect the file in a text editor
+
+File > Save As > "Save as type" > CSV UTF-8 (Comma delimited) (*.csv)
 
 From text editor
 
-1. Create a new text file with the data above
+1. Open a text editor (e.g. Notepad, Notepad++, VSCode, TextEdit)
+What changed in the data? what is the delimiter?
+
 2. Save as `.csv` and open in Excel
+
 3. Afters inspecting, remove the last quote and re-open in Excel. What happens?
+
+Now repeat the process and add ; as well as , inside a value. Once you open the file in a text editor, what do you see?
+
+Now remove the quotes and re-open in Excel. What happens?
+
+**Note** How delimiter and quotes are handled depends on your data by excel.
 
 :::
 
@@ -1059,6 +1073,10 @@ At that point, the problem is already in the data, not just on the screen.
 
 All practice files in `data/raw` and `data/templates` originate from the actual Belize protected-area monitoring programme plus the [Sanchez-Martinez et al. 2025](https://doi.org/10.1038/s41559-025-02702-x) drought-throughfall experiment and other linked datasets that will be downloaded directly. They have been lightly anonymized (IDs scrambled, locations jittered, sensitive observer metadata removed) to satisfy data privacy, permitting, and compliance rules while keeping the true structure we work with in the field. Because this site renders straight from GitHub, the following links open the exact files in the public repository.
 
+You might want to download the entire repo, and acess the files locally for easier handling.
+Visit [this](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences), click on the green "< > Code" button, and select "Download ZIP". After that unzip the file on your computer.
+![](../assets/images/day01/download_repo.jpg){width=400px}
+
 #### `data/raw`
 
 - [`csv/Caxiuana_tree_trait_data.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv) – canopy-throughfall trait table exported exactly as received from UKCEH, with only tree IDs hashed for privacy.
@@ -1074,81 +1092,24 @@ All practice files in `data/raw` and `data/templates` originate from the actual 
 - [`PSP/DW.png`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/DW.png) and [`PSP/DW2.png`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/DW2.png) – quick-reference visuals used in the field to remind teams of the DBH workflow and measurement checks.
 
 
-## Importing CSV, TSV, and delimited text correctly
 
-::: {.callout-danger}
-**Refrain from double-clicking a CSV file.**
+## Using formatting to understand data (not decorate it)
 
-That is how Excel destroys data.   
-:::
+Formatting is for **error detection** and **data visualization**, not aesthetics.
 
-::: {.callout-tip icon="🧪"}
-### Group exercise: Spot possible problems (10 min)
+### Minimal but effective practices
 
-1. Open the provided spreadsheets:
-
-* Download and check [this supplementary material excel sheet](http://journals.plos.org/plosone/article/asset?unique&id=info:doi/10.1371/journal.pone.0145247.s002)/ hands on example on gene name errors in genomics
-* Open [`csv/Caxiuana_tree_trait_data.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv) by double-clicking it (bad practice, but common) as well as inspecting it in a text editor (e.g. Notepad, VSCode, TextEdit).
-
-Identify **data structure and separators**, **potential data integrity issues** as well as possible **Excel misbehavior**.
-
-- Do not fix anything yet  
-- Just write down what looks suspicious
-
+::: {.callout-note}
+- `View → Freeze Top Row` (column headers)
+- `View → Freeze Panes` (ID columns)
+- Conditional formatting (At Home Tab under Styles) to:
+  - flag missing values
+  - highlight out-of-range values
+  - reveal impossible measurements
+  
 :::
 
 
-### Correct import workflow (Excel 365)
-
-::: {.callout-tip icon="🧪"}
-### Group exercise: Import CSV safely (10 min)
-
-**Steps**
-
-1. `Data → Get Data → From Text/CSV`
-2. Select the file [`csv/Caxiuana_tree_trait_data.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv)
-3. Inspect:
-   - delimiter (comma, tab, semicolon)
-   - decimal separator
-   - encoding (UTF-8)
-4. **Explicitly set column data types**
-5. Click *Load*
-
-
-Alternatively you can use:
-
-1. `Data → From Text/CSV`
-:::
-
-This prevents:
-- automatic date conversion
-- loss of leading zeros
-- unwanted scientific notation
-
-
----
-
-## Common data formats inside Excel (and how to use them)
-
-Excel cells always have **two things**:
-- a value
-- a format
-
-Confusing these causes errors.
-
-| Format | Use for | Common mistake |
-|------|---------|----------------|
-| Text | IDs, codes, species names | Auto-conversion |
-| Number | Counts, measurements | Mixed units |
-| Date | Dates only | IDs converted to dates |
-| Time | Time of day | Mixed with dates |
-| Logical | TRUE / FALSE | Stored as text |
-
-::: {.callout-important}
-**Rule**
-
-Identifiers are **text**, never numbers.
-:::
 
 ---
 
@@ -1170,37 +1131,129 @@ This prevents Excel from “helping”. Try this out in any of the files.
 
 ---
 
-## Using formatting to understand data (not decorate it)
+Excel becomes a **visual validator**, not a calculator. Using those makes it harder to create and miss errors as well as for interpreting data.
 
-Formatting is for **error detection** and **data visualization**, not aesthetics.
+::: {.callout-tip icon="🧪"}
+### Group exercise: Spot possible problems (10 min)
 
-### Minimal but effective practices
 
-::: {.callout-note}
-- `View → Freeze Top Row` (column headers)
-- `View → Freeze Panes` (ID columns)
-- Conditional formatting to:
-  - flag missing values
-  - highlight out-of-range values
-  - reveal impossible measurements
-  
+
+1. Download and check [this supplementary material excel sheet](http://journals.plos.org/plosone/article/asset?unique&id=info:doi/10.1371/journal.pone.0145247.s002)/. This is a real scientific excel file used in a scientific study and is a hands on example on gene name errors in genomics.
+
+2. Open the provided spreadsheets. You can double click it.. this data is already "corrupted" by excel.
+
+3. Freeze the top row.. see how it helps you navigate the data.
+
+4. See line 466 and 467, row "geneSymbol". What looks suspicious? You can select the entire column and use conditional formatting to highlight values that are not text
+
+Home > Conditional Formatting > Choose any Icon Set or Color Scale (obs. this will ignore text values)
+
+5. Right click the top and bottom cells and then Format Cells to see the current cathegory.
+
+5. Select the entire column "geneSymbol" properties and right click → Format Cells → Text. What happens to the values in that column?
+
+6. Now undo these two changes (Ctrl + Z or Cmd + Z).
+
+7. On other cells at the same column, add possible geneSymbols like *Sep3* and *Sept21*
+
+8. Now replete step 5. and then step 7.
+
+*Note* how did Excel auto-convert your new entries? What does this tell you about data entry in Excel?
+
 :::
 
 
-Excel becomes a **visual validator**, not a calculator. Using those makes it harder to create and miss errors as well as for interpreting data.
+## Common data formats inside Excel (and how to use them)
+
+Excel cells always have **two things**:
+- a value
+- a format
+
+The Formula Bar (located to the right of the Name Box) is also important; it typically displays the unformatted, underlying value or formula of the active cell, regardless of the format applied to the cell itself.
+
+
+Confusing these causes errors.
+
+| Format | Use for | Common mistake |
+|------|---------|----------------|
+| Text | IDs, codes, species names | Auto-conversion |
+| Number | Counts, measurements | Mixed units |
+| Date | Dates only | IDs converted to dates |
+| Time | Time of day | Mixed with dates |
+| Logical | TRUE / FALSE | Stored as text |
+
+::: {.callout-important}
+
+**Rule**
+
+Identifiers are **text**, never numbers.
+
+:::
+
+
+
+
+### Correct import workflow (Excel 365)
+
+## Importing CSV, TSV, and delimited text correctly
+
+::: {.callout-danger}
+**Refrain from double-clicking a CSV file.**
+That is how Excel destroys data.
+:::
+
+This prevents:
+- automatic date conversion
+- loss of leading zeros
+- unwanted scientific notation
 
 
 ::: {.callout-tip icon="🧪"}
-### Alone: Play with PSP and GAP data files (10 min)
+### Group exercise: Import CSV safely (10 min)
 
-1. Open any of the PSP or GAP data files.
-2. Identify at least three columns that need explicit formatting.
-3. Apply the correct format to each column.
-5. Use formatting to check extreme values and missing data.
-**Bonus**. Check PSP/PSP_NPD42_OH.xlsx and see if you can spot any data issues
+**Steps Power Editor**
+
+1. `Data → Get Data → From File → From Text/CSV`
+Alternatively, if avaiable,  you can use:
+`Data → From Text/CSV`
+
+2. Select the file [`csv/Caxiuana_tree_trait_data.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv)
+3. Inspect:
+   - delimiter (comma, tab, semicolon)
+   - decimal separator
+   - encoding (UTF-8)
+4. Click *Transform Data* to open Power Query Editor for more control. Use *Load* only if you want to proceed with Excel default data transformation
+
+Note the type of the last variable (column) of line 32 from Texteditor or 33 from Power Query Editor. Note this is a number but in scientific format.
+
+5. **Explicitly set column data types**
+   - Select columns
+   - Right-click → *Change Type* → choose correct type (Text, Decimal Number, Date, etc.)
+   Alternatively you can change the type on the formula bar
+   
+6. Click *Close & Load* to import the data into Excel
+
+Check the imported data. Did anything change?
+
+**Steps Data Tools → Text to Columns**
+
+Do the same as above, but:
+
+1. Opening the .csv file from a text editor (e.g. Notepad, Notepad++, VSCode, TextEdit) and copy-pasting the content into Excel. 
+2. Paste it on the first cell (A1)
+3. Select the entire first column (A)
+4. Go to `Data → Text to Columns`
+5. Choose *Delimited* → Next
+6. Select different delimiters and see what happens with the dataset
+7. Select the correct delimiter (Comma, Tab, Semicolon) as well as types → Next
+What happens to the data? Check specifically for the last variable (column) of line 32. Right click it → Format Cells and see the Cathegory and compare with the cell above it.
+
 :::
 
+
+
 ---
+
 
 ## Limiting data entry (to avoid mistakes)
 
@@ -1247,6 +1300,22 @@ This enforces consistency and avoids spelling variants.
 
 ---
 
+::: {.callout-tip icon="🧪"}
+### Group exercise: Play with PSP data files (7 min)
+
+1. Open any of the PSP xlsx files.
+2. Identify at least three columns that need explicit formatting.
+3. Apply the correct format to each column.
+5. Use formatting to check extreme values and missing data.
+6. See data validation rules in action and spot possible improvements.
+
+**Bonus**. Check PSP/PSP_NPD42_OH.xlsx and see if you can spot any data issues
+:::
+
+---
+
+
+
 ## Avoiding copy-paste disasters
 
 Copy-paste is one of the biggest sources of silent errors.
@@ -1260,22 +1329,12 @@ Copy-paste is one of the biggest sources of silent errors.
 - Use *Paste Special → Values*
 :::
 
-::: {.callout-important}
-**Structural rule**
-
-One sheet = one table  
-No blank rows  
-No blank columns  
-:::
 
 ---
 
 ## Sorting and ranking data safely
 
-::: {.callout-danger}
 Sorting a single column **corrupts the dataset**.
-Excel will not warn you.
-:::
 
 ::: {.callout-note}
 **Safe sorting workflow**
@@ -1284,6 +1343,25 @@ Excel will not warn you.
 2. `Data → Sort`
 3. Confirm *Expand selection*
 :::
+
+
+::: {.callout-tip icon="🧪"}
+### Group exercise: try out bad and best practices with PSP data (7 min)
+
+1. Open any of the PSP xlsx files.
+2. Select a single column (e.g. DBH) and sort it ascending. 
+`Home > Sort & Filter > Sort A to Z` or `Right click > Sort > Sort Smallest to Largest`
+3. Observe what happens to the rest of the data depending on your choice
+Continure with the current selectio would be catastrophic for the dataset! 
+Values of variable DBH would be shuffled on the observations and no longer correspond to the rest of the data in the same row.
+4. Now move to the Analysis sheet and try addin a new row in the middle of a sequence of data
+5. Observe what happens to formulas in that sheet
+6. Copy a value and paste is with Ctrl+C and Ctrl+V in an empy cell. What happens?\
+7. Now try pasting with `Ctrl + Alt + V` and select Values or `Right click > Paste Special > Values`.
+What happens now?
+
+:::
+
 
 ---
 
@@ -1342,11 +1420,12 @@ Work in pairs.
 
 You are designing a spreadsheet for **PSP tree inventory data** collected in the field.
 
+For reference, use [`data/templates/PSP/PSP_#####_SFBC.xlsx`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/PSP_#####_SFBC.xlsx)
+
 Your table must include at least the following variables:
 
-- **PSP_id** (unique identifier, e.g. metal tree tag)
-- **survey_date** (date of measurement)
-- **species** (scientific name)
+- **tag_id** (unique identifier, e.g. metal tree tag)
+- **species_name** (scientific name)
 - **dbh_cm** (diameter at breast height, in cm)
 - **height_m** (tree height, in meters)
 - **quality_class** (e.g. good / damaged / dead)
@@ -1360,37 +1439,10 @@ Design the spreadsheet so that it is **hard to enter bad data**:
 - use data validation:
   - numeric ranges for dbh and height
   - drop-down lists for quality_class and species names (you can just enter ABC...)
-- prevent accidental re-sorting or overwriting
-
-#### Metadata
-
-Decide:
-- what metadata belong in a **separate sheet**
-- what metadata must exist **outside Excel** (e.g. README)
 
 💬 **Be ready to explain**
 - why each column has its format
 - what mistakes your design prevents
-- where Excel stops being sufficient
-:::
-
-
-## Additional Excel knowledge relevant to common failures
-
-::: {.callout-warning}
-Excel gives **no warning** when approaching limits in CSV workflows.
-
-Excel has no audit trail
-
-- changes cannot be reconstructed
-- undo history is temporary
-- collaborators overwrite silently
-
-
-| Limit | Value |
-|------|------|
-| Rows | 1,048,576 |
-| Columns | 16,384 |
 :::
 
 
