@@ -250,6 +250,7 @@ Graphs provide a shorthand for understanding data. By plotting our Belize datase
   -- The box spans the interquartile range (Q1 to Q3)
   -- The whiskers extend to the most extreme values within Q1-1.5IQR and Q3+1.5IQR
   -- Outliers are any points beyond the whiskers
+:::
 
 
 ::: {.callout-tip icon="🧪"}
@@ -265,6 +266,8 @@ Much easier to see the distribution this way, right?
 
 :::
 
+
+::: {.callout-note}
 ### Scatter plot  
 *Relationship between two numeric variables*
 
@@ -272,6 +275,7 @@ Much easier to see the distribution this way, right?
 2. **Insert → Scatter → Scatter with only markers**
 3. Add axis labels and optional trendline
 
+:::
 
 ::: {.callout-tip icon="🧪"}
 ### Group exercise: Do a scatter plot of DBH and Height (7 min)
@@ -287,6 +291,8 @@ Before plotting, think, how should a scatter plot of DBH vs Height look like? Wh
 2. Add a trendline via right-click on a point → **Add Trendline...** 
 3. Choose Linear and logarithmic options
 4. Add equation and R-squared value to the chart
+
+
 >R-squared (R²) is a statistical measure of how well a regression model fits your data. It answers the question:
 >"How much of the variation in the outcome (Y) can be explained by the predictor(s) (X)?"
 > If 0	model explains none of the variation, if 1.0 it explains all the variation (perfect fit)
@@ -297,7 +303,7 @@ What is the relationship between DBH and Height in this dataset? Does it match y
 :::
 
 
-
+::: {.callout-note}
 ### Bar chart  
 *Summary of categorical data*
 
@@ -400,11 +406,12 @@ Assuming the CSV file is saved as `data/raw/trees.csv` (just as an example path)
 trees <- read.csv("data/raw/csv/Caxiuana_tree_trait_data.csv")
 ```
 
-This command loads the data into a variable named trees. By default, read.csv assumes the file has a header row for column names, values are separated by commas, and text is encoded in UTF-8 (which is standard for most CSVs). If our data used a different delimiter (like tab \t in a TSV file), we could use read.delim or specify sep="\t".
+This command loads the data into a variable named trees. By default, read.csv assumes the file has a header row for column names, values are separated by commas, and text is encoded in UTF-8 (which is standard for most CSVs). If our data used a different delimiter (like tab \\t in a TSV file), we could use read.delim or specify sep="\\t".
 One big advantage: R will **not** automatically mangle our data the way Excel might. For instance, if there were gene names like “SEP2” or “MAR1”, R will keep them as text, whereas Excel might have turned them into dates or numbers. In R, data types are explicit – we can tell R a column is text, numeric, etc., or let it guess (which it usually does correctly if the file is well-formatted).
 
 ::: {.callout-tip} 
 **Tip:** If your data contains special characters (like “ß” or “ñ”), ensure you use the correct encoding. read.csv(..., fileEncoding="UTF-8") will handle most cases. This prevents issues where characters turn into gibberish due to encoding mismatches. 
+
 :::
 
 ### Summarizing data in R

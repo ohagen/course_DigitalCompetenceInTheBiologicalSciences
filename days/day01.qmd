@@ -1075,7 +1075,7 @@ All practice files in `data/raw` and `data/templates` originate from the actual 
 
 You might want to download the entire repo, and acess the files locally for easier handling.
 Visit [this](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences), click on the green "< > Code" button, and select "Download ZIP". After that unzip the file on your computer.
-![](../assets/images/day01/download_repo.jpg){width=400px}
+![](../assets/images/day01/download_repo.jpg)
 
 #### `data/raw`
 

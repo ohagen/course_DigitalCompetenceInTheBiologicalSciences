@@ -524,6 +524,9 @@ Note
 <li><strong>Insert → Statistic Chart → Box &amp; Whisker</strong></li>
 <li>Excel applies Tukey’s rule automatically. Meaning: – The box spans the interquartile range (Q1 to Q3) – The whiskers extend to the most extreme values within Q1-1.5IQR and Q3+1.5IQR – Outliers are any points beyond the whiskers</li>
 </ol>
+</section>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -546,15 +549,24 @@ Solo Exercise: Plot a historgram and a boxplot for each if the three distributio
 <p>Much easier to see the distribution this way, right?</p>
 </div>
 </div>
-</section>
-<section id="scatter-plot" class="level3">
-<h3 class="anchored" data-anchor-id="scatter-plot">Scatter plot</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Scatter plot
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><em>Relationship between two numeric variables</em></p>
 <ol type="1">
 <li>Select both numeric columns</li>
 <li><strong>Insert → Scatter → Scatter with only markers</strong></li>
 <li>Add axis labels and optional trendline</li>
 </ol>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -571,13 +583,23 @@ Group exercise: Do a scatter plot of DBH and Height (7 min)
 <li>Select the columns <code>DBH</code> and <code>Height</code></li>
 <li><strong>Insert → Scatter → Scatter with only markers</strong></li>
 </ol>
-<p><em>Bonus</em> 1. Make this plot at the Analysis sheet (not raw data) 2. Add a trendline via right-click on a point → <strong>Add Trendline…</strong> 3. Choose Linear and logarithmic options 4. Add equation and R-squared value to the chart &gt;R-squared (R²) is a statistical measure of how well a regression model fits your data. It answers the question: &gt;“How much of the variation in the outcome (Y) can be explained by the predictor(s) (X)?” &gt; If 0 model explains none of the variation, if 1.0 it explains all the variation (perfect fit) &gt;<strong>Note</strong> A high R² does not mean the model is good… in biology, natural variation is high. R² ignores bias and overfitting. Use diagnostics and validation too.</p>
+<p><em>Bonus</em> 1. Make this plot at the Analysis sheet (not raw data) 2. Add a trendline via right-click on a point → <strong>Add Trendline…</strong> 3. Choose Linear and logarithmic options 4. Add equation and R-squared value to the chart</p>
+<blockquote class="blockquote">
+<p>R-squared (R²) is a statistical measure of how well a regression model fits your data. It answers the question: “How much of the variation in the outcome (Y) can be explained by the predictor(s) (X)?” If 0 model explains none of the variation, if 1.0 it explains all the variation (perfect fit) <strong>Note</strong> A high R² does not mean the model is good… in biology, natural variation is high. R² ignores bias and overfitting. Use diagnostics and validation too.</p>
+</blockquote>
 <p>What is the relationship between DBH and Height in this dataset? Does it match your expectation?</p>
 </div>
 </div>
-</section>
-<section id="bar-chart" class="level3">
-<h3 class="anchored" data-anchor-id="bar-chart">Bar chart</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bar chart
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><em>Summary of categorical data</em></p>
 <ol type="1">
 <li>Select the full dataset</li>
@@ -589,7 +611,6 @@ Group exercise: Do a scatter plot of DBH and Height (7 min)
 </ul></li>
 <li>Plot via <strong>Insert → Column or Bar Chart</strong></li>
 </ol>
-</section>
 </div>
 </div>
 <p>A good visualization <strong>summarizes</strong> the data (like statistics do) but in a more intuitive way. It is not “proof” of a hypothesis by itself, but it helps us explore and communicate what the data are saying.</p>
@@ -660,7 +681,7 @@ Tip
 <p>Assuming the CSV file is saved as <code>data/raw/trees.csv</code> (just as an example path), we can read it into R with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the CSV file into a data frame (tabular structure in R)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/raw/csv/Caxiuana_tree_trait_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This command loads the data into a variable named trees. By default, read.csv assumes the file has a header row for column names, values are separated by commas, and text is encoded in UTF-8 (which is standard for most CSVs). If our data used a different delimiter (like tab n a TSV file), we could use read.delim or specify sep=“. One big advantage: R will <strong>not</strong> automatically mangle our data the way Excel might. For instance, if there were gene names like “SEP2” or “MAR1”, R will keep them as text, whereas Excel might have turned them into dates or numbers. In R, data types are explicit – we can tell R a column is text, numeric, etc., or let it guess (which it usually does correctly if the file is well-formatted).</p>
+<p>This command loads the data into a variable named trees. By default, read.csv assumes the file has a header row for column names, values are separated by commas, and text is encoded in UTF-8 (which is standard for most CSVs). If our data used a different delimiter (like tab \t in a TSV file), we could use read.delim or specify sep=“\t”. One big advantage: R will <strong>not</strong> automatically mangle our data the way Excel might. For instance, if there were gene names like “SEP2” or “MAR1”, R will keep them as text, whereas Excel might have turned them into dates or numbers. In R, data types are explicit – we can tell R a column is text, numeric, etc., or let it guess (which it usually does correctly if the file is well-formatted).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
