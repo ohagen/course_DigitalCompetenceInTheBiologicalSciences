@@ -104,9 +104,9 @@ Source:
 1. Open [`data/raw/csv/dist_day02.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/dist_day02.csv) in Excel. This file contains a three columns of numeric values.
 each is one variable (A, B, C) with 100 observations each.
 2. For each variable (A, B, C), calculate the mean, median and mode using Excel functions:
-   - Mean: `=AVERAGE(range)`
-   - Median: `=MEDIAN(range)`
-   - Mode: `=MODE(range)`
+  - Mean: `=AVERAGE(range)` (German Excel: `=MITTELWERT(Bereich)`)
+  - Median: `=MEDIAN(range)` (German Excel: `=MEDIAN(Bereich)`)
+  - Mode: `=MODE(range)` (German Excel: `=MODUS.EINF(Bereich)`; older versions: `=MODUS(Bereich)`)
    
 You can do this selecting a cell range with your mouse or typing it in (e.g. `A2:A101` for column A) or using named ranges.
 
@@ -156,9 +156,9 @@ That is why models tend to run on **variance**, not SD.
 
 1. Using the same file [`data/raw/csv/dist_day02.csv`]
 2. For each variable (A, B, C), calculate the variance and standard deviation using Excel functions:
-   - Variance: `=VAR.S(range)`
-   - Standard Deviation: `=STDEV.S(range)`
-   - Range: `=MAX(range)-MIN(range)`
+  - Variance: `=VAR.S(range)` (German Excel: `=VARI.S(Bereich)`)
+  - Standard Deviation: `=STDEV.S(range)` (German Excel: `=STABW.S(Bereich)`)
+  - Range: `=MAX(range)-MIN(range)` (German Excel: `=MAX(Bereich)-MIN(Bereich)`)
 3. Keep it open for later exercises.
 
 Whay did this show you more about the data?
@@ -518,8 +518,15 @@ Feel free to practice more with R on your own: try computing stats or making cha
 ::: {.callout-tip icon="🧪"}
 
 ```{r eval=F}
-tab <- read.csv(here("./data/raw/csv/distributions_day02_100.csv"))
-hist(tab)
+library(here)
+# Read CSV with different separators and decimal points. both lead to same result
+tab <- read.csv(here("./data/raw/csv/dist_day02_sep_comma__dec_dot.csv"), sep=",", dec=".")
+tab <- read.csv(here("./data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv"), sep=";", dec=",")
+str(tab)
+buffer <- 5
+hist(tab$A, xlim=c(min(tab)-buffer,max(tab)+buffer))
+hist(tab$B, xlim=c(min(tab)-buffer,max(tab)+buffer))
+hist(tab$C, xlim=c(min(tab)-buffer,max(tab)+buffer))
 ```
 
 

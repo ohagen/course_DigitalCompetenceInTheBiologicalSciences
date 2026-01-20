@@ -939,9 +939,8 @@ CSV files vary by:
 - text encoding
 - quoting rules
 
-::: {.callout-tip}
 
-## What if the data itself contains a my separator?
+#### What if the data itself contains a my separator?
 If a value contains a separator, it must be **wrapped in double quotes**
 
 Example:
@@ -949,7 +948,6 @@ Example:
 plot_id,  species,  notes
 
 1,  Iguana iguana,  "observed near river, basking on rock"
-:::
 
 
 ::: {.callout-tip icon="🧪"}
@@ -983,15 +981,12 @@ Now remove the quotes and re-open in Excel. What happens?
 :::
 
 
-::: {.callout-tip}
-
-## What if the data contains double quote
+#### What if the data contains double quote
 If a value contains a double quote ", you escape it by **doubling it**.
 
 plot_id,  species,  notes
 
 1,  Iguana iguana,  "observed ""near"" river, basking on rock"
-:::
 
 
 ---
@@ -1420,7 +1415,7 @@ Work in pairs.
 
 You are designing a spreadsheet for **PSP tree inventory data** collected in the field.
 
-For reference, use [`data/templates/PSP/PSP_#####_SFBC.xlsx`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/PSP_#####_SFBC.xlsx)
+For reference, use [`data/templates/PSP/PSP_#####_SFBC.xlsx`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/PSP_%23%23%23%23%23_SFBC.xlsx)
 
 Your table must include at least the following variables:
 
