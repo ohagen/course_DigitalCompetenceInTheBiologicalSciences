@@ -1156,7 +1156,7 @@ Home > Conditional Formatting > Choose any Icon Set or Color Scale (obs. this wi
 
 7. On other cells at the same column, add possible geneSymbols like *Sep3* and *Sept21*
 
-8. Now replete step 5. and then step 7.
+8. Now repete step 5. and then step 7.
 
 *Note* how did Excel auto-convert your new entries? What does this tell you about data entry in Excel?
 
