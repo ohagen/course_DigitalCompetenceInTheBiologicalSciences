@@ -1095,9 +1095,9 @@ Formatting is for **error detection** and **data visualization**, not aesthetics
 ### Minimal but effective practices
 
 ::: {.callout-note}
-- `View → Freeze Top Row` (column headers)
-- `View → Freeze Panes` (ID columns)
-- Conditional formatting (At Home Tab under Styles) to:
+- `View → Freeze Top Row` (column headers; German Excel: Ansicht → Fenster einfrieren → Oberste Zeile einfrieren)
+- `View → Freeze Panes` (ID columns; German Excel: Ansicht → Fenster einfrieren → Fenster einfrieren)
+- Conditional formatting (Home → Conditional Formatting; German Excel: Start → Bedingte Formatierung) to:
   - flag missing values
   - highlight out-of-range values
   - reveal impossible measurements
@@ -1114,7 +1114,7 @@ Formatting is for **error detection** and **data visualization**, not aesthetics
 **Steps**
 
 1. Select the column
-2. Right-click → *Format Cells*
+2. Right-click → *Format Cells* (German Excel: Rechtsklick → *Zellen formatieren*)
 3. Set:
    - Text for IDs
    - Number (fixed decimals) for measurements
@@ -1137,11 +1137,11 @@ Excel becomes a **visual validator**, not a calculator. Using those makes it har
 
 2. Open the provided spreadsheets. You can double click it.. this data is already "corrupted" by excel.
 
-3. Freeze the top row.. see how it helps you navigate the data.
+3. Freeze the top row.. see how it helps you navigate the data. (German Excel: Ansicht → Fenster einfrieren → Oberste Zeile einfrieren)
 
 4. See line 466 and 467, row "geneSymbol". What looks suspicious? You can select the entire column and use conditional formatting to highlight values that are not text
 
-Home > Conditional Formatting > Choose any Icon Set or Color Scale (obs. this will ignore text values)
+Home → Conditional Formatting (German Excel: Start → Bedingte Formatierung) → Choose any Icon Set or Color Scale (obs. this will ignore text values)
 
 5. Right click the top and bottom cells and then Format Cells to see the current cathegory.
 
@@ -1208,25 +1208,25 @@ This prevents:
 
 **Steps Power Editor**
 
-1. `Data → Get Data → From File → From Text/CSV`
+1. `Data → Get Data → From File → From Text/CSV` (German Excel: `Daten → Daten abrufen → Aus Datei → Aus Text/CSV`)
 Alternatively, if avaiable,  you can use:
-`Data → From Text/CSV`
+`Data → From Text/CSV` (German Excel: `Daten → Aus Text/CSV`)
 
 2. Select the file [`csv/Caxiuana_tree_trait_data.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv)
 3. Inspect:
    - delimiter (comma, tab, semicolon)
    - decimal separator
    - encoding (UTF-8)
-4. Click *Transform Data* to open Power Query Editor for more control. Use *Load* only if you want to proceed with Excel default data transformation
+4. Click *Transform Data* (German: *Daten transformieren*) to open Power Query Editor for more control. Use *Load* (German: *Laden*) only if you want to proceed with Excel default data transformation
 
 Note the type of the last variable (column) of line 32 from Texteditor or 33 from Power Query Editor. Note this is a number but in scientific format.
 
 5. **Explicitly set column data types**
-   - Select columns
-   - Right-click → *Change Type* → choose correct type (Text, Decimal Number, Date, etc.)
-   Alternatively you can change the type on the formula bar
+    - Select columns
+    - Right-click → *Change Type* (German Power Query: *Datentyp ändern*) → choose correct type (Text, Decimal Number, Date, etc.)
+    Alternatively you can change the type on the formula bar
    
-6. Click *Close & Load* to import the data into Excel
+6. Click *Close & Load* (German: *Schließen & Laden*) to import the data into Excel
 
 Check the imported data. Did anything change?
 
@@ -1237,10 +1237,10 @@ Do the same as above, but:
 1. Opening the .csv file from a text editor (e.g. Notepad, Notepad++, VSCode, TextEdit) and copy-pasting the content into Excel. 
 2. Paste it on the first cell (A1)
 3. Select the entire first column (A)
-4. Go to `Data → Text to Columns`
-5. Choose *Delimited* → Next
+4. Go to `Data → Text to Columns` (German Excel: `Daten → Text in Spalten`)
+5. Choose *Delimited* (German: *Getrennt*) → Next
 6. Select different delimiters and see what happens with the dataset
-7. Select the correct delimiter (Comma, Tab, Semicolon) as well as types → Next
+7. Select the correct delimiter (Comma, Tab, Semicolon) as well as types → Next (German: passenden Trenner wählen, dann *Weiter*)
 What happens to the data? Check specifically for the last variable (column) of line 32. Right click it → Format Cells and see the Cathegory and compare with the cell above it.
 
 :::
@@ -1258,7 +1258,7 @@ What happens to the data? Check specifically for the last variable (column) of l
 **Steps**
 
 1. Select target cells or column
-2. `Data → Data Validation`
+2. `Data → Data Validation` (German Excel: `Daten → Datenüberprüfung`)
 3. Choose:
    - numeric range
    - whole numbers only
@@ -1285,8 +1285,8 @@ Use drop-downs for:
 
 1. Create a list of allowed values (preferably on a separate sheet)
 2. Select the target cells
-3. `Data → Data Validation`
-4. Under *Allow*, choose **List**
+3. `Data → Data Validation` (German: `Daten → Datenüberprüfung`)
+4. Under *Allow*, choose **List** (German: *Zulassen → Liste*)
 5. Set the source range (or type values manually)
 6. Confirm
 :::
@@ -1345,14 +1345,14 @@ Sorting a single column **corrupts the dataset**.
 
 1. Open any of the PSP xlsx files.
 2. Select a single column (e.g. DBH) and sort it ascending. 
-`Home > Sort & Filter > Sort A to Z` or `Right click > Sort > Sort Smallest to Largest`
+`Home → Sort & Filter → Sort A to Z` (German: `Start → Sortieren und Filtern → Von A bis Z sortieren`) or `Right click → Sort → Sort Smallest to Largest` (German: `Rechtsklick → Sortieren → Kleinste bis Größte`)
 3. Observe what happens to the rest of the data depending on your choice
 Continure with the current selectio would be catastrophic for the dataset! 
 Values of variable DBH would be shuffled on the observations and no longer correspond to the rest of the data in the same row.
 4. Now move to the Analysis sheet and try addin a new row in the middle of a sequence of data
 5. Observe what happens to formulas in that sheet
 6. Copy a value and paste is with Ctrl+C and Ctrl+V in an empy cell. What happens?\
-7. Now try pasting with `Ctrl + Alt + V` and select Values or `Right click > Paste Special > Values`.
+7. Now try pasting with `Ctrl + Alt + V` and select Values or `Right click > Paste Special > Values` (German: `Rechtsklick → Inhalte einfügen → Werte`).
 What happens now?
 
 :::

@@ -365,14 +365,21 @@ Solo Exercise: Calculate the mean (aka average), median and mode for three distr
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Open <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/dist_day02.csv"><code>data/raw/csv/dist_day02.csv</code></a> in Excel. This file contains a three columns of numeric values. each is one variable (A, B, C) with 100 observations each.</li>
-<li>For each variable (A, B, C), calculate the mean, median and mode using Excel functions:
-<ul>
-<li>Mean: <code>=AVERAGE(range)</code></li>
-<li>Median: <code>=MEDIAN(range)</code></li>
-<li>Mode: <code>=MODE(range)</code></li>
-</ul></li>
+<li>Open one of the regionalized files in Excel (three numeric columns A, B, C, 100 rows each):</li>
 </ol>
+<ul>
+<li><code>data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv</code> (German settings: semicolon separator, comma decimal) → loads cleanly if your decimal is <code>,</code></li>
+<li><code>data/raw/csv/dist_day02_sep_comma__dec_dot.csv</code> (US/UK settings: comma separator, dot decimal) → if your regional decimal is <code>,</code>, tell Excel to keep dot as decimal One way is over Power Query import First on Home → Use First Row as Headers Delete the automatic conversion, did you notices it changed the values Select all columns clicking the first one, then shift and then the last one. Right Click → Change Type → Using Locale → Data Type [Decimal] → Locale English (Europe)</li>
+</ul>
+<p>As we learned, the other way is to copy the data (from Notepad or Notebook++) and paste it into Excel. Then on <strong>Data → Text to Columns →… and at the end select Advanced</strong> There, set decimal separator to <code>.</code>).</p>
+<ol start="2" type="1">
+<li>For each variable (A, B, C), calculate the mean, median and mode using Excel functions:</li>
+</ol>
+<ul>
+<li>Mean: <code>=AVERAGE(range)</code> (German Excel: <code>=MITTELWERT(Bereich)</code>)</li>
+<li>Median: <code>=MEDIAN(range)</code> (German Excel: <code>=MEDIAN(Bereich)</code>)</li>
+<li>Mode: <code>=MODE(range)</code> (German Excel: <code>=MODUS.EINF(Bereich)</code>; older versions: <code>=MODUS(Bereich)</code>)</li>
+</ul>
 <p>You can do this selecting a cell range with your mouse or typing it in (e.g.&nbsp;<code>A2:A101</code> for column A) or using named ranges.</p>
 <ol start="3" type="1">
 <li>Keep it open for later exercises.</li>
@@ -384,11 +391,11 @@ Solo Exercise: Calculate the mean (aka average), median and mode for three distr
 <h3 class="anchored">Measures of variability</h3>
 <p>A single center value is not enough; we also need to know how spread out the data are:</p>
 <ul>
-<li><strong>Range:</strong> the difference between the maximum and minimum values. It tells us the span of the data (but can be skewed by outliers).</li>
-<li><strong>Outliers</strong> are extreme values that differ significantly from other observations. For example, if tree heights range from 5 m to 50 m, a tree of height 150 m can be considered an outlier.</li>
-<li><strong>Variance (<span class="math inline">\(s^2\)</span>) and Standard Deviation (<span class="math inline">\(s\)</span>):</strong> measure the typical deviation of data points from the mean. Variance is defined as<br>
-<span class="math display">\[s^2 = \frac{1}{n-1}\sum_{i=1}^{n} (x_i - \bar{x})^2,\]</span><br>
-and the standard deviation is <span class="math inline">\(s = \sqrt{s^2}\)</span>. A high standard deviation means values are widely scattered around the mean; a low standard deviation means they are tightly clustered.</li>
+<li><p><strong>Range:</strong> the difference between the maximum and minimum values. It tells us the span of the data (but can be skewed by outliers).</p></li>
+<li><p><strong>Outliers</strong> are extreme values that differ significantly from other observations. For example, if tree heights range from 5 m to 50 m, a tree of height 150 m can be considered an outlier.</p></li>
+<li><p><strong>Variance (<span class="math inline">\(s^2\)</span>)</strong> measure the typical deviation of data points from the mean. Variance is defined as<br>
+<span class="math display">\[s^2 = \frac{1}{n-1}\sum_{i=1}^{n} (x_i - \bar{x})^2,\]</span></p></li>
+<li><p><strong>Standard Deviation (<span class="math inline">\(s\)</span>)</strong> the square root of the variance. It is in the same units as the data and gives a sense of typical deviation from the mean. <span class="math inline">\(s = \sqrt{s^2}\)</span>. A high standard deviation means values are widely scattered around the mean; a low standard deviation means they are tightly clustered.</p></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -424,13 +431,15 @@ Solo Exercise: Calculate variance and standard deviation for the three distribut
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Using the same file [<code>data/raw/csv/dist_day02.csv</code>]</li>
-<li>For each variable (A, B, C), calculate the variance and standard deviation using Excel functions:
+<li>Using the same dataset (pick the same file as above)</li>
+<li>For each variable (A, B, C), calculate the variance and standard deviation using Excel functions:</li>
+</ol>
 <ul>
-<li>Variance: <code>=VAR.S(range)</code></li>
-<li>Standard Deviation: <code>=STDEV.S(range)</code></li>
-<li>Range: <code>=MAX(range)-MIN(range)</code></li>
-</ul></li>
+<li>Variance: <code>=VAR.S(range)</code> (German Excel: <code>=VARI.S(Bereich)</code>)</li>
+<li>Standard Deviation: <code>=STDEV.S(range)</code> (German Excel: <code>=STABW.S(Bereich)</code>)</li>
+<li>Range: <code>=MAX(range)-MIN(range)</code> (German Excel: <code>=MAX(Bereich)-MIN(Bereich)</code>)</li>
+</ul>
+<ol start="3" type="1">
 <li>Keep it open for later exercises.</li>
 </ol>
 <p>Whay did this show you more about the data?</p>
@@ -509,7 +518,7 @@ Note
 <p><em>Distribution of a single numeric variable</em></p>
 <ol type="1">
 <li>Select the numeric column (e.g.&nbsp;<code>DBH_cm</code>)</li>
-<li><strong>Insert → Statistic Chart → Histogram</strong></li>
+<li><strong>Insert → Statistic Chart → Histogram</strong> (German Excel: <strong>Einfügen → Diagramme → Statistikdiagramm → Histogramm</strong>)</li>
 <li>Right-click x-axis → <strong>Format Axis</strong>
 <ul>
 <li>Set bin width or number of bins</li>
@@ -521,7 +530,7 @@ Note
 <p><em>Median, quartiles, and outliers</em></p>
 <ol type="1">
 <li>Select the numeric column</li>
-<li><strong>Insert → Statistic Chart → Box &amp; Whisker</strong></li>
+<li><strong>Insert → Statistic Chart → Box &amp; Whisker</strong> (German Excel: <strong>Einfügen → Diagramme → Statistikdiagramm → Kastendiagramm (Box &amp; Whisker)</strong>)</li>
 <li>Excel applies Tukey’s rule automatically. Meaning: – The box spans the interquartile range (Q1 to Q3) – The whiskers extend to the most extreme values within Q1-1.5IQR and Q3+1.5IQR – Outliers are any points beyond the whiskers</li>
 </ol>
 </section>
@@ -538,14 +547,16 @@ Solo Exercise: Plot a historgram and a boxplot for each if the three distributio
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Using the same file [<code>data/raw/csv/dist_day02.csv</code>]</li>
+<li>Using the same dataset (pick the same file as above that matches your regional separators/decimals)</li>
 <li>For each variable (A, B, C), create a histogram using Excel:
 <ul>
 <li>Select the column</li>
-<li><strong>Insert → Statistic Chart → Histogram</strong></li>
-<li>Adjust bin width if needed (e.g.&nbsp;to 2) via right-click on x-axis → <strong>Format Axis</strong></li>
 </ul></li>
 </ol>
+<ul>
+<li><strong>Insert → Statistic Chart → Histogram</strong> (German Excel: <strong>Einfügen → Diagramme → Statistikdiagramm → Histogramm</strong>)</li>
+<li>Adjust bin width if needed (e.g.&nbsp;to 2) via right-click on x-axis → <strong>Format Axis</strong></li>
+</ul>
 <p>Much easier to see the distribution this way, right?</p>
 </div>
 </div>
@@ -562,7 +573,7 @@ Scatter plot
 <p><em>Relationship between two numeric variables</em></p>
 <ol type="1">
 <li>Select both numeric columns</li>
-<li><strong>Insert → Scatter → Scatter with only markers</strong></li>
+<li><strong>Insert → Scatter → Scatter with only markers</strong> (German Excel: <strong>Einfügen → Punkt (X Y) → Punkte (nur Marker)</strong>)</li>
 <li>Add axis labels and optional trendline</li>
 </ol>
 </div>
@@ -603,13 +614,13 @@ Bar chart
 <p><em>Summary of categorical data</em></p>
 <ol type="1">
 <li>Select the full dataset</li>
-<li><strong>Insert → PivotTable</strong></li>
+<li><strong>Insert → PivotTable</strong> (German Excel: <strong>Einfügen → PivotTable</strong>)</li>
 <li>Drag:
 <ul>
 <li>Category → Rows</li>
 <li>Numeric variable → Values (set to Mean)</li>
 </ul></li>
-<li>Plot via <strong>Insert → Column or Bar Chart</strong></li>
+<li>Plot via <strong>Insert → Column or Bar Chart</strong> (German Excel: <strong>Einfügen → Säulen- oder Balkendiagramm</strong>)</li>
 </ol>
 </div>
 </div>
@@ -796,9 +807,17 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>If you switch between regions: both CSV variants of <code>dist_day02</code> load cleanly <strong>when the separator and decimal match your settings</strong>. In R, set <code>sep</code> and <code>dec</code> explicitly (see below) and both files produce the same numeric results. In Excel, either pick the semicolon/comma file when your decimal is <code>,</code>, or if you open the comma/dot file under a comma-decimal locale, use Power Query or <strong>Data → Text to Columns → Advanced</strong> and set decimal separator to <code>.</code> so numbers are parsed correctly.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"./data/raw/csv/distributions_day02_100.csv"</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV with different separators/decimals; both give identical data when sep/dec match</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"./data/raw/csv/dist_day02_sep_comma__dec_dot.csv"</span>), <span class="at">sep=</span><span class="st">","</span>, <span class="at">dec=</span><span class="st">"."</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"./data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv"</span>), <span class="at">sep=</span><span class="st">";"</span>, <span class="at">dec=</span><span class="st">","</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tab)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>buffer <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab<span class="sc">$</span>A, <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(tab)<span class="sc">-</span>buffer,<span class="fu">max</span>(tab)<span class="sc">+</span>buffer))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab<span class="sc">$</span>B, <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(tab)<span class="sc">-</span>buffer,<span class="fu">max</span>(tab)<span class="sc">+</span>buffer))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab<span class="sc">$</span>C, <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(tab)<span class="sc">-</span>buffer,<span class="fu">max</span>(tab)<span class="sc">+</span>buffer))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">

@@ -1209,22 +1209,12 @@ Important
 <li>text encoding</li>
 <li>quoting rules</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What if the data itself contains a my separator?
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="what-if-the-data-itself-contains-a-my-separator" class="level4">
+<h4 class="anchored" data-anchor-id="what-if-the-data-itself-contains-a-my-separator">What if the data itself contains a my separator?</h4>
 <p>If a value contains a separator, it must be <strong>wrapped in double quotes</strong></p>
 <p>Example:</p>
 <p>plot_id, species, notes</p>
 <p>1, Iguana iguana, “observed near river, basking on rock”</p>
-</div>
-</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1255,22 +1245,14 @@ Try out creating a csv and a xlsx with comma and quotes as above (5 min)
 <p><strong>Note</strong> How delimiter and quotes are handled depends on your data by excel.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What if the data contains double quote
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="what-if-the-data-contains-double-quote" class="level4">
+<h4 class="anchored" data-anchor-id="what-if-the-data-contains-double-quote">What if the data contains double quote</h4>
 <p>If a value contains a double quote “, you escape it by <strong>doubling it</strong>.</p>
 <p>plot_id, species, notes</p>
 <p>1, Iguana iguana, “observed”“near”” river, basking on rock”</p>
-</div>
-</div>
 <hr>
+</section>
 </section>
 <section id="tsv-is-often-safer-than-csv" class="level3">
 <h3 class="anchored" data-anchor-id="tsv-is-often-safer-than-csv">TSV is often safer than CSV</h3>
@@ -1388,9 +1370,9 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><code>View → Freeze Top Row</code> (column headers)</li>
-<li><code>View → Freeze Panes</code> (ID columns)</li>
-<li>Conditional formatting (At Home Tab under Styles) to:
+<li><code>View → Freeze Top Row</code> (column headers; German Excel: Ansicht → Fenster einfrieren → Oberste Zeile einfrieren)</li>
+<li><code>View → Freeze Panes</code> (ID columns; German Excel: Ansicht → Fenster einfrieren → Fenster einfrieren)</li>
+<li>Conditional formatting (Home → Conditional Formatting; German Excel: Start → Bedingte Formatierung) to:
 <ul>
 <li>flag missing values</li>
 <li>highlight out-of-range values</li>
@@ -1417,7 +1399,7 @@ Note
 <p><strong>Steps</strong></p>
 <ol type="1">
 <li>Select the column</li>
-<li>Right-click → <em>Format Cells</em></li>
+<li>Right-click → <em>Format Cells</em> (German Excel: Rechtsklick → <em>Zellen formatieren</em>)</li>
 <li>Set:
 <ul>
 <li>Text for IDs</li>
@@ -1443,10 +1425,10 @@ Group exercise: Spot possible problems (10 min)
 <ol type="1">
 <li><p>Download and check <a href="http://journals.plos.org/plosone/article/asset?unique&amp;id=info:doi/10.1371/journal.pone.0145247.s002">this supplementary material excel sheet</a>/. This is a real scientific excel file used in a scientific study and is a hands on example on gene name errors in genomics.</p></li>
 <li><p>Open the provided spreadsheets. You can double click it.. this data is already “corrupted” by excel.</p></li>
-<li><p>Freeze the top row.. see how it helps you navigate the data.</p></li>
+<li><p>Freeze the top row.. see how it helps you navigate the data. (German Excel: Ansicht → Fenster einfrieren → Oberste Zeile einfrieren)</p></li>
 <li><p>See line 466 and 467, row “geneSymbol”. What looks suspicious? You can select the entire column and use conditional formatting to highlight values that are not text</p></li>
 </ol>
-<p>Home &gt; Conditional Formatting &gt; Choose any Icon Set or Color Scale (obs. this will ignore text values)</p>
+<p>Home → Conditional Formatting (German Excel: Start → Bedingte Formatierung) → Choose any Icon Set or Color Scale (obs. this will ignore text values)</p>
 <ol start="5" type="1">
 <li><p>Right click the top and bottom cells and then Format Cells to see the current cathegory.</p></li>
 <li><p>Select the entire column “geneSymbol” properties and right click → Format Cells → Text. What happens to the values in that column?</p></li>
@@ -1535,7 +1517,7 @@ Group exercise: Import CSV safely (10 min)
 <div class="callout-body-container callout-body">
 <p><strong>Steps Power Editor</strong></p>
 <ol type="1">
-<li><p><code>Data → Get Data → From File → From Text/CSV</code> Alternatively, if avaiable, you can use: <code>Data → From Text/CSV</code></p></li>
+<li><p><code>Data → Get Data → From File → From Text/CSV</code> (German Excel: <code>Daten → Daten abrufen → Aus Datei → Aus Text/CSV</code>) Alternatively, if avaiable, you can use: <code>Data → From Text/CSV</code> (German Excel: <code>Daten → Aus Text/CSV</code>)</p></li>
 <li><p>Select the file <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/Caxiuana_tree_trait_data.csv"><code>csv/Caxiuana_tree_trait_data.csv</code></a></p></li>
 <li><p>Inspect:</p>
 <ul>
@@ -1543,16 +1525,16 @@ Group exercise: Import CSV safely (10 min)
 <li>decimal separator</li>
 <li>encoding (UTF-8)</li>
 </ul></li>
-<li><p>Click <em>Transform Data</em> to open Power Query Editor for more control. Use <em>Load</em> only if you want to proceed with Excel default data transformation</p></li>
+<li><p>Click <em>Transform Data</em> (German: <em>Daten transformieren</em>) to open Power Query Editor for more control. Use <em>Load</em> (German: <em>Laden</em>) only if you want to proceed with Excel default data transformation</p></li>
 </ol>
 <p>Note the type of the last variable (column) of line 32 from Texteditor or 33 from Power Query Editor. Note this is a number but in scientific format.</p>
 <ol start="5" type="1">
 <li><strong>Explicitly set column data types</strong>
 <ul>
 <li>Select columns</li>
-<li>Right-click → <em>Change Type</em> → choose correct type (Text, Decimal Number, Date, etc.) Alternatively you can change the type on the formula bar</li>
+<li>Right-click → <em>Change Type</em> (German Power Query: <em>Datentyp ändern</em>) → choose correct type (Text, Decimal Number, Date, etc.) Alternatively you can change the type on the formula bar</li>
 </ul></li>
-<li>Click <em>Close &amp; Load</em> to import the data into Excel</li>
+<li>Click <em>Close &amp; Load</em> (German: <em>Schließen &amp; Laden</em>) to import the data into Excel</li>
 </ol>
 <p>Check the imported data. Did anything change?</p>
 <p><strong>Steps Data Tools → Text to Columns</strong></p>
@@ -1561,10 +1543,10 @@ Group exercise: Import CSV safely (10 min)
 <li>Opening the .csv file from a text editor (e.g.&nbsp;Notepad, Notepad++, VSCode, TextEdit) and copy-pasting the content into Excel.</li>
 <li>Paste it on the first cell (A1)</li>
 <li>Select the entire first column (A)</li>
-<li>Go to <code>Data → Text to Columns</code></li>
-<li>Choose <em>Delimited</em> → Next</li>
+<li>Go to <code>Data → Text to Columns</code> (German Excel: <code>Daten → Text in Spalten</code>)</li>
+<li>Choose <em>Delimited</em> (German: <em>Getrennt</em>) → Next</li>
 <li>Select different delimiters and see what happens with the dataset</li>
-<li>Select the correct delimiter (Comma, Tab, Semicolon) as well as types → Next What happens to the data? Check specifically for the last variable (column) of line 32. Right click it → Format Cells and see the Cathegory and compare with the cell above it.</li>
+<li>Select the correct delimiter (Comma, Tab, Semicolon) as well as types → Next (German: passenden Trenner wählen, dann <em>Weiter</em>) What happens to the data? Check specifically for the last variable (column) of line 32. Right click it → Format Cells and see the Cathegory and compare with the cell above it.</li>
 </ol>
 </div>
 </div>
@@ -1587,7 +1569,7 @@ Note
 <p><strong>Steps</strong></p>
 <ol type="1">
 <li>Select target cells or column</li>
-<li><code>Data → Data Validation</code></li>
+<li><code>Data → Data Validation</code> (German Excel: <code>Daten → Datenüberprüfung</code>)</li>
 <li>Choose:
 <ul>
 <li>numeric range</li>
@@ -1619,8 +1601,8 @@ Note
 <ol type="1">
 <li>Create a list of allowed values (preferably on a separate sheet)</li>
 <li>Select the target cells</li>
-<li><code>Data → Data Validation</code></li>
-<li>Under <em>Allow</em>, choose <strong>List</strong></li>
+<li><code>Data → Data Validation</code> (German: <code>Daten → Datenüberprüfung</code>)</li>
+<li>Under <em>Allow</em>, choose <strong>List</strong> (German: <em>Zulassen → Liste</em>)</li>
 <li>Set the source range (or type values manually)</li>
 <li>Confirm</li>
 </ol>
@@ -1708,13 +1690,13 @@ Group exercise: try out bad and best practices with PSP data (7 min)
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Open any of the PSP xlsx files.</li>
-<li>Select a single column (e.g.&nbsp;DBH) and sort it ascending. <code>Home &gt; Sort &amp; Filter &gt; Sort A to Z</code> or <code>Right click &gt; Sort &gt; Sort Smallest to Largest</code></li>
+<li>Select a single column (e.g.&nbsp;DBH) and sort it ascending. <code>Home → Sort &amp; Filter → Sort A to Z</code> (German: <code>Start → Sortieren und Filtern → Von A bis Z sortieren</code>) or <code>Right click → Sort → Sort Smallest to Largest</code> (German: <code>Rechtsklick → Sortieren → Kleinste bis Größte</code>)</li>
 <li>Observe what happens to the rest of the data depending on your choice Continure with the current selectio would be catastrophic for the dataset! Values of variable DBH would be shuffled on the observations and no longer correspond to the rest of the data in the same row.</li>
 <li>Now move to the Analysis sheet and try addin a new row in the middle of a sequence of data</li>
 <li>Observe what happens to formulas in that sheet</li>
 <li>Copy a value and paste is with Ctrl+C and Ctrl+V in an empy cell. What happens?<br>
 </li>
-<li>Now try pasting with <code>Ctrl + Alt + V</code> and select Values or <code>Right click &gt; Paste Special &gt; Values</code>. What happens now?</li>
+<li>Now try pasting with <code>Ctrl + Alt + V</code> and select Values or <code>Right click &gt; Paste Special &gt; Values</code> (German: <code>Rechtsklick → Inhalte einfügen → Werte</code>). What happens now?</li>
 </ol>
 </div>
 </div>
@@ -1796,7 +1778,7 @@ Group exercise: Design a safe field data entry sheet (15min)
 <div class="callout-body-container callout-body">
 <p>Work in pairs.</p>
 <p>You are designing a spreadsheet for <strong>PSP tree inventory data</strong> collected in the field.</p>
-<p>For reference, use <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/PSP_#####_SFBC.xlsx"><code>data/templates/PSP/PSP_#####_SFBC.xlsx</code></a></p>
+<p>For reference, use <a href="https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/templates/PSP/PSP_%23%23%23%23%23_SFBC.xlsx"><code>data/templates/PSP/PSP_#####_SFBC.xlsx</code></a></p>
 <p>Your table must include at least the following variables:</p>
 <ul>
 <li><strong>tag_id</strong> (unique identifier, e.g.&nbsp;metal tree tag)</li>

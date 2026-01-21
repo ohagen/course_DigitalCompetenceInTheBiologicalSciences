@@ -101,8 +101,17 @@ Source:
 ::: {.callout-tip icon="🧪"}
 ### Solo Exercise: Calculate the mean (aka average), median and mode for three distributions (7 min)
 
-1. Open [`data/raw/csv/dist_day02.csv`](https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/blob/main/data/raw/csv/dist_day02.csv) in Excel. This file contains a three columns of numeric values.
-each is one variable (A, B, C) with 100 observations each.
+1. Open one of the regionalized files in Excel (three numeric columns A, B, C, 100 rows each):
+  - `data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv` (German settings: semicolon separator, comma decimal) → loads cleanly if your decimal is `,`
+  - `data/raw/csv/dist_day02_sep_comma__dec_dot.csv` (US/UK settings: comma separator, dot decimal) → if your regional decimal is `,`, tell Excel to keep dot as decimal 
+  One way is over Power Query import
+    First on Home → Use First Row as Headers
+    Delete the automatic conversion, did you notices it changed the values
+    Select all columns clicking the first one, then shift and then the last one.
+    Right Click → Change Type → Using Locale → Data Type [Decimal] → Locale English (Europe)
+  
+  As we learned, the other way is to copy the data (from Notepad or Notebook++) and paste it into Excel. Then on  **Data → Text to Columns →... and at the end select Advanced** There, set decimal separator to `.`). 
+  
 2. For each variable (A, B, C), calculate the mean, median and mode using Excel functions:
   - Mean: `=AVERAGE(range)` (German Excel: `=MITTELWERT(Bereich)`)
   - Median: `=MEDIAN(range)` (German Excel: `=MEDIAN(Bereich)`)
@@ -121,9 +130,10 @@ A single center value is not enough; we also need to know how spread out the dat
 
 - **Range:** the difference between the maximum and minimum values. It tells us the span of the data (but can be skewed by outliers). 
 - **Outliers** are extreme values that differ significantly from other observations. For example, if tree heights range from 5 m to 50 m, a tree of height 150 m can be considered an outlier.
-- **Variance ($s^2$) and Standard Deviation ($s$):** measure the typical deviation of data points from the mean. Variance is defined as  
+- **Variance ($s^2$)** measure the typical deviation of data points from the mean. Variance is defined as  
   $$s^2 = \frac{1}{n-1}\sum_{i=1}^{n} (x_i - \bar{x})^2,$$  
-  and the standard deviation is $s = \sqrt{s^2}$. A high standard deviation means values are widely scattered around the mean; a low standard deviation means they are tightly clustered.
+  
+- **Standard Deviation ($s$)**  the square root of the variance. It is in the same units as the data and gives a sense of typical deviation from the mean. $s = \sqrt{s^2}$. A high standard deviation means values are widely scattered around the mean; a low standard deviation means they are tightly clustered.
 
 
 ::: {.callout-note}
@@ -154,7 +164,7 @@ That is why models tend to run on **variance**, not SD.
 ::: {.callout-tip icon="🧪"}
 ### Solo Exercise: Calculate variance and standard deviation for the three distributions (5 min)
 
-1. Using the same file [`data/raw/csv/dist_day02.csv`]
+1. Using the same dataset (pick the same file as above)
 2. For each variable (A, B, C), calculate the variance and standard deviation using Excel functions:
   - Variance: `=VAR.S(range)` (German Excel: `=VARI.S(Bereich)`)
   - Standard Deviation: `=STDEV.S(range)` (German Excel: `=STABW.S(Bereich)`)
@@ -236,7 +246,7 @@ Graphs provide a shorthand for understanding data. By plotting our Belize datase
 *Distribution of a single numeric variable*
 
 1. Select the numeric column (e.g. `DBH_cm`)
-2. **Insert → Statistic Chart → Histogram**
+2. **Insert → Statistic Chart → Histogram** (German Excel: **Einfügen → Diagramme → Statistikdiagramm → Histogramm**)
 3. Right-click x-axis → **Format Axis**
    - Set bin width or number of bins
 
@@ -245,7 +255,7 @@ Graphs provide a shorthand for understanding data. By plotting our Belize datase
 *Median, quartiles, and outliers*
 
 1. Select the numeric column
-2. **Insert → Statistic Chart → Box & Whisker**
+2. **Insert → Statistic Chart → Box & Whisker** (German Excel: **Einfügen → Diagramme → Statistikdiagramm → Kastendiagramm (Box & Whisker)**)
 3. Excel applies Tukey’s rule automatically. Meaning:
   -- The box spans the interquartile range (Q1 to Q3)
   -- The whiskers extend to the most extreme values within Q1-1.5IQR and Q3+1.5IQR
@@ -256,10 +266,10 @@ Graphs provide a shorthand for understanding data. By plotting our Belize datase
 ::: {.callout-tip icon="🧪"}
 ### Solo Exercise: Plot a historgram and a boxplot for each if the three distributions (10 min)
 
-1. Using the same file [`data/raw/csv/dist_day02.csv`]
+1. Using the same dataset (pick the same file as above that matches your regional separators/decimals)
 2. For each variable (A, B, C), create a histogram using Excel:
    - Select the column
-   - **Insert → Statistic Chart → Histogram**
+  - **Insert → Statistic Chart → Histogram** (German Excel: **Einfügen → Diagramme → Statistikdiagramm → Histogramm**)
    - Adjust bin width if needed (e.g. to 2) via right-click on x-axis → **Format Axis**
    
 Much easier to see the distribution this way, right?
@@ -272,7 +282,7 @@ Much easier to see the distribution this way, right?
 *Relationship between two numeric variables*
 
 1. Select both numeric columns
-2. **Insert → Scatter → Scatter with only markers**
+2. **Insert → Scatter → Scatter with only markers** (German Excel: **Einfügen → Punkt (X Y) → Punkte (nur Marker)**)
 3. Add axis labels and optional trendline
 
 :::
@@ -308,11 +318,11 @@ What is the relationship between DBH and Height in this dataset? Does it match y
 *Summary of categorical data*
 
 1. Select the full dataset
-2. **Insert → PivotTable**
+2. **Insert → PivotTable** (German Excel: **Einfügen → PivotTable**)
 3. Drag:
    - Category → Rows
    - Numeric variable → Values (set to Mean)
-4. Plot via **Insert → Column or Bar Chart**
+4. Plot via **Insert → Column or Bar Chart** (German Excel: **Einfügen → Säulen- oder Balkendiagramm**)
 
 :::
 
@@ -517,9 +527,11 @@ Feel free to practice more with R on your own: try computing stats or making cha
 
 ::: {.callout-tip icon="🧪"}
 
+If you switch between regions: both CSV variants of `dist_day02` load cleanly **when the separator and decimal match your settings**. In R, set `sep` and `dec` explicitly (see below) and both files produce the same numeric results. In Excel, either pick the semicolon/comma file when your decimal is `,`, or if you open the comma/dot file under a comma-decimal locale, use Power Query or **Data → Text to Columns → Advanced** and set decimal separator to `.` so numbers are parsed correctly.
+
 ```{r eval=F}
 library(here)
-# Read CSV with different separators and decimal points. both lead to same result
+# Read CSV with different separators/decimals; both give identical data when sep/dec match
 tab <- read.csv(here("./data/raw/csv/dist_day02_sep_comma__dec_dot.csv"), sep=",", dec=".")
 tab <- read.csv(here("./data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv"), sep=";", dec=",")
 str(tab)
