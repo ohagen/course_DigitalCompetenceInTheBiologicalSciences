@@ -233,6 +233,7 @@ Source:
 ### The role of visualization
 
 Graphs provide a shorthand for understanding data. By plotting our Belize dataset, we can quickly see trends and anomalies. Common plot types for quantitative data include:
+
 - **Histograms:** show the distribution of a single numeric variable by grouping values into bins.
 - **Box plots:** show median, quartiles, and outliers, giving a quick summary of distribution and spread.
 - **Scatter plots:** show relationships between two numerical variables (e.g. tree height vs. tree diameter).
