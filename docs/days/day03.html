@@ -342,9 +342,12 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>initialize sum <span class="ot">=</span> <span class="dv">0</span> </span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>initialize count <span class="ot">=</span> <span class="dv">0</span> </span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> each value <span class="cf">in</span> the list<span class="sc">:</span> </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  sum <span class="ot">=</span> sum <span class="sc">+</span> value count <span class="ot">=</span> count <span class="sc">+</span> <span class="dv">1</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> count is <span class="dv">0</span><span class="sc">:</span> return <span class="st">"No data"</span> <span class="sc">/</span><span class="er">/</span> avoid division by zero </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span><span class="sc">:</span> mean <span class="ot">=</span> sum <span class="sc">/</span> count return mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  sum <span class="ot">=</span> sum <span class="sc">+</span> value </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  count <span class="ot">=</span> count <span class="sc">+</span> <span class="dv">1</span> </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> count is <span class="dv">0</span><span class="sc">:</span> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    return <span class="st">"No data"</span> <span class="sc">/</span><span class="er">/</span> avoid division by zero </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span><span class="sc">:</span> </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    mean <span class="ot">=</span> sum <span class="sc">/</span> count return mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Even if you never coded before, this pseudocode is understandable. It’s essentially how you would explain the process to someone else. The computer, however, needs it in a more formal language (like R). But writing pseudocode first helps clarify your logic before worrying about R syntax.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -560,12 +563,43 @@ Push doubles too far and you get rounding, overflow to <code>Inf</code>, or unde
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>…. though we <em>could</em> do that and get the same result, it would be more verbose and usually slower.</p>
-<p>However, understanding loops is still important. Some tasks can’t be easily vectorized or it’s more intuitive to write as a loop first. <em>Writing loops in R </em>A for loop in R looks like: for (i in 1:5) { # code to run each time, using i } This would run the loop 5 times, with i taking values 1, 2, 3, 4, 5 in succession. We can loop over elements of a vector too: values &lt;- c(3, 7, 9) for (v in values) { print(v * 2) } This would print 6, 14, 18. (Here v takes each value from values). We also have while loops which continue until a condition is false: count &lt;- 1 while (count &lt;= 5) { print(count) count &lt;- count + 1 } This will print 1 through 5. You have to be careful with while loops to ensure the condition eventually becomes false, otherwise you get an infinite loop.</p>
-<p><em>Conditional execution </em>The if statement in R: if (condition) { # do something if condition is TRUE } else { # do something if condition is FALSE }</p>
-<p>You can also chain multiple conditions with else if: if (score &gt;= 90) { grade &lt;- “A” } else if (score &gt;= 80) { grade &lt;- “B” } else { grade &lt;- “C” }</p>
+<p>However, understanding loops is still important. Some tasks can’t be easily vectorized or it’s more intuitive to write as a loop first. <em>Writing loops in R </em>A for loop in R looks like: for (i in 1:5) { # code to run each time, using i } This would run the loop 5 times, with i taking values 1, 2, 3, 4, 5 in succession. We can loop over elements of a vector too:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (v <span class="cf">in</span> values) {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(v <span class="sc">*</span> <span class="dv">2</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This would print 6, 14, 18. (Here v takes each value from values). We also have while loops which continue until a condition is false:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (count <span class="sc">&lt;=</span> <span class="dv">5</span>) {</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">print</span>(count)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>   count <span class="ot">&lt;-</span> count <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will print 1 through 5. You have to be careful with while loops to ensure the condition eventually becomes false, otherwise you get an infinite loop.</p>
+<p><em>Conditional execution </em>The if statement in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (condition) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>   <span class="co"># do something if condition is TRUE</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   <span class="co"># do something if condition is FALSE</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can also chain multiple conditions with else if:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">90</span>) {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>   grade <span class="ot">&lt;-</span> <span class="st">"A"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>   grade <span class="ot">&lt;-</span> <span class="st">"B"</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>   grade <span class="ot">&lt;-</span> <span class="st">"C"</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>R uses == for equality check (e.g., if (x == 0) {…}) and != for not equal. Also remember = is for assignment (though &lt;- is the preferred assignment operator in R), so use == for comparison. ! is used to negate a logical condition (e.g., if (!is.na(x)) {…}), meaning “if x is not NA”. Before runing the bellow, try to think what will happen</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -606,10 +640,10 @@ Solution
 <p>In Day 2, we freely used functions like mean() or read.csv(). Functions are like mini-programs: they take inputs (arguments) and return an output. In R, you can write your own functions to avoid repeating yourself.</p>
 <p>For example, suppose throughout our analysis we need to convert lengths from centimeters to inches (maybe some collaborator uses inches). Instead of repeatedly writing value/2.54 (since 1 inch = 2.54 cm), we can write a function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cm_to_in <span class="ot">&lt;-</span> <span class="cf">function</span>(cm) {</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  inches <span class="ot">&lt;-</span> cm <span class="sc">/</span> <span class="fl">2.54</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(inches)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cm_to_in <span class="ot">&lt;-</span> <span class="cf">function</span>(cm) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  inches <span class="ot">&lt;-</span> cm <span class="sc">/</span> <span class="fl">2.54</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(inches)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we have defined cm_to_in() that we can call anywhere: cm_to_in(10) # returns 3.937008 inches</p>
 <p>If we pass a vector, it will return a vector (because the division operation is vectorized).</p>

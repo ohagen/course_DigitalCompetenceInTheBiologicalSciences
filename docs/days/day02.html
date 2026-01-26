@@ -445,6 +445,11 @@ Solo Exercise: Calculate variance and standard deviation for the three distribut
 <p>Whay did this show you more about the data?</p>
 </div>
 </div>
+<ul>
+<li><p><strong>Percentiles/Quartiles:</strong> values that divide the data into 100 (percentiles) or 4 (quartiles) equal parts. The 25th percentile (Q1) is the value below which 25% of data fall; the 75th percentile (Q3) is the value below which 75% of data fall. <strong>Median</strong> is the 50th percentile (Q2).</p></li>
+<li><p><strong>Interquartile Range (IQR):</strong> the difference between the 75th percentile (Q3) and 25th percentile (Q1). This focuses on the spread of the middle 50% of data, giving a robust spread measure less affected by outliers.</p></li>
+</ul>
+<p>For example, if the diameter at breast height (DBH) of trees in Plot A have a mean of 30 cm and a standard deviation of 5 cm, most tree DBHs are around 30 cm ± 5 cm. In Plot B, a mean of 30 cm but standard deviation of 15 cm would imply much greater variability (some saplings and some very large trees).</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -469,11 +474,6 @@ Sensitivity to outliers
 </section>
 </div>
 </div>
-<ul>
-<li><p><strong>Percentiles/Quartiles:</strong> values that divide the data into 100 (percentiles) or 4 (quartiles) equal parts. The 25th percentile (Q1) is the value below which 25% of data fall; the 75th percentile (Q3) is the value below which 75% of data fall. <strong>Median</strong> is the 50th percentile (Q2).</p></li>
-<li><p><strong>Interquartile Range (IQR):</strong> the difference between the 75th percentile (Q3) and 25th percentile (Q1). This focuses on the spread of the middle 50% of data, giving a robust spread measure less affected by outliers.</p></li>
-</ul>
-<p>For example, if the diameter at breast height (DBH) of trees in Plot A have a mean of 30 cm and a standard deviation of 5 cm, most tree DBHs are around 30 cm ± 5 cm. In Plot B, a mean of 30 cm but standard deviation of 15 cm would imply much greater variability (some saplings and some very large trees).</p>
 </section>
 <section id="the-effect-of-outliers-and-skewness" class="level3">
 <h3 class="anchored" data-anchor-id="the-effect-of-outliers-and-skewness">The effect of outliers and skewness</h3>
@@ -605,29 +605,6 @@ Group exercise: Do a scatter plot of DBH and Height (7 min)
 <p>R-squared (R²) is a statistical measure of how well a regression model fits your data. It answers the question: “How much of the variation in the outcome (Y) can be explained by the predictor(s) (X)?” If 0 model explains none of the variation, if 1.0 it explains all the variation (perfect fit) <strong>Note</strong> A high R² does not mean the model is good… in biology, natural variation is high. R² ignores bias and overfitting. Use diagnostics and validation too.</p>
 </blockquote>
 <p>What is the relationship between DBH and Height in this dataset? Does it match your expectation?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Bar chart
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><em>Summary of categorical data</em></p>
-<ol type="1">
-<li>Select the full dataset</li>
-<li><strong>Insert → PivotTable</strong> (German Excel: <strong>Einfügen → PivotTable</strong>)</li>
-<li>Drag:
-<ul>
-<li>Category → Rows</li>
-<li>Numeric variable → Values (set to Mean)</li>
-</ul></li>
-<li>Plot via <strong>Insert → Column or Bar Chart</strong> (German Excel: <strong>Einfügen → Säulen- oder Balkendiagramm</strong>)</li>
-</ol>
 </div>
 </div>
 <p>A good visualization <strong>summarizes</strong> the data (like statistics do) but in a more intuitive way. It is not “proof” of a hypothesis by itself, but it helps us explore and communicate what the data are saying.</p>
@@ -825,6 +802,8 @@ Tip
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab<span class="sc">$</span>B, <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(tab)<span class="sc">-</span>buffer,<span class="fu">max</span>(tab)<span class="sc">+</span>buffer))</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab<span class="sc">$</span>C, <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(tab)<span class="sc">-</span>buffer,<span class="fu">max</span>(tab)<span class="sc">+</span>buffer))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -845,8 +824,6 @@ Reflection
 </div>
 
 
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->

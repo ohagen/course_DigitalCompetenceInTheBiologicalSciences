@@ -175,6 +175,15 @@ Whay did this show you more about the data?
 
 :::
 
+
+
+- **Percentiles/Quartiles:** values that divide the data into 100 (percentiles) or 4 (quartiles) equal parts. The 25th percentile (Q1) is the value below which 25% of data fall; the 75th percentile (Q3) is the value below which 75% of data fall. **Median** is the 50th percentile (Q2).
+
+- **Interquartile Range (IQR):** the difference between the 75th percentile (Q3) and 25th percentile (Q1). This focuses on the spread of the middle 50% of data, giving a robust spread measure less affected by outliers.
+
+For example, if the diameter at breast height (DBH) of trees in Plot A have a mean of 30 cm and a standard deviation of 5 cm, most tree DBHs are around 30 cm ± 5 cm. In Plot B, a mean of 30 cm but standard deviation of 15 cm would imply much greater variability (some saplings and some very large trees).
+
+
 ::: {.callout-warning}
 ### Sensitivity to outliers
 
@@ -194,12 +203,6 @@ Variance and standard deviation use squared deviations. Squaring is a megaphone.
 - Comparing SDs across groups with very different distributions and pretending it is apples-to-apples
 - Using SD for strongly skewed data without also reporting quantiles
 :::
-
-- **Percentiles/Quartiles:** values that divide the data into 100 (percentiles) or 4 (quartiles) equal parts. The 25th percentile (Q1) is the value below which 25% of data fall; the 75th percentile (Q3) is the value below which 75% of data fall. **Median** is the 50th percentile (Q2).
-
-- **Interquartile Range (IQR):** the difference between the 75th percentile (Q3) and 25th percentile (Q1). This focuses on the spread of the middle 50% of data, giving a robust spread measure less affected by outliers.
-
-For example, if the diameter at breast height (DBH) of trees in Plot A have a mean of 30 cm and a standard deviation of 5 cm, most tree DBHs are around 30 cm ± 5 cm. In Plot B, a mean of 30 cm but standard deviation of 15 cm would imply much greater variability (some saplings and some very large trees).
 
 
 ### The effect of outliers and skewness
@@ -313,19 +316,6 @@ What is the relationship between DBH and Height in this dataset? Does it match y
 
 :::
 
-
-::: {.callout-note}
-### Bar chart  
-*Summary of categorical data*
-
-1. Select the full dataset
-2. **Insert → PivotTable** (German Excel: **Einfügen → PivotTable**)
-3. Drag:
-   - Category → Rows
-   - Numeric variable → Values (set to Mean)
-4. Plot via **Insert → Column or Bar Chart** (German Excel: **Einfügen → Säulen- oder Balkendiagramm**)
-
-:::
 
 A good visualization **summarizes** the data (like statistics do) but in a more intuitive way. It is not “proof” of a hypothesis by itself, but it helps us explore and communicate what the data are saying.
 
@@ -541,7 +531,7 @@ hist(tab$A, xlim=c(min(tab)-buffer,max(tab)+buffer))
 hist(tab$B, xlim=c(min(tab)-buffer,max(tab)+buffer))
 hist(tab$C, xlim=c(min(tab)-buffer,max(tab)+buffer))
 ```
-
+:::
 
 ::: {.callout-note icon="💬"}
 ### Reflection
