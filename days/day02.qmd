@@ -485,13 +485,11 @@ Try to figure out what this is doing!
 
 2.	Using R, calculate the mean and median of a key variable across all observations.
 
-3.	Now calculate the same statistics **Plot** if using the .csv or by dbh sizes (ie. below 2 or equal and bigger than 2) if using .xlsx (hint: use aggregate() or explore the tapply() function).
+3.	Create a histogram and a boxplot.
 
-4.	Create a histogram of the variable and a boxplot comparing the distributions between the categories.
+4.	Discuss with your partner: Do the mean and median differ notably? What does that tell you about the distribution (skewness or outliers)? Did you intuition matched what you saw on the histogram?
 
-5.	Discuss with your partner: Do the mean and median differ notably? What does that tell you about the distribution (skewness or outliers)? Did you intuition matched what you saw on the histogram?
-
-*Switch roles (driver/navigator) halfway through if time.* This exercise gives you first-hand experience with R's commands. Don’t worry if you get stuck – use ?functionName (e.g. ?mean) to access R’s help, or ask an instructor for a hint. Soon we will dive deeper
+*Switch roles (driver/navigator) halfway through.* This exercise gives you first-hand experience with R's commands. Don’t worry if you get stuck – use ?functionName (e.g. ?mean) to access R’s help, or ask an instructor for a hint. Soon we will dive deeper
 :::
 
 ### Exporting data and results
