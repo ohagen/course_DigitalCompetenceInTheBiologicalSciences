@@ -189,6 +189,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Reference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references/r-operators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Operators Cheat Sheet</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -691,18 +708,52 @@ Possible issues
 <section id="version-control-with-git" class="level3">
 <h3 class="anchored" data-anchor-id="version-control-with-git">Version control with Git</h3>
 <p>Git is a tool that tracks changes in files over time, enabling you to recall specific versions later. Think of it as a supercharged undo/redo that works even across sessions and collaborators.</p>
-<p>Key concepts: - <strong>Repository (repo):</strong> a folder that is tracked by Git. - <strong>Commit:</strong> a snapshot of the state of files with a message describing the changes. E.g., “Corrected elevation units and standardized plot IDs”. - <strong>History:</strong> a sequence of commits; you can navigate through them, see diffs (what changed), who changed what (if collaborating). - <strong>Branch:</strong> a parallel line of development. You can keep an experimental branch separate from main, then merge if it works out. - <strong>Remote (like GitHub/GitLab):</strong> an online copy of the repo for backup or collaboration. Why use Git for data science: - It provides <strong>backups</strong> and <strong>change history</strong> for your code (and even data, though large raw data files often better not version due to size). - If you break something in your script, you can compare to yesterday’s version and revert if needed. - It encourages small, documented changes (commits) – which parallels documenting your work scientifically. - Collaboration: multiple people can work on different parts of the project, merge contributions, review changes, etc. Even if working solo, using Git + a remote like GitHub means you won’t lose work if your laptop dies, and you can easily share your project (or publish it as supplementary material for a paper). For example, this course material is likely maintained in a Git repo. Every edit I (the instructor) make is tracked. Basic Git workflow: 1. <strong>Initialize a repo:</strong> git init (or use RStudio’s version control features to create a new project with Git). 2. <strong>Stage and commit files:</strong> git add script1.R; git commit -m “Added cleaning script” 3. <strong>Repeat commits</strong> as you reach logical milestones. 4. <strong>View history:</strong> git log (or GUI in RStudio/GitHub Desktop). 5. <strong>Undo/branch/merge</strong> as needed (more advanced, but incredibly useful as you get comfortable). Using Git through RStudio: RStudio has a Git pane where you see changes, diff, commit, push/pull if a remote is set. This can lower the barrier to entry. Important: version control is primarily for code and small text data. Large raw datasets are often kept outside Git (you might store them elsewhere and just version a small subset or a pointer). But your cleaning scripts and output summaries (which are text or code) fit well into version control.</p>
+<p>Key concepts:</p>
+<ul>
+<li><strong>Repository (repo):</strong> a folder that is tracked by Git.</li>
+<li><strong>Commit:</strong> a snapshot of the state of files with a message describing the changes. E.g., “Corrected elevation units and standardized plot IDs”.</li>
+<li><strong>History:</strong> a sequence of commits; you can navigate through them, see diffs (what changed), who changed what (if collaborating).</li>
+<li><strong>Branch:</strong> a parallel line of development. You can keep an experimental branch separate from main, then merge if it works out.</li>
+<li><strong>Remote (like GitHub/GitLab):</strong> an online copy of the repo for backup or collaboration.</li>
+</ul>
+<p>Why use Git for data science:</p>
+<ul>
+<li>It provides <strong>backups</strong> and <strong>change history</strong> for your code (and even data, though large raw data files often better not version due to size).</li>
+<li>If you break something in your script, you can compare to yesterday’s version and revert if needed.</li>
+<li>It encourages small, documented changes (commits) – which parallels documenting your work scientifically.</li>
+<li>Collaboration: multiple people can work on different parts of the project, merge contributions, review changes, etc.</li>
+</ul>
+<p>Even if working solo, using Git + a remote like GitHub means you won’t lose work if your laptop dies, and you can easily share your project (or publish it as supplementary material for a paper). For example, this course material is likely maintained in a Git repo. Every edit I (the instructor) make is tracked.</p>
+<p>Basic Git workflow:</p>
+<ol type="1">
+<li><strong>Initialize a repo:</strong> git init (or use RStudio’s version control features to create a new project with Git).</li>
+<li><strong>Stage and commit files:</strong> git add script1.R; git commit -m “Added cleaning script”</li>
+<li><strong>Repeat commits</strong> as you reach logical milestones.</li>
+<li><strong>View history:</strong> git log (or GUI in RStudio/GitHub Desktop).</li>
+<li><strong>Undo/branch/merge</strong> as needed (more advanced, but incredibly useful as you get comfortable).</li>
+</ol>
+<p>Using Git through RStudio: RStudio has a Git pane where you see changes, diff, commit, push/pull if a remote is set. This can lower the barrier to entry. Important: version control is primarily for code and small text data. Large raw datasets are often kept outside Git (you might store them elsewhere and just version a small subset or a pointer). But your cleaning scripts and output summaries (which are text or code) fit well into version control.</p>
 </section>
 <section id="reproducible-reports-with-quartor-markdown" class="level3">
 <h3 class="anchored" data-anchor-id="reproducible-reports-with-quartor-markdown">Reproducible reports with Quarto/R Markdown</h3>
-<p>By now, you have code to clean and analyze data. The final step of any project is often to communicate results (figures, tables, conclusions). Quarto (the tool used to create these course notes) allows us to keep code and narrative in one document. This means: - The figures and stats in your report are generated by the actual code in that report, so they are always up-to-date with the latest data and analysis. - You can output to multiple formats (HTML web page, PDF article, Word doc, slides, etc.) from the same source file. - It encourages writing about what you’re doing as you do it, which is great for reflection and for others reading it. A Quarto document (.qmd) or R Markdown (.Rmd) has chunks of code interwoven with Markdown text. For instance: We found that the average DBH was 26.1289773 meters (n = 176 plots).</p>
+<p>By now, you have code to clean and analyze data. The final step of any project is often to communicate results (figures, tables, conclusions). Quarto (the tool used to create these course notes) allows us to keep code and narrative in one document. This means:</p>
+<ul>
+<li>The figures and stats in your report are generated by the actual code in that report, so they are always up-to-date with the latest data and analysis.</li>
+<li>You can output to multiple formats (HTML web page, PDF article, Word doc, slides, etc.) from the same source file.</li>
+<li>It encourages writing about what you’re doing as you do it, which is great for reflection and for others reading it.</li>
+</ul>
+<p>A Quarto document (.qmd) or R Markdown (.Rmd) has chunks of code interwoven with Markdown text. For instance: We found that the average DBH was 26.1289773 meters (n = 176 plots).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(trees<span class="sc">$</span>height, <span class="at">main=</span><span class="st">"Tree Height Distribution"</span>, <span class="at">xlab=</span><span class="st">"Height (m)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In the text above, <em>r expression</em> inserts the result of an R expression inline (like the mean). The chunk below it runs R code to produce a histogram (with echo: false meaning the code is hidden, only the plot shows). When you render this file (by clicking Render or using <em>quarto render</em> command), it will execute the code and insert the results in the final output.</p>
 <p>The beauty: if the data updates or you change a parameter, you re-render and all numbers and plots update automatically. No more copy-pasting results from R into Word manually (which is error-prone).</p>
 <p>Quarto is a next-gen version of R Markdown with support for multiple languages. We focus on R, but Quarto can also run Python, etc. under the hood.</p>
-<p>To tie it together: - Use scripts (<code>.R</code> files) for extensive data wrangling or exploratory work. - When you’re ready to create a report or publication, use a Quarto doc to perform the final analysis and generate output, with prose explaining each result.</p>
+<p>To tie it together:</p>
+<ul>
+<li>Use scripts (<code>.R</code> files) for extensive data wrangling or exploratory work.</li>
+<li>When you’re ready to create a report or publication, use a Quarto doc to perform the final analysis and generate output, with prose explaining each result.</li>
+</ul>
 <p>This course website is an example: all five days are written in Quarto, combining explanation (what you’re reading) and code (to generate any figures, etc.). It’s fully reproducible – you could run the Quarto files and regenerate the entire site.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -720,8 +771,12 @@ Tip
 </section>
 <section id="automation-and-beyond" class="level3">
 <h3 class="anchored" data-anchor-id="automation-and-beyond">Automation and beyond</h3>
-<p>With clean data and scripted analysis, you can automate tasks: - Re-run everything with new data by a single command (great for recurring reports). - Set up continuous integration (CI) to run your analysis script on a schedule or when changes occur (beyond our scope, but a cool possibility). - Share your project (data+code) for others to reproduce or extend – practicing true open science.</p>
-<p>We also mention making use of packages for specific cleaning tasks: - <strong>janitor</strong> (has functions like <code>clean_names()</code> to sanitize column names, <code>tabyl()</code> for quick crosstabs for QA). - <strong>lubridate</strong> for date handling (to parse and normalize dates). - … etc. There’s a whole universe of tools; knowing they exist is half the battle.</p>
+<p>With clean data and scripted analysis, you can automate tasks:</p>
+<ul>
+<li>Re-run everything with new data by a single command (great for recurring reports).</li>
+<li>Set up continuous integration (CI) to run your analysis script on a schedule or when changes occur (beyond our scope, but a cool possibility).</li>
+<li>Share your project (data+code) for others to reproduce or extend – practicing true open science.</li>
+</ul>
 <hr>
 </section>
 </section>

@@ -75,6 +75,17 @@ Using R effectively means learning to **think like a programmer**, which starts 
 
 Writing out an algorithm forces you to be precise about what needs to be done – and in what order. Even sorting a list of numbers or calculating a summary statistic involves an algorithm (either one you write, or one built into a software tool).
 
+### What R is
+
+>R is a tool to store things (numbers, text, tables) in objects, and then ask questions about them (summaries, plots, comparisons) or transform them.
+
+```{r eval=F}
+# The arrow means: store the value on the right into the name on the left
+x <- 5
+x
+```
+
+
 ### Thinking in algorithms: a simple example
 
 Let’s say we want to compute the **average (mean)** of a list of numbers without using a built-in formula:
@@ -108,16 +119,19 @@ Even if you never coded before, this pseudocode is understandable. It’s essent
 ### Control flow: sequence, selection, repetition
 
 Algorithms often involve:
+
 - **Sequence:** executing instructions in order.
 - **Selection (branching):** making decisions (if X is true, do this, otherwise do that).
 - **Repetition:** doing something multiple times (looping).
 
 In our mean calculation example:
+
 - Sequence: we had steps to follow one after another.
 - Selection: we used an `if` to check if `count` is 0 at the end.
 - Repetition: the “for each value” part is a loop.
 
 Another everyday example – a protocol for labeling samples:
+
 For each collected sample: 
   if sample has a barcode: 
     scan the barcode 

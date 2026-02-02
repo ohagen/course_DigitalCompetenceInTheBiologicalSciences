@@ -19,6 +19,9 @@ website:
           - days/day03.qmd
           - days/day04.qmd
           - days/day05.qmd
+      - section: "Reference"
+        contents:
+          - references/r-operators.qmd
 
 format:
   html:
