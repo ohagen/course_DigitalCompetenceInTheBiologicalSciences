@@ -250,7 +250,7 @@
     "href": "days/day02.html#wrap-up",
     "title": "Day 2 – Describing Data",
     "section": "Wrap-up",
-    "text": "Wrap-up\nToday we learned how to describe and visualize data, transitioning from manual Excel steps to automated R scripts. Descriptive statistics like mean, median, and standard deviation condense data into understandable numbers, while visualizations reveal patterns and anomalies that numbers alone might hide. We also saw the first glimpses of R’s capabilities – from reading data to making a plot in seconds. By summarizing the Belize case study data, we gained insight into typical values and variability (e.g., average tree sizes, distribution of observations across sites). We also confronted how misleading it can be if we rely on a single number or a poorly crafted chart. In the next session, we’ll build on this foundation by asking: How can we automate analyses and go beyond what spreadsheets allow? This will lead us deeper into the world of programming (using R) – writing instructions to let the computer handle repetitive tasks and complex logic, which is our focus for Day 3. Feel free to practice more with R on your own: try computing stats or making charts for other variables in the dataset. The more you play with the data, the more familiar you will become with R.\n\n\n\n\n\n\n\nTip\n\n\n\nIf you switch between regions: both CSV variants of dist_day02 load cleanly when the separator and decimal match your settings. In R, set sep and dec explicitly (see below) and both files produce the same numeric results. In Excel, either pick the semicolon/comma file when your decimal is ,, or if you open the comma/dot file under a comma-decimal locale, use Power Query or Data → Text to Columns → Advanced and set decimal separator to . so numbers are parsed correctly.\n\nlibrary(here)\n# Read CSV with different separators/decimals; both give identical data when sep/dec match\ntab &lt;- read.csv(here(\"./data/raw/csv/dist_day02_sep_comma__dec_dot.csv\"), sep=\",\", dec=\".\")\ntab &lt;- read.csv(here(\"./data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv\"), sep=\";\", dec=\",\")\nstr(tab)\nbuffer &lt;- 5\nhist(tab$A, xlim=c(min(tab)-buffer,max(tab)+buffer))\nhist(tab$B, xlim=c(min(tab)-buffer,max(tab)+buffer))\nhist(tab$C, xlim=c(min(tab)-buffer,max(tab)+buffer))\n\n\n\n\n\n\n\n\n\nReflection\n\n\n\n\nWhich statistic or visualization surprised you?\nHow was your first experience using R? What was challenging, and what felt easier or more powerful than using Excel?\nWhat would you like to explore next with R or data analysis? If you can, please take a moment to provide feedback on today’s session:\nAnonymous feedback",
+    "text": "Wrap-up\nToday we learned how to describe and visualize data, transitioning from manual Excel steps to automated R scripts. Descriptive statistics like mean, median, and standard deviation condense data into understandable numbers, while visualizations reveal patterns and anomalies that numbers alone might hide. We also saw the first glimpses of R’s capabilities – from reading data to making a plot in seconds. By summarizing the Belize case study data, we gained insight into typical values and variability (e.g., average tree sizes, distribution of observations across sites). We also confronted how misleading it can be if we rely on a single number or a poorly crafted chart. In the next session, we’ll build on this foundation by asking: How can we automate analyses and go beyond what spreadsheets allow? This will lead us deeper into the world of programming (using R) – writing instructions to let the computer handle repetitive tasks and complex logic, which is our focus for Day 3. Feel free to practice more with R on your own: try computing stats or making charts for other variables in the dataset. The more you play with the data, the more familiar you will become with R.\n\n\n\n\n\n\n\nTip\n\n\n\nIf you switch between regions: both CSV variants of dist_day02 load cleanly when the separator and decimal match your settings. In R, set sep and dec explicitly (see below) and both files produce the same numeric results. In Excel, either pick the semicolon/comma file when your decimal is ,, or if you open the comma/dot file under a comma-decimal locale, use Power Query or Data → Text to Columns → Advanced and set decimal separator to . so numbers are parsed correctly.\n\ninstall.packages(\"here\")  # run this line once to install here\nlibrary(here)\n# Read CSV with different separators/decimals; both give identical data when sep/dec match\ntab &lt;- read.csv(here(\"./data/raw/csv/dist_day02_sep_comma__dec_dot.csv\"), sep=\",\", dec=\".\")\n# you can also load the other variant:\n# tab &lt;- read.csv(here(\"./data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv\"), sep=\";\", dec=\",\")\nstr(tab)\nhist(tab$A)\nhist(tab$B)\nhist(tab$C)\n\n\n\n\n\n\n\n\n\nReflection\n\n\n\n\nWhich statistic or visualization surprised you?\nHow was your first experience using R? What was challenging, and what felt easier or more powerful than using Excel?\nWhat would you like to explore next with R or data analysis? If you can, please take a moment to provide feedback on today’s session:\nAnonymous feedback",
     "crumbs": [
       "Course Days",
       "Day 2 – Describing Data"
@@ -602,7 +602,7 @@
     "href": "days/day03.html#motivation",
     "title": "Day 3 – From repetition to algorithms",
     "section": "Motivation",
-    "text": "Motivation\nYesterday we saw that doing repetitive analysis manually is laborious. Programming allows us to express repetitive or complex tasks as a clear set of instructions – an algorithm – so the computer can execute them quickly and consistently. Just as a recipe guides a cook through steps to bake a cake, an algorithm guides the computer through steps to solve a problem. Today, we’ll demystify programming by starting with simple logic and gradually building up to writing our own small functions in R. The goal isn’t to turn you into software engineers overnight, but to show how a little coding can save a lot of time and prevent errors.",
+    "text": "Motivation\nProgramming allows us to express repetitive or complex tasks as a clear set of instructions – an algorithm – so the computer can execute them quickly and consistently. Just as a recipe guides a cook through steps to bake a cake, an algorithm guides the computer through steps to solve a problem. Today, we’ll demystify programming by starting with simple logic and gradually building up to writing our own small functions in R. The goal isn’t to turn you into software engineers overnight, but to show how a little coding can save a lot of time and prevent errors.",
     "crumbs": [
       "Course Days",
       "Day 3 – From repetition to algorithms"
@@ -624,7 +624,7 @@
     "href": "days/day03.html#from-manual-steps-to-algorithms",
     "title": "Day 3 – From repetition to algorithms",
     "section": "From manual steps to algorithms",
-    "text": "From manual steps to algorithms\nUsing R effectively means learning to think like a programmer, which starts with understanding algorithms and logic.\nAlgorithm is a step-by-step procedure to accomplish a task. It’s like a cooking recipe: a clear sequence of instructions that leads to a desired outcome. In data analysis, an algorithm could be something like: “For each observation, if the value is negative, mark it as an outlier; otherwise include it in the summary.”\nWriting out an algorithm forces you to be precise about what needs to be done – and in what order. Even sorting a list of numbers or calculating a summary statistic involves an algorithm (either one you write, or one built into a software tool).\n\nWhat R is\n\nR is a tool to store things (numbers, text, tables) in objects, and then ask questions about them (summaries, plots, comparisons) or transform them.\n\n\n# The arrow means: store the value on the right into the name on the left\nx &lt;- 5\nx\n\n\n\nThinking in algorithms: a simple example\nLet’s say we want to compute the average (mean) of a list of numbers without using a built-in formula: 1. Take a list of numbers (our input). 2. Set a counter count to 0 and a sum to 0. 3. For each number in the list: add it to sum and add 1 to count. 4. After the loop, compute average = sum / count. 5. Output the average.\nThis is an algorithm for the mean. It’s conceptually what the formula does, but written as explicit steps. We could write it in plain English, as above, or in a structured\n\npseudocode:\nPseudocode: Calculate Mean\n\ninitialize sum = 0 \ninitialize count = 0 \nfor each value in the list: \n  sum = sum + value \n  count = count + 1 \nif count is 0: \n    return \"No data\" // avoid division by zero \nelse: \n    mean = sum / count return mean\n\nEven if you never coded before, this pseudocode is understandable. It’s essentially how you would explain the process to someone else. The computer, however, needs it in a more formal language (like R). But writing pseudocode first helps clarify your logic before worrying about R syntax.\n\n\n\n\n\n\nTip\n\n\n\nTip: When tackling a programming task, it often helps to write out the steps in pseudocode or plain language first. This separates the problem-solving from the syntax. Once the steps make sense, you can translate them into code.\n\n\n\n\nControl flow: sequence, selection, repetition\nAlgorithms often involve:\n\nSequence: executing instructions in order.\nSelection (branching): making decisions (if X is true, do this, otherwise do that).\nRepetition: doing something multiple times (looping).\n\nIn our mean calculation example:\n\nSequence: we had steps to follow one after another.\nSelection: we used an if to check if count is 0 at the end.\nRepetition: the “for each value” part is a loop.\n\nAnother everyday example – a protocol for labeling samples:\nFor each collected sample: if sample has a barcode: scan the barcode else: assign a temporary ID and record it\nThis algorithm loops over each sample (repetition) and does one of two things depending on a condition (selection). Thinking algorithmically is largely about breaking problems into these logical components.",
+    "text": "From manual steps to algorithms\nUsing R effectively means learning to think like a programmer, which starts with understanding algorithms and logic.\nAlgorithm is a step-by-step procedure to accomplish a task. It’s like a cooking recipe: a clear sequence of instructions that leads to a desired outcome. In data analysis, an algorithm could be something like: “For each observation, if the value is negative, mark it as an outlier; otherwise include it in the summary.”\nWriting out an algorithm forces you to be precise about what needs to be done – and in what order. Even sorting a list of numbers or calculating a summary statistic involves an algorithm (either one you write, or one built into a software tool).\n\nWhat R is\n\nR is a tool to store things (numbers, text, tables) in objects, and then ask questions about them (summaries, plots, comparisons) or transform them.\n\n\n# The arrow means: store the value on the right into the name on the left\nx &lt;- 5\nx\n\n\n\nThinking in algorithms: a simple example\nLet’s say we want to compute the average (mean) of a list of numbers without using a built-in formula: 1. Take a list of numbers (our input). 2. Set a counter count to 0 and a sum to 0. 3. For each number in the list: add it to sum and add 1 to count. 4. After the loop, compute average = sum / count. 5. Output the average.\nThis is an algorithm for the mean. It’s conceptually what the formula does, but written as explicit steps. We could write it in plain English, as above, or in a structured\n\npseudocode:\nPseudocode: Calculate Mean\n\ninitialize sum = 0 \ninitialize count = 0 \nfor each value in the list: \n  sum = sum + value \n  count = count + 1 \nif count is 0: \n    return \"No data\" // avoid division by zero \nelse: \n    mean = sum / count return mean\n\nEven if you never coded before, this pseudocode is understandable. It’s essentially how you would explain the process to someone else. The computer, however, needs it in a more formal language (like R). But writing pseudocode first helps clarify your logic before worrying about R syntax.\n\n\n\n\n\n\nTip\n\n\n\nTip: When tackling a programming task, it often helps to write out the steps in pseudocode or plain language first. This separates the problem-solving from the syntax. Once the steps make sense, you can translate them into code.\n\n\n\n\nControl flow: sequence, selection, repetition\nAlgorithms often involve:\n\nSequence: executing instructions in order.\nSelection (branching): making decisions (if X is true, do this, otherwise do that).\nRepetition: doing something multiple times (looping).\n\nIn our mean calculation example:\n\nSequence: we had steps to follow one after another.\nSelection: we used an if to check if count is 0 at the end.\nRepetition: the “for each value” part is a loop.\n\nAnother everyday example – a protocol for labeling samples:\nFor each collected sample:\nif sample has a barcode:\nscan the barcode \nelse:\nassign a temporary ID and record it\nThis algorithm loops over each sample (repetition) and does one of two things depending on a condition (selection). Thinking algorithmically is largely about breaking problems into these logical components.",
     "crumbs": [
       "Course Days",
       "Day 3 – From repetition to algorithms"
@@ -778,7 +778,7 @@
     "href": "references/r-operators.html#assignment-operators",
     "title": "R Operators Cheat Sheet",
     "section": "Assignment operators",
-    "text": "Assignment operators\n\n\n\nOperator\nMeaning\nNotes\n\n\n\n\n&lt;-\nassign (preferred)\nstandard in R\n\n\n-&gt;\nassign (rightwards)\nrare\n\n\n=\nassign in some contexts\nsafe in function arguments\n\n\n&lt;&lt;-\nassign in parent environment\nadvanced\n\n\n\nx &lt;- 10\n10 -&gt; y",
+    "text": "Assignment operators\n\n\n\nOperator\nMeaning\nNotes\n\n\n\n\n&lt;-\nassign (preferred)\nstandard in R (Alt+- in Rstudio)\n\n\n-&gt;\nassign (rightwards)\nrare\n\n\n=\nassign in some contexts\nsafe in function arguments\n\n\n&lt;&lt;-\nassign in parent environment\nadvanced\n\n\n\nx &lt;- 10\n10 -&gt; y",
     "crumbs": [
       "Reference",
       "R Operators Cheat Sheet"
@@ -789,7 +789,7 @@
     "href": "references/r-operators.html#arithmetic-operators",
     "title": "R Operators Cheat Sheet",
     "section": "Arithmetic operators",
-    "text": "Arithmetic operators\n\n\n\nOperator\nMeaning\n\n\n\n\n+\naddition\n\n\n-\nsubtraction\n\n\n*\nmultiplication\n\n\n/\ndivision\n\n\n^\nexponentiation\n\n\n%%\nmodulo\n\n\n%/%\ninteger division\n\n\n\n2 + 3\n10 %% 3\n10 %/% 3",
+    "text": "Arithmetic operators\n\n\n\nOperator\nMeaning\n\n\n\n\n+\naddition\n\n\n-\nsubtraction\n\n\n*\nmultiplication\n\n\n/\ndivision\n\n\n^\nexponentiation\n\n\n%%\nmodulo\n\n\n%/%\ninteger division\n\n\n\n2 + 3\n10 %% 3\n10 %/% 3\n\n\n\n\n\n\nTip\n\n\n\nTip: Use parentheses () to control the order of operations. By default, R follows standard mathematical precedence (PEMDAS/BODMAS). This means multiplication and division are done before addition and subtraction. Multiplication and division have the same precedence and are evaluated left to right.\n\n14*10+2\n14*(10+2)\n(14*10)+2",
     "crumbs": [
       "Reference",
       "R Operators Cheat Sheet"
@@ -811,7 +811,7 @@
     "href": "references/r-operators.html#logical-operators",
     "title": "R Operators Cheat Sheet",
     "section": "Logical operators",
-    "text": "Logical operators\n\nElement-wise\n\n\n\nOperator\nMeaning\n\n\n\n\n&\nAND\n\n\n|\nOR\n\n\n!\nNOT\n\n\n\n(x &gt; 4) & (x &lt; 7)\n\n\nShort-circuit\n\n\n\nOperator\nMeaning\n\n\n\n\n&&\nAND\n\n\n||\nOR\n\n\n\nTRUE && FALSE",
+    "text": "Logical operators\n\nElement-wise\n\n\n\nOperator\nMeaning\n\n\n\n\n&\nAND\n\n\n|\nOR\n\n\n!\nNOT\n\n\n\n(x &gt; 4) & (x &lt; 7)\n\n\nShort-circuit\nShort-circuit operators only evaluate the right side if needed, which is helpful to guard expensive or error-raising code.\n\n\n\nOperator\nMeaning\n\n\n\n\n&&\nAND\n\n\n||\nOR\n\n\n\nTRUE && FALSE\nFALSE && stop(\"This is never evaluated\")\nTRUE || stop(\"Also never evaluated\")",
     "crumbs": [
       "Reference",
       "R Operators Cheat Sheet"
@@ -833,7 +833,7 @@
     "href": "references/r-operators.html#indexing-operators",
     "title": "R Operators Cheat Sheet",
     "section": "Indexing operators",
-    "text": "Indexing operators\n\n\n\nOperator\nMeaning\n\n\n\n\n[\nsubset\n\n\n[[\nextract element\n\n\n$\nextract by name\n\n\n\nlst &lt;- list(a=1:3,b=4)\nlst$a",
+    "text": "Indexing operators\n\n\n\nOperator\nMeaning\n\n\n\n\n[\nsubset\n\n\n[[\nextract element\n\n\n$\nextract by name\n\n\n\nIn a matrix or data frame, use [,] to specify rows and columns respectively.\nlst &lt;- list(a=5:7,b=4)\nlst$a\nlst[[1]]\nlst[[1]][2]\n# matrix 2x4\nmat &lt;- matrix(1:8, nrow=2)\nmat[1,3]  # row 1, column 3",
     "crumbs": [
       "Reference",
       "R Operators Cheat Sheet"
@@ -877,7 +877,7 @@
     "href": "references/r-operators.html#pipe-operators",
     "title": "R Operators Cheat Sheet",
     "section": "Pipe operators",
-    "text": "Pipe operators\n\n\n\nOperator\nMeaning\n\n\n\n\n|&gt;\nbase pipe\n\n\n%&gt;%\nmagrittr pipe\n\n\n\n1:5 |&gt; mean()",
+    "text": "Pipe operators\nPipes pass the left-hand value into the function on the right, helping you read code from left to right.\n\n\n\nOperator\nMeaning\n\n\n\n\n|&gt;\nbase pipe\n\n\n%&gt;%\nmagrittr pipe\n\n\n\n# base pipe: value becomes the first argument\n1:5 |&gt; mean()\n\n# base pipe with placeholder for a later argument\nletters |&gt; paste(collapse = \"-\" |&gt; \\(sep) paste(\"Letters:\", ., sep = sep))\n\n# magrittr pipe often used with tidyverse\nmtcars %&gt;%\n  subset(cyl == 4) %&gt;%\n  aggregate(mpg ~ gear, data = _, FUN = mean)",
     "crumbs": [
       "Reference",
       "R Operators Cheat Sheet"
@@ -888,7 +888,7 @@
     "href": "references/r-operators.html#special-infix-operators",
     "title": "R Operators Cheat Sheet",
     "section": "Special infix operators",
-    "text": "Special infix operators\n\n\n\nOperator\nMeaning\n\n\n\n\n%*%\nmatrix multiplication\n\n\n%o%\nouter product\n\n\n%x%\nKronecker product",
+    "text": "Special infix operators\nMatrix-related infix operators combine vectors/matrices in different ways; dimensions matter.\n\n\n\nOperator\nMeaning\n\n\n\n\n%*%\nmatrix multiplication\n\n\n%o%\nouter product\n\n\n%x%\nKronecker product\n\n\n\nA &lt;- matrix(c(1, 2, 3, 4), nrow = 2)\nB &lt;- matrix(c(0, 1, 1, 0), nrow = 2)\n\n# Matrix multiplication: (2x2) %*% (2x2) -&gt; (2x2)\nA %*% B\n\n# Outer product: all pairwise products of two vectors -&gt; matrix\nc(1, 2, 3) %o% c(10, 20)\n\n# Kronecker product: block matrix expansion of two matrices\nkronecker(A, B)",
     "crumbs": [
       "Reference",
       "R Operators Cheat Sheet"
@@ -903,6 +903,72 @@
     "crumbs": [
       "Reference",
       "R Operators Cheat Sheet"
+    ]
+  },
+  {
+    "objectID": "references/r_fun_tutorial.html",
+    "href": "references/r_fun_tutorial.html",
+    "title": "R Basics Playground",
+    "section": "",
+    "text": "This is an R Tutorial. We will learn the basics with tree measurements like height and DBH (diameter at breast height).\n\n\n\n\n\n\nTip\n\n\n\nRun code blocks in RStudio or directly in R terminal. Lines that start with # are comments.\n\n\n\n\n\nCreate variables and do simple math\nWork with vectors and data frames\nUse functions and write your own\nMake a basic plot\nPractice with mini exercises and small challenges",
+    "crumbs": [
+      "Reference",
+      "R Basics Playground"
+    ]
+  },
+  {
+    "objectID": "references/r_fun_tutorial.html#learning-goals",
+    "href": "references/r_fun_tutorial.html#learning-goals",
+    "title": "R Basics Playground",
+    "section": "",
+    "text": "Create variables and do simple math\nWork with vectors and data frames\nUse functions and write your own\nMake a basic plot\nPractice with mini exercises and small challenges",
+    "crumbs": [
+      "Reference",
+      "R Basics Playground"
+    ]
+  },
+  {
+    "objectID": "references/r_fun_tutorial.html#quick-exercise",
+    "href": "references/r_fun_tutorial.html#quick-exercise",
+    "title": "R Basics Playground",
+    "section": "Quick exercise",
+    "text": "Quick exercise\n\nMake a variable called dbh_cm with a DBH value (in centimeters).\nMake a variable called plot_id with a number.\nAdd 5 to dbh_cm and print the result.",
+    "crumbs": [
+      "Reference",
+      "R Basics Playground"
+    ]
+  },
+  {
+    "objectID": "references/r_fun_tutorial.html#mini-exercise",
+    "href": "references/r_fun_tutorial.html#mini-exercise",
+    "title": "R Basics Playground",
+    "section": "Mini exercise",
+    "text": "Mini exercise\n\nCreate a vector called heights_m with 5 tree heights.\nCompute the mean and the max.\nAdd a new height to the end.",
+    "crumbs": [
+      "Reference",
+      "R Basics Playground"
+    ]
+  },
+  {
+    "objectID": "references/r_fun_tutorial.html#tiny-exercise",
+    "href": "references/r_fun_tutorial.html#tiny-exercise",
+    "title": "R Basics Playground",
+    "section": "Tiny exercise",
+    "text": "Tiny exercise\nCreate a data frame named plots with 3 columns:\n\nplot_id (character)\nslope_deg (numeric)\nwet (logical)\n\nThen filter rows where slope_deg is greater than 10.",
+    "crumbs": [
+      "Reference",
+      "R Basics Playground"
+    ]
+  },
+  {
+    "objectID": "references/r_fun_tutorial.html#mini-exercise-1",
+    "href": "references/r_fun_tutorial.html#mini-exercise-1",
+    "title": "R Basics Playground",
+    "section": "Mini exercise",
+    "text": "Mini exercise\nWrite a function height_feet that takes meters and returns feet.",
+    "crumbs": [
+      "Reference",
+      "R Basics Playground"
     ]
   }
 ]

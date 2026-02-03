@@ -233,6 +233,12 @@ window.Quarto = {
  <span class="menu-text">R Operators Cheat Sheet</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references/r_fun_tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Basics Playground</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -808,15 +814,16 @@ Tip
 <div class="callout-body-container callout-body">
 <p>If you switch between regions: both CSV variants of <code>dist_day02</code> load cleanly <strong>when the separator and decimal match your settings</strong>. In R, set <code>sep</code> and <code>dec</code> explicitly (see below) and both files produce the same numeric results. In Excel, either pick the semicolon/comma file when your decimal is <code>,</code>, or if you open the comma/dot file under a comma-decimal locale, use Power Query or <strong>Data → Text to Columns → Advanced</strong> and set decimal separator to <code>.</code> so numbers are parsed correctly.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV with different separators/decimals; both give identical data when sep/dec match</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"./data/raw/csv/dist_day02_sep_comma__dec_dot.csv"</span>), <span class="at">sep=</span><span class="st">","</span>, <span class="at">dec=</span><span class="st">"."</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"./data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv"</span>), <span class="at">sep=</span><span class="st">";"</span>, <span class="at">dec=</span><span class="st">","</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tab)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>buffer <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab<span class="sc">$</span>A, <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(tab)<span class="sc">-</span>buffer,<span class="fu">max</span>(tab)<span class="sc">+</span>buffer))</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab<span class="sc">$</span>B, <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(tab)<span class="sc">-</span>buffer,<span class="fu">max</span>(tab)<span class="sc">+</span>buffer))</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab<span class="sc">$</span>C, <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(tab)<span class="sc">-</span>buffer,<span class="fu">max</span>(tab)<span class="sc">+</span>buffer))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"here"</span>)  <span class="co"># run this line once to install here</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV with different separators/decimals; both give identical data when sep/dec match</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">"./data/raw/csv/dist_day02_sep_comma__dec_dot.csv"</span>), <span class="at">sep=</span><span class="st">","</span>, <span class="at">dec=</span><span class="st">"."</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># you can also load the other variant:</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tab &lt;- read.csv(here("./data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv"), sep=";", dec=",")</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tab)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab<span class="sc">$</span>A)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab<span class="sc">$</span>B)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tab<span class="sc">$</span>C)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>

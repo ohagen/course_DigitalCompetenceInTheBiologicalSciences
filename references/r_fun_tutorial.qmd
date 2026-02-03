@@ -1,0 +1,312 @@
+---
+title: "R Basics Playground"
+author: "Oskar Hagen"
+execute:
+  freeze: auto
+editor:
+  markdown:
+    wrap: 72
+---
+
+# Welcome
+
+This is an R Tutorial. We will learn the basics with tree measurements like height and DBH (diameter at breast height).
+
+::: callout-tip
+Run code blocks in RStudio or directly in R terminal. Lines that start with `#` are comments.
+:::
+
+## Learning goals
+
+-   Create variables and do simple math
+-   Work with vectors and data frames
+-   Use functions and write your own
+-   Make a basic plot
+-   Practice with mini exercises and small challenges
+
+# 1. Hello, R
+
+```{r}
+# A comment starts with #
+print("Hello, R!")
+```
+
+# 2. Variables and math (tree height)
+
+Imagine you measured a tree height in meters.
+
+```{r, eval=F}
+# Create variables
+height_m <- 18.5
+extra_m <- 1.2
+
+# Basic math
+height_m + extra_m
+height_m - extra_m
+height_m * 2
+height_m / 2
+height_m ^ 2
+```
+
+::: callout-note
+In R, `<-` is the classic assignment arrow. You can also use `=` but `<-` is more common.
+:::
+
+## Quick exercise
+
+1.  Make a variable called `dbh_cm` with a DBH value (in centimeters).
+2.  Make a variable called `plot_id` with a number.
+3.  Add 5 to `dbh_cm` and print the result.
+
+# 3. Vectors (many trees)
+
+Vectors are lists of values of the same type.
+
+```{r, echo=FALSE}
+# A numeric vector of DBH measurements (cm)
+dbh_cm <- c(12, 18, 22, 15, 30)
+
+# A character vector of tree species
+species <- c("oak", "maple", "pine", "birch", "cedar")
+
+# Access by position (1-based)
+dbh_cm[1]
+
+# Basic stats
+mean(dbh_cm)
+max(dbh_cm)
+
+```
+
+## Mini exercise
+
+-   Create a vector called `heights_m` with 5 tree heights.
+-   Compute the mean and the max.
+-   Add a new height to the end.
+
+# 4. Data frames (a simple field sheet)
+
+Data frames are tables. Each column can be a different type.
+
+```{r, echo=FALSE}
+trees <- data.frame(
+  tree_id = c("T1", "T2", "T3", "T4"),
+  species = c("oak", "maple", "pine", "cedar"),
+  dbh_cm = c(25, 18, 30, 14),
+  height_m = c(19, 16, 23, 12),
+  healthy = c(TRUE, FALSE, F, T)
+)
+
+trees
+
+```
+
+### Selecting columns and rows
+
+```{r, echo=FALSE}
+trees$species
+trees[1, ]
+trees[trees$dbh_cm > 20, ]
+
+```
+
+## Tiny exercise
+
+Create a data frame named `plots` with 3 columns:
+
+-   `plot_id` (character)
+-   `slope_deg` (numeric)
+-   `wet` (logical)
+
+Then filter rows where `slope_deg` is greater than 10.
+
+# 5. Functions (helpers for field work)
+
+Functions let you reuse code.
+
+```{r, echo=FALSE}
+# Convert centimeters to inches
+cm_to_in <- function(cm) {
+  cm / 2.54
+}
+
+cm_to_in(30)
+
+```
+
+
+::: {.callout-tip icon="🧪"}
+
+### Group exercise: Create a function that converts m to cm (10 min)
+
+1. Create a function named `m_to_cm` that takes a numeric input in meters and returns the value in centimeters.
+  use 'function()' to define the function and remember that 1 meter = 100 centimeters.
+2. Test the function with a few values (e.g., 1.5 m, 2.3 m, 0.75 m).
+  call the function with single or vector inputs to see the results.
+
+#### Extras
+
+1. Convert the column `height_m` in the `trees` data frame to centimeters using your function and add it as a new column `height_cm`.
+  use '$' to add the new column to the data frame.
+
+:::
+
+# 6. Simple plots (DBH vs height)
+
+```{r}
+# Basic scatter plot
+plot(trees$dbh_cm, trees$height_m,
+     main = "Tree Height vs DBH",
+     xlab = "DBH (cm)", ylab = "Height (m)")
+```
+
+::: callout-tip
+Try changing colors with `col = "forestgreen"` or `pch = 19`.
+:::
+
+# 7. Putting it together (a small calculation)
+
+A tiny calculation you might do in the field is basal area. Here is a very simple version using DBH in centimeters.
+
+```{r}
+# Basal area in square meters for each tree
+# area = pi * (radius_m)^2
+radius_m <- (trees$dbh_cm / 100) / 2
+basal_area_m2 <- pi * radius_m ^ 2
+
+# Add to the data frame
+trees$basal_area_m2 <- basal_area_m2
+
+trees
+```
+
+::: {.callout-tip icon="🧪"}
+
+### Group exercise: Do a scatter plot of DBH and Height (10 min)
+
+1.  Make a vector of 4 DBH values and find the median.
+  use 'c()' to create the vector and 'median()' to find the median.
+2.  Create a data frame called 'mytrees' with two columns: `tree_id` and `height_cm` (4 rows).
+  use 'data.frame()' to create the data frame.
+3.  Merge the DBH vector from step 1 into the data frame as a new column `dbh_cm`.
+  use '$' to add the new column. You can also use 'cbind()' to combine the data frame and vector.
+4.  adds 160 cm to all height_cm values.
+  use '+' to add 160 to the height_cm column. Remember R likes to vectorize!
+
+#### Extras
+
+1. Write a function that adds 160 cm to a height_cm value.
+  define a function using 'function()' that takes a DBH value and returns the value plus 10.
+2. **Random sample**: Use `sample()` to pick 2 random trees from `mytrees$tree_id`.
+
+:::
+
+::: callout-note
+If you get stuck, run code line by line and use '?' to get help, e.g., `?median`.
+:::
+
+::: {.callout-tip icon="🧪"}
+
+### Group exercise: Loop over your entire data frame and print each row (10 min)
+
+```{r, eval=FALSE}
+for (i in 1:nrow(mytrees)) {
+  print(mytrees[i, ])
+}
+
+```
+#### Extras
+
+Modify the loop to print only trees with DBH greater than the median DBH.
+  Use `if` statement inside the loop to check the condition before printing.
+
+:::
+
+
+### Mergin all we learned today
+
+```{r, eval=FALSE}
+install.packages("here")
+library(here)
+#list files ending in cvs in working directory
+csvs <- list.files(path = here("./data/raw/PSP/"), pattern = "\\.csv$", full.names = TRUE)
+
+# load each csv and merge into a single data frame
+all_data <- do.call(rbind, lapply(csvs, read.csv))
+
+# the same as above but more explicit using loops
+all_data <- data.frame()
+for (file in csvs) {
+  #get file name from file
+  f_name <- basename(file)
+  # remove .csv at the end and PSP_
+  f_name <- gsub("^PSP_|\\.csv$", "", f_name)
+  print(f_name)
+  # read csv
+  temp_data <- read.csv(file)
+  # add new column with file name
+  temp_data$PSP <- f_name
+  print(dim(temp_data))
+  all_data <- rbind(all_data, temp_data)
+}
+dim(all_data)
+
+str(all_data)
+# spot values that can not be converted to numeric in DBH or Height
+mask <- is.na(as.numeric(all_data$DBH))
+all_data[mask,]
+
+# manual fix of DBH
+# there was text instead of number for Tag.Number 1234 in PSP NPD42_OH on DBH. i.e. 1o.4
+all_data[all_data$Tag.Number==1234&all_data$PSP=="NPD42_OH", "DBH"] <- 10.4
+
+
+# convert DBH to numeric
+all_data$Height <- as.numeric(all_data$Height)
+
+# plot scatterplot dbh vs height for each PSP
+plot(all_data$DBH, all_data$Height,
+     main = "Tree Height vs DBH",
+     xlab = "DBH (cm)", ylab = "Height (m)", col = as.factor(all_data$PSP))
+# add legend for PSP
+legend("topleft", legend = unique(all_data$PSP), col = 1:length(unique(all_data$PSP)), pch = 1)
+
+```
+
+::: {.callout-tip icon="🧪"}
+
+### Extra Solo exercise: check outliers
+
+1. Identify trees with height smaller than 200 cm.
+  Use logical indexing to filter rows where height > 100. (e.g. all_data[all_data$Height<200,])
+
+2. Remove the outlines from the data frame, you talked with people that collected the data first! ;)
+  Use logical indexing to keep only rows where height >= 100, or remove rows with height < 100.
+  you can either use the function 'which', or use logical indexing directly. Remember '!' means NOT in R, thus a vector x <- c(F, T, F), then !x is c(T, F, T)
+  
+3. Remove any tree that is deadwood from the data frame.
+  Use logical indexing to keep only rows where Deadwood column is FALSE.
+  
+```{r, eval=FALSE}
+# remove any entry with Species containing "Dead wood"
+data_no_DeadWood <- all_data[!grepl("Dead wood", all_data$Species), ]
+# alternatively, remove any entry on Species containing "Dead wood (CLASS 1)" or "Dead wood (CLASS 2)" using %in%
+data_no_DeadWood <- all_data[!(all_data$Species %in% c("Dead wood (CLASS 1)", "Dead wood (CLASS 2)")), ]
+
+```
+
+Hint: remove the '!' to check the selection before you remove. Also use 'dim()' to check the size of the data frame before and after removing rows.
+
+:::
+
+
+# 8. Keeping it clean
+
+In order to keep your workflow clean, it is recomended that intermediate results are saved to files. This way you can always go back to a previous step without re-running everything. 
+
+Also, save the scripts in separate steps, e.g. `01_load_data.R`, `02_clean_data.R`, `03_analyze_data.R`, etc.
+
+```{r, eval=FALSE}
+# save cleaned data to csv
+write.csv(data_no_DeadWood, file = here("./data/cleaned_tree_data.csv"), row.names = FALSE)
+```

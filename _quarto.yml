@@ -22,6 +22,7 @@ website:
       - section: "Reference"
         contents:
           - references/r-operators.qmd
+          - references/r_fun_tutorial.qmd
 
 format:
   html:

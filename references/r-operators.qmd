@@ -17,7 +17,7 @@ Operators are symbols (and a few special names) that act on values or objects, e
 
 | Operator | Meaning | Notes |
 |--------:|---------|------|
-| `<-` | assign (preferred) | standard in R |
+| `<-` | assign (preferred) | standard in R (Alt+- in Rstudio) |
 | `->` | assign (rightwards) | rare |
 | `=` | assign in some contexts | safe in function arguments |
 | `<<-` | assign in parent environment | advanced |
@@ -46,6 +46,18 @@ x <- 10
 10 %% 3
 10 %/% 3
 ~~~
+
+:::{.callout-tip}
+**Tip:** Use parentheses `()` to control the order of operations.
+By default, R follows standard mathematical precedence (PEMDAS/BODMAS).
+This means multiplication and division are done before addition and subtraction.
+Multiplication and division have the same precedence and are evaluated left to right.
+```{r, eval=F}
+14*10+2
+14*(10+2)
+(14*10)+2
+```
+:::
 
 ---
 
@@ -118,9 +130,16 @@ c("oak","pine") %in% c("oak","beech","pine")
 | `[[` | extract element |
 | `$` | extract by name |
 
+In a matrix or data frame, use `[,]` to specify rows and columns respectively.
+
 ~~~r
-lst <- list(a=1:3,b=4)
+lst <- list(a=5:7,b=4)
 lst$a
+lst[[1]]
+lst[[1]][2]
+# matrix 2x4
+mat <- matrix(1:8, nrow=2)
+mat[1,3]  # row 1, column 3
 ~~~
 
 ---
@@ -188,11 +207,27 @@ mtcars %>%
 
 ## Special infix operators
 
+Matrix-related infix operators combine vectors/matrices in different ways; dimensions matter.
+
 | Operator | Meaning |
 |--------:|---------|
 | `%*%` | matrix multiplication |
 | `%o%` | outer product |
 | `%x%` | Kronecker product |
+
+~~~r
+A <- matrix(c(1, 2, 3, 4), nrow = 2)
+B <- matrix(c(0, 1, 1, 0), nrow = 2)
+
+# Matrix multiplication: (2x2) %*% (2x2) -> (2x2)
+A %*% B
+
+# Outer product: all pairwise products of two vectors -> matrix
+c(1, 2, 3) %o% c(10, 20)
+
+# Kronecker product: block matrix expansion of two matrices
+kronecker(A, B)
+~~~
 
 ---
 

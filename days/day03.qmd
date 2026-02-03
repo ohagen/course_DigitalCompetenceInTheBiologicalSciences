@@ -25,7 +25,7 @@ No prior programming experience is assumed, though familiarity with R basics fro
 
 ## Motivation
 
-Yesterday we saw that doing repetitive analysis manually is laborious. **Programming** allows us to express repetitive or complex tasks as a clear set of instructions – an algorithm – so the computer can execute them quickly and consistently. Just as a recipe guides a cook through steps to bake a cake, an algorithm guides the computer through steps to solve a problem. Today, we’ll demystify programming by starting with simple logic and gradually building up to writing our own small functions in R. The goal isn’t to turn you into software engineers overnight, but to show how a little coding can save a lot of time and prevent errors.
+**Programming** allows us to express repetitive or complex tasks as a clear set of instructions – an algorithm – so the computer can execute them quickly and consistently. Just as a recipe guides a cook through steps to bake a cake, an algorithm guides the computer through steps to solve a problem. Today, we’ll demystify programming by starting with simple logic and gradually building up to writing our own small functions in R. The goal isn’t to turn you into software engineers overnight, but to show how a little coding can save a lot of time and prevent errors.
 
 -----------------------------------------------------------------------
 
@@ -133,9 +133,13 @@ In our mean calculation example:
 Another everyday example – a protocol for labeling samples:
 
 For each collected sample: 
+
   if sample has a barcode: 
+
     scan the barcode 
+
   else: 
+
     assign a temporary ID and record it
 
 This algorithm loops over each sample (repetition) and does one of two things depending on a condition (selection). Thinking algorithmically is largely about breaking problems into these logical components.

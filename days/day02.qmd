@@ -519,15 +519,16 @@ Feel free to practice more with R on your own: try computing stats or making cha
 If you switch between regions: both CSV variants of `dist_day02` load cleanly **when the separator and decimal match your settings**. In R, set `sep` and `dec` explicitly (see below) and both files produce the same numeric results. In Excel, either pick the semicolon/comma file when your decimal is `,`, or if you open the comma/dot file under a comma-decimal locale, use Power Query or **Data → Text to Columns → Advanced** and set decimal separator to `.` so numbers are parsed correctly.
 
 ```{r eval=F}
+install.packages("here")  # run this line once to install here
 library(here)
 # Read CSV with different separators/decimals; both give identical data when sep/dec match
 tab <- read.csv(here("./data/raw/csv/dist_day02_sep_comma__dec_dot.csv"), sep=",", dec=".")
-tab <- read.csv(here("./data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv"), sep=";", dec=",")
+# you can also load the other variant:
+# tab <- read.csv(here("./data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv"), sep=";", dec=",")
 str(tab)
-buffer <- 5
-hist(tab$A, xlim=c(min(tab)-buffer,max(tab)+buffer))
-hist(tab$B, xlim=c(min(tab)-buffer,max(tab)+buffer))
-hist(tab$C, xlim=c(min(tab)-buffer,max(tab)+buffer))
+hist(tab$A)
+hist(tab$B)
+hist(tab$C)
 ```
 :::
 
