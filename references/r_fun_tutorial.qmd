@@ -62,7 +62,7 @@ In R, `<-` is the classic assignment arrow. You can also use `=` but `<-` is mor
 
 Vectors are lists of values of the same type.
 
-```{r, echo=FALSE}
+```{r, eval=FALSE}
 # A numeric vector of DBH measurements (cm)
 dbh_cm <- c(12, 18, 22, 15, 30)
 
@@ -88,7 +88,7 @@ max(dbh_cm)
 
 Data frames are tables. Each column can be a different type.
 
-```{r, echo=FALSE}
+```{r, eval=FALSE}
 trees <- data.frame(
   tree_id = c("T1", "T2", "T3", "T4"),
   species = c("oak", "maple", "pine", "cedar"),
@@ -101,30 +101,27 @@ trees
 
 ```
 
-### Selecting columns and rows
+:::{.callout-tip icon="🧪"}
 
-```{r, echo=FALSE}
+### Single Exercise: Selecting columns and rows
+
+Select the `species` column, the first row, and all trees with DBH greater than 20 cm.
+
+```{r, eval=FALSE}
 trees$species
 trees[1, ]
 trees[trees$dbh_cm > 20, ]
 
 ```
+**Extra** Think of alternative ways of doing this
+ 
+:::
 
-## Tiny exercise
-
-Create a data frame named `plots` with 3 columns:
-
--   `plot_id` (character)
--   `slope_deg` (numeric)
--   `wet` (logical)
-
-Then filter rows where `slope_deg` is greater than 10.
-
-# 5. Functions (helpers for field work)
+# 5. Functions
 
 Functions let you reuse code.
 
-```{r, echo=FALSE}
+```{r, eval=FALSE}
 # Convert centimeters to inches
 cm_to_in <- function(cm) {
   cm / 2.54
@@ -153,7 +150,7 @@ cm_to_in(30)
 
 # 6. Simple plots (DBH vs height)
 
-```{r}
+```{r, eval=FALSE}
 # Basic scatter plot
 plot(trees$dbh_cm, trees$height_m,
      main = "Tree Height vs DBH",
@@ -168,7 +165,7 @@ Try changing colors with `col = "forestgreen"` or `pch = 19`.
 
 A tiny calculation you might do in the field is basal area. Here is a very simple version using DBH in centimeters.
 
-```{r}
+```{r eval=F}
 # Basal area in square meters for each tree
 # area = pi * (radius_m)^2
 radius_m <- (trees$dbh_cm / 100) / 2

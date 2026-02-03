@@ -1,5 +1,49 @@
 [
   {
+    "objectID": "references/r_fun_tutorial.html",
+    "href": "references/r_fun_tutorial.html",
+    "title": "R Basics Playground",
+    "section": "",
+    "text": "This is an R Tutorial. We will learn the basics with tree measurements like height and DBH (diameter at breast height).\n\n\n\n\n\n\nTip\n\n\n\nRun code blocks in RStudio or directly in R terminal. Lines that start with # are comments.\n\n\n\n\n\nCreate variables and do simple math\nWork with vectors and data frames\nUse functions and write your own\nMake a basic plot\nPractice with mini exercises and small challenges",
+    "crumbs": [
+      "Reference",
+      "R Basics Playground"
+    ]
+  },
+  {
+    "objectID": "references/r_fun_tutorial.html#learning-goals",
+    "href": "references/r_fun_tutorial.html#learning-goals",
+    "title": "R Basics Playground",
+    "section": "",
+    "text": "Create variables and do simple math\nWork with vectors and data frames\nUse functions and write your own\nMake a basic plot\nPractice with mini exercises and small challenges",
+    "crumbs": [
+      "Reference",
+      "R Basics Playground"
+    ]
+  },
+  {
+    "objectID": "references/r_fun_tutorial.html#quick-exercise",
+    "href": "references/r_fun_tutorial.html#quick-exercise",
+    "title": "R Basics Playground",
+    "section": "Quick exercise",
+    "text": "Quick exercise\n\nMake a variable called dbh_cm with a DBH value (in centimeters).\nMake a variable called plot_id with a number.\nAdd 5 to dbh_cm and print the result.",
+    "crumbs": [
+      "Reference",
+      "R Basics Playground"
+    ]
+  },
+  {
+    "objectID": "references/r_fun_tutorial.html#mini-exercise",
+    "href": "references/r_fun_tutorial.html#mini-exercise",
+    "title": "R Basics Playground",
+    "section": "Mini exercise",
+    "text": "Mini exercise\n\nCreate a vector called heights_m with 5 tree heights.\nCompute the mean and the max.\nAdd a new height to the end.",
+    "crumbs": [
+      "Reference",
+      "R Basics Playground"
+    ]
+  },
+  {
     "objectID": "index.html#course-overview",
     "href": "index.html#course-overview",
     "title": "Digital Competence in the Biological Sciences",
@@ -903,72 +947,6 @@
     "crumbs": [
       "Reference",
       "R Operators Cheat Sheet"
-    ]
-  },
-  {
-    "objectID": "references/r_fun_tutorial.html",
-    "href": "references/r_fun_tutorial.html",
-    "title": "R Basics Playground",
-    "section": "",
-    "text": "This is an R Tutorial. We will learn the basics with tree measurements like height and DBH (diameter at breast height).\n\n\n\n\n\n\nTip\n\n\n\nRun code blocks in RStudio or directly in R terminal. Lines that start with # are comments.\n\n\n\n\n\nCreate variables and do simple math\nWork with vectors and data frames\nUse functions and write your own\nMake a basic plot\nPractice with mini exercises and small challenges",
-    "crumbs": [
-      "Reference",
-      "R Basics Playground"
-    ]
-  },
-  {
-    "objectID": "references/r_fun_tutorial.html#learning-goals",
-    "href": "references/r_fun_tutorial.html#learning-goals",
-    "title": "R Basics Playground",
-    "section": "",
-    "text": "Create variables and do simple math\nWork with vectors and data frames\nUse functions and write your own\nMake a basic plot\nPractice with mini exercises and small challenges",
-    "crumbs": [
-      "Reference",
-      "R Basics Playground"
-    ]
-  },
-  {
-    "objectID": "references/r_fun_tutorial.html#quick-exercise",
-    "href": "references/r_fun_tutorial.html#quick-exercise",
-    "title": "R Basics Playground",
-    "section": "Quick exercise",
-    "text": "Quick exercise\n\nMake a variable called dbh_cm with a DBH value (in centimeters).\nMake a variable called plot_id with a number.\nAdd 5 to dbh_cm and print the result.",
-    "crumbs": [
-      "Reference",
-      "R Basics Playground"
-    ]
-  },
-  {
-    "objectID": "references/r_fun_tutorial.html#mini-exercise",
-    "href": "references/r_fun_tutorial.html#mini-exercise",
-    "title": "R Basics Playground",
-    "section": "Mini exercise",
-    "text": "Mini exercise\n\nCreate a vector called heights_m with 5 tree heights.\nCompute the mean and the max.\nAdd a new height to the end.",
-    "crumbs": [
-      "Reference",
-      "R Basics Playground"
-    ]
-  },
-  {
-    "objectID": "references/r_fun_tutorial.html#tiny-exercise",
-    "href": "references/r_fun_tutorial.html#tiny-exercise",
-    "title": "R Basics Playground",
-    "section": "Tiny exercise",
-    "text": "Tiny exercise\nCreate a data frame named plots with 3 columns:\n\nplot_id (character)\nslope_deg (numeric)\nwet (logical)\n\nThen filter rows where slope_deg is greater than 10.",
-    "crumbs": [
-      "Reference",
-      "R Basics Playground"
-    ]
-  },
-  {
-    "objectID": "references/r_fun_tutorial.html#mini-exercise-1",
-    "href": "references/r_fun_tutorial.html#mini-exercise-1",
-    "title": "R Basics Playground",
-    "section": "Mini exercise",
-    "text": "Mini exercise\nWrite a function height_feet that takes meters and returns feet.",
-    "crumbs": [
-      "Reference",
-      "R Basics Playground"
     ]
   }
 ]
