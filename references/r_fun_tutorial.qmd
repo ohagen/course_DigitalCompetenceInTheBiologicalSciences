@@ -88,6 +88,9 @@ max(dbh_cm)
 
 Data frames are tables. Each column can be a different type.
 
+Functions like `data.frame()` expect "(" and ")" to enclose arguments. If you opoen a parenthesis, R expects you to close it. That's why you see the + sign in the console until you close it.
+
+
 ```{r, eval=FALSE}
 trees <- data.frame(
   tree_id = c("T1", "T2", "T3", "T4"),
@@ -183,7 +186,7 @@ trees
 
 1.  Make a vector of 4 DBH values and find the median.
   use 'c()' to create the vector and 'median()' to find the median.
-2.  Create a data frame called 'mytrees' with two columns: `tree_id` and `height_cm` (4 rows).
+2.  Create a data frame called 'trees' with two columns: `tree_id` and `height_cm` (4 rows).
   use 'data.frame()' to create the data frame.
 3.  Merge the DBH vector from step 1 into the data frame as a new column `dbh_cm`.
   use '$' to add the new column. You can also use 'cbind()' to combine the data frame and vector.
@@ -194,7 +197,7 @@ trees
 
 1. Write a function that adds 160 cm to a height_cm value.
   define a function using 'function()' that takes a DBH value and returns the value plus 10.
-2. **Random sample**: Use `sample()` to pick 2 random trees from `mytrees$tree_id`.
+2. **Random sample**: Use `sample()` to pick 2 random trees from `trees$tree_id`.
 
 :::
 
@@ -207,8 +210,8 @@ If you get stuck, run code line by line and use '?' to get help, e.g., `?median`
 ### Group exercise: Loop over your entire data frame and print each row (10 min)
 
 ```{r, eval=FALSE}
-for (i in 1:nrow(mytrees)) {
-  print(mytrees[i, ])
+for (i in 1:nrow(trees)) {
+  print(trees[i, ])
 }
 
 ```

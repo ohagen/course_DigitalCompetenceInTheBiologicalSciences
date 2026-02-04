@@ -378,6 +378,7 @@ Note
 <section id="data-frames-a-simple-field-sheet" class="level1">
 <h1>4. Data frames (a simple field sheet)</h1>
 <p>Data frames are tables. Each column can be a different type.</p>
+<p>Functions like <code>data.frame()</code> expect “(” and “)” to enclose arguments. If you opoen a parenthesis, R expects you to close it. That’s why you see the + sign in the console until you close it.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>trees <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">tree_id =</span> <span class="fu">c</span>(<span class="st">"T1"</span>, <span class="st">"T2"</span>, <span class="st">"T3"</span>, <span class="st">"T4"</span>),</span>
@@ -491,7 +492,7 @@ Group exercise: Do a scatter plot of DBH and Height (10 min)
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Make a vector of 4 DBH values and find the median. use ‘c()’ to create the vector and ‘median()’ to find the median.</li>
-<li>Create a data frame called ‘mytrees’ with two columns: <code>tree_id</code> and <code>height_cm</code> (4 rows). use ‘data.frame()’ to create the data frame.</li>
+<li>Create a data frame called ‘trees’ with two columns: <code>tree_id</code> and <code>height_cm</code> (4 rows). use ‘data.frame()’ to create the data frame.</li>
 <li>Merge the DBH vector from step 1 into the data frame as a new column <code>dbh_cm</code>. use ‘$’ to add the new column. You can also use ‘cbind()’ to combine the data frame and vector.</li>
 <li>adds 160 cm to all height_cm values. use ‘+’ to add 160 to the height_cm column. Remember R likes to vectorize!</li>
 </ol>
@@ -499,7 +500,7 @@ Group exercise: Do a scatter plot of DBH and Height (10 min)
 <h4 class="anchored" data-anchor-id="extras-1">Extras</h4>
 <ol type="1">
 <li>Write a function that adds 160 cm to a height_cm value. define a function using ‘function()’ that takes a DBH value and returns the value plus 10.</li>
-<li><strong>Random sample</strong>: Use <code>sample()</code> to pick 2 random trees from <code>mytrees$tree_id</code>.</li>
+<li><strong>Random sample</strong>: Use <code>sample()</code> to pick 2 random trees from <code>trees$tree_id</code>.</li>
 </ol>
 </section>
 </div>
@@ -528,8 +529,8 @@ Group exercise: Loop over your entire data frame and print each row (10 min)
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(mytrees)) {</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(mytrees[i, ])</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(trees)) {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(trees[i, ])</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="extras-2" class="level4">

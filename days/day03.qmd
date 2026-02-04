@@ -108,7 +108,9 @@ for each value in the list:
 if count is 0: 
     return "No data" // avoid division by zero 
 else: 
-    mean = sum / count return mean
+    mean = sum / count 
+  
+  return mean
 ```
 Even if you never coded before, this pseudocode is understandable. It’s essentially how you would explain the process to someone else. The computer, however, needs it in a more formal language (like R). But writing pseudocode first helps clarify your logic before worrying about R syntax.
 
@@ -145,6 +147,9 @@ For each collected sample:
 This algorithm loops over each sample (repetition) and does one of two things depending on a condition (selection). Thinking algorithmically is largely about breaking problems into these logical components.
 
 -----------------------------------------------------------------------
+
+
+
 
 ## Data types and structures in R
 
@@ -282,6 +287,41 @@ For the Belize data, we’ve mainly used data frames (for tables of observations
 Being comfortable with vectors and data frames is key:
 - To access elements of a vector, use square brackets. `weights[2]` gives the second element of `weights`.
 - Data frames can be accessed with either `df$column_name` (to get a column as a vector) or `df[row, column]` indexing. For instance, `df[5, "species"]` would give the species of the 5th observation.
+
+
+## Recall from last week: R basics
+
+Before we continue, let’s quickly test what we learned form the operators and revisit how we can read data into R directly from the internet.
+
+```{r eval=FALSE}
+
+url <- "https://raw.githubusercontent.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/refs/heads/main/data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv"
+
+dest <- "dist_day02.csv"
+
+download.file(url, dest, mode = "wb")
+
+mytable <- read.csv(dest, sep = ";", dec = ",")
+
+# see structure and type of data
+str(mytable)
+
+# see the top 6 rows... could be also mytable[1:6,]
+head(mytable)
+
+# do summary statistics
+summary(mytable)
+
+# histogram of a column
+hist(mytable$A)
+
+#boxplot
+boxplot(mytable)
+
+
+```
+
+
 
 ### Example: dealing with missing values
 
