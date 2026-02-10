@@ -12,12 +12,11 @@ editor:
 
 Take your time, and fill in the evaluation:
 
-- [Wednesday 10.2](http://r.sd.uni-frankfurt.de/6126445e)
 <!-- 
+- [Wednesday 10.2](http://r.sd.uni-frankfurt.de/6126445e)
+-->
 
 [Thursday 11.2](http://r.sd.uni-frankfurt.de/db61a227)
-
--->
 
 If you are done, go to [Loops and If-statements in R](#loops-and-ifs) section, read it and start the exercises.
 
