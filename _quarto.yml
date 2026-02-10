@@ -23,6 +23,7 @@ website:
         contents:
           - references/r-operators.qmd
           - references/r_fun_tutorial.qmd
+          - references/wrap_up.qmd
 
 format:
   html:

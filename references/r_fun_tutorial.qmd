@@ -228,6 +228,18 @@ Modify the loop to print only trees with DBH greater than the median DBH.
 ```{r, eval=FALSE}
 install.packages("here")
 library(here)
+
+
+urls <- list("https://raw.githubusercontent.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/refs/heads/main/data/raw/PSP/PSP_NPD42_OH.csv",
+             "https://raw.githubusercontent.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/refs/heads/main/data/raw/PSP/PSP_NPD847_OH.csv")
+
+dest <- list("PSP_NPD42_OH.csv",
+             "PSP_NPD847_OH.csv")
+
+for (i in 1:length(urls)) {
+download.file(urls[[i]], dest[[i]], mode = "wb")
+}
+
 #list files ending in cvs in working directory
 csvs <- list.files(path = here("./data/raw/PSP/"), pattern = "\\.csv$", full.names = TRUE)
 

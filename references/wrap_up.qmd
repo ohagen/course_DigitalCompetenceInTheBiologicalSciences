@@ -1,0 +1,419 @@
+---
+title: "Last day"
+author: "Oskar Hagen"
+execute:
+  freeze: auto
+editor:
+  markdown:
+    wrap: 72
+---
+
+# Official Evaluation 🚨
+
+Take your time, and fill in the evaluation:
+
+- [Wednesday 10.2](http://r.sd.uni-frankfurt.de/6126445e)
+<!-- 
+
+[Thursday 11.2](http://r.sd.uni-frankfurt.de/db61a227)
+
+-->
+
+If you are done, go to [Loops and If-statements in R](#loops-and-ifs) section, read it and start the exercises.
+
+# Wrap-up
+
+Today we will wrap up everything we have learned in the previous days regarding R programming language using synthetic data. We will go through the entire workflow of loading, cleaning, analyzing, and visualizing data.
+
+First we will create a folder for us to work with. Open a new Rscript and copy the following code.
+
+```{r eval=FALSE}
+# create the location of a temporary folder for us to work with
+temp_space <- tempdir()
+# open temp_space folder in explorer
+browseURL(temp_space)
+
+## create a new folder called "lastday" inside the temp_space
+# create path
+mypath <- file.path(temp_space, "lastday")
+# create directory
+dir.create(mypath)
+
+```
+## Recall from last week: R basics
+
+Let’s quickly test what we learned form the operators. Instead of downloading and then unzipping, we will read data into R directly from the internet.
+So, We will download the data from the internet, store it as an CSV file and load it into R. We will then do some summary statistics and plotting
+
+```{r eval=FALSE}
+
+myurl <- "https://raw.githubusercontent.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/refs/heads/main/data/raw/csv/dist_day02_sep_semicolon__dec_comma.csv"
+
+# open temp_space folder in explorer
+dest <- file.path(mypath,"dist_day02.csv")
+
+# download the file from the internet and save it to the destination path
+download.file(url=myurl, destfile=dest, mode = "wb")
+
+# load the data into R, note that the separator is ";" and decimal is ","
+mytable <- read.csv(dest, sep = ";", dec = ",")
+
+# see structure and type of data
+str(mytable)
+
+# see the top 6 rows... could be also mytable[1:6,]
+head(mytable)
+
+# do summary statistics
+summary(mytable)
+
+# histogram of a column
+hist(mytable$A)
+
+#boxplot
+boxplot(mytable)
+
+
+```
+
+# Loops and If-statements in R {#loops-and-ifs}
+
+
+::: {.callout-tip}
+### Why loops and if-statements exist?
+
+Most R code works on **vectors**. That is powerful, but sometimes you want to:
+
+* do something **step by step**
+* repeat the **same operation many times**
+* make **decisions** depending on a condition
+
+That is exactly what **loops** and **if-statements** are for.
+
+Think of them as:
+
+* **loops**: repeat
+* **if-statements**: decide
+
+:::
+
+
+## For-loops: doing something repeatedly
+
+A **for-loop** runs the same code for a sequence of values. 
+
+**Basic structure**
+
+```{r eval=FALSE}
+# this code wont work. It just contain the structure
+
+for (variable in sequence) {
+  code that is repeated
+}
+```
+
+Read this literally as:
+
+> For each value in this sequence, do the following.
+
+---
+
+### Example 1: Printing numbers
+
+```{r eval=FALSE}
+for (i in 1:5) {
+  print(i)
+}
+```
+
+What happens:
+
+* `1:5` creates the sequence 1, 2, 3, 4, 5
+* `i` takes one value at a time
+* `print(i)` is executed once per value
+
+
+---
+
+### Example 2: Looping over a vector
+
+```{r eval=FALSE}
+trees <- c("oak", "beech", "pine")
+
+for (tree in trees) {
+  print(tree)
+}
+```
+
+Here:
+
+* `tree` is just a name
+* in each step, `tree` becomes one element of `trees`
+
+---
+
+### Example 3: Storing results from a loop
+
+Loops often **create results**, not just print things.
+
+```{r eval=FALSE}
+numbers <- 1:5
+squares <- rep(NA, 6)
+
+squares
+
+for (i in numbers) {
+  squares[i] <- i^2
+}
+
+squares
+```
+
+Explanation:
+
+* `rep(NA, 6)`` creates a vector of NA's
+* `squares[i] <- ...` fills it step by step
+* indexing is essential when storing loop results
+
+
+::: {.callout-tip icon="🧪"}
+
+### Group exercise: sum the squares vector (10 min)
+
+**tip** use function sum, note that squares has 6 elements but only the first 5 are filled with values, thus you can either sum only the first 5 elements or use na.rm = TRUE inside the sum function to ignore NA values in the sum function.
+
+To see the 'sum' funcion syntax, you can type '?sum' in the console.
+
+**extra** recreate the loop in example 3 but instead of creating a vector with 6 NA, use the function lenght to create a vector of the same length as the numbers vector, and fill it with NA values. This way you don't have to manually specify the length of the squares vector.
+
+:::
+
+
+---
+
+## If-statements: making decisions
+
+An **if-statement** runs code **only if a condition is TRUE**.
+
+**Basic structure**
+
+```r
+if (condition) {
+  code that runs if condition is TRUE
+}
+```
+
+Conditions must evaluate to booleans i.e. `TRUE` or `FALSE`.
+
+---
+
+### Example 4: A simple condition
+
+```{r, eval=FALSE}
+x <- 5
+
+if (x > 3) {
+  print("x is larger than 3")
+}
+```
+
+Because `5 > 3` is TRUE, the message is printed.
+
+---
+
+### Using else
+
+```{r, eval=FALSE}
+x <- 2
+
+if (x > 3) {
+  print("x is larger than 3")
+} else {
+  print("x is 3 or smaller")
+}
+```
+
+Exactly **one** of the two blocks runs.
+
+---
+
+### Multiple conditions with else if
+
+```{r, eval=FALSE}
+x <- 5
+
+if (x < 3) {
+  print("small")
+} else if (x < 10) {
+  print("medium")
+} else {
+  print("large")
+}
+```
+
+R checks conditions **from top to bottom** and stops at the first TRUE one.
+
+---
+
+## Combining loops and if-statements
+
+This is where things get useful.
+
+### Example 5: Classifying numbers
+
+```r
+numbers <- c(2, 5, 8, 1)
+
+for (n in numbers) {
+  if (n < 5) {
+    print(paste(n, "is small"))
+  } else {
+    print(paste(n, "is large"))
+  }
+}
+```
+
+Step-by-step:
+
+* loop over each number
+* check a condition
+* react differently depending on the result
+
+---
+
+::: {.callout-tip icon="🧪"}
+
+### Group exercise (min 2 people): Loop over columns of mytable data frame and plot a histogram for each column (15 min)
+
+**Tip** You can loop over the column indices and use them to access the columns. To get the number of columns in a data frame, you can use the function 'ncol()'. To plot a histogram, you can use the function 'hist()' inside the loop, you can access the column data using either mytable[,i] or mytable[[i]] where i is the column index.
+
+```{r, eval=FALSE}
+# example getting the number of columns and plotting a histogram of the first column
+n_cols <- ncol(mytable)
+# example getting the vector of column names
+vec_cols <- 1:n_cols
+# example ploting histogram of column 2
+hist(mytable[,2])
+
+for (i in XXXXXXX){
+  ....
+}
+```
+**Extra1** Do the loop but add the column name as the title of the histogram. You can get the column name using 'colnames(mytable)[i]'. 
+
+**Extra2** Add an if statement inside the loop, so that if you have a sequence that has a number bigger than 60, the histogram is colored red, otherwise it is colored blue. You can use the function 'any()' to check if any value in the column is bigger than 60.
+
+```{r, eval=FALSE}
+# example getting a column name and plotting a red histogram of the column i, in our case column 2.
+i <- 2
+hist(mytable[,i], main = colnames(mytable)[i], col="red")
+
+```
+
+:::
+
+
+# Mergin it all
+
+```{r, eval=FALSE}
+belizepath <- file.path(tempdir(), "belize")
+dir.create(belizepath)
+browseURL(belizepath)
+
+
+urls <- list("https://raw.githubusercontent.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/refs/heads/main/data/raw/PSP/PSP_NPD42_OH.csv",
+             "https://raw.githubusercontent.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences/refs/heads/main/data/raw/PSP/PSP_NPD847_OH.csv")
+
+dest <- list("PSP_NPD42_OH.csv",
+             "PSP_NPD847_OH.csv")
+
+for (i in 1:length(urls)) {
+download.file(urls[[i]], file.path(belizepath,dest[[i]]), mode = "wb")
+}
+
+#list files ending in cvs in working directory
+csvs <- list.files(path = belizepath, pattern = "\\.csv$", full.names = TRUE)
+
+# the same as above but more explicit using loops
+all_data <- data.frame()
+for (file in csvs) {
+  # file <- csvs[1]
+  #get file name from file
+  f_name <- basename(file)
+  # remove .csv at the end and PSP_ at the beginning of the file name
+  f_name <- gsub("^PSP_|\\.csv$", "", f_name)
+  print(f_name)
+  # read csv
+  temp_data <- read.csv(file)
+  # add new column with file name
+  temp_data$PSP <- f_name
+  # check dimensions of the data frame
+  print(dim(temp_data))
+  all_data <- rbind(all_data, temp_data)
+}
+dim(all_data)
+
+str(all_data)
+# spot values that can not be converted to numeric in DBH or Height
+mask <- is.na(as.numeric(all_data$DBH))
+all_data[mask,]
+
+## Cleaning
+# manual fix of DBH
+# there was text instead of number for Tag.Number 1234 in PSP NPD42_OH on DBH. i.e. 1o.4
+all_data[all_data$Tag.Number==1234&all_data$PSP=="NPD42_OH", "DBH"] <- 10.4
+
+
+# convert DBH to numeric
+all_data$DBH <- as.numeric(all_data$DBH)
+
+# plot scatterplot dbh vs height for each PSP
+plot(all_data$DBH, all_data$Height,
+     main = "Tree Height vs DBH",
+     xlab = "DBH (cm)", ylab = "Height (m)", col = as.factor(all_data$PSP))
+# add legend for PSP
+legend("topleft", legend = unique(all_data$PSP), col = 1:length(unique(all_data$PSP)), pch = 1)
+
+```
+
+::: {.callout-tip icon="🧪"}
+
+### Groupe exercise: check outliers
+
+1. Identify trees with height smaller than 200 cm.
+  Use logical indexing to filter rows where height > 100. (e.g. all_data[all_data$Height<200,])
+  
+### Extras
+
+1. Remove the outlines you just spotted from the data frame, you talked with people that collected the data first! ;)
+  Use logical indexing to keep only rows where height >= 100, or remove rows with height < 100.
+  you can either use the function 'which', or use logical indexing directly. Remember '!' means NOT in R, thus a vector x <- c(F, T, F), then !x is c(T, F, T)
+  
+2. Remove any tree that is deadwood from the data frame.
+  Use logical indexing to keep only rows where Deadwood column is FALSE.
+  
+```{r, eval=FALSE}
+# remove any entry with Species containing "Dead wood"
+data_no_DeadWood <- all_data[!grepl("Dead wood", all_data$Species), ]
+# alternatively, remove any entry on Species containing "Dead wood (CLASS 1)" or "Dead wood (CLASS 2)" using %in%
+data_no_DeadWood <- all_data[!(all_data$Species %in% c("Dead wood (CLASS 1)", "Dead wood (CLASS 2)")), ]
+
+```
+
+Hint: remove the '!' to check the selection before you remove. Also use 'dim()' to check the size of the data frame before and after removing rows.
+
+3. Plot the scatterplot again without the deadwood trees, and check if the outliers are still there.
+
+:::
+
+
+# Keeping it clean
+
+In order to keep your workflow clean, it is recomended that intermediate results are saved to files. This way you can always go back to a previous step without re-running everything. 
+
+Also, save the scripts in separate steps, e.g. `01_load_data.R`, `02_clean_data.R`, `03_analyze_data.R`, etc.
+
+```{r, eval=FALSE}
+# save cleaned data to csv
+write.csv(data_no_DeadWood, file = file.path(belizepath, "cleaned_tree_data.csv"), row.names = FALSE)
+```

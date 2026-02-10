@@ -175,6 +175,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">R Basics Playground</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references/wrap_up.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Last day</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -494,77 +500,53 @@ Use R to <em>clean, analyse, and justify</em> results.</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong><a href="#generation">Data generation</a></strong></td>
-<td>❌ Not involved. Excel does not generate empirical data; it only records values after they exist.</td>
-<td>❌ Not involved for empirical data. R generates data only in simulations or models.</td>
+<td><a href="#generation"><strong>Data generation</strong></a></td>
+<td>❌ Excel mostly records values after they exist.</td>
+<td>⚠️ R generates data in simulations models.</td>
 </tr>
 <tr class="even">
-<td><strong><a href="#entry">Data entry &amp; initial structuring</a></strong></td>
+<td><a href="#entry"><strong>Data entry &amp; initial structuring</strong></a></td>
 <td>✅ <strong>Very strong.</strong> Designed for human input, fast manual entry, immediate visual feedback, simple validation rules, and readable tables. ⚠️ Risk of auto-formatting and silent type conversion.</td>
 <td>⚠️ <strong>Not suitable.</strong> R is not designed for manual data entry by humans and expects data to already exist in files or databases.</td>
 </tr>
 <tr class="odd">
-<td><strong><a href="#cleaning">Sanity checks</a></strong></td>
+<td><a href="#cleaning"><strong>Sanity checks</strong></a></td>
 <td>✅ <strong>Good.</strong> Sorting, filtering, and visual inspection help detect obvious errors and missing values. ⚠️ Checks are informal and not documented.</td>
 <td>✅ <strong>Very strong.</strong> Programmatic summaries, range checks, and consistency tests that are explicit, repeatable, and auditable.</td>
 </tr>
 <tr class="even">
-<td><strong><a href="#cleaning">Data cleaning &amp; harmonization</a></strong></td>
+<td><a href="#cleaning"><strong>Data cleaning &amp; harmonization</strong></a></td>
 <td>⚠️ <strong>Limited and risky.</strong> Cleaning is manual, undocumented, and prone to copy-paste errors; changes are hard to trace or reproduce.</td>
 <td>✅ <strong>Excellent.</strong> Cleaning steps are scripted, transparent, reproducible, and can be reviewed or rerun exactly.</td>
 </tr>
 <tr class="odd">
-<td><strong><a href="#storage">Data storage &amp; archiving</a></strong></td>
+<td><a href="#storage"><strong>Data storage &amp; archiving</strong></a></td>
 <td>❌ <strong>Poor choice.</strong> Excel files mix data, formatting, and logic; they hide metadata, are fragile across versions, and are not diff-friendly. Excel is not a database. However, can save (CSV TSV)</td>
 <td>⚠️ <strong>Indirect role.</strong> R does not store data long-term but produces clean, portable outputs (CSV, databases) suitable for archiving and sharing.</td>
 </tr>
 <tr class="even">
-<td><strong><a href="#analysis">Data analysis &amp; statistics</a></strong></td>
+<td><a href="#analysis"><strong>Data analysis &amp; statistics</strong></a></td>
 <td>❌ <strong>Danger zone.</strong> Formulas are opaque, errors are hard to detect, analyses are not reproducible, and reviewers cannot re-run the workflow.</td>
-<td>✅ <strong>Core strength.</strong> Transparent statistical analysis, modelling, simulations, diagnostics, and hypothesis testing with full reproducibility.</td>
+<td>✅ <strong>Core strength.</strong> Transparent statistical analysis, modelling, diagnostics, and hypothesis testing with full reproducibility.</td>
 </tr>
 <tr class="odd">
-<td><strong><a href="#visualization">Visualization &amp; communication</a></strong></td>
+<td><a href="#visualization"><strong>Visualization &amp; communication</strong></a></td>
 <td>⚠️ <strong>Limited.</strong> Useful for quick exploratory plots and sanity checks, but poor for consistent, reproducible, publication-quality figures.</td>
 <td>✅ <strong>Excellent.</strong> Scripted, consistent, and publication-quality visualizations with full control over logic and aesthetics.</td>
 </tr>
 <tr class="even">
-<td><strong><a href="#visualization">Reporting &amp; communication</a></strong></td>
+<td><a href="#visualization"><strong>Reporting &amp; communication</strong></a></td>
 <td>⚠️ <strong>Manual and fragile.</strong> Copy-paste workflows lead to version drift and broken links between data, analysis, and results.</td>
 <td>✅ <strong>Excellent (with Quarto).</strong> Code, results, figures, and narrative are generated together in one reproducible document.</td>
 </tr>
 <tr class="odd">
-<td><strong><a href="#reproducibility">Reproducibility &amp; reuse</a></strong></td>
+<td><a href="#reproducibility"><strong>Reproducibility &amp; reuse</strong></a></td>
 <td>❌ <strong>Actively hostile.</strong> No clear record of what was changed, when, or why; workflows are person-specific and irreproducible.</td>
 <td>✅ <strong>Designed for this.</strong> Scripts and version control document every step, enabling reuse, verification, and peer review.</td>
 </tr>
 </tbody>
 </table>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 5%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>## Course wrap-up discussion</td>
-</tr>
-<tr class="even">
-<td>We’ll now have an open discussion: - What were your biggest “aha” moments or takeaways from this week? - Is there something you wish we had covered more? (We can at least point you to resources for those topics.) - How do you plan to apply these skills in your work or research? - Any remaining questions or scenarios you want to brainstorm about?</td>
-</tr>
-<tr class="odd">
-<td><em>(The instructor will facilitate a discussion here, ensuring everyone has a chance to voice their thoughts.)</em></td>
-</tr>
-<tr class="even">
-<td>We also have the official course evaluation to complete – your feedback helps improve this course for the future.</td>
-</tr>
-<tr class="odd">
-<td><strong>Thank you</strong> for engaging wholeheartedly in these five days. You’ve not only learned specific skills (Excel tricks, R coding, etc.) but also a philosophy of data competence that will serve you across projects. Keep that inquisitive and meticulous spirit alive as you go forth – whether you’re managing a conservation program’s data or delving into research, your digital toolset and mindset will be crucial tools in your toolkit.</td>
-</tr>
-<tr class="even">
-<td>Good luck, and stay in touch with the community of practice – we’re all continuously learning in this rapidly evolving field.</td>
-</tr>
-</tbody>
-</table>
+<hr>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

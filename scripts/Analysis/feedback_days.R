@@ -11,7 +11,8 @@
 responses1 <- read.csv("C:/Users/ohagen/Downloads/Day1 (Responses) - Form Responses 1.csv")
 responses2 <- read.csv("C:/Users/ohagen/Downloads/Day 2 - Digital Competence in the Biological Sciences (Responses) - Form Responses 1(1).csv")
 responses3 <- read.csv("C:/Users/ohagen/Downloads/Day 3 - Digital Competence in the Biological Sciences (Responses) - Form Responses 1.csv")
-responses <- responses3
+responses4 <- read.csv("C:/Users/ohagen/Downloads/Day 4 - Digital Competence in the Biological Sciences (Responses) - Form Responses 1.csv")
+responses <- responses4
 
 
 
@@ -24,10 +25,11 @@ which.max(table(responses$Speed..5.is.perfect.))
 hist(responses$Speed..5.is.perfect.)
 # improve breaks of historgram add xrange of axis to show full range from 1 to 10
 hist(responses$Speed..5.is.perfect., breaks = seq(0.5, 10.5, by = 1), xlim = c(0, 10))
-par(mfrow = c(1, 3))
+par(mfrow = c(2, 2))
 hist(responses1$Speed..5.is.perfect., breaks = seq(0.5, 10.5, by = 1), xlim = c(0, 10))
 hist(responses2$Speed..5.is.perfect., breaks = seq(0.5, 10.5, by = 1), xlim = c(0, 10))
 hist(responses3$Speed..5.is.perfect., breaks = seq(0.5, 10.5, by = 1), xlim = c(0, 10))
+hist(responses4$Speed..5.is.perfect., breaks = seq(0.5, 10.5, by = 1), xlim = c(0, 10))
 
 summary(responses1$Speed..5.is.perfect.)
 #barplot of responses
@@ -41,12 +43,14 @@ improvements <- responses$What.to.improve.[responses$What.to.improve. != ""]
 what_workded <- responses$What.worked.[responses$What.worked. != ""]
 # for loop, print each improvement for a specific ammount of time according to length of input
 
+print(">>>>>>>>>> What to improve:")
 for (improvement in improvements) {
   print(improvement)
   Sys.sleep(2 + nchar(improvement) / 100)
 }
 
 
+print(">>>>>>>>>> What worked:")
 for (i in what_workded) {
   print(i)
   Sys.sleep(2 + nchar(i) / 100)
