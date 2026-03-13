@@ -1,4 +1,7 @@
 # course_DigitalCompetenceInTheBiologicalSciences
+
+[![DOI](https://zenodo.org/badge/1123942060.svg)](https://doi.org/10.5281/zenodo.18992317)
+
 Digital tools (mostly MS Excel and R) and data literacy for biological sciences
 
 This repository contains the teaching materials for the course Digital Competence in the Biological Sciences, taught at Goethe University Frankfurt by Prof. Oskar Hagen. Detailed information on course structure, learning objectives, and organization is provided in the accompanying lecture slides.
