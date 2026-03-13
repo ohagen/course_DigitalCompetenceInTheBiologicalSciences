@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: >-
+  If you use these course materials, please cite them using the metadata in
+  this file.
+title: Digital Competence in the Biological Sciences
+type: software
+authors:
+  - given-names: Oskar
+    family-names: Hagen
+    affiliation: Goethe University Frankfurt
+repository-code: https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences
+url: https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences
+abstract: >-
+  Teaching materials for the practical course Digital Competence in the Biological
+  Sciences. The course introduces data literacy and reproducible workflows in
+  biology using Excel, R, and Quarto, with a focus on transparent data
+  handling, analysis, visualization, and FAIR practices.
+keywords:
+  - biology
+  - digital competence
+  - data literacy
+  - reproducibility
+  - FAIR data
+  - R
+  - Excel
+  - data cycle
+license: CC-BY-4.0
+preferred-citation:
+  type: manual
+  title: Digital Competence in the Biological Sciences
+  authors:
+    - given-names: Oskar
+      family-names: Hagen
+      affiliation: Goethe University Frankfurt
+  institution: Goethe University Frankfurt
+  year: 2026
+  url: https://github.com/ohagen/course_DigitalCompetenceInTheBiologicalSciences
+notes: >-
+  Repository uses dual licensing: teaching materials are licensed under CC BY
+  4.0; code examples and scripts are licensed under MIT.
